@@ -33,7 +33,8 @@ export const nodeServerPlugin = (): Plugin => {
             worker.notFound(app.notFoundHandler)
           }
         }
-        serve({ ...worker, port: 3000 }, info => {
+        const port = process.env.PORT || 3000
+        serve({ ...worker, port: post }, info => {
           console.log('Listening on http://localhost:'+info.port)
         })`
       }
