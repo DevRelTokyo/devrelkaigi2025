@@ -6,7 +6,7 @@ COPY package.json .
 COPY start.sh .
 COPY .env .
 COPY tsconfig.json .
-COPY vite* .
+COPY vite* /app/
 # RUN npm install -g yarn
 RUN rm -rf node_modules
 RUN yarn
