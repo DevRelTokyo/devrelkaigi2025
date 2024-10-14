@@ -34,7 +34,7 @@ export const nodeServerPlugin = (): Plugin => {
           }
         }
         const port = process.env.PORT || 3000
-        serve({ ...worker, port: post }, info => {
+        serve({ ...worker, port }, info => {
           console.log('Listening on http://localhost:'+info.port)
         })`
       }
