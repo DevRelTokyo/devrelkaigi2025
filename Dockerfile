@@ -13,5 +13,5 @@ RUN yarn
 RUN chmod +x start.sh
 RUN npx vite build --mode client
 RUN npx vite build
-EXPOSE 3000
+EXPOSE $POST
 CMD ["node", "dist/server.mjs"]
