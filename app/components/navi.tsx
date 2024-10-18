@@ -1,4 +1,6 @@
+import { User } from "parse";
 import { setLang } from "../i18n";
+import UserMenu from "../islands/userMenu";
 
 export default function Navi({ lang }: Props) {
   const { t } = setLang(lang);
@@ -6,7 +8,7 @@ export default function Navi({ lang }: Props) {
 		<nav className="navbar main-nav fixed-top navbar-expand-lg p-0">
 			<div className="container-fluid p-0">
 				<a className="navbar-brand" href="/">
-					<img src="/static/images/logo.png" alt="logo" width={150} />
+					<img src="/assets/images/logo.png" alt="logo" width={150} />
 				</a>
 				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
 					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,10 +42,7 @@ export default function Navi({ lang }: Props) {
 							<a className="nav-link" href="contact.html">{t('Contact')}</a>
 						</li>
 					</ul>
-					<a href="#" className="ticket">
-						<img src="/static/images/icon/email.png" alt="ticket" />
-						<span>{t('Subscribe')}</span>
-					</a>
+					<UserMenu lang={lang} />
 				</div>
 			</div>
 		</nav>

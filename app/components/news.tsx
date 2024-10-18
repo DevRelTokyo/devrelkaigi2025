@@ -23,7 +23,7 @@ export default function News({ lang, articles }: Props) {
 							<div className="blog-post">
 								<div className="post-thumb">
 									<a href="news-single.html">
-										<img src="/static/images/news/post-thumb-one.jpg" alt="post-image" className="img-fluid" />
+										<img src="/assets/images/news/post-thumb-one.jpg" alt="post-image" className="img-fluid" />
 									</a>
 								</div>
 								<div className="post-content">

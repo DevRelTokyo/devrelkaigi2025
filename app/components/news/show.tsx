@@ -43,7 +43,7 @@ export default function Show({lang, article}: NewsShowProps) {
 							<div class="block">
 								<article class="blog-post single">
 									<div class="post-thumb">
-										<img src="/static/images/news/single-post.jpg" alt="post-image" class="img-fluid" />
+										<img src="/assets/images/news/single-post.jpg" alt="post-image" class="img-fluid" />
 									</div>
 									<div class="post-content">
 										<div class="date">

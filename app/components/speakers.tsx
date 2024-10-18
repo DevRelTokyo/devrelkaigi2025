@@ -22,8 +22,8 @@ export default function Speakers({ lang }: Props) {
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-lg-3 col-md-4 col-sm-6">
-						
+					<div className="col text-center" style={{paddingBottom: '2em'}}>
+						<a href={`/${lang}/proposals/new`} className="btn btn-main-md">{t('Send proposal')}</a>
 					</div>
 				</div>
 			</div>

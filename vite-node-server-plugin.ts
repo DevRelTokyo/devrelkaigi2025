@@ -17,8 +17,11 @@ export const nodeServerPlugin = (): Plugin => {
         return `import { Hono } from 'hono'
         import { serveStatic } from '@hono/node-server/serve-static'
         import { serve } from '@hono/node-server'
+        import { logger } from 'hono/logger'
         
         const worker = new Hono()
+        worker.use(logger())
+        worker.use('/assets/*', serveStatic({root: './dist'}))
         worker.use('/static/*', serveStatic({root: './dist'}))
         const modules = import.meta.glob(['/app/server.ts'], { import: 'default', eager: true })
         for (const [, app] of Object.entries(modules)) {

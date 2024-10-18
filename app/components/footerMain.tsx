@@ -8,7 +8,12 @@ export default function FooterMain({ lang }: Props) {
 					<div className="col-md-12">
 						<div className="block text-center">
 							<div className="footer-logo">
-								<img src="/static/images/footer-logo.png" alt="logo" className="img-fluid" />
+								<img
+									src="/assets/images/logo-dark.png"
+									alt="logo"
+									className="img-fluid"
+									width={250}
+								/>
 							</div>
 							<ul className="social-links-footer list-inline">
 								<li className="list-inline-item">

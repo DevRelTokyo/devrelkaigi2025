@@ -14,7 +14,7 @@ export default function Cta({ lang }: Props) {
 					</div>
 				</div>
 			</div>
-			<div className="image-block"><img src="/static/images/speakers/speaker-ticket.png" alt="" className="img-fluid" /></div>
+			<div className="image-block"><img src="/assets/images/speakers/speaker-ticket.png" alt="" className="img-fluid" /></div>
 		</section>
 	);
 }

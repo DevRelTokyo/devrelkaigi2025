@@ -8,7 +8,7 @@ export default function About({ lang }: Props) {
 				<div className="row">
 					<div className="col-lg-4 col-md-6 align-self-center">
 						<div className="image-block bg-about">
-							<img className="img-fluid" src="/static/images/speakers/featured-speaker.jpg" alt="" />
+							<img className="img-fluid" src="/assets/images/speakers/featured-speaker.jpg" alt="" />
 						</div>
 					</div>
 					<div className="col-lg-8 col-md-6 align-self-center">
@@ -32,10 +32,10 @@ export default function About({ lang }: Props) {
 							</div>
 							<ul className="list-inline">
 								<li className="list-inline-item">
-									<a href="#" className="btn btn-main-md">{t('Send proposal')}</a>
+									<a href={`/${lang}/proposals/new`} className="btn btn-main-md">{t('Send proposal')}</a>
 								</li>
 								<li className="list-inline-item">
-									<a href="#" className="btn btn-transparent-md">{t('Read more')}</a>
+									<a href={`/${lang}/what-is-devrelkaigi`} className="btn btn-transparent-md">{t('Read more')}</a>
 								</li>
 							</ul>
 						</div>
