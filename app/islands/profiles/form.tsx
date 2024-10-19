@@ -38,8 +38,10 @@ export default function ProfileForm({lang, objectId}: Props) {
 	const submit = async (e: any) => {
 		e.preventDefault();
 		setStatus('loading');
+		profile!.set('lang', lang);
+		profile!.set('user', user);
 		const errors: string[] = [];
-		schema.forEach(field => {
+		for (const field of schema) {
 			if (field.required && !profile!.get(field.name)) {
 				errors.push(t('__label__ is required').replace('__label__', field.label));
 			}
@@ -51,15 +53,37 @@ export default function ProfileForm({lang, objectId}: Props) {
 						.replace('__sub_label__', field.schema!.label)
 					);
 			}
-		});
+			const value = profile!.get(field.name!);
+			if (field.pattern && value) {
+				const re = new RegExp(field.pattern);
+				if (!re.test(profile!.get(field.name))) {
+					errors.push(t('__label__ is invalid').replace('__label__', field.label));
+				}
+			}
+			if (field.ignores && value) {
+				if (field.ignores.indexOf(profile!.get(field.name)) >= 0) {
+					errors.push(t('__label__ is invalid').replace('__label__', field.label));
+				}
+			}
+			if (field.unique && value) {
+				const query = new Parse.Query('Profile');
+				query.equalTo(field.name, value);
+				if (field.groupBy) {
+					field.groupBy.forEach(key => {
+						query.equalTo(key, profile!.get(key));
+					});
+				}
+				const res = await query.first();
+				if (res && res.id !== profile!.id) {
+					errors.push(t('This slug is already taken'));
+				}
+			}
+		};
 		if (errors.length > 0) {
 			setStatus('');
 			return showMessage('danger', errors);
 		}
 		
-		profile!.set('lang', lang);
-		profile!.set('user', user);
-
 		const acl = new Parse.ACL();
 		acl.setPublicReadAccess(true);
 		acl.setPublicWriteAccess(false);

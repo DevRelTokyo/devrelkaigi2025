@@ -73,13 +73,13 @@ export default function ProposalIndex({lang}: Props) {
 											{t(profile.get('lang'))}
 										</td>
 										<td>
-											<a href={`/${lang}/profiles/${profile.id}`}>
-												{profile.get('organization')}
-											</a>
+											{profile.get('organization')}
 										</td>
 										<td>{t(profile.get('title'))}</td>
 										<td>
-											{profile.get('name')}
+											<a href={`/${profile.get('lang')}/members/${profile.get('slug')}`}>
+												{profile.get('name')}
+											</a>
 										</td>
 										<td>
 											<a href={`/${lang}/profiles/edit`}>

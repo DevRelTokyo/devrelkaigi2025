@@ -128,5 +128,8 @@
 	"This field is read only. If you want to replace image, please use the file field below.": "このフィールドは読み取り専用です。画像を変更する場合は、下のファイルフィールドを使用してください。",
 	"Add your social media URLs": "ソーシャルメディアのURLを追加してください",
 	"Thank you! Your profile has been updated!": "ありがとうございます！プロフィールが更新されました！",
-	"__sub_label__ of __label__ is required": "__label__の__sub_label__は必須です"
+	"__sub_label__ of __label__ is required": "__label__の__sub_label__は必須です",
+	"Your ID. This value will be used as a part of the URL. (4-20 characters, lowercase, hyphen allowed)": "ID。URLの一部として使用されます（4〜20文字、小文字、ハイフンを使用可能）",
+	"Slug": "スラッグ",
+	"__label__ is invalid": "__label__が不正です"
 }

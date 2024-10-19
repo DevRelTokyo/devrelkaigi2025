@@ -4,6 +4,17 @@ const useSchema = (lang: string) => {
 	const { t } = setLang(lang);
 	return [
 		{
+			name: 'slug',
+			type: 'text',
+			label: t('Slug'),
+			help: t('Your ID. This value will be used as a part of the URL. (4-20 characters, lowercase, hyphen allowed)'),
+			required: true,
+			unique: true,
+			pattern: '^[a-z0-9-]{4,20}$',
+			groupBy: ['lang'],
+			ignores: ['admin', 'editor', 'administrator', 'root', 'superuser', 'owner', 'manager', 'staff', 'user', 'guest', 'anonymous', 'devrel', 'developer-relations', 'developerrelations', 'community', 'community-manager', 'aaaa', 'bbbb', 'cccc', 'dddd', 'eeee', 'ffff', 'gggg', 'hhhh', 'iiii', 'sexy', 'gender', 'fuck', 'devrelkaigi', 'javascript', 'java', 'ruby', 'python', 'youtube', 'google', 'github', 'linkedin', 'twitter', 'x', 'xxx', 'xx', 'password', 'secret', 'openai', 'microsoft', 'zoom'],
+		},
+		{
 			name: 'name',
 			type: 'text',
 			label: t('Name'),
