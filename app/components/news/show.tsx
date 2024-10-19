@@ -1,7 +1,7 @@
 import { setLang } from "../../i18n";
 import FooterMain from "../footerMain";
 import FooterSub from "../footerSub";
-import Navi from "../navi";
+import Navi from "../../islands/navi";
 import Subscribe from "../subscribe";
 
 type NewsShowProps = {

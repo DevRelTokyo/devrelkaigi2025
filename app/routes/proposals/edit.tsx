@@ -4,7 +4,7 @@ import Navi from "../../islands/navi";
 import Form from "../../islands/proposals/form";
 import { useSchema } from "../../schemas/proposal";
 
-export default function New({lang, objectId}: Props) {
+export default function Edit({lang, objectId}: Props) {
 	const schema = useSchema(lang);
 	return (
 		<>

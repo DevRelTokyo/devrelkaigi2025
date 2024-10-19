@@ -39,11 +39,9 @@ export default function Auth({ code, redirect }: AuthProps) {
 		profile.set('profile', response.bio);
 		profile.set('organization', response.company);
 		profile.set('lang', 'en');
-		const socials: {name: string, url: string}[] = [
-			{name: 'github', url: `${response.html_url}`},
-		];
-		if (response.blog) socials.push({name: 'blog', url: response.blog});
-		if (response.twitter_username) socials.push({name: 'twitter', url: `https://x.com/${response.twitter_username}`});
+		const socials: string[] = [response.html_url];
+		if (response.blog) socials.push(response.blog);
+		if (response.twitter_username) socials.push(`https://x.com/${response.twitter_username}`);
 		profile.set('socials', socials);
 		const acl = new Parse.ACL();
 		acl.setPublicReadAccess(true);

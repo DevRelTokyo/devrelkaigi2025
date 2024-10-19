@@ -1,6 +1,6 @@
 import { User } from "parse";
 import { setLang } from "../i18n";
-import UserMenu from "../islands/userMenu";
+import UserMenu from "./userMenu";
 
 export default function Navi({ lang }: Props) {
   const { t } = setLang(lang);

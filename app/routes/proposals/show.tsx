@@ -1,15 +1,13 @@
 import FooterMain from "../../components/footerMain";
 import FooterSub from "../../components/footerSub";
 import Navi from "../../islands/navi";
-import Form from "../../islands/proposals/form";
-import { useSchema } from "../../schemas/proposal";
+import ProposalShow from "../../islands/proposals/show";
 
-export default function New({lang, objectId}: Props) {
-	const schema = useSchema(lang);
+export default function Show({lang, objectId}: Props) {
 	return (
 		<>
       <Navi lang={lang} />
-			<Form
+			<ProposalShow
 				lang={lang}
 				objectId={objectId}
 			/>

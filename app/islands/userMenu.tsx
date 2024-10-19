@@ -3,6 +3,7 @@ import { setLang } from "../i18n";
 import { Parse } from "../parse";
 export default function userMenu({lang}: Props) {
 	const [user, setUser] = useState<Parse.User | undefined>(undefined);
+	const [CFP, setCFP] = useState<Parse.Object | undefined>(undefined);
 	const [image, setImage] = useState<string>('/assets/images/icon/user.png');
 	useEffect(() => {
 		setUser(Parse.User.current());
@@ -10,6 +11,7 @@ export default function userMenu({lang}: Props) {
 
 	useEffect(() => {
 		getImage();
+		getCFP();
 	}, [user]);
 
 	const getImage = async () => {
@@ -23,6 +25,15 @@ export default function userMenu({lang}: Props) {
 			return setImage(image.url());
 		}
 		setImage(profile.get('image_url') || '/assets/images/icon/user.png');
+	};
+
+	const getCFP = async () => {
+		if (!user) return;
+		const query = new Parse.Query('CFP');
+		query.lessThanOrEqualTo('start_at', new Date());
+		query.greaterThanOrEqualTo('end_at', new Date());
+		const CFP = await query.first();
+		setCFP(CFP);
 	};
 
 	const logout = async () => {
@@ -58,11 +69,13 @@ export default function userMenu({lang}: Props) {
 									}} />
 								</div>
 								<ul class="dropdown-menu dropdown-menu-end" data-bs-popper="static">
-									<li><a class="dropdown-item" href={`/${lang}/profile/edit`}>
+									<li><a class="dropdown-item" href={`/${lang}/profiles`}>
 										{t('Edit profile')}</a></li>
-									<li><a class="dropdown-item" href={`/${lang}/proposals/new`}>
-										{t('Send a proposal')}
-									</a></li>
+									{CFP && (
+										<li><a class="dropdown-item" href={`/${lang}/proposals/new`}>
+											{t('Send a proposal')}
+										</a></li>
+									)}
 									<li><a class="dropdown-item" href={`/${lang}/proposals`}>
 										{t('Manage proposal')}</a></li>
 									<li>

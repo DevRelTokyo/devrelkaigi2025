@@ -23,6 +23,7 @@ const useSchema = (lang: string) => {
 			type: 'textarea',
 			label: t('Description'),
 			placeholder: t('Description of the session. Markdown formart is enabled.'),
+			markdown: true,
 			row: 6,
 			required: true,
 		},

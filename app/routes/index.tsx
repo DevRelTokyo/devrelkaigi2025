@@ -3,7 +3,7 @@ import Banner from '../components/banner';
 import Cta from '../components/cta';
 import FooterMain from '../components/footerMain';
 import FooterSub from '../components/footerSub';
-import Navi from '../components/navi';
+import Navi from '../islands/navi';
 import News from '../components/news';
 import MapView from '../components/map';
 import PriceTable from '../components/priceTable';

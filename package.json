@@ -22,9 +22,10 @@
     "@mdx-js/rollup": "^3.0.1",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
-    "hono": "^4.6.3",
+    "hono": "^4.6.5",
     "honox": "^0.1.26",
     "i18next": "^23.15.1",
+    "markdown-it": "^14.1.0",
     "react-dom": "^18.3.1",
     "slick-carousel": "^1.8.1"
   },
@@ -33,8 +34,10 @@
     "@hono/vite-build": "^1.0.0",
     "@hono/vite-dev-server": "^0.15.1",
     "@jsonforms/examples": "^3.4.0",
+    "@types/markdown-it": "^14.1.2",
     "@types/parse": "^3.0.9",
     "parse": "^5.3.0",
+    "ts-node": "^10.9.2",
     "vite": "^5.2.12"
   }
 }
