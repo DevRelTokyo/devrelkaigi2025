@@ -1674,10 +1674,10 @@ hono@*, hono@^4, hono@^4.6.3, hono@>=4.*:
   resolved "https://registry.npmjs.org/hono/-/hono-4.6.3.tgz"
   integrity sha512-0LeEuBNFeSHGqZ9sNVVgZjB1V5fmhkBSB0hZrpqStSMLOWgfLy0dHOvrjbJh0H2khsjet6rbHfWTHY0kpYThKQ==
 
-honox@^0.1.25:
-  version "0.1.25"
-  resolved "https://registry.npmjs.org/honox/-/honox-0.1.25.tgz"
-  integrity sha512-Au3Hk7iOcHBDlf3tY7B20GfioiQ1Pc99icipCS+YuYMhQV8LH+hAEVZ/w2GzyWTStqLDpFN/SOU99zISYWpXWQ==
+honox@^0.1.26:
+  version "0.1.26"
+  resolved "https://registry.npmjs.org/honox/-/honox-0.1.26.tgz"
+  integrity sha512-UuocP0ND8MxyhQv4Qibt5TgXgH4Wn4+r9zOTkRwaQRlH3QHzrlPzQ3lxpd5wLTISpZ39ymu+0IAVv9x+BU2CgA==
   dependencies:
     "@babel/generator" "7.25.6"
     "@babel/parser" "7.25.6"
