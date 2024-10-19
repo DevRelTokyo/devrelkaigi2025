@@ -9,6 +9,7 @@ interface TextProps {
 	value: string;
 	help?: string;
 	options: { value: string, label: string }[];
+	status?: string;
 	onChange: (e: any) => void;
 }
 

@@ -9,8 +9,9 @@ interface FormParams {
 	schema: any[];
 	data: Parse.Object;
 	onSubmit: (data: any) => void;
+	status?: string;
 };
-export default function Form({ schema, data, onSubmit}: FormParams) {
+export default function Form({ schema, data, onSubmit, status}: FormParams) {
 	return (
 		<>
 			<form onSubmit={onSubmit}>
@@ -25,6 +26,7 @@ export default function Form({ schema, data, onSubmit}: FormParams) {
 								placeholder={field.placeholder}
 								required={field.required}
 								value={data.get(field.name)}
+								status={status}
 								help={field.help}
 								onChange={(e: any) => {
 									data.set(field.name, e.target.value);
@@ -39,6 +41,7 @@ export default function Form({ schema, data, onSubmit}: FormParams) {
 									required={field.required}
 									value={data.get(field.name)}
 									row={field.row}
+									status={status}
 									help={field.help}
 									onChange={(e: any) => {
 										data.set(field.name, e.target.value);
@@ -50,6 +53,7 @@ export default function Form({ schema, data, onSubmit}: FormParams) {
 									options={field.options}
 									label={field.label}
 									value={data.get(field.name)}
+									status={status}
 									required={field.required}
 									onChange={(e: any) => {
 										const value = e.target.value === 'true'
@@ -64,9 +68,11 @@ export default function Form({ schema, data, onSubmit}: FormParams) {
 									options={field.options}
 									value={data.get(field.name)}
 									required={field.required}
+									status={status}
 									onChange={(e: any) => {
 										const value = e.target.value === 'true'
 											? true : (e.target.value === 'false' ? false : e.target.value);
+										console.log({ name: field.name, value });
 										data.set(field.name, value);
 									}}
 								/>);
@@ -80,6 +86,7 @@ export default function Form({ schema, data, onSubmit}: FormParams) {
 									placeholder={field.placeholder}
 									required={field.required}
 									value={data.get(field.name)}
+									status={status}
 									help={field.help}
 									onChange={(e: any) => {
 										data.set(field.name, e.target.value);
@@ -90,6 +97,7 @@ export default function Form({ schema, data, onSubmit}: FormParams) {
 									<Submit
 										type={field.type}
 										label={field.label}
+										status={status}
 										onClick={onSubmit}
 									/>
 								)

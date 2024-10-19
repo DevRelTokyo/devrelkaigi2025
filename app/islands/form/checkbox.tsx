@@ -6,6 +6,7 @@ interface CheckboxProps {
 	value: string;
 	required: boolean;
 	onChange: (e: any) => void;
+	status?: string;
 }
 
 export default function Checkbox({ name, label, options, value, required, onChange }: CheckboxProps) {
@@ -16,7 +17,7 @@ export default function Checkbox({ name, label, options, value, required, onChan
 					class="form-check-input"
 					type="checkbox"
 					name={name}
-					value={options[0].value}
+					value={`${options[0].value}`}
 					onChange={onChange}
 					required={required}
 					checked={`${options[0].value}` === `${value}`}

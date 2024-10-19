@@ -6,6 +6,7 @@ interface RadioProps {
 	onChange: (e: any) => void;
 	value: string;
 	required: boolean;
+	status?: string;
 }
 
 export default function Radio({ name, label, options, value, required, onChange }: RadioProps) {

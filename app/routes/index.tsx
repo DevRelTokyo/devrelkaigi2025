@@ -17,21 +17,21 @@ import Price from '../components/price';
 export default function Index({lang, articles}: Props) {
 	return (
 		<>
-      <Navi lang={lang} />
-      <Banner lang={lang}	/>
-      <About lang={lang} />
-      <Speakers lang={lang} />
-      <Schedule lang={lang}	/>
-      <Price lang={lang}	/>
-      <Sponsors lang={lang} />
-      <News
-         lang={lang}
-         articles={articles}
-      />
-      <Subscribe lang={lang} />
-      <MapView lang={lang} />
-      <FooterMain lang={lang} />
-      <FooterSub lang={lang} />
+         <Navi lang={lang} />
+         <Banner lang={lang}	/>
+         <About lang={lang} />
+         <Speakers lang={lang} />
+         <Schedule lang={lang}	/>
+         <Price lang={lang}	/>
+         <Sponsors lang={lang} />
+         <News
+            lang={lang}
+            articles={articles}
+         />
+         <Subscribe lang={lang} />
+         <MapView lang={lang} />
+         <FooterMain lang={lang} />
+         <FooterSub lang={lang} />
 		</>
 	);
 }

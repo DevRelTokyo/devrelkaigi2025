@@ -8,6 +8,7 @@ interface TextAreaProps {
 	required: boolean;
 	value: string;
 	help?: string;
+	status?: string;
 	onChange: (e: any) => void;
 }
 

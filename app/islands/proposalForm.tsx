@@ -3,11 +3,15 @@ import Form from './form';
 import { useSchema } from '../schemas/proposal';
 import { setLang } from '../i18n';
 import { Parse } from '../parse';
-import { use } from 'i18next';
 
 interface Props {
 	lang: string;
 	objectId?: string;
+}
+
+interface MessageProps {
+	messages: string[];
+	type: string;
 }
 
 export default function ProposalForm({lang, objectId}: Props) {
@@ -15,6 +19,8 @@ export default function ProposalForm({lang, objectId}: Props) {
 	const { t } = setLang(lang);
 	const [user, setUser] = useState<Parse.User | undefined>(undefined);
 	const [proposal, setProposal] = useState(new Parse.Object('Proposal'));
+	const [errors, setErrors] = useState<MessageProps | undefined>(undefined);
+	const [status, setStatus] = useState<string>('');
 	const signInWithGithub = async () => {
 		if (typeof window === 'undefined') return;
 		window.location.href = `/auth/github?redirect=${encodeURIComponent(window.location.pathname)}`;
@@ -37,13 +43,39 @@ export default function ProposalForm({lang, objectId}: Props) {
 
 	const submit = async (e: any) => {
 		e.preventDefault();
-		schema.map(field => {
+		setStatus('loading');
+		const errors: string[] = [];
+		schema.forEach(field => {
 			if (field.required && !proposal.get(field.name)) {
-				console.log(`${field.label} is required`);
-				return;
+				errors.push(t('__label__ is required').replace('__label__', field.label));
 			}
 		});
-		console.log(proposal.toJSON());
+		if (errors.length > 0) {
+			setStatus('');
+			return setMessage('danger', errors);
+		}
+		const acl = new Parse.ACL();
+		acl.setPublicReadAccess(false);
+		acl.setPublicWriteAccess(false);
+		acl.setReadAccess(user!, true);
+		acl.setWriteAccess(user!, true);
+		acl.setRoleWriteAccess(`Organizer${import.meta.env.VITE_YEAR}`, true);
+		acl.setRoleReadAccess(`Organizer${import.meta.env.VITE_YEAR}`, true);
+		proposal.setACL(acl);
+		proposal.set('user', user);
+		proposal.set('lang', lang);
+		await proposal.save();
+		setStatus('');
+		setMessage('primary', [t('Thank you! Your proposal has been sent!')]);
+		setProposal(new Parse.Object('Proposal'));
+	};
+
+	const setMessage = (type: string, messages: string[]) => {
+		setErrors({type, messages});
+		setInterval(() => {
+			setErrors({type, messages});
+		}, 3000);
+		return setErrors(undefined);
 	};
 
 	return (
@@ -75,9 +107,30 @@ export default function ProposalForm({lang, objectId}: Props) {
 					</div>
 					<div class="row">
 						<div class="col-8 offset-2">
+							{errors && (
+								<div class={`alert alert-${errors.type}`} role="alert"
+									style={{
+										position: "fixed",
+										top: "50px",
+										right: "50px",
+										width: "600px",
+										zIndex: 9999,
+										borderRadius: "0px",
+									}}
+								>
+									<ul
+										style={{listStyleType: 'none', padding: 0}}
+									>
+										{errors.messages.map(error => (
+											<li>{error}</li>
+										))}
+									</ul>
+								</div>
+							)}
 							<Form
 								schema={schema}
 								data={proposal}
+								status={status}
 								onSubmit={submit}
 							/>
 						</div>

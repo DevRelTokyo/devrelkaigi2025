@@ -37,6 +37,18 @@ const useSchema = (lang: string) => {
 			required: true,
 		},
 		{
+			name: 'level',
+			type: 'select',
+			label: t('Audience level'),
+			options: [
+				{ value: 'beginner', label: t('Beginner') },
+				{ value: 'Intermediate', label: t('Intermediate') },
+				{ value: 'Advanced', label: t('Advanced') },
+				{ value: 'All', label: t('All') },
+			],
+			required: true,
+		},
+		{
 			name: 'category',
 			type: 'select',
 			label: t('Session category'),
@@ -71,7 +83,6 @@ const useSchema = (lang: string) => {
 			name: 'co_speaker',
 			type: 'checkbox',
 			label: t('I have a co-speaker'),
-			required: true,
 			options: [
 				{ value: true, label: t('No. I have a co-speaker.') },
 			],
