@@ -38,6 +38,7 @@ export default function Auth({ code, redirect }: AuthProps) {
 		profile.set('image_url', response.avatar_url);
 		profile.set('profile', response.bio);
 		profile.set('organization', response.company);
+		profile.set('slug', response.login);
 		profile.set('lang', 'en');
 		const socials: string[] = [response.html_url];
 		if (response.blog) socials.push(response.blog);
