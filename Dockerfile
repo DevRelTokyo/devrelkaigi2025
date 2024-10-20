@@ -3,7 +3,8 @@ WORKDIR /app
 COPY app/ /app/app
 COPY public/ /app/public
 COPY package.json .
-# COPY .env .
+COPY .env .
+COPY .env.client .
 COPY tsconfig.json .
 COPY vite* /app/
 # RUN npm install -g yarn
