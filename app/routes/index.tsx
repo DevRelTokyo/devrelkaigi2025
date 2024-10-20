@@ -15,7 +15,6 @@ import Subscribe from '../components/subscribe';
 import Price from '../components/price';
 
 export default function Index({lang, articles}: Props) {
-   console.log(import.meta.env);
 	return (
 		<>
          <Navi lang={lang} />
