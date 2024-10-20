@@ -4,7 +4,7 @@ COPY app/ /app/app
 COPY public/ /app/public
 COPY package.json .
 COPY start.sh .
-COPY .env .
+# COPY .env .
 COPY tsconfig.json .
 COPY vite* /app/
 # RUN npm install -g yarn
