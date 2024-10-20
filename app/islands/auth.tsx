@@ -17,7 +17,7 @@ export default function Auth({ code, redirect }: AuthProps) {
 		const user = await Parse.User.logInWith('github', { authData });
 		if (!user) return;
 		// Find profile
-		const profile =	await findOrCreateProfile(user, response);
+		await findOrCreateProfile(user, response);
 		if (redirect) {
 			window.location.href = redirect;
 		} else {

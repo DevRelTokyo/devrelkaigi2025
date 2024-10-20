@@ -4,9 +4,9 @@ import { getLang, useI18n } from "../../i18n";
 import { getArticles } from '../../parse/article';
 
 export default createRoute(async (c) => {
-	const { path } = c.req;
+  const { path } = c.req;
   const { t } = useI18n(path);
-	const lang = getLang(path);
+  const lang = getLang(path);
   const articles = await getArticles(lang, 3);
   return c.render(
     <Index
