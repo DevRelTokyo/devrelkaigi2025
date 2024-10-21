@@ -1,21 +1,13 @@
-import { createRoute } from 'honox/factory'
-import { deleteCookie, getCookie } from 'hono/cookie'
+import { useSearchParams } from "@remix-run/react";
+import Auth from "~/components/auth";
 
-import { Hono } from 'hono'
-import Auth from '../../islands/auth';
-
-const app = new Hono()
-
-export default createRoute((c) => {
-	const code = c.req.query('code');
-	const redirect = getCookie(c, 'redirect');
+export default function GitHub() {
+	const [searchParams, ] = useSearchParams();
+	const code = searchParams.get('code');
 	if (!code) {
-		c.status(400);
-		return c.render('Bad Request');
+		throw new Response('Bad Request', { status: 400 });
 	}
-	deleteCookie(c, 'redirect');
-	return c.render(<Auth
+	return (<Auth
 		code={code}
-		redirect={redirect}
 	/>);
-});
+}

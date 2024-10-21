@@ -1,6 +1,7 @@
-import { setLang } from "../i18n";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram, faLinkedin, faSquareFacebook, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
-export default function FooterMain({ lang }: Props) {
+export default function FooterMain() {
 	return (
 		<footer className="footer-main">
 			<div className="container">
@@ -17,25 +18,31 @@ export default function FooterMain({ lang }: Props) {
 							</div>
 							<ul className="social-links-footer list-inline">
 								<li className="list-inline-item">
-									<a href="https://www.linkedin.com/groups/14542243/">
-										<i class="fa-brands fa-linkedin"></i>
-									</a>
+									<div>
+										<a href="https://www.linkedin.com/groups/14542243/">
+											<FontAwesomeIcon icon={faLinkedin} />
+										</a>
+									</div>
 								</li>
 								<li className="list-inline-item">
 									<a href="https://x.com/devrelkaigi">
-										<i class="fa-brands fa-x-twitter"></i>
+										<FontAwesomeIcon icon={faXTwitter} />
 									</a>
 								</li>
 								<li className="list-inline-item">
-									<a href="https://www.instagram.com/devrelkaigi/"><i className="fab fa-instagram"></i></a>
+									<a href="https://www.instagram.com/devrelkaigi/" target="_blank" rel="noreferrer">
+										<FontAwesomeIcon icon={faInstagram} />
+									</a>
 								</li>
 								<li className="list-inline-item">
 									<a href="https://www.facebook.com/profile.php?id=61567096953218">
-										<i class="fa-brands fa-facebook"></i>
+										<FontAwesomeIcon icon={faSquareFacebook} />
 									</a>
 								</li>
 								<li className="list-inline-item">
-									<a href="https://www.youtube.com/@DevRelKaigi"><i className="fab fa-youtube"></i></a>
+									<a href="https://www.youtube.com/@DevRelKaigi">
+										<FontAwesomeIcon icon={faYoutube} />
+									</a>
 								</li>
 							</ul>
 						</div>

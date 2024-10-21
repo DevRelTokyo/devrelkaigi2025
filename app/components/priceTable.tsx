@@ -1,8 +1,11 @@
-import { setLang } from "../i18n";
+import { useParams } from "@remix-run/react";
+import { setLang } from "../utils/i18n";
 
-export default function PriceTable({ lang }: Props) {
-	const { t } = setLang(lang);
-	const col = lang === 'ja' ? 4 : 4;
+export default function PriceTable() {
+  const params = useParams();
+  const { locale } = params;
+  const { t } = setLang(locale!);
+	const col = locale === 'ja' ? 4 : 4;
 	return (
 		<section className="section pricing">
 			<div className="container">
@@ -20,7 +23,7 @@ export default function PriceTable({ lang }: Props) {
 					</div>
 				</div>
 				<div className="row">
-					{ lang === 'ja' &&
+					{ locale === 'ja' &&
 						<>
 							<div className={`col-md-${col}`}>
 								<div className="pricing-item">
@@ -46,7 +49,7 @@ export default function PriceTable({ lang }: Props) {
 										</ul>
 									</div>
 									<div className="pricing-footer text-center">
-										<a href="#" className="btn btn-transparent-md">Buy a ticket</a>
+										<a href="/" className="btn btn-transparent-md">Buy a ticket</a>
 									</div>
 								</div>
 							</div>
@@ -79,7 +82,7 @@ export default function PriceTable({ lang }: Props) {
 								</ul>
 							</div>
 							<div className="pricing-footer text-center">
-								<a href="#" className="btn btn-transparent-md">Buy a ticket</a>
+								<a href="/" className="btn btn-transparent-md">Buy a ticket</a>
 							</div>
 						</div>
 					</div>
@@ -109,7 +112,7 @@ export default function PriceTable({ lang }: Props) {
 								</ul>
 							</div>
 							<div className="pricing-footer text-center">
-								<a href="#" class="btn btn-transparent-md">Buy a ticket</a>
+								<a href="/" className="btn btn-transparent-md">Buy a ticket</a>
 							</div>
 						</div>
 					</div>
@@ -140,7 +143,7 @@ export default function PriceTable({ lang }: Props) {
 								</ul>
 							</div>
 							<div className="pricing-footer text-center">
-								<a href="#" className="btn btn-transparent-md">Buy a ticket</a>
+								<a href="/" className="btn btn-transparent-md">Buy a ticket</a>
 							</div>
 						</div>
 					</div>
@@ -170,7 +173,7 @@ export default function PriceTable({ lang }: Props) {
 								</ul>
 							</div>
 							<div className="pricing-footer text-center">
-								<a href="#" className="btn btn-transparent-md">Buy a ticket</a>
+								<a href="/" className="btn btn-transparent-md">Buy a ticket</a>
 							</div>
 						</div>
 					</div>
@@ -199,7 +202,7 @@ export default function PriceTable({ lang }: Props) {
 								</ul>
 							</div>
 							<div className="pricing-footer text-center">
-								<a href="#" className="btn btn-main-md">Buy a ticket</a>
+								<a href="/" className="btn btn-main-md">Buy a ticket</a>
 							</div>
 						</div>
 					</div>

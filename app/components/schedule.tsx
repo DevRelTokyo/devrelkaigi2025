@@ -1,7 +1,10 @@
-import { setLang } from "../i18n";
+import { useParams } from "@remix-run/react";
+import { setLang } from "../utils/i18n";
 
-export default function Schedule({ lang }: Props) {
-  const { t } = setLang(lang);
+export default function Schedule() {
+  const params = useParams();
+  const { locale } = params;
+  const { t } = setLang(locale!);
 	return (
 		<section className="section schedule">
 			<div className="container">
@@ -51,7 +54,7 @@ export default function Schedule({ lang }: Props) {
 									</div>
 								</div>
 							</div>
-							<div className="schedule-item" id="nov21" style="padding-top: 1em;">
+							<div className="schedule-item" id="nov21" style={{paddingTop: '1em'}}>
 								<div className="row">
 									<div className="col offset-md-2">
 										<h4>{t('3rd October')} {t('Business & Marketing day')}</h4>
@@ -61,7 +64,7 @@ export default function Schedule({ lang }: Props) {
 									</div>
 								</div>
 							</div>
-							<div className="schedule-item" id="nov22" style="padding-top: 1em;">
+							<div className="schedule-item" id="nov22" style={{paddingTop: '1em'}}>
 								<div className="row">
 									<div className="col offset-md-2">
 										<h4>{t('4th October')} {t('Developer & Community day')}</h4>

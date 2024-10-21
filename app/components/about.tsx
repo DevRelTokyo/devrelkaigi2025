@@ -1,7 +1,10 @@
-import { setLang } from "../i18n";
+import { useParams } from "@remix-run/react";
+import { setLang } from "../utils/i18n";
 
-export default function About({ lang }: Props) {
-	const { t } = setLang(lang);
+export default function About() {
+  const params = useParams();
+  const { locale } = params;
+  const { t } = setLang(locale!);
 	return (
 		<section className="section about">
 			<div className="container">
@@ -32,10 +35,10 @@ export default function About({ lang }: Props) {
 							</div>
 							<ul className="list-inline">
 								<li className="list-inline-item">
-									<a href={`/${lang}/proposals/new`} className="btn btn-main-md">{t('Send proposal')}</a>
+									<a href={`/${locale}/proposals/new`} className="btn btn-main-md">{t('Send proposal')}</a>
 								</li>
 								<li className="list-inline-item">
-									<a href={`/${lang}/what-is-devrelkaigi`} className="btn btn-transparent-md">{t('Read more')}</a>
+									<a href={`/${locale}/what-is-devrelkaigi`} className="btn btn-transparent-md">{t('Read more')}</a>
 								</li>
 							</ul>
 						</div>

@@ -1,8 +1,11 @@
-import { setLang } from "../i18n";
+import { useParams } from "@remix-run/react";
+import { setLang } from "../utils/i18n";
 
-export default function PriceTable({ lang }: Props) {
-	const { t } = setLang(lang);
-	const col = lang === 'ja' ? 4 : 4;
+export default function PriceTable() {
+  const params = useParams();
+  const { locale } = params;
+  const { t } = setLang(locale!);
+	// const col = lang === 'ja' ? 4 : 4;
 	return (
 		<section className="section pricing">
 			<div className="container">

@@ -1,6 +1,4 @@
-import { setLang } from "../i18n";
-export default function Cta({ lang }: Props) {
-	
+export default function Cta() {
 	return (
 		<section className="cta-ticket bg-ticket overlay-dark">
 			<div className="container">
@@ -9,7 +7,7 @@ export default function Cta({ lang }: Props) {
 						<div className="content-block">
 							<h2>Get Ticket <span className="alternate">Now!</span></h2>
 							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmtempor incidi</p>
-							<a href="" className="btn btn-main-md">Buy ticket</a>
+							<a href="/" className="btn btn-main-md">Buy ticket</a>
 						</div>
 					</div>
 				</div>

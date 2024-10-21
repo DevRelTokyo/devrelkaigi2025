@@ -1,8 +1,14 @@
-import { setLang } from "../i18n";
+import { useParams , useLoaderData } from "@remix-run/react";
+import { setLang } from "../utils/i18n";
+import { loader } from "~/routes/_index";
 
-export default function News({ lang, articles }: Props) {
-	console.log(articles);
-	const { t } = setLang(lang);
+export default function News() {
+	const articles2 = useLoaderData<typeof loader>();
+  const params = useParams();
+  const { locale } = params;
+  const { t } = setLang(locale!);
+	console.log(articles2);
+	const articles:string[] = [];
 	return (
 		<section className="news section">
 			<div className="container">
@@ -19,7 +25,7 @@ export default function News({ lang, articles }: Props) {
 				</div>
 				<div className="row">
 					{articles!.map((article, index) => (
-						<div className="col-lg-4 col-md-6 col-sm-8 col-10 m-auto">
+						<div key={index} className="col-lg-4 col-md-6 col-sm-8 col-10 m-auto">
 							<div className="blog-post">
 								<div className="post-thumb">
 									<a href="news-single.html">
@@ -37,15 +43,15 @@ export default function News({ lang, articles }: Props) {
 										<ul className="list-inline">
 											<li className="list-inline-item">
 												<i className="fa fa-user-o"></i>
-												<a href="#">Admin</a>
+												<a href="/">Admin</a>
 											</li>
 											<li className="list-inline-item">
 												<i className="fa fa-heart-o"></i>
-												<a href="#">350</a>
+												<a href="/">350</a>
 											</li>
 											<li className="list-inline-item">
 												<i className="fa fa-comments-o"></i>
-												<a href="#">30</a>
+												<a href="/">30</a>
 											</li>
 										</ul>
 									</div>

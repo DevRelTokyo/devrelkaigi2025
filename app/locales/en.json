@@ -2,8 +2,8 @@
 	"About": {
 		"MainMessage1": "DevRelKaigi is an international conference of developer relations from Japan with ❤️. We support English and Japanese sessions.",
 		"MainMessage2": "Our main categories are DevRel(Developer Relations), Developer Marketing, Developer Education, Developer Community, DevX(Developer Experience), Developer Branding, and more. At the conference, you can learn all of DevRel from the first step to expert knowledge.",
-		"SubMessage": "DevRelKaigi is not only a conference. We are creating a global community of developer relations. Many experts in DevRel are gathering at the conference.",
-		"en": "English",
-		"ja": "Japanese"
-	}
+		"SubMessage": "DevRelKaigi is not only a conference. We are creating a global community of developer relations. Many experts in DevRel are gathering at the conference."
+	},
+	"en": "English",
+	"ja": "Japanese"
 }

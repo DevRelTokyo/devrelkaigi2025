@@ -1,7 +1,10 @@
-import { setLang } from "../i18n";
+import { useParams } from "@remix-run/react";
+import { setLang } from "../utils/i18n";
 
-export default function Banner({ lang }: Props) {
-  const { t } = setLang(lang);
+export default function Banner() {
+  const params = useParams();
+  const { locale } = params;
+  const { t } = setLang(locale!);
 	return (
 		<section className="banner bg-banner-one">
 			<div className="container">

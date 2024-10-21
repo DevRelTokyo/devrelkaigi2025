@@ -1,0 +1,37 @@
+
+interface TextProps {
+	key: string
+	type: string;
+	name: string;
+	label: string;
+	placeholder: string;
+	required: boolean;
+	value: string;
+	help?: string;
+	options: { value: string, label: string }[];
+	status?: string;
+	onChange: (value: string) => void;
+}
+
+export default function Select({ key, name, options, label, required, placeholder, value, help, onChange }: TextProps) {
+	return (<>
+		<div className="mb-3" key={key}>
+			<label htmlFor={`input-${name}`} className="form-label">{label}</label>
+			{help && <div id={`${name}Help`} className="form-text">{help}</div>}
+			<select
+				className="form-select"
+				onChange={(e) => onChange(e.target.value)}
+				required={required}
+			>
+				<option value="">{placeholder}</option>
+				{options.map((option, i) => (
+					<option
+						key={i}
+						value={option.value}
+						selected={option.value === value}
+					>{option.label}</option>
+				))}
+			</select>
+		</div>
+	</>);
+}

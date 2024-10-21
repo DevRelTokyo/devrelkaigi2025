@@ -794,11 +794,6 @@ select.form-control:not([size]):not([multiple]) {
 .page-title .breadcrumb .breadcrumb-item.active {
   color: #fff;
 }
-.page-title .breadcrumb .breadcrumb-item + .breadcrumb-item::before {
-  content: "\f105";
-  font-family: FontAwesome;
-  color: #fff;
-}
 
 .footer-main {
   background: #272735;
@@ -825,14 +820,20 @@ select.form-control:not([size]):not([multiple]) {
 }
 .footer-main .block ul.social-links-footer li a {
   display: block;
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
+  padding-top: 5px;
   text-align: center;
   background: #fff;
 }
 .footer-main .block ul.social-links-footer li a i {
   line-height: 50px;
 }
+.footer-main .block ul.social-links-footer li a svg {
+  height: 50px;
+  width: 50px;
+}
+
 .footer-main .block ul.social-links-footer li a:hover {
   background: #0F75BC;
 }
@@ -2256,6 +2257,10 @@ select.form-control:not([size]):not([multiple]) {
   border: 1px solid #e5e5e5;
   text-align: center;
 }
+.single-speaker .block .content-block .social-profiles ul.social-list li a svg {
+  width: 38px;
+  height: 38px;
+}
 .single-speaker .block .content-block .social-profiles ul.social-list li a i {
   line-height: 40px;
 }
@@ -2294,13 +2299,6 @@ select.form-control:not([size]):not([multiple]) {
 }
 .single-speaker .block-2 .personal-info ul li:not(:last-child) {
   margin-bottom: 5px;
-}
-.single-speaker .block-2 .personal-info ul li:before {
-  position: absolute;
-  left: -25px;
-  content: "\f10c";
-  font-family: FontAwesome;
-  color: #0F75BC;
 }
 .single-speaker .block-2 .skills .skill-bar {
   margin-bottom: 20px;

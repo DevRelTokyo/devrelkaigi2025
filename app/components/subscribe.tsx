@@ -1,7 +1,10 @@
-import { setLang } from "../i18n";
+import { useParams } from "@remix-run/react";
+import { setLang } from "../utils/i18n";
 
-export default function Subscribe({ lang }: Props) {
-	const { t } = setLang(lang);
+export default function Subscribe() {
+  const params = useParams();
+  const { locale } = params;
+  const { t } = setLang(locale!);
 	return (
 		<section className="cta-subscribe bg-subscribe">
 			<div className="container">

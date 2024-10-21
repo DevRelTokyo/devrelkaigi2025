@@ -1,6 +1,7 @@
-import { setLang } from "../i18n";
+import { Schema } from "~/types/schema";
+import { setLang } from "~/utils/i18n";
 
-const useSchema = (lang: string) => {
+const useSchema = (lang: string): Schema[] => {
 	const { t } = setLang(lang);
 	return [
 		{
@@ -76,6 +77,7 @@ const useSchema = (lang: string) => {
 			help: t('Add your social media URLs'),
 			schema: {
 				type: 'url',
+				name: 'socials',
 				label: t('URL'),
 				placeholder: t('X/Twitter, GitHub, etc.'),
 				required: true,
@@ -83,6 +85,7 @@ const useSchema = (lang: string) => {
 		},
 		{
 			type: 'submit',
+			name: 'submit',
 			label: t('Submit'),
 		}
 	];

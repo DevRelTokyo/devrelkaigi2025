@@ -1,23 +1,36 @@
-import build from '@hono/vite-build/cloudflare-pages'
-import adapter from '@hono/vite-dev-server/cloudflare'
-import honox from 'honox/vite'
-import { defineConfig } from 'vite'
-import mdx from '@mdx-js/rollup'
-import client from 'honox/vite/client'
-import nodeServerPlugin from './vite-node-server-plugin'
+import { vitePlugin as remix, cloudflareDevProxyVitePlugin } from "@remix-run/dev";
+import { defineConfig } from "vite";
+import tsconfigPaths from "vite-tsconfig-paths";
 
-export default defineConfig(({ mode }) => {
-  if (mode === 'client') {
-    return {
-      plugins: [client()],
-    }
-  } else {
-    return {
-      plugins: [
-        honox({ devServer: { adapter } }),
-        nodeServerPlugin(),
-        mdx({ jsxImportSource: 'hono/jsx' }),
-      ],
-    }
+declare module "@remix-run/node" {
+  interface Future {
+    v3_singleFetch: true;
   }
+}
+
+
+export default defineConfig({
+  plugins: [
+    cloudflareDevProxyVitePlugin(),
+    remix({
+      future: {
+        v3_fetcherPersist: true,
+        v3_relativeSplatPath: true,
+        v3_throwAbortReason: true,
+        v3_singleFetch: true,
+        v3_lazyRouteDiscovery: true,
+      },
+      routes(defineRoutes) {
+        return defineRoutes((route) => {
+          route(":locale/", "routes/index.tsx", {index: true});
+          route(":locale/profiles/:slug/edit", "routes/profiles/edit.tsx");
+          route(":locale/members/:slug", "routes/profiles/show.tsx");
+          route(":locale/profiles", "routes/profiles/index.tsx", {index: true});
+          route("auth/github", "routes/auth/github.tsx");
+          route("callback/github", "routes/callback/github.tsx");
+        });
+      },
+    }),
+    tsconfigPaths(),
+  ],
 });

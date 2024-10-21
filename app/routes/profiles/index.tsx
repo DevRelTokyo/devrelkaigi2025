@@ -1,17 +1,15 @@
-import FooterMain from "../../components/footerMain";
-import FooterSub from "../../components/footerSub";
-import Navi from "../../islands/navi";
-import ProfileIndex from "../../islands/profiles";
+import FooterMain from "~/components/footerMain";
+import FooterSub from "~/components/footerSub";
+import Navi from "~/components/navi";
+import ProfileIndex from "~/components/profiles";
 
-export default function Index({lang}: Props) {
+export default function Index() {
 	return (
 		<>
-      <Navi lang={lang} />
-			<ProfileIndex
-				lang={lang}
-			/>
-      <FooterMain lang={lang} />
-      <FooterSub lang={lang} />
+      <Navi />
+			<ProfileIndex />
+      <FooterMain />
+      <FooterSub />
 		</>
 	);
 }

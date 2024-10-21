@@ -1,30 +1,40 @@
-# DevRelKaigi 2025
+# Welcome to Remix!
 
-## Architecture
-
-- HonoX  
-Web framework
-- Parse Server  
-BaaS
-- Cloud Run  
-Hosting
-- Authentication  
-GitHub Auth
+- 📖 [Remix docs](https://remix.run/docs)
 
 ## Development
 
-3 termainal screens
+Run the dev server:
 
-```bash
-# Terminal 1
-npx vite build --mode client --watch
-
-# Terminal 2
-npx vite build --watch
-
-# Terminal 3
-node --watch dist/server.mjs
+```shellscript
+npm run dev
 ```
 
-Access to `http://localhost:3000`
+## Deployment
 
+First, build your app for production:
+
+```sh
+npm run build
+```
+
+Then run the app in production mode:
+
+```sh
+npm start
+```
+
+Now you'll need to pick a host to deploy it to.
+
+### DIY
+
+If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
+
+Make sure to deploy the output of `npm run build`
+
+- `build/server`
+- `build/client`
+
+## Styling
+
+This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
