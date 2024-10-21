@@ -1,40 +1,59 @@
-# Welcome to Remix!
-
-- 📖 [Remix docs](https://remix.run/docs)
+# DevRelKaigi 2025
 
 ## Development
 
+Add `.dev.vars` file to the root of the project (From goofmint).
+
 Run the dev server:
 
-```shellscript
+```sh
 npm run dev
 ```
 
 ## Deployment
 
-First, build your app for production:
+Run the following command.
 
 ```sh
-npm run build
+npm run deploy
 ```
 
-Then run the app in production mode:
+## Structure
 
-```sh
-npm start
+### vite.config.ts
+
+Routing settings are defined here.
+
+```ts
+route(":locale/", "routes/index.tsx", {index: true}); -> app/routes/index.tsx
+route(":locale/profiles/:slug/edit", "routes/profiles/edit.tsx");
+route(":locale/members/:slug", "routes/profiles/show.tsx");
+route(":locale/profiles", "routes/profiles/index.tsx", {index: true});
+route("auth/github", "routes/auth/github.tsx");
+route("callback/github", "routes/callback/github.tsx");
 ```
 
-Now you'll need to pick a host to deploy it to.
+### Under app
 
-### DIY
+- components  
+Reusable components are defined here.
+- entry.client.tsx  
+For browser entry. Don't touch this file.
+- entry.server.tsx  
+For server entry. It's moved by Cloudflare Workers.
+- locales  
+i18n files are defined here. Those are 'ja' and 'en'.
+- parse.ts  
+It will return the Parse JavaScript SDK.
+- root.tsx  
+Root component. `<html>` tag is defined here.
+- schemas  
+Schema for HTML form.
+- routes  
+Rooting files are defined here.
+- types  
+TypeScript types are defined here.
+- utils  
+Utility functions are defined here.
 
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
 
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
