@@ -151,5 +151,6 @@
 	"Proposal": "プロポーザルについて",
 	"Other": "その他",
 	"Body": "本文",
-	"Please write your message here.": "メッセージをこちらに記入してください"
+	"Please write your message here.": "メッセージをこちらに記入してください",
+	"This CFP (__name__) will close on __end__": "このCFP(__name__)は__end__にクローズします"
 }

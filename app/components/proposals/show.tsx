@@ -1,17 +1,14 @@
-import { Parse, useParse } from "~/parse";
 import { setLang } from "~/utils/i18n";
 import { useSchema } from "~/schemas/proposal";
 import markdownit from 'markdown-it';
 import { editable } from "./utils";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "@remix-run/react";
-import { useRootContext } from "remix-provider";
-import { ENV } from "~/types/env";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { ParseContext } from "~/contexts/parse";
 export default function ProposalShow() {
-	const { env } = useRootContext() as ENV;
-	const Parse = useParse(env.PARSE_APP_ID, env.PARSE_JS_KEY, env.PARSE_SERVER_URL);
+	const { Parse } = useContext(ParseContext)!;
   const params = useParams();
   const { locale, id } = params;
 	

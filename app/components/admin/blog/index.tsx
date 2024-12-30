@@ -1,20 +1,15 @@
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useParams, useSearchParams } from "@remix-run/react";
-import { useEffect, useState } from "react";
-import { useRootContext } from "remix-provider";
-import { useParse } from "~/parse";
-import type { Parse } from "~/parse";
-import { ENV } from "~/types/env";
+import { useContext, useEffect, useState } from "react";
+import { ParseContext } from "~/contexts/parse";
 import { setLang } from "~/utils/i18n";
 
 export default function ProposalIndex() {
   const params = useParams();
 	const [searchParams] = useSearchParams();
-	
+	const { Parse } = useContext(ParseContext)!;
   const { locale } = params;
-	const { env } = useRootContext() as ENV;
-	const Parse = useParse(env.PARSE_APP_ID, env.PARSE_JS_KEY, env.PARSE_SERVER_URL) as Parse;
 	const [user, setUser] = useState<Parse.User | undefined>(undefined);
 	const [articles, setArticles] = useState<Parse.Object[]>([]);
 	// const schema = useSchema(locale!);
@@ -29,8 +24,8 @@ export default function ProposalIndex() {
 	const getArticles = async () => {
 		if (!user) return;
 		const query = new Parse.Query('Article');
-		query.limit = searchParams.get('limit') ? parseInt(`${searchParams.get('limit')}`) : 10;
-		query.skip = searchParams.get('skip') ? parseInt(`${searchParams.get('skip')}`) : 0;
+		query.limit(parseInt(searchParams.get('limit') || '10'));
+		query.skip(parseInt(searchParams.get('skip') || '0'));
 		const articles = await query.find() as Parse.Object[];
 		setArticles(articles);
 	};

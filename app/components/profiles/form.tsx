@@ -1,14 +1,11 @@
 import Form from '~/components/form';
 import { useSchema } from '~/schemas/profile';
 import { setLang } from '~/utils/i18n';
-import { useParse } from '~/parse';
-import type {Parse as ParseType} from '~/parse';
 import { signInWithGithub } from '~/utils/github';
 import { useParams } from '@remix-run/react';
-import { useState, useEffect } from 'react';
-import { useRootContext } from 'remix-provider';
-import { ENV } from '~/types/env';
+import { useState, useEffect, useContext } from 'react';
 import { Schema } from '~/types/schema';
+import { ParseContext } from '~/contexts/parse';
 
 interface MessageProps {
 	messages: string[];
@@ -16,15 +13,14 @@ interface MessageProps {
 }
 
 export default function ProfileForm() {
-	const { env } = useRootContext() as ENV;
-	const Parse = useParse(env.PARSE_APP_ID, env.PARSE_JS_KEY, env.PARSE_SERVER_URL);
+	const { Parse } = useContext(ParseContext)!;
   const params = useParams();
   const { locale } = params;
   const { t } = setLang(locale!);
 	const schema = useSchema(locale!);
 
-	const [user, setUser] = useState<ParseType.User | undefined>(undefined);
-	const [profile, setProfile] = useState<ParseType.Object | undefined>(undefined);
+	const [user, setUser] = useState<Parse.User | undefined>(undefined);
+	const [profile, setProfile] = useState<Parse.Object | undefined>(undefined);
 	const [message, setMessage] = useState<MessageProps | undefined>(undefined);
 	const [status, setStatus] = useState<string>('');
 
@@ -43,10 +39,11 @@ export default function ProfileForm() {
 		const query = new Parse.Query('Profile');
 		query.equalTo('lang', locale);
 		const profile = await query.first();
+		profile?.set('email', user.get('email'));
 		setProfile(profile || new Parse.Object('Profile'));
 	};
 
-	const validate = async (schema: Schema[], profile: ParseType.Object) => {
+	const validate = async (schema: Schema[], profile: Parse.Object) => {
 		const errors: string[] = [];
 		for (const field of schema) {
 			if (field.required && !profile!.get(field.name)) {
@@ -100,10 +97,16 @@ export default function ProfileForm() {
 		return acl;
 	};
 
-	const submit = async (profile: ParseType.Object) => {
+	const submit = async (profile: Parse.Object) => {
 		setStatus('loading');
 		profile!.set('lang', locale);
 		profile!.set('user', user);
+		if (user?.get('email') !== profile.get('email')) {
+			user?.set('email', profile.get('email'));
+			await user?.save();
+			profile.unset('email');
+		}
+		
 		const errors = await validate(schema, profile);
 		if (errors.length > 0) {
 			setStatus('');
@@ -148,11 +151,11 @@ export default function ProfileForm() {
 								<div className="alert alert-primary" role="alert">
 									{locale === 'ja' ?
 										(<>
-											If you want to create or update a profile in English, <a href="/en/profiles/edit">please click here</a>.
+											If you want to create or update a profile in English, <a href={`/en/profiles/${profile.get('slug')}/edit`}>please click here</a>.
 										</>)
 										:
 										<>
-											日本語のプロフィールを作成、更新する場合は<a href="/ja/profiles/edit">こちらをクリック</a>してください
+											日本語のプロフィールを作成、更新する場合は<a href={`/ja/profiles/${profile.get('slug')}/edit`}>こちらをクリック</a>してください
 										</>
 									}
 								</div>

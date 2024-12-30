@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAdditionalUserInfo, getAuth, GithubAuthProvider, signInWithPopup, User, UserCredential } from 'firebase/auth';
+import { getAdditionalUserInfo, getAuth, GithubAuthProvider, GoogleAuthProvider, signInWithPopup, User, UserCredential } from 'firebase/auth';
 import React, { useState, ReactNode, useEffect, useContext } from 'react';
 import type Parse from 'parse';
 import { ParseContext } from './parse';
@@ -10,26 +10,37 @@ type UserContextType = {
   profile: Parse.Object | undefined;
   setProfile: (profile: Parse.Object) => void;
   logout: () => void;
-  login: () => void;
+  login: (provider: string) => void;
   admin: boolean;
 } | null
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBqx8NSvC1OQP6zAiDaHsqSP4L3Q3we3h0",
-  authDomain: "moongift-dev.firebaseapp.com",
-  projectId: "moongift-dev",
-  storageBucket: "moongift-dev.firebasestorage.app",
-  messagingSenderId: "151965811101",
-  appId: "1:151965811101:web:b3906c69933f8255cdaf74"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+type UserContextProviderProps = {
+  children: ReactNode;
+  firebaseApiKey: string;
+  firebaseAuthDomain: string;
+  firebaseProjectId: string;
+  firebaseStorageBucket: string;
+  firebaseMessagingSenderId: string;
+  firebaseAppId: string;
+  firebaseMeasurementId: string;
+}
 
 export const UserContext = React.createContext<UserContextType>(null);
 
-export function UserProvider({ children }: { children: ReactNode }) {
+export function UserProvider(params: UserContextProviderProps) {
+  const firebaseConfig = {
+    apiKey: params.firebaseApiKey,
+    authDomain: params.firebaseAuthDomain,
+    projectId: params.firebaseProjectId,
+    storageBucket: params.firebaseStorageBucket,
+    messagingSenderId: params.firebaseMessagingSenderId,
+    appId: params.firebaseAppId,
+  };
+  
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
   const { Parse } = useContext(ParseContext)!;
   const [user, setUser] = useState<Parse.User | undefined>(Parse.User.current());
   const [profile, setProfile] = useState<Parse.Object | undefined>(undefined);
@@ -54,7 +65,15 @@ export function UserProvider({ children }: { children: ReactNode }) {
 		setProfile(undefined);
   };
 
-  const login = async () => {
+  const login = async (provider: string) => {
+    if (provider === 'github') {
+      await loginWithGithub();
+    } else {
+      await loginWithGoogle();
+    }
+  }
+
+  const loginWithGithub = async () => {
 		const provider = new GithubAuthProvider();
 		const result = await signInWithPopup(auth, provider)
 		const credential = GithubAuthProvider.credentialFromResult(result);
@@ -68,6 +87,21 @@ export function UserProvider({ children }: { children: ReactNode }) {
 		setUser(Parse.User.current());
   };
 
+  const loginWithGoogle = async () => {
+    const provider = new GoogleAuthProvider();
+    const result = await signInWithPopup(auth, provider);
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const { user } = result;
+    const authData = {
+      id: user.providerData[0].uid,
+      id_token: credential?.idToken,
+      access_token: credential?.accessToken,
+    };
+    await Parse.User.logInWith('google', { authData });
+    updateProfile(result);
+    setUser(Parse.User.current());
+  };
+
 	const getProfile = async () => {
 		try {
       const user = Parse.User.current();
@@ -78,6 +112,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
       }
 			const query = new Parse.Query('Profile');
 			query.equalTo('user', user);
+      query.equalTo('lang', 'en');
 			const profile = await query.first();
 			setProfile(profile);
 			return profile;
@@ -94,7 +129,9 @@ export function UserProvider({ children }: { children: ReactNode }) {
     setAdmin(!!roles.find(role => role.get('name') === 'admin'));
   }
 
-	const updateProfile = async (user: User, result: UserCredential) => {
+	const updateProfile = async (result: UserCredential) => {
+    const { user } = result;
+    console.log(user, result);
 		const currentUser = Parse.User.current();
 		if (!currentUser) return;
 		currentUser.set('email', user.email);
@@ -102,9 +139,10 @@ export function UserProvider({ children }: { children: ReactNode }) {
 		const profile = await getProfile() || new Parse.Object('Profile');
 		const info = getAdditionalUserInfo(result);
 		profile.set('user', currentUser);
+    profile.set('lang', 'en');
 		profile.set('name', user.displayName);
-		profile.set('avatar', user.photoURL);
-		profile.set('username', info?.username);
+		profile.set('image_url', user.photoURL);
+    profile.set('slug', (info?.username || (info?.profile?.given_name as string))?.toLowerCase());
 		// ACL
 		const acl = new Parse.ACL();
 		acl.setPublicReadAccess(true);
@@ -123,7 +161,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
       setProfile,
       admin,
     }}>
-      {children}
+      {params.children}
     </UserContext.Provider>
   );
 }

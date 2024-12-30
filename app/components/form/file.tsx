@@ -1,5 +1,5 @@
 import { CSSProperties, useState } from "react";
-import { Parse } from "../../parse";
+import Parse from "parse";
 
 interface FileProps {
 	key: string

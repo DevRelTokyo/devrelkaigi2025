@@ -1,14 +1,12 @@
 import Form from '../form/';
 import { useSchema } from '~/schemas/proposal';
 import { setLang } from '~/utils/i18n';
-import { useParse } from '~/parse';
-import type {Parse as ParseType} from '~/parse';
-import { ENV } from '~/types/env';
-import { useRootContext } from 'remix-provider';
 import { useParams } from '@remix-run/react';
-import { useEffect, useState } from 'react';
-import { signInWithGithub } from '~/utils/github';
+import { useContext, useEffect, useState } from 'react';
 import { Schema } from '~/types/schema';
+import { ParseContext } from '~/contexts/parse';
+import { Icon } from '@iconify/react/dist/iconify.js';
+import { UserContext } from '~/contexts/user';
 
 interface MessageProps {
 	messages: string[];
@@ -16,22 +14,16 @@ interface MessageProps {
 }
 
 export default function ProposalForm() {
-	const { env } = useRootContext() as ENV;
-	const Parse = useParse(env.PARSE_APP_ID, env.PARSE_JS_KEY, env.PARSE_SERVER_URL);
+	const { Parse } = useContext(ParseContext)!;
+	const { login, user } = useContext(UserContext)!;
   const params = useParams();
   const { locale, id } = params;
   const { t } = setLang(locale!);
 	const schema = useSchema(locale!);
-	const [user, setUser] = useState<ParseType.User | undefined>(undefined);
-	const [proposal, setProposal] = useState<ParseType.Object | undefined>();
+	const [proposal, setProposal] = useState<Parse.Object | undefined>();
 	const [message, setMessage] = useState<MessageProps | undefined>(undefined);
-	const [CFP, setCFP] = useState<ParseType.Object | undefined>(undefined);
+	const [CFP, setCFP] = useState<Parse.Object | undefined>(undefined);
 	const [status, setStatus] = useState<string>('');
-
-	useEffect(() => {
-		if (typeof window === 'undefined') return;
-		setUser(Parse.User.current());
-	}, []);
 
 	useEffect(() => {
 		getCFP();
@@ -56,7 +48,7 @@ export default function ProposalForm() {
 		setProposal(proposal);
 	};
 
-	const validate = (schema: Schema[], proposal: ParseType.Object) => {
+	const validate = (schema: Schema[], proposal: Parse.Object) => {
 		const errors: string[] = [];
 		schema.forEach(field => {
 			if (field.required && !proposal.get(field.name)) {
@@ -66,19 +58,19 @@ export default function ProposalForm() {
 		return errors;
 	}
 
-	const getAcl = (): ParseType.ACL => {
+	const getAcl = (): Parse.ACL => {
 		const acl = new Parse.ACL();
 		acl.setPublicReadAccess(false);
 		acl.setPublicWriteAccess(false);
 		acl.setReadAccess(user!, true);
 		acl.setWriteAccess(user!, true);
-		acl.setRoleReadAccess(`Voter${env.YEAR}`, true);
+		acl.setRoleReadAccess(`Voter${window.ENV.YEAR}`, true);
 		acl.setRoleWriteAccess('admin', true);
 		acl.setRoleReadAccess('admin', true);
 		return acl;
 	}
 
-	const submit = async (proposal: ParseType.Object) => {
+	const submit = async (proposal: Parse.Object) => {
 		setStatus('loading');
 		const errors = validate(schema, proposal);
 		if (errors.length > 0) {
@@ -112,6 +104,12 @@ export default function ProposalForm() {
 		}, 3000);
 	};
 
+	const showDate = () => {
+		if (!CFP) return '';
+		const date = CFP.get('end_at');
+		return `${(date as Date).toLocaleDateString()} ${(date as Date).toLocaleTimeString()}`;
+	}
+
 	return (
 		<>
 			{user ? (
@@ -140,6 +138,13 @@ export default function ProposalForm() {
 												もし日本語トラック向けにプロポーザルを送りたい場合には、<a href="/ja/proposals/new">こちらをクリック</a>してください
 											</>
 										}
+									</div>
+								</div>
+								<div className="col-8 offset-2">
+									<div className="alert alert-info" role="alert">
+										{t('This CFP (__name__) will close on __end__')
+											.replace('__name__', CFP.get('name'))
+											.replace('__end__', showDate())}
 									</div>
 								</div>
 							</div>
@@ -197,10 +202,17 @@ export default function ProposalForm() {
 							style={{paddingTop: '2em', paddingBottom: '2em'}}
 						>
 							<button type="button" className="btn btn-primary"
-								onClick={signInWithGithub}
+								onClick={() => login('github')}
 							>
-								Sign in with <i className="fa-brands fa-github"></i>
+								Sign in with <Icon icon="mdi:github" style={{fontSize: '2em'}} />
 							</button>
+							{' '}
+							<button type="button" className="btn btn-primary"
+								onClick={() => login('google')}
+							>
+								Sign in with <Icon icon="mdi:google" style={{fontSize: '2em'}} />
+							</button>
+
 						</div>
 					</div>
 				</div>

@@ -1,20 +1,17 @@
-import { useParse } from "~/parse";
-import type {Parse, Parse as ParseType} from "~/parse";
 import { setLang } from "~/utils/i18n";
 import { useSchema } from "~/schemas/proposal";
 import { editable } from "./utils";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "@remix-run/react";
-import { useRootContext } from "remix-provider";
-import { ENV } from "~/types/env";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { ParseContext } from "~/contexts/parse";
 
 export default function ProposalIndex() {
-	const { env } = useRootContext() as ENV;
-	const [user, setUser] = useState<ParseType.User | undefined>(undefined);
-	const Parse = useParse(env.PARSE_APP_ID, env.PARSE_JS_KEY, env.PARSE_SERVER_URL);
-	const [proposals, setProposals] = useState<ParseType.Object[]>([]);
+	const { Parse } = useContext(ParseContext)!;
+	const [user, setUser] = useState<Parse.User | undefined>(undefined);
+
+	const [proposals, setProposals] = useState<Parse.Object[]>([]);
   const params = useParams();
   const { locale } = params;
   const { t } = setLang(locale!);

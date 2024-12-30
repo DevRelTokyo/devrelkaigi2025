@@ -1,4 +1,4 @@
-import type { Parse } from '~/parse';
+import type Parse from 'parse';
 
 export const editable = (cfp: Parse.Object | undefined) => {
 	if (!cfp) return false;

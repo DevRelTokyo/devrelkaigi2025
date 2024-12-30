@@ -1,18 +1,14 @@
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useParams } from "@remix-run/react";
-import { useEffect, useState } from "react";
-import { useRootContext } from "remix-provider";
-import { useParse } from "~/parse";
-import type { Parse } from "~/parse";
-import { ENV } from "~/types/env";
+import { useContext, useEffect, useState } from "react";
+import { ParseContext } from "~/contexts/parse";
 import { setLang } from "~/utils/i18n";
 
 export default function ProposalIndex() {
   const params = useParams();
   const { locale } = params;
-	const { env } = useRootContext() as ENV;
-	const Parse = useParse(env.PARSE_APP_ID, env.PARSE_JS_KEY, env.PARSE_SERVER_URL) as Parse;
+	const { Parse } = useContext(ParseContext)!;
 	const [user, setUser] = useState<Parse.User | undefined>(undefined);
 	const [profiles, setProfiles] = useState<Parse.Object[]>([]);
 	// const schema = useSchema(locale!);

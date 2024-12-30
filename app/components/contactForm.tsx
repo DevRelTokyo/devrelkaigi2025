@@ -1,12 +1,9 @@
 import Form from '~/components/form';
 import { useSchema } from '~/schemas/contact';
 import { setLang } from '~/utils/i18n';
-import { useParse } from '~/parse';
-import type {Parse as ParseType} from '~/parse';
 import { useParams, useSearchParams } from '@remix-run/react';
-import { useState, useEffect } from 'react';
-import { useRootContext } from 'remix-provider';
-import { ENV } from '~/types/env';
+import { useState, useEffect, useContext } from 'react';
+import { ParseContext } from '~/contexts/parse';
 
 interface MessageProps {
 	messages: string[];
@@ -14,15 +11,14 @@ interface MessageProps {
 }
 
 export default function ContactForm() {
-	const { env } = useRootContext() as ENV;
-	const Parse = useParse(env.PARSE_APP_ID, env.PARSE_JS_KEY, env.PARSE_SERVER_URL);
+	const { Parse } = useContext(ParseContext)!;
 	const [searchParams] = useSearchParams();
   const params = useParams();
   const { locale } = params;
   const { t } = setLang(locale!);
 	const schema = useSchema(locale!);	
 	
-	const [contact, setContact] = useState<ParseType.Object | undefined>(undefined);
+	const [contact, setContact] = useState<Parse.Object | undefined>(undefined);
 	const [message, setMessage] = useState<MessageProps | undefined>(undefined);
 	const [status, setStatus] = useState<string>('');
 
@@ -40,11 +36,11 @@ export default function ContactForm() {
 		acl.setPublicWriteAccess(false);
 		acl.setRoleReadAccess('admin', true);
 		acl.setRoleWriteAccess('admin', true);
-		acl.setRoleReadAccess(`Organizer${env.YEAR}`, true);		
+		acl.setRoleReadAccess(`Organizer${window.ENV.YEAR}`, true);		
 		return acl;
 	}
 
-	const submit = async (contact: ParseType.Object) => {
+	const submit = async (contact: Parse.Object) => {
 		setStatus('loading');
 		contact.set('lang', locale);
 		contact.set('reply', true);

@@ -1,27 +1,21 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { setLang } from "../utils/i18n";
-import { useParse } from "../parse";
-import type ParseType from '@goofmint/parse';
 import { useParams } from "@remix-run/react";
-import { useRootContext } from "remix-provider";
-import { ENV } from "../types/env";
 import { Icon } from '@iconify/react';
+import { ParseContext } from "~/contexts/parse";
+import { UserContext } from "~/contexts/user";
 
 export default function UserMenu() {
-	const { env } = useRootContext() as ENV;
-	const Parse = useParse(env.PARSE_APP_ID, env.PARSE_JS_KEY, env.PARSE_SERVER_URL);
-	const [user, setUser] = useState<ParseType.User | undefined>(undefined);
-	const [CFP, setCFP] = useState<ParseType.Object | undefined>(undefined);
-	const [roles, setRoles] = useState<ParseType.Role[]>([]);
+	const { Parse } = useContext(ParseContext)!;
+	const { login, user, logout } = useContext(UserContext)!;
+	const [CFP, setCFP] = useState<Parse.Object | undefined>(undefined);
+	const [roles, setRoles] = useState<Parse.Role[]>([]);
 	const [image, setImage] = useState<string>('/assets/images/icon/user.png');
+	const year = typeof window !== 'undefined' ? window.ENV.YEAR : 0;
+
   const params = useParams();
   const { locale } = params;
   const { t } = setLang(locale!);
-
-	useEffect(() => {
-		if (typeof window === 'undefined') return;
-		setUser(Parse.User.current());
-	}, []);
 
 	useEffect(() => {
 		if (typeof window === 'undefined') return;
@@ -32,10 +26,16 @@ export default function UserMenu() {
 
 	const getImage = async () => {
 		if (!user) return;
-		const query = new Parse.Query('Profile');
+		const query1 = new Parse.Query('Profile');
+		query1.exists('image_file');
+		const query2 = new Parse.Query('Profile');
+		query2.exists('image_url');
+		const query = Parse.Query.or(query1, query2);
 		query.equalTo('user', user);
+		console.log(query);
 		const profile = await query.first();
-		if (!profile) return;
+		console.log(profile);
+		if (!profile) return '/assets/images/icon/user.png';
 		const image = profile.get('image_file');
 		if (image) {
 			return setImage(image.url());
@@ -58,21 +58,11 @@ export default function UserMenu() {
 		setRoles(res);
 	};
 
-	const logout = async () => {
-		try {
-			await Parse.User.logOut();
-		} catch (e) {
-			console.log('');
-		}
-		setUser(undefined);
-		location.reload();
-	};
-
 	const role = (roleName: string) => {
 		if (!user) return false;
 		if (!roles.length) return false;
 		return roles.map(r => r.get('name')).includes(roleName);
-	}
+	};
 
 	return (<>
 		{ user ? (
@@ -107,7 +97,7 @@ export default function UserMenu() {
 									<li><a className="dropdown-item" href={`/${locale}/proposals`}>
 										{t('Manage proposal')}</a>
 									</li>
-									{ role(`Organizer${env.YEAR}`) && (
+									{ role(`Organizer${year}`) && (
 										<li>
 											<button
 												className="dropdown-item"
@@ -153,7 +143,7 @@ export default function UserMenu() {
 											</ul>
 										</li>
 									)}
-									{ role(`Voter${env.YEAR}`) && (
+									{ role(`Voter${year}`) && (
 										<li>
 											<a className="dropdown-item" href={`/${locale}/admin/votes`}>{t('Vote')}</a>
 										</li>
@@ -190,14 +180,18 @@ export default function UserMenu() {
 									<strong>{t('Sign up or Login')}</strong>
 								</div>
 								<ul className="dropdown-menu dropdown-menu-end" data-bs-popper="static">
-									<li><a className="dropdown-item" href={`/auth/github`}>
+									<li><button className="dropdown-item"
+										onClick={() => login('github')}
+										>
 										<Icon icon="akar-icons:github-fill" style={{fontSize: '1.5em', marginRight: '0.5em'}} />
 										{t('GitHub')}
-									</a></li>
-									<li><a className="dropdown-item" href={`/auth/google`}>
+									</button></li>
+									<li><button className="dropdown-item"
+										onClick={() => login('google')}
+									>
 										<Icon icon="akar-icons:google-fill" style={{fontSize: '1.5em', marginRight: '0.5em'}} />
 										{t('Google')}
-									</a></li>
+									</button></li>
 								</ul>
 							</li>
 						</ul>

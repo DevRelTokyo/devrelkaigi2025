@@ -40,9 +40,8 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: bootstrap },
   { rel: "stylesheet", href: "/assets/style.css" },
 ];
-
-export const loader = async ({ context }: LoaderFunctionArgs) => {
-  const env = context.cloudflare.env as Env;
+export const loader = ({ context }: LoaderFunctionArgs) => {
+  const env = (context as { cloudflare: { env: Env } }).cloudflare.env;
   return json({
     ENV: {
       PARSE_APP_ID: env.PARSE_APP_ID,
@@ -68,6 +67,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <head>
             <meta charSet="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <link rel="icon" href="/assets/favicon.ico" type="image/x-icon"></link>
             <Meta />
             <style>{bootstrap}</style>
             <Links />
@@ -90,7 +90,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   jsKey={data.ENV.PARSE_JS_KEY}
                   serverUrl={data.ENV.PARSE_SERVER_URL}
                 >
-                  <UserProvider>
+                  <UserProvider
+                    firebaseApiKey={data.ENV.FIREBASE_API_KEY}
+                    firebaseAuthDomain={data.ENV.FIREBASE_AUTH_DOMAIN}
+                    firebaseProjectId={data.ENV.FIREBASE_PROJECT_ID}
+                    firebaseStorageBucket={data.ENV.FIREBASE_STORAGE_BUCKET}
+                    firebaseMessagingSenderId={data.ENV.FIREBASE_MESSAGING_SENDER_ID}
+                    firebaseAppId={data.ENV.FIREBASE_APP_ID}
+                    firebaseMeasurementId={data.ENV.FIREBASE_MEASUREMENT_ID}
+                  >
                     {children}
                     <SSRBodyRoot />
                   </UserProvider>
