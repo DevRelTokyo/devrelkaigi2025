@@ -1,6 +1,6 @@
 import { useParams , useLoaderData } from "@remix-run/react";
 import { setLang } from "../utils/i18n";
-import { loader } from "~/routes/_index";
+import { loader } from "~/routes";
 
 export default function News() {
 	const articles2 = useLoaderData<typeof loader>();

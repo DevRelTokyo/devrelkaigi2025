@@ -6,6 +6,7 @@ import Text from "./text";
 import TextArea from "./textarea";
 import File from "./file";
 import Array from "./array";
+import type { Parse as ParseType } from "~/parse";
 
 import { Parse } from "~/parse";
 import { Schema } from "~/types/schema";
@@ -14,12 +15,12 @@ import { FormEvent, useState } from "react";
 interface FormParams {
 	schema: Schema[];
 	data?: Parse.Object;
-	onSubmit: (data: FormEvent) => void;
+	onSubmit: (data: ParseType.Object) => void;
 	status?: string;
 }
 type FieldValue = string | boolean | number | string[] | {[key: string]: string} | undefined;
 export default function Form({ schema, data, onSubmit, status}: FormParams) {
-	const [obj, setObj] = useState<{[key: string]: FieldValue}>(data.toJSON());
+	const [obj, setObj] = useState<{[key: string]: FieldValue}>(data!.toJSON());
 	if (!data) {
 		return (<>Loading...</>);
 	}
@@ -84,11 +85,9 @@ export default function Form({ schema, data, onSubmit, status}: FormParams) {
 								value={obj[field.name] as string}
 								status={status}
 								required={field.required!}
-								onChange={(value: string) => {
-									const val = value === 'true'
-										? true : (value === 'false' ? false : value);
+								onChange={(value: string | boolean) => {
 									data.set(field.name, value);
-									setObj({ ...obj, [field.name]: val });
+									setObj({ ...obj, [field.name]: value });
 								}}
 							/>);
 						case 'checkbox':
@@ -99,11 +98,9 @@ export default function Form({ schema, data, onSubmit, status}: FormParams) {
 								value={obj[field.name] as string}
 								required={field.required!}
 								status={status}
-								onChange={(value: string) => {
-									const val = value === 'true'
-										? true : (value === 'false' ? false : value);
+								onChange={(value: string | boolean) => {
 									data.set(field.name, value);
-									setObj({ ...obj, [field.name]: val });
+									setObj({ ...obj, [field.name]: value });
 								}}
 							/>);
 						case 'select':
@@ -130,7 +127,7 @@ export default function Form({ schema, data, onSubmit, status}: FormParams) {
 								label={field.label}
 								help={field.help}
 								accept={field.accept}
-								value={obj[field.name]}
+								value={obj[field.name] as Parse.File}
 								preview={field.preview}
 								required={field.required!}
 								status={status}

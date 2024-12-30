@@ -1,8 +1,9 @@
-import { setLang, useI18n } from "../i18n";
+import { Schema } from "~/types/schema";
+import { setLang } from "~/utils/i18n";
 
-const useSchema = (lang: string) => {
+const useSchema = (lang: string): Schema[] => {
 	const { t } = setLang(lang);
-	const schema = [
+	const schema: Schema[] = [
 		{
 			name: 'title',
 			type: 'text',
@@ -116,6 +117,7 @@ const useSchema = (lang: string) => {
 			],
 		},
 		{
+			name: 'submit',
 			type: 'submit',
 			label: t('Submit'),
 		}

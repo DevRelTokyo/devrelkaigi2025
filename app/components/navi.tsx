@@ -20,29 +20,29 @@ export default function Navi() {
 				<div className="collapse navbar-collapse" id="navbarNav">
 					<ul className="navbar-nav mx-auto">
 						<li className="nav-item dropdown active">
-							<a className="nav-link" href="#!" data-toggle="dropdown">
+							<a className="nav-link" href={`/${locale}`} data-toggle="dropdown">
 								{t('Home')}
 								<i className="fa fa-angle-down"></i>
 								<span>/</span>
 							</a>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="speakers.html">{t('Speakers')}
+							<a className="nav-link" href={`/${locale}/#speakers`}>{t('Speakers')}
 								<span>/</span>
 							</a>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="schedule.html">{t('Schedule')}<span>/</span></a>
+							<a className="nav-link" href={`/${locale}/#schedule`}>{t('Schedule')}<span>/</span></a>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="sponsors.html">{t('Sponsors')}<span>/</span></a>
+							<a className="nav-link" href={`/${locale}/#sponsors`}>{t('Sponsors')}<span>/</span></a>
 						</li>
 						<li className="nav-item dropdown">
-							<a className="nav-link" href="#!" data-toggle="dropdown">{t('News')} <i className="fa fa-angle-down"></i><span>/</span>
+							<a className="nav-link" href={`/${locale}/#news`} data-toggle="dropdown">{t('News')} <i className="fa fa-angle-down"></i><span>/</span>
 							</a>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="contact.html">{t('Contact')}</a>
+							<a className="nav-link" href={`/${locale}/contact`}>{t('Contact')}</a>
 						</li>
 					</ul>
 					<UserMenu />

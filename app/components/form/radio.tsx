@@ -2,8 +2,8 @@
 interface RadioProps {
 	name: string;
 	label: string;
-	options: { value: string, label: string }[];
-	onChange: (value: string) => void;
+	options: { value: string | boolean, label: string }[];
+	onChange: (value: string | boolean) => void;
 	value: string;
 	required: boolean;
 	status?: string;
@@ -20,8 +20,15 @@ export default function Radio({ name, label, options, value, required, onChange 
 					className="form-check-input"
 					type="radio"
 					name={name}
-					value={option.value}
-					onChange={(e) => onChange(e.target.value)}
+					value={`${option.value}`}
+					onChange={(e) => {
+						if (typeof option.value === 'boolean') {
+							if (e.target.value === 'true') onChange(true);
+							if (e.target.value === 'false') onChange(false);
+						} else {
+							onChange(e.target.value)
+						}
+					}}
 					required={required}
 					checked={`${option.value}` === `${value}`}
 					id={`radio-${name}-${option.value}`}

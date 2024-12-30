@@ -1,6 +1,6 @@
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useParams } from "@remix-run/react";
+import { useParams, useSearchParams } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import { useRootContext } from "remix-provider";
 import { useParse } from "~/parse";
@@ -10,33 +10,29 @@ import { setLang } from "~/utils/i18n";
 
 export default function ProposalIndex() {
   const params = useParams();
+	const [searchParams] = useSearchParams();
+	
   const { locale } = params;
 	const { env } = useRootContext() as ENV;
 	const Parse = useParse(env.PARSE_APP_ID, env.PARSE_JS_KEY, env.PARSE_SERVER_URL) as Parse;
 	const [user, setUser] = useState<Parse.User | undefined>(undefined);
-	const [profiles, setProfiles] = useState<Parse.Object[]>([]);
+	const [articles, setArticles] = useState<Parse.Object[]>([]);
 	// const schema = useSchema(locale!);
 	const { t } = setLang(locale!);
 	useEffect(() => {
 		setUser(Parse.User.current());
 	}, []);
 	useEffect(() => {
-		getProfiles();
+		getArticles();
 	}, [user]);
 
-	const getProfiles = async () => {
+	const getArticles = async () => {
 		if (!user) return;
-		const query = new Parse.Query('Profile');
-		query.equalTo('user', user);
-		const profiles = await query.find() as Parse.Object[];
-		['en', 'ja'].forEach(lang => {
-			if (profiles.find(p => p.get('lang') === lang)) return;
-			const profile = new Parse.Object('Profile');
-			profile.set('lang', lang);
-			profile.set('user', user);
-			profiles.push(profile);
-		});
-		setProfiles(profiles);
+		const query = new Parse.Query('Article');
+		query.limit = searchParams.get('limit') ? parseInt(`${searchParams.get('limit')}`) : 10;
+		query.skip = searchParams.get('skip') ? parseInt(`${searchParams.get('skip')}`) : 0;
+		const articles = await query.find() as Parse.Object[];
+		setArticles(articles);
 	};
 
 	return (
@@ -68,22 +64,17 @@ export default function ProposalIndex() {
 								</tr>
 							</thead>
 							<tbody>
-								{profiles.map((profile: Parse.Object, index: number) => (
+								{articles.map((article, index) => (
 									<tr key={index}>
 										<td>
-											{t(profile.get('lang'))}
+											{t(article.get('lang'))}
 										</td>
 										<td>
-											{profile.get('organization')}
+											{article.get('title')}
 										</td>
-										<td>{t(profile.get('title'))}</td>
+										<td>{article.get('published_at')}</td>
 										<td>
-											<a href={`/${profile.get('lang')}/members/${profile.get('slug')}`}>
-												{profile.get('name')}
-											</a>
-										</td>
-										<td>
-											<a href={`/${profile.get('lang')}/profiles/${profile.get('slug')}/edit`}>
+											<a href={`/${article.get('lang')}/admin/blog/${article.get('slug')}/edit`}>
 												<FontAwesomeIcon icon={faPenToSquare} style={{width: 25, height: 25}} />
 											</a>
 										</td>

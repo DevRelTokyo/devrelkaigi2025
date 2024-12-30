@@ -1,5 +1,5 @@
 import { useParams } from "@remix-run/react";
-import { setLang } from "../utils/i18n";
+import { setLang } from "~/utils/i18n";
 
 export default function Banner() {
   const params = useParams();
@@ -15,7 +15,7 @@ export default function Banner() {
 							<h1>DevRelKaigi</h1>
 							<h2>2025</h2>
 							<h6>{t('02-04 Oct 2025 Tokyo')}</h6>
-							<a href="/tickets" className="btn btn-white-md">{t('get ticket now')}</a>
+							<a href={`${locale}/proposals/new`} className="btn btn-white-md">{t('Send a proposal')}</a>
 						</div>
 					</div>
 				</div>

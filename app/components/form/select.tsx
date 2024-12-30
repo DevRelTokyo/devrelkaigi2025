@@ -8,7 +8,7 @@ interface TextProps {
 	required: boolean;
 	value: string;
 	help?: string;
-	options: { value: string, label: string }[];
+	options: { value: string | boolean, label: string }[];
 	status?: string;
 	onChange: (value: string) => void;
 }
@@ -27,7 +27,7 @@ export default function Select({ key, name, options, label, required, placeholde
 				{options.map((option, i) => (
 					<option
 						key={i}
-						value={option.value}
+						value={`${option.value}`}
 						selected={option.value === value}
 					>{option.label}</option>
 				))}

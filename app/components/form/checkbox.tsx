@@ -2,10 +2,10 @@
 interface CheckboxProps {
 	name: string;
 	label: string;
-	options: { value: string, label: string }[];
+	options: { value: string | boolean, label: string }[];
 	value: string;
 	required: boolean;
-	onChange: (value: string) => void;
+	onChange: (value: string | boolean) => void;
 	status?: string;
 }
 
@@ -18,7 +18,14 @@ export default function Checkbox({ name, label, options, value, required, onChan
 					type="checkbox"
 					name={name}
 					value={`${options[0].value}`}
-					onChange={(e) => onChange(e.target.value)}
+					onChange={(e) => {
+						if (typeof options[0].value === 'boolean') {
+							if (e.target.value === 'true') onChange(true);
+							if (e.target.value === 'false') onChange(false);
+						} else {
+							onChange(e.target.value)
+						}
+					}}
 					required={required}
 					checked={`${options[0].value}` === `${value}`}
 					id={`checkbox-${name}-${options[0].value}`}
@@ -37,8 +44,15 @@ export default function Checkbox({ name, label, options, value, required, onChan
 							className="form-check-input"
 							type="checkbox"
 							name={name}
-							value={option.value}
-							onChange={(e) => onChange(e.target.value)}
+							value={`${option.value}`}
+							onChange={(e) => {
+								if (typeof option.value === 'boolean') {
+									if (e.target.value === 'true') onChange(true);
+									if (e.target.value === 'false') onChange(false);
+								} else {
+									onChange(e.target.value)
+								}
+							}}
 							required={required}
 							checked={`${option.value}` === `${value}`}
 							id={`checkbox-${name}-${option.value}`}

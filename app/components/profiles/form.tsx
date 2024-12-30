@@ -95,8 +95,8 @@ export default function ProfileForm() {
 		acl.setPublicWriteAccess(false);
 		acl.setReadAccess(user!, true);
 		acl.setWriteAccess(user!, true);
-		acl.setRoleWriteAccess(`Organizer${env.YEAR}`, true);
-		acl.setRoleReadAccess(`Organizer${env.YEAR}`, true);
+		acl.setRoleWriteAccess('admin', true);
+		acl.setRoleReadAccess('admin', true);
 		return acl;
 	};
 

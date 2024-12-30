@@ -1,4 +1,4 @@
-import { ChangeEvent, CSSProperties, useState } from "react";
+import { CSSProperties, useState } from "react";
 import { Parse } from "../../parse";
 
 interface FileProps {
@@ -12,7 +12,7 @@ interface FileProps {
 	required: boolean;
 	status?: string;
 	message?: string;
-	onChange: (e: ChangeEvent) => void;
+	onChange: (e: Parse.File) => void;
 }
 
 export default function File({ key, name, accept, label, value, message, preview, help, onChange }: FileProps) {

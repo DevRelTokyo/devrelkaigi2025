@@ -3,8 +3,9 @@ export interface Schema {
 	type: string;
 	label: string;
 	help?: string;
+	markdown?: boolean;
 	options?: {
-		value: string;
+		value: string | boolean;
 		label: string;
 	}[];
 	required?: boolean;

@@ -26,8 +26,13 @@ export default defineConfig({
           route(":locale/profiles/:slug/edit", "routes/profiles/edit.tsx");
           route(":locale/members/:slug", "routes/profiles/show.tsx");
           route(":locale/profiles", "routes/profiles/index.tsx", {index: true});
-          route("auth/github", "routes/auth/github.tsx");
-          route("callback/github", "routes/callback/github.tsx");
+          route(":locale/proposals", "routes/proposals/index.tsx", {index: true});
+          route(":locale/proposals/:id/edit", "routes/proposals/edit.tsx");
+          route(":locale/proposals/new", "routes/proposals/new.tsx");
+          route(":locale/admin/blog", "routes/admin/blog/index.tsx", {index: true});
+          route(":locale/admin/blog/:slug/edit", "routes/admin/blog/edit.tsx");
+          route(":locale/admin/blog/new", "routes/admin/blog/new.tsx");
+          route(":locale/contact", "routes/contact.tsx");
         });
       },
     }),
