@@ -7,9 +7,8 @@ import { UserContext } from "~/contexts/user";
 
 export default function UserMenu() {
 	const { Parse } = useContext(ParseContext)!;
-	const { login, user, logout } = useContext(UserContext)!;
+	const { login, user, logout, roles } = useContext(UserContext)!;
 	const [CFP, setCFP] = useState<Parse.Object | undefined>(undefined);
-	const [roles, setRoles] = useState<Parse.Role[]>([]);
 	const [image, setImage] = useState<string>('/assets/images/icon/user.png');
 	const year = typeof window !== 'undefined' ? window.ENV.YEAR : 0;
 
@@ -19,29 +18,35 @@ export default function UserMenu() {
 
 	useEffect(() => {
 		if (typeof window === 'undefined') return;
+		// ユーザー画像を取得
 		getImage();
+		// CFP情報を取得
 		getCFP();
-		getRoles();
 	}, [user]);
 
+	// ユーザー画像を取得
 	const getImage = async () => {
 		if (!user) return;
+		// image_file または image_url が存在するプロフィールを取得
 		const query1 = new Parse.Query('Profile');
 		query1.exists('image_file');
 		const query2 = new Parse.Query('Profile');
 		query2.exists('image_url');
 		const query = Parse.Query.or(query1, query2);
 		query.equalTo('user', user);
-		console.log(query);
 		const profile = await query.first();
-		console.log(profile);
-		if (!profile) return '/assets/images/icon/user.png';
+		// プロフィールが存在しない場合はデフォルト画像を表示
+		if (!profile) return setImage('/assets/images/icon/user.png');
 		const image = profile.get('image_file');
 		if (image) {
 			return setImage(image.url());
 		}
 		setImage(profile.get('image_url') || '/assets/images/icon/user.png');
 	};
+
+	const role = (role: string) => {
+		return roles.map(r => r.get('name')).includes(role);
+	}
 
 	const getCFP = async () => {
 		if (!user) return;
@@ -50,18 +55,6 @@ export default function UserMenu() {
 		query.greaterThanOrEqualTo('end_at', new Date());
 		const CFP = await query.first();
 		setCFP(CFP);
-	};
-
-	const getRoles = async () => {
-		if (!user) return;
-		const res = await new Parse.Query(Parse.Role).equalTo('users', user).find();
-		setRoles(res);
-	};
-
-	const role = (roleName: string) => {
-		if (!user) return false;
-		if (!roles.length) return false;
-		return roles.map(r => r.get('name')).includes(roleName);
 	};
 
 	return (<>

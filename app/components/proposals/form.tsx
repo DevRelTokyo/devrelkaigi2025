@@ -65,8 +65,8 @@ export default function ProposalForm() {
 		acl.setReadAccess(user!, true);
 		acl.setWriteAccess(user!, true);
 		acl.setRoleReadAccess(`Voter${window.ENV.YEAR}`, true);
-		acl.setRoleWriteAccess('admin', true);
-		acl.setRoleReadAccess('admin', true);
+		acl.setRoleWriteAccess('Admin', true);
+		acl.setRoleReadAccess('Admin', true);
 		return acl;
 	}
 

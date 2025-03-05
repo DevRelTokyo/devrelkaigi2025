@@ -1,11 +1,12 @@
 import Form from '~/components/form';
 import { useSchema } from '~/schemas/profile';
 import { setLang } from '~/utils/i18n';
-import { signInWithGithub } from '~/utils/github';
 import { useParams } from '@remix-run/react';
 import { useState, useEffect, useContext } from 'react';
 import { Schema } from '~/types/schema';
 import { ParseContext } from '~/contexts/parse';
+import { UserContext } from '~/contexts/user';
+import { Icon } from '@iconify/react/dist/iconify.js';
 
 interface MessageProps {
 	messages: string[];
@@ -14,20 +15,15 @@ interface MessageProps {
 
 export default function ProfileForm() {
 	const { Parse } = useContext(ParseContext)!;
+	const { user, login } = useContext(UserContext)!;
   const params = useParams();
   const { locale } = params;
   const { t } = setLang(locale!);
 	const schema = useSchema(locale!);
 
-	const [user, setUser] = useState<Parse.User | undefined>(undefined);
 	const [profile, setProfile] = useState<Parse.Object | undefined>(undefined);
 	const [message, setMessage] = useState<MessageProps | undefined>(undefined);
 	const [status, setStatus] = useState<string>('');
-
-	useEffect(() => {
-		if (typeof window === 'undefined') return;
-		setUser(Parse.User.current());
-	}, []);
 
 	useEffect(() => {
 		if (typeof window === 'undefined') return;
@@ -92,8 +88,8 @@ export default function ProfileForm() {
 		acl.setPublicWriteAccess(false);
 		acl.setReadAccess(user!, true);
 		acl.setWriteAccess(user!, true);
-		acl.setRoleWriteAccess('admin', true);
-		acl.setRoleReadAccess('admin', true);
+		acl.setRoleWriteAccess('Admin', true);
+		acl.setRoleReadAccess('Admin', true);
 		return acl;
 	};
 
@@ -208,9 +204,15 @@ export default function ProfileForm() {
 							style={{paddingTop: '2em', paddingBottom: '2em'}}
 						>
 							<button type="button" className="btn btn-primary"
-								onClick={signInWithGithub}
+								onClick={() => login('github')}
 							>
-								Sign in with <i className="fa-brands fa-github"></i>
+								{t('Sign in with ')}<Icon icon="mdi:github" style={{fontSize: '2em'}} />
+							</button>
+							{' '}
+							<button type="button" className="btn btn-primary"
+								onClick={() => login('google')}
+							>
+								{t('Sign in with ')}<Icon icon="mdi:google" style={{fontSize: '2em'}} />
 							</button>
 						</div>
 					</div>
