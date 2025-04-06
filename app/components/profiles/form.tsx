@@ -34,9 +34,10 @@ export default function ProfileForm() {
 		if (!user) return;
 		const query = new Parse.Query('Profile');
 		query.equalTo('lang', locale);
-		const profile = await query.first();
-		profile?.set('email', user.get('email'));
-		setProfile(profile || new Parse.Object('Profile'));
+		query.equalTo('slug', params.slug);
+		const profile = (await query.first()) || new Parse.Object('Profile');
+		profile.set('email', user.get('email'));
+		setProfile(profile);
 	};
 
 	const validate = async (schema: Schema[], profile: Parse.Object) => {
@@ -46,7 +47,7 @@ export default function ProfileForm() {
 				errors.push(t('__label__ is required').replace('__label__', field.label));
 			}
 			if (field.type === 'array') {
-				const values = profile!.get(field.name!) as string[];
+				const values = (profile!.get(field.name!) as string[]) || [];
 				values.filter(v => v === '').length > 0 && 
 					errors.push(t('__sub_label__ of __label__ is required')
 						.replace('__label__', field.label)
@@ -97,10 +98,10 @@ export default function ProfileForm() {
 		setStatus('loading');
 		profile!.set('lang', locale);
 		profile!.set('user', user);
-		if (user?.get('email') !== profile.get('email')) {
+		if (user?.get('email') !== profile.get('email') && !profile.get('email')) {
 			user?.set('email', profile.get('email'));
 			await user?.save();
-			profile.unset('email');
+			// profile.unset('email');
 		}
 		
 		const errors = await validate(schema, profile);
@@ -112,12 +113,17 @@ export default function ProfileForm() {
 			const acl = getAcl();
 			profile!.setACL(acl);
 		}
-		await profile!.save();
-		setStatus('');
-		showMessage('primary', [t('Thank you! Your profile has been updated!')]);
-		setTimeout(() => {
-			window.location.href = `/${locale}/profiles`;
-		}, 3000);
+		try {
+			await profile!.save();
+			setStatus('');
+			showMessage('primary', [t('Thank you! Your profile has been updated!')]);
+			setTimeout(() => {
+				window.location.href = `/${locale}/profiles`;
+			}, 3000);
+		} catch (error) {
+			setStatus('');
+			showMessage('danger', ['Error', (error as Error).message]);
+		}
 	};
 
 	const showMessage = (type: string, messages: string[]) => {

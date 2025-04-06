@@ -29,6 +29,7 @@ export default function ProposalIndex() {
 			if (profiles.find(p => p.get('lang') === lang)) return;
 			const profile = new Parse.Object('Profile');
 			profile.set('lang', lang);
+			profile.set('slug', Math.random().toString(36).substring(2, 15));
 			profile.set('user', user);
 			profiles.push(profile);
 		});
