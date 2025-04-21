@@ -11,7 +11,7 @@ type UserContextType = {
   setProfile: (profile: Parse.Object) => void;
   logout: () => void;
   login: (provider: string) => void;
-  admin: boolean;
+  roles: Parse.Role[];
 } | null
 
 type UserContextProviderProps = {
@@ -44,7 +44,7 @@ export function UserProvider(params: UserContextProviderProps) {
   const { Parse } = useContext(ParseContext)!;
   const [user, setUser] = useState<Parse.User | undefined>(Parse.User.current());
   const [profile, setProfile] = useState<Parse.Object | undefined>(undefined);
-  const [admin, setAdmin] = useState(false);
+  const [roles, setRoles] = useState<Parse.Role[]>([]);
 
   useEffect(() => {
     getProfile();
@@ -52,7 +52,7 @@ export function UserProvider(params: UserContextProviderProps) {
 
   useEffect(() => {
     if (!user) return;
-    getRole();
+    getRoles();
   }, [user]);
 
   const logout = () => {
@@ -83,7 +83,7 @@ export function UserProvider(params: UserContextProviderProps) {
 			access_token: credential?.accessToken,
 		};
 		await Parse.User.logInWith('github', { authData });
-		updateProfile(user, result);
+		updateProfile(result);
 		setUser(Parse.User.current());
   };
 
@@ -121,17 +121,18 @@ export function UserProvider(params: UserContextProviderProps) {
     }
 		return undefined;
 	};
-
-  const getRole = async () => {
+  
+  const getRoles = async () => {
     const query = new Parse.Query(Parse.Role);
     query.equalTo('users', user);
     const roles = await query.find();
-    setAdmin(!!roles.find(role => role.get('name') === 'admin'));
+    const children = (await Promise.all(roles.map(role => role.getRoles().query().find()))).flat();
+    children.forEach(child => roles.push(child));
+    setRoles(roles);
   }
 
 	const updateProfile = async (result: UserCredential) => {
     const { user } = result;
-    console.log(user, result);
 		const currentUser = Parse.User.current();
 		if (!currentUser) return;
 		currentUser.set('email', user.email);
@@ -159,7 +160,7 @@ export function UserProvider(params: UserContextProviderProps) {
       login,
       profile,
       setProfile,
-      admin,
+      roles,
     }}>
       {params.children}
     </UserContext.Provider>

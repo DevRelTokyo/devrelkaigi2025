@@ -34,8 +34,8 @@ export default function ContactForm() {
 		const acl = new Parse.ACL();
 		acl.setPublicReadAccess(false);
 		acl.setPublicWriteAccess(false);
-		acl.setRoleReadAccess('admin', true);
-		acl.setRoleWriteAccess('admin', true);
+		acl.setRoleReadAccess('Admin', true);
+		acl.setRoleWriteAccess('Admin', true);
 		acl.setRoleReadAccess(`Organizer${window.ENV.YEAR}`, true);		
 		return acl;
 	}

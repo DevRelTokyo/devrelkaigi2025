@@ -1,5 +1,5 @@
 import { useParams } from "@remix-run/react";
-import { setLang } from "../utils/i18n";
+import { setLang } from "~/utils/i18n";
 
 export default function Registration() {
   const params = useParams();

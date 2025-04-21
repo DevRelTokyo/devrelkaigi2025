@@ -3,12 +3,9 @@ import { MetaFunction, json } from "@remix-run/react";
 import FooterMain from "~/components/footerMain";
 import FooterSub from "~/components/footerSub";
 import Navi from "~/components/navi";
-import Form from "~/components/proposals/form";
+import AdminVoteIndex from "~/components/admin/votes/index";
 import { setLang } from "~/utils/i18n";
 import { ServerRuntimeMetaArgs } from "@remix-run/server-runtime";
-import { useContext, useEffect, useState } from "react";
-import { ParseContext } from "~/contexts/parse";
-import { UserContext } from "~/contexts/user";
 
 interface MetaProps {
   title: string;
@@ -27,32 +24,16 @@ export async function loader({ params }: LoaderFunctionArgs) {
   const { locale } = params;
   const { t } = setLang(locale!);
   return json({
-    title: t('New proposal | DevRelKaigi 2025'),
-    description: t("Create new proposal"),
+    title: t('Votes | Admin | DevRelKaigi 2025'),
+    description: t("Votes index"),
   });
 }
 
-export default function New() {
-  const { Parse } = useContext(ParseContext)!;
-  const { user } = useContext(UserContext)!;
-  const [cfp, setCFP] = useState<Parse.Object | undefined>(undefined);
-  const getCFP = async () => {
-		if (!user) return;
-		const query = new Parse.Query('CFP');
-		query.lessThanOrEqualTo('start_at', new Date());
-		query.greaterThanOrEqualTo('end_at', new Date());
-		const CFP = await query.first();
-		setCFP(CFP);
-	};
-  
-	useEffect(() => {
-		getCFP();
-	}, [user]);
-  
+export default function Index() {
 	return (
 		<>
       <Navi />
-			<Form cfp={cfp} />
+			<AdminVoteIndex />
       <FooterMain />
       <FooterSub />
 		</>

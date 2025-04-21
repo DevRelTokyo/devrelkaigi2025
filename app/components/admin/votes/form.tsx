@@ -7,13 +7,15 @@ import { Schema } from '~/types/schema';
 import { ParseContext } from '~/contexts/parse';
 import { UserContext } from '~/contexts/user';
 import { Icon } from '@iconify/react/dist/iconify.js';
+import markdownit from 'markdown-it'
+const md = markdownit();
 
 interface MessageProps {
 	messages: string[];
 	type: string;
 }
 
-export default function ProfileForm() {
+export default function VoteForm() {
 	const { Parse } = useContext(ParseContext)!;
 	const { user, login } = useContext(UserContext)!;
   const params = useParams();
@@ -21,23 +23,24 @@ export default function ProfileForm() {
   const { t } = setLang(locale!);
 	const schema = useSchema(locale!);
 
+  const [proposal, setProposal] = useState<Parse.Object | undefined>(undefined);
 	const [profile, setProfile] = useState<Parse.Object | undefined>(undefined);
+	const [vote, setVote] = useState<Parse.Object | undefined>(undefined);
 	const [message, setMessage] = useState<MessageProps | undefined>(undefined);
 	const [status, setStatus] = useState<string>('');
 
 	useEffect(() => {
 		if (typeof window === 'undefined') return;
-		getProfile();
+		getProposal();
 	}, [user]);
 
-	const getProfile = async () => {
+	const getProposal = async () => {
 		if (!user) return;
-		const query = new Parse.Query('Profile');
+		const query = new Parse.Query('Proposal');
 		query.equalTo('lang', locale);
-		query.equalTo('slug', params.slug);
-		const profile = (await query.first()) || new Parse.Object('Profile');
-		profile.set('email', user.get('email'));
-		setProfile(profile);
+		query.equalTo('objectId', params.id);
+		const proposal = await query.first();
+		setProposal(proposal);
 	};
 
 	const validate = async (schema: Schema[], profile: Parse.Object) => {
@@ -94,31 +97,31 @@ export default function ProfileForm() {
 		return acl;
 	};
 
-	const submit = async (profile: Parse.Object) => {
+	const submit = async (vote: Parse.Object) => {
 		setStatus('loading');
-		profile!.set('lang', locale);
-		profile!.set('user', user);
-		if (user?.get('email') !== profile.get('email') && !profile.get('email')) {
-			user?.set('email', profile.get('email'));
+		vote!.set('lang', locale);
+		vote!.set('user', user);
+		if (user?.get('email') !== vote.get('email') && !vote.get('email')) {
+			user?.set('email', vote.get('email'));
 			await user?.save();
-			// profile.unset('email');
+			// vote.unset('email');
 		}
 		
-		const errors = await validate(schema, profile);
+		const errors = await validate(schema, vote);
 		if (errors.length > 0) {
 			setStatus('');
 			return showMessage('danger', errors);
 		}
-		if (!profile.id) {
+		if (!vote.id) {
 			const acl = getAcl();
-			profile!.setACL(acl);
+			vote!.setACL(acl);
 		}
 		try {
-			await profile!.save();
+			await vote!.save();
 			setStatus('');
-			showMessage('primary', [t('Thank you! Your profile has been updated!')]);
+			showMessage('primary', [t('Thank you! Your vote has been updated!')]);
 			setTimeout(() => {
-				window.location.href = `/${locale}/profiles`;
+				window.location.href = `/${locale}/votes`;
 			}, 3000);
 		} catch (error) {
 			setStatus('');
@@ -135,7 +138,7 @@ export default function ProfileForm() {
 
 	return (
 		<>
-			{user && profile ? (
+			{user && proposal ? (
 				<div className="container"
 					style={{
 						paddingTop: '150px',
@@ -146,21 +149,8 @@ export default function ProfileForm() {
 						<div className="row">
 							<div className="col-8 offset-2">
 								<h2>
-									{ profile.id ? t('Edit profile') : t('Create new profile')}
+									{ t('Add vote') }
 								</h2>
-							</div>
-							<div className="col-8 offset-2">
-								<div className="alert alert-primary" role="alert">
-									{locale === 'ja' ?
-										(<>
-											If you want to create or update a profile in English, <a href={`/en/profiles/${profile.get('slug')}/edit`}>please click here</a>.
-										</>)
-										:
-										<>
-											日本語のプロフィールを作成、更新する場合は<a href={`/ja/profiles/${profile.get('slug')}/edit`}>こちらをクリック</a>してください
-										</>
-									}
-								</div>
 							</div>
 						</div>
 						<div className="row">
@@ -185,9 +175,90 @@ export default function ProfileForm() {
 										</ul>
 									</div>
 								)}
+								<div className="row">
+									<div className="col-12">
+										<h3>{proposal.get('title')}</h3>
+									</div>
+                  { profile && 
+                    <>
+                      <div className="col-12">
+                        <div className="row">
+                          <div className="col-12">
+                            <h4>{ t('Profile')}</h4>
+                          </div>
+                          <div className="col-12">
+                            { proposal.get('level') }
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  }
+                  <div className="col-12">
+                    <p
+                      style={{
+                        backgroundColor: '#f8f9fa',
+                        padding: '10px',
+                        borderRadius: '5px',
+                      }}
+                      dangerouslySetInnerHTML={{
+                        __html: md.render(proposal.get('description') as string),
+                      }}
+                    />
+                  </div>
+                  <div className="col-12">
+                    <div className="row">
+                      <div className="col-12">
+                        <h4>{ t('Why am I suitable for this proposal?')}</h4>
+                      </div>
+                      <div className="col-12">
+                        { proposal.get('reason') }
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-12">
+                    <div className="row">
+                      <div className="col-12">
+                        <h4>{ t('First event')}</h4>
+                      </div>
+                      <div className="col-12">
+                        { proposal.get('first_event') || t('I have never discussed this topic before.') }
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-12">
+                    <div className="row">
+                      <div className="col-12">
+                        <h4>{ t('Category')}</h4>
+                      </div>
+                      <div className="col-12">
+                        { proposal.get('category') }
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-12">
+                    <div className="row">
+                      <div className="col-12">
+                        <h4>{ t('Co speaker')}</h4>
+                      </div>
+                      <div className="col-12">
+                        { proposal.get('co_speaker') ? t('Yes') : t('No') }
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-12">
+                    <div className="row">
+                      <div className="col-12">
+                        <h4>{ t('Level')}</h4>
+                      </div>
+                      <div className="col-12">
+                        { proposal.get('level') }
+                      </div>
+                    </div>
+                  </div>
+								</div>
 								<Form
 									schema={schema}
-									data={profile}
+									data={proposal}
 									status={status}
 									onSubmit={submit}
 								/>

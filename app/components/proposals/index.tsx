@@ -27,6 +27,7 @@ export default function ProposalIndex() {
 		if (!user) return;
 		const query = new Parse.Query('Proposal');
 		query.include('cfp');
+		query.equalTo('user', user);
 		const proposals = await query.find();
 		setProposals(proposals);
 	};

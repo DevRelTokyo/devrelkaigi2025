@@ -20,7 +20,7 @@ interface FormParams {
 }
 type FieldValue = string | boolean | number | string[] | {[key: string]: string} | undefined;
 export default function Form({ schema, data, onSubmit, status}: FormParams) {
-	const [obj, setObj] = useState<{[key: string]: FieldValue}>(data!.toJSON());
+	const [obj, setObj] = useState<{[key: string]: FieldValue}>(data?.toJSON() || {});
 	if (!data) {
 		return (<>Loading...</>);
 	}
@@ -34,6 +34,7 @@ export default function Form({ schema, data, onSubmit, status}: FormParams) {
 	}
 	return (
 		<>
+			{ data && 
 			<form onSubmit={submit}>
 				{schema.map(field => {
 					switch (field.type) {
@@ -85,7 +86,7 @@ export default function Form({ schema, data, onSubmit, status}: FormParams) {
 								value={obj[field.name] as string}
 								status={status}
 								required={field.required!}
-								onChange={(value: string | boolean) => {
+								onChange={(value: boolean) => {
 									data.set(field.name, value);
 									setObj({ ...obj, [field.name]: value });
 								}}
@@ -98,7 +99,7 @@ export default function Form({ schema, data, onSubmit, status}: FormParams) {
 								value={obj[field.name] as string}
 								required={field.required!}
 								status={status}
-								onChange={(value: string | boolean) => {
+								onChange={(value: boolean) => {
 									data.set(field.name, value);
 									setObj({ ...obj, [field.name]: value });
 								}}
@@ -166,6 +167,7 @@ export default function Form({ schema, data, onSubmit, status}: FormParams) {
 						}
 				})}
 			</form>
+			}
 		</>
 	);
 }
