@@ -5,7 +5,7 @@ interface CheckboxProps {
 	options: { value: string | boolean, label: string }[];
 	value: string;
 	required: boolean;
-	onChange: (value: string | boolean) => void;
+	onChange: (value: boolean) => void;
 	status?: string;
 }
 
@@ -19,12 +19,7 @@ export default function Checkbox({ name, label, options, value, required, onChan
 					name={name}
 					value={`${options[0].value}`}
 					onChange={(e) => {
-						if (typeof options[0].value === 'boolean') {
-							if (e.target.value === 'true') onChange(true);
-							if (e.target.value === 'false') onChange(false);
-						} else {
-							onChange(e.target.value)
-						}
+						onChange(e.target.checked);
 					}}
 					required={required}
 					checked={`${options[0].value}` === `${value}`}

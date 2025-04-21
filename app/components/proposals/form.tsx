@@ -13,7 +13,11 @@ interface MessageProps {
 	type: string;
 }
 
-export default function ProposalForm() {
+interface ProposalFormProps {
+	cfp?: Parse.Object
+}
+
+export default function ProposalForm({ cfp }: ProposalFormProps) {
 	const { Parse } = useContext(ParseContext)!;
 	const { login, user } = useContext(UserContext)!;
   const params = useParams();
@@ -22,30 +26,22 @@ export default function ProposalForm() {
 	const schema = useSchema(locale!);
 	const [proposal, setProposal] = useState<Parse.Object | undefined>();
 	const [message, setMessage] = useState<MessageProps | undefined>(undefined);
-	const [CFP, setCFP] = useState<Parse.Object | undefined>(undefined);
+	const [CFP, setCFP] = useState<Parse.Object | undefined>(cfp);
 	const [status, setStatus] = useState<string>('');
 
 	useEffect(() => {
-		getCFP();
 		getProposal();
 	}, [user]);
-
-	const getCFP = async () => {
-		if (!user) return;
-		const query = new Parse.Query('CFP');
-		query.lessThanOrEqualTo('start_at', new Date());
-		query.greaterThanOrEqualTo('end_at', new Date());
-		const CFP = await query.first();
-		setCFP(CFP);
-	};
 
 	const getProposal = async () => {
 		if (!id) {
 			return setProposal(new Parse.Object('Proposal'));
 		}
 		const query = new Parse.Query('Proposal');
+		query.include('cfp');
 		const proposal = await query.get(id);
 		setProposal(proposal);
+		setCFP(proposal.get('cfp'));
 	};
 
 	const validate = (schema: Schema[], proposal: Parse.Object) => {
@@ -83,7 +79,9 @@ export default function ProposalForm() {
 			proposal.set('user', user);
 			proposal.set('lang', locale);
 			proposal.set('status', 'Sent');
-			proposal.set('cfp', CFP);
+			if (cfp) {
+				proposal.set('cfp', cfp);
+			}
 		}
 		await proposal.save();
 		setStatus('');
@@ -170,12 +168,14 @@ export default function ProposalForm() {
 											</ul>
 										</div>
 									)}
-									<Form
-										schema={schema}
-										data={proposal}
-										status={status}
-										onSubmit={submit}
-									/>
+									{ proposal &&
+										<Form
+											schema={schema}
+											data={proposal}
+											status={status}
+											onSubmit={submit}
+										/>
+									}
 								</div>
 							</div>
 						</>

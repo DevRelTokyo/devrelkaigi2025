@@ -126,6 +126,8 @@ export function UserProvider(params: UserContextProviderProps) {
     const query = new Parse.Query(Parse.Role);
     query.equalTo('users', user);
     const roles = await query.find();
+    const children = (await Promise.all(roles.map(role => role.getRoles().query().find()))).flat();
+    children.forEach(child => roles.push(child));
     setRoles(roles);
   }
 
