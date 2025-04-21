@@ -7,6 +7,7 @@ import { Schema } from '~/types/schema';
 import { ParseContext } from '~/contexts/parse';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { UserContext } from '~/contexts/user';
+import ProfileMessage from '../profiles/message';
 
 interface MessageProps {
 	messages: string[];
@@ -33,6 +34,12 @@ export default function ProposalForm({ cfp }: ProposalFormProps) {
 		getProposal();
 	}, [user]);
 
+	useEffect(() => {
+		if (cfp) {
+			setCFP(cfp);
+		}
+	}, [cfp]);
+
 	const getProposal = async () => {
 		if (!id) {
 			return setProposal(new Parse.Object('Proposal'));
@@ -41,7 +48,9 @@ export default function ProposalForm({ cfp }: ProposalFormProps) {
 		query.include('cfp');
 		const proposal = await query.get(id);
 		setProposal(proposal);
-		setCFP(proposal.get('cfp'));
+		if (!cfp) {
+			setCFP(proposal.get('cfp'));
+		}
 	};
 
 	const validate = (schema: Schema[], proposal: Parse.Object) => {
@@ -119,6 +128,7 @@ export default function ProposalForm({ cfp }: ProposalFormProps) {
 				>
 					{CFP ? (
 						<>
+							<ProfileMessage locale={locale!} />
 							<div className="row">
 								<div className="col-8 offset-2">
 									<h2>

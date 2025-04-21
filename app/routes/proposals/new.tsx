@@ -36,15 +36,19 @@ export default function New() {
   const { Parse } = useContext(ParseContext)!;
   const { user } = useContext(UserContext)!;
   const [cfp, setCFP] = useState<Parse.Object | undefined>(undefined);
+
   const getCFP = async () => {
-		if (!user) return;
 		const query = new Parse.Query('CFP');
 		query.lessThanOrEqualTo('start_at', new Date());
 		query.greaterThanOrEqualTo('end_at', new Date());
-		const CFP = await query.first();
-		setCFP(CFP);
+    const cfp = await query.first();
+		setCFP(cfp);
 	};
   
+	useEffect(() => {
+		getCFP();
+	}, []);
+
 	useEffect(() => {
 		getCFP();
 	}, [user]);
