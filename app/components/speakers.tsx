@@ -19,7 +19,7 @@ export default function Speakers() {
 								{t('Our awesome speaker is YOU! We\'re openning 2nd CFP until 31st May 2025!')}
 							</p>
 							<p>
-								<a href={`/${locale}/blogs/what-is-first-cfp`}>{t('What is the 2ND CFP mean?')}</a>
+								<a href={`/${locale}/articles/what-is-first-cfp`}>{t('What is the 2ND CFP mean?')}</a>
 							</p>
 						</div>
 					</div>

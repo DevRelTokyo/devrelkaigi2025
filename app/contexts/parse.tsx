@@ -1,6 +1,16 @@
 import React, { ReactNode } from 'react';
 import BrowserParse from 'parse';
 import NodeParse from 'parse/node';
+import XMLHttpRequestPolyfill from "xhr4sw";
+
+if (typeof self !== 'undefined') {
+  Object.defineProperty(self, 'XMLHttpRequest', {
+    configurable: false,
+    enumerable: true,
+    writable: false,
+    value: XMLHttpRequestPolyfill
+  });
+}
 
 type ParseContextType = {
   Parse: typeof Parse;
