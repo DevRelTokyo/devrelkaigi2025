@@ -23,7 +23,6 @@ export default function ArticleForm() {
   const [article, setArticle] = useState<Parse.Object | undefined>(undefined);
 	const [message, setMessage] = useState<MessageProps | undefined>(undefined);
 	const [status, setStatus] = useState<string>('');
-  const [messageTimerId, setMessageTimerId] = useState<NodeJS.Timeout | null>(null);
   
 	useEffect(() => {
 		if (typeof window === 'undefined') return;
@@ -82,10 +81,9 @@ export default function ArticleForm() {
   
 	const showMessage = (type: string, messages: string[]) => {
 		setMessage({type, messages});
-    if (messageTimerId) clearTimeout(messageTimerId);
-		setMessageTimerId(setInterval(() => {
-			return setMessage(undefined);
-		}, 3000));
+    setTimeout(() => {
+      setMessage(undefined);
+    }, 3000);
 	};
 
 	return (
@@ -147,7 +145,7 @@ export default function ArticleForm() {
 				>
 					<div className="row">
 						<div className="col-8 offset-2">
-							<h4>{t('Please sign up or sign in to update your profile')}</h4>
+							<h4>{t('Please sign up or sign in to create or edit articles')}</h4>
 						</div>
 						<div className="col-8 offset-2 text-center"
 							style={{paddingTop: '2em', paddingBottom: '2em'}}
