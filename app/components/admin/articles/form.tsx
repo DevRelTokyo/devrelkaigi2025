@@ -28,22 +28,27 @@ export default function ArticleForm() {
 	useEffect(() => {
 		if (typeof window === 'undefined') return;
 		getArticle();
-	}, [user]);
+	}, [user, params.id]);
 
 	const getArticle = async () => {
-		if (!user) return;
+    if (!user) return;
     if (!params.id) {
       setArticle(new Parse.Object('Article'));
       return;
     }
-		const query = new Parse.Query('Article');
-		query.equalTo('objectId', params.id);
-		const article = await query.first();
-    if (!article) {
-      setArticle(new Parse.Object('Article'));
-      return;
+    try {
+      const query = new Parse.Query('Article');
+      query.equalTo('objectId', params.id);
+      const article = await query.first();
+      if (!article) {
+        setArticle(new Parse.Object('Article'));
+        return;
+      }
+      setArticle(article);
+    } catch (error) {
+      showMessage('danger', [t('Failed to load article'), (error as Error).message]);
+      setArticle(undefined);
     }
-		setArticle(article);
 	};
 
 	const getAcl = () => {
