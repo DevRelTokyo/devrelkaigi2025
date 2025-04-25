@@ -6,11 +6,7 @@ import { useState, useEffect, useContext } from 'react';
 import { ParseContext } from '~/contexts/parse';
 import { UserContext } from '~/contexts/user';
 import { Icon } from '@iconify/react/dist/iconify.js';
-
-interface MessageProps {
-	messages: string[];
-	type: string;
-}
+import Message, { MessageProps } from '~/components/message';
 
 export default function ArticleForm() {
 	const { Parse } = useContext(ParseContext)!;
@@ -45,7 +41,10 @@ export default function ArticleForm() {
       }
       setArticle(article);
     } catch (error) {
-      showMessage('danger', [t('Failed to load article'), (error as Error).message]);
+      setMessage({
+        type: 'danger',
+        messages: [t('Failed to load article'), (error as Error).message]
+      });
       setArticle(undefined);
     }
 	};
@@ -63,29 +62,27 @@ export default function ArticleForm() {
 
 	const submit = async (article: Parse.Object) => {
 		setStatus('loading');
-
 		try {
       const acl = getAcl();
       article!.setACL(acl);
 			await article!.save();
 			setStatus('');
-			showMessage('primary', [t('Thank you! Your article has been updated!')]);
+			setMessage({
+				type: 'success',
+				messages: [t('Thank you! Your article has been updated!')]
+			});
 			setTimeout(() => {
 				window.location.href = `/${locale}/admin/articles`;
 			}, 3000);
 		} catch (error) {
 			setStatus('');
-			showMessage('danger', ['Error', (error as Error).message]);
+			setMessage({
+				type: 'danger',
+				messages: ['Error', (error as Error).message]
+			});
 		}
 	};
   
-	const showMessage = (type: string, messages: string[]) => {
-		setMessage({type, messages});
-    setTimeout(() => {
-      setMessage(undefined);
-    }, 3000);
-	};
-
 	return (
 		<>
 			{user && article ? (
@@ -103,28 +100,9 @@ export default function ArticleForm() {
 								</h2>
 							</div>
 						</div>
+						<Message message={message} />
 						<div className="row">
 							<div className="col-8 offset-2">
-								{message && (
-									<div className={`alert alert-${message.type}`} role="alert"
-										style={{
-											position: "fixed",
-											top: "50px",
-											right: "50px",
-											width: "600px",
-											zIndex: 9999,
-											borderRadius: "0px",
-										}}
-									>
-										<ul
-											style={{listStyleType: 'none', padding: 0}}
-										>
-											{message.messages.map((msg: string, i: number) => (
-												<li key={i}>{msg}</li>
-											))}
-										</ul>
-									</div>
-								)}
 								<Form
 									name="Article"
 									schema={schema}

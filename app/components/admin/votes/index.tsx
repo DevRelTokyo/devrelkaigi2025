@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from "react";
 import { ParseContext } from "~/contexts/parse";
 import { setLang } from "~/utils/i18n";
 import markdownit from 'markdown-it'
+import Message, { MessageProps } from "~/components/message";
 
 const md = markdownit();
 
@@ -17,7 +18,7 @@ export default function AdminVoteIndex() {
   const { locale } = params;
 	const [user, setUser] = useState<Parse.User | undefined>(undefined);
 	const [proposals, setProposals] = useState<Parse.Object[]>([]);
-	const [message, setMessage] = useState<{ type: string, messages: string[] } | null>(null);
+	const [message, setMessage] = useState<MessageProps | undefined>(undefined);
   const [skip, setSkip] = useState(parseInt(searchParams.get('skip') || '0'));
   const [limit, setLimit] = useState(parseInt(searchParams.get('limit') || '10'));
 	const [selectedProposal, setSelectedProposal] = useState<Parse.Object | undefined>(undefined);
@@ -98,7 +99,7 @@ export default function AdminVoteIndex() {
 				messages: [t('Please select a proposal')],
 			});
 			setTimeout(() => {
-				setMessage(null);
+				setMessage(undefined);
 			}, 3000);
 			return;
 		}
@@ -125,7 +126,7 @@ export default function AdminVoteIndex() {
 				messages: [t('Please select a rating')],
 			});
 			setTimeout(() => {
-				setMessage(null);
+				setMessage(undefined);
 			}, 3000);
 			return;
 		}
@@ -135,7 +136,7 @@ export default function AdminVoteIndex() {
 				messages: [t('Please enter a comment')],
 			});
 			setTimeout(() => {
-				setMessage(null);
+				setMessage(undefined);
 			}, 3000);
 			return;
 		}
@@ -147,7 +148,7 @@ export default function AdminVoteIndex() {
 			messages: [t('Vote submitted successfully')],
 		});
 		setTimeout(() => {
-			setMessage(null);
+			setMessage(undefined);
 		}, 3000);
 		setRating(0);
 		setComment('');
@@ -163,26 +164,7 @@ export default function AdminVoteIndex() {
 					paddingBottom: '40px',
 				}}
 			>
-			{message && (
-				<div className={`alert alert-${message.type}`} role="alert"
-					style={{
-						position: "fixed",
-						top: "50px",
-						right: "50px",
-						width: "600px",
-						zIndex: 9999,
-						borderRadius: "0px",
-					}}
-				>
-					<ul
-						style={{listStyleType: 'none', padding: 0}}
-					>
-						{message.messages.map((msg: string, i: number) => (
-							<li key={i}>{msg}</li>
-						))}
-					</ul>
-				</div>
-			)}
+				<Message message={message} />
 				<div className="row">
 					<div className="col-8 offset-2">
 						<div className="row">

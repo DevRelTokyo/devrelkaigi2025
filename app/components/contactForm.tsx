@@ -4,11 +4,7 @@ import { setLang } from '~/utils/i18n';
 import { useParams, useSearchParams } from '@remix-run/react';
 import { useState, useEffect, useContext } from 'react';
 import { ParseContext } from '~/contexts/parse';
-
-interface MessageProps {
-	messages: string[];
-	type: string;
-}
+import Message, { MessageProps } from './message';
 
 export default function ContactForm() {
 	const { Parse } = useContext(ParseContext)!;
@@ -47,15 +43,11 @@ export default function ContactForm() {
 		contact.setACL(getAcl());
 		await contact.save();
 		setStatus('');
-		showMessage('primary', [t('Thank you! We will contact you soon.')]);
+		setMessage({
+			type: 'success',
+			messages: [t('Thank you! We will contact you soon.')]
+		});
 		setContact(new Parse.Object('Contact'));
-	};
-
-	const showMessage = (type: string, messages: string[]) => {
-		setMessage({type, messages});
-		setInterval(() => {
-			return setMessage(undefined);
-		}, 3000);
 	};
 
 	return (
@@ -68,6 +60,7 @@ export default function ContactForm() {
 					}}
 				>
 					<>
+						<Message message={message} />
 						<div className="row">
 							<div className="col-8 offset-2">
 								<h2>
@@ -98,6 +91,7 @@ export default function ContactForm() {
 									</div>
 								)}
 								<Form
+									name="Contact"
 									schema={schema}
 									data={contact}
 									status={status}

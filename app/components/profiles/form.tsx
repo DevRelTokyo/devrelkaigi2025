@@ -7,11 +7,7 @@ import { useState, useEffect, useContext } from 'react';
 import { ParseContext } from '~/contexts/parse';
 import { UserContext } from '~/contexts/user';
 import { Icon } from '@iconify/react/dist/iconify.js';
-
-interface MessageProps {
-	messages: string[];
-	type: string;
-}
+import Message, { MessageProps } from '~/components/message';
 
 export default function ProfileForm() {
 	const { Parse } = useContext(ParseContext)!;
@@ -68,21 +64,20 @@ export default function ProfileForm() {
 		try {
 			await profile!.save();
 			setStatus('');
-			showMessage('primary', [t('Thank you! Your profile has been updated!')]);
+			setMessage({
+				type: 'success',
+				messages: [t('Thank you! Your profile has been updated!')]
+			});
 			setTimeout(() => {
 				window.location.href = `/${locale}/profiles`;
 			}, 3000);
 		} catch (error) {
 			setStatus('');
-			showMessage('danger', ['Error', (error as Error).message]);
+			setMessage({
+				type: 'danger',
+				messages: ['Error', (error as Error).message]
+			});
 		}
-	};
-
-	const showMessage = (type: string, messages: string[]) => {
-		setMessage({type, messages});
-		setInterval(() => {
-			return setMessage(undefined);
-		}, 3000);
 	};
 
 	return (
@@ -117,26 +112,7 @@ export default function ProfileForm() {
 						</div>
 						<div className="row">
 							<div className="col-8 offset-2">
-								{message && (
-									<div className={`alert alert-${message.type}`} role="alert"
-										style={{
-											position: "fixed",
-											top: "50px",
-											right: "50px",
-											width: "600px",
-											zIndex: 9999,
-											borderRadius: "0px",
-										}}
-									>
-										<ul
-											style={{listStyleType: 'none', padding: 0}}
-										>
-											{message.messages.map((msg: string, i: number) => (
-												<li key={i}>{msg}</li>
-											))}
-										</ul>
-									</div>
-								)}
+								<Message message={message} />
 								<Form
 									name="Profile"
 									schema={schema}
