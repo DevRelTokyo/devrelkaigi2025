@@ -7,7 +7,7 @@ import { useContext, useEffect, useState } from "react";
 import { ParseContext } from "~/contexts/parse";
 import { setLang } from "~/utils/i18n";
 import markdownit from 'markdown-it'
-import { use } from "i18next";
+
 const md = markdownit();
 
 export default function AdminVoteIndex() {

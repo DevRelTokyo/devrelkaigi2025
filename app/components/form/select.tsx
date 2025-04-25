@@ -1,5 +1,4 @@
-
-interface TextProps {
+interface SelectProps {
 	key: string
 	type: string;
 	name: string;
@@ -13,7 +12,7 @@ interface TextProps {
 	onChange: (value: string) => void;
 }
 
-export default function Select({ key, name, options, label, required, placeholder, value, help, onChange }: TextProps) {
+export default function Select({ key, name, options, label, required, placeholder, value, help, onChange }: SelectProps) {
 	return (<>
 		<div className="mb-3" key={key}>
 			<label htmlFor={`input-${name}`} className="form-label">{label}</label>
@@ -22,13 +21,13 @@ export default function Select({ key, name, options, label, required, placeholde
 				className="form-select"
 				onChange={(e) => onChange(e.target.value)}
 				required={required}
+				value={value}
 			>
 				<option value="">{placeholder}</option>
 				{options.map((option, i) => (
 					<option
 						key={i}
 						value={`${option.value}`}
-						selected={option.value === value}
 					>{option.label}</option>
 				))}
 			</select>

@@ -1,11 +1,11 @@
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useParams, useSearchParams } from "@remix-run/react";
+import { Link, useParams, useSearchParams } from "@remix-run/react";
 import { useContext, useEffect, useState } from "react";
 import { ParseContext } from "~/contexts/parse";
 import { setLang } from "~/utils/i18n";
 
-export default function ProposalIndex() {
+export default function AdminArticleIndex() {
   const params = useParams();
 	const [searchParams] = useSearchParams();
 	const { Parse } = useContext(ParseContext)!;
@@ -20,6 +20,16 @@ export default function ProposalIndex() {
 	useEffect(() => {
 		getArticles();
 	}, [user]);
+
+	const deleteArticle = async (article: Parse.Object) => {
+		if (!window.confirm(t('Are you sure you want to delete this article?'))) return;
+		try {
+			await article.destroy();
+			setArticles(articles.filter(a => a.id !== article.id));
+		} catch (error) {
+			console.error(error);
+		}
+	};
 
 	const getArticles = async () => {
 		if (!user) return;
@@ -43,7 +53,10 @@ export default function ProposalIndex() {
 					<div className="col-8 offset-2">
 						<div className="row">
 							<div className="col-8">
-								<h2>{t('My profiles')}</h2>
+								<h2>{t('Articles')}</h2>
+							</div>
+							<div className="col-4">
+								<Link to={`/${locale}/admin/articles/new`} className="btn btn-primary">{t('New article')}</Link>
 							</div>
 						</div>
 					</div>
@@ -52,9 +65,8 @@ export default function ProposalIndex() {
 							<thead>
 								<tr>
 									<th>{t('Language')}</th>
-									<th>{t('Organization')}</th>
-									<th>{t('Title')}</th>
-									<th>{t('Name')}</th>
+									<th>{t('Article Title')}</th>
+									<th>{t('Published at')}</th>
 									<th>{t('Actions')}</th>
 								</tr>
 							</thead>
@@ -65,13 +77,22 @@ export default function ProposalIndex() {
 											{t(article.get('lang'))}
 										</td>
 										<td>
-											{article.get('title')}
+											{ article.get('publishedAt') ?
+												<Link to={`/${article.get('lang')}/articles/${article.get('slug')}`}>
+													{article.get('title')}
+												</Link>
+												:
+												article.get('title')
+											}
 										</td>
-										<td>{article.get('published_at')}</td>
+										<td>{article.get('publishedAt') ? article.get('publishedAt').toLocaleString(locale) : ''}</td>
 										<td>
-											<a href={`/${article.get('lang')}/admin/blog/${article.get('slug')}/edit`}>
+											<Link to={`/${locale}/admin/articles/${article.id}/edit`}>
 												<FontAwesomeIcon icon={faPenToSquare} style={{width: 25, height: 25}} />
-											</a>
+											</Link>
+											<button className="btn" onClick={() => deleteArticle(article)}>
+												<FontAwesomeIcon icon={faTrash} style={{width: 25, height: 25, color: 'red'}} />
+											</button>
 										</td>
 									</tr>
 								))}

@@ -12,10 +12,11 @@ interface FileProps {
 	required: boolean;
 	status?: string;
 	message?: string;
+	url?: string;
 	onChange: (e: Parse.File) => void;
 }
 
-export default function File({ key, name, accept, label, value, message, preview, help, onChange }: FileProps) {
+export default function File({ key, name, accept, label, value, message, preview, help, url, onChange }: FileProps) {
 	const defaultStyle: CSSProperties = {
 		border: '3px dotted #555',
 		display: 'table-cell',
@@ -23,7 +24,7 @@ export default function File({ key, name, accept, label, value, message, preview
 		textAlign: 'center',
 	};
 	const [style, setStyle] = useState<CSSProperties>(defaultStyle);
-	const [file, setFile] = useState<File | undefined>(undefined);
+	const [file, setFile] = useState<Parse.File | undefined>(undefined);
 	const [messageText, setMessageText] = useState<string>(message!);
 
 	const onDragover = (e: React.DragEvent<HTMLDivElement>) => {
@@ -35,7 +36,7 @@ export default function File({ key, name, accept, label, value, message, preview
 		});
 	};
 
-	const onDrop = (e: React.DragEvent<HTMLDivElement>) => {
+	const onDrop = async (e: React.DragEvent<HTMLDivElement>) => {
 		e.preventDefault();
 		const file = e.dataTransfer?.files[0];
 		if (accept && !file?.type.match(accept)) {
@@ -49,11 +50,12 @@ export default function File({ key, name, accept, label, value, message, preview
 				setMessageText(message!);
 				setStyle(defaultStyle);
 			}, 3000);
-
 			return;
 		}
-		setFile(file);
-		onChange(new Parse.File(file?.name, file));
+		const newFile = new Parse.File(file?.name, file);
+		await newFile.save();
+		setFile(newFile);
+		onChange(newFile);
 	};
 
 	const onDragleave = (e: React.DragEvent<HTMLDivElement>) => {
@@ -90,7 +92,7 @@ export default function File({ key, name, accept, label, value, message, preview
 					}}>
 						{file ? (<>
 							<img
-								src={URL.createObjectURL(file)}
+								src={file.url()}
 								className="img-fluid"
 								alt=""
 								width={300}
@@ -98,7 +100,7 @@ export default function File({ key, name, accept, label, value, message, preview
 							/>
 						</>) : (
 							<img
-								src={`${value ? value.url : "/assets/images/icon/user_preview.png"}`}
+								src={`${value ? value.url : url || "/assets/images/icon/user_preview.png"}`}
 								className="img-fluid"
 								alt=""
 								width={300}

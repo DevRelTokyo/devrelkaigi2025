@@ -16,10 +16,10 @@ export default function Speakers() {
 									__html: t('Who <span class="alternate">Speaking?</span>')}}
 							></h3>
 							<p>
-								{t('Our awesome speaker is YOU! We\'re openning 1st CFP until 31st March 2025!')}
+								{t('Our awesome speaker is YOU! We\'re openning 2nd CFP until 31st May 2025!')}
 							</p>
 							<p>
-								<a href={`/${locale}/news/what-is-first-cfp`}>{t('What is the 1ST CFP mean?')}</a>
+								<a href={`/${locale}/blogs/what-is-first-cfp`}>{t('What is the 2ND CFP mean?')}</a>
 							</p>
 						</div>
 					</div>
