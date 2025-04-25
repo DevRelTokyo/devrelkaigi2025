@@ -36,8 +36,7 @@
     "react-dropzone": "^14.3.8",
     "remix-head": "^0.0.1",
     "remix-provider": "^0.0.2",
-    "vite-plugin-node-polyfills": "^0.22.0",
-    "xhr4sw": "^0.0.5"
+    "vite-plugin-node-polyfills": "^0.22.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241018.0",
