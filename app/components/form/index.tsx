@@ -12,11 +12,7 @@ import { Schema } from "~/types/schema";
 import { FormEvent, useContext, useState } from "react";
 import { setLang } from "~/utils/i18n";
 import { useParams } from "@remix-run/react";
-
-interface MessageProps {
-	messages: string[];
-	type: string;
-}
+import Message, { MessageProps } from "../message";
 
 interface FormParams {
 	schema: Schema[];
@@ -112,30 +108,7 @@ export default function Form({ schema, name, data, onSubmit, status}: FormParams
 		<>
 			{ data && 
 				<>
-					<div className="row">
-						<div className="col-8 offset-2">
-							{message && (
-								<div className={`alert alert-${message.type}`} role="alert"
-									style={{
-										position: "fixed",
-										top: "50px",
-										right: "50px",
-										width: "600px",
-										zIndex: 9999,
-										borderRadius: "0px",
-									}}
-								>
-									<ul
-										style={{listStyleType: 'none', padding: 0}}
-									>
-										{message.messages.map((msg, i) => (
-											<li key={i}>{msg}</li>
-										))}
-									</ul>
-								</div>
-							)}
-						</div>
-					</div>
+					<Message message={message} />
 					<form onSubmit={submit}>
 							{schema.map(field => {
 								switch (field.type) {
