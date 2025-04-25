@@ -13,28 +13,6 @@ import { RemixHead } from "remix-head";
 import { Article } from "~/types/article";
 import Breadcrumb from "~/components/breadcrumb";
 
-interface MetaProps {
-  title: string;
-  description: string;
-}
-
-export const meta: MetaFunction = ({ data }: ServerRuntimeMetaArgs) => {
-	const { title, description } = data as MetaProps;
-  return [
-    { title },
-    { name: "description", content: description },
-  ];
-};
-
-export async function loader({ params }: LoaderFunctionArgs) {
-  const { locale } = params;
-  const { t } = setLang(locale!);
-  return json({
-    title: t('Edit article | DevRelKaigi 2025'),
-    description: t("DevRelKaigi is an international conference of developer relations from Tokyo with ❤️."),
-  });
-}
-
 export default function ArticleEdit() {
   const md = markdownIt();
   const { Parse } = useContext(ParseContext)!;
