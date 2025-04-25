@@ -17,12 +17,33 @@ export default function ArticleEdit() {
   const { locale, slug } = useParams();
   const { t } = setLang(locale!);
   const { data, isLoading } = useSSR<Article | undefined>(async () => {
-    const query = new Parse.Query('Article');
-    query.equalTo('lang', locale);
-    query.equalTo('slug', slug);
-    query.lessThanOrEqualTo('publishedAt', new Date());
-    const data = await query.first();
-    return data ? data.toJSON() as Article : undefined;
+    const body = {
+      where: {
+        publishedAt: {
+          $lt: {
+            __type: "Date",
+            iso: new Date().toISOString()
+          }
+        },
+        lang: locale,
+        slug
+      },
+      _method: "GET",
+      _ApplicationId: Parse.applicationId,
+      _JavaScriptKey: Parse.javaScriptKey,
+    };
+    const response = await fetch(`${Parse.serverURL}/classes/Article`, {
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(body),
+      method: "POST",
+    });
+    const data = await response.json() as {
+      count: number;
+      results: Article[];
+    }
+    return data.results[0];
   }, { key: JSON.stringify({ locale, slug }) });
   if (!data) return <div>loading...</div>;
 	return (
