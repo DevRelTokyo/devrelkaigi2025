@@ -3,7 +3,7 @@ import { MetaFunction, json } from "@remix-run/react";
 import FooterMain from "~/components/footerMain";
 import FooterSub from "~/components/footerSub";
 import Navi from "~/components/navi";
-import AdminBlogIndex from "~/components/admin/blog/index";
+import AdminArticleIndex from "~/components/admin/articles/index";
 import { setLang } from "~/utils/i18n";
 import { ServerRuntimeMetaArgs } from "@remix-run/server-runtime";
 
@@ -33,7 +33,7 @@ export default function Index() {
 	return (
 		<>
       <Navi />
-			<ProposalIndex />
+			<AdminArticleIndex />
       <FooterMain />
       <FooterSub />
 		</>

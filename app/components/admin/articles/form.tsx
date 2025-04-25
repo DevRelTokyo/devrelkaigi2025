@@ -1,9 +1,9 @@
 import Form from '~/components/form';
-import { useSchema } from '~/schemas/profile';
+import { useSchema } from '~/schemas/article';
 import { setLang } from '~/utils/i18n';
 import { useParams } from '@remix-run/react';
 import { useState, useEffect, useContext } from 'react';
-// import { Schema } from '~/types/schema';
+import { Schema } from '~/types/schema';
 import { ParseContext } from '~/contexts/parse';
 import { UserContext } from '~/contexts/user';
 import { Icon } from '@iconify/react/dist/iconify.js';
@@ -13,7 +13,7 @@ interface MessageProps {
 	type: string;
 }
 
-export default function ProfileForm() {
+export default function ArticleForm() {
 	const { Parse } = useContext(ParseContext)!;
 	const { user, login } = useContext(UserContext)!;
   const params = useParams();
@@ -21,25 +21,73 @@ export default function ProfileForm() {
   const { t } = setLang(locale!);
 	const schema = useSchema(locale!);
 
-	const [profile, setProfile] = useState<Parse.Object | undefined>(undefined);
+  const [article, setArticle] = useState<Parse.Object | undefined>(undefined);
 	const [message, setMessage] = useState<MessageProps | undefined>(undefined);
 	const [status, setStatus] = useState<string>('');
 
 	useEffect(() => {
 		if (typeof window === 'undefined') return;
-		getProfile();
+		getArticle();
 	}, [user]);
 
-	const getProfile = async () => {
+	const getArticle = async () => {
 		if (!user) return;
-		const query = new Parse.Query('Profile');
-		query.equalTo('lang', locale);
-		query.equalTo('slug', params.slug);
-		const profile = (await query.first()) || new Parse.Object('Profile');
-		profile.set('email', user.get('email'));
-		setProfile(profile);
+    if (!params.id) {
+      setArticle(new Parse.Object('Article'));
+      return;
+    }
+		const query = new Parse.Query('Article');
+		query.equalTo('objectId', params.id);
+		const article = await query.first();
+    if (!article) {
+      setArticle(new Parse.Object('Article'));
+      return;
+    }
+		setArticle(article);
 	};
 
+	const validate = async (schema: Schema[], article: Parse.Object) => {
+		const errors: string[] = [];
+		for (const field of schema) {
+			if (field.required && !article!.get(field.name)) {
+				errors.push(t('__label__ is required').replace('__label__', field.label));
+			}
+			if (field.type === 'array') {
+				const values = (article!.get(field.name!) as string[]) || [];
+				values.filter(v => v === '').length > 0 && 
+					errors.push(t('__sub_label__ of __label__ is required')
+						.replace('__label__', field.label)
+						.replace('__sub_label__', field.schema!.label)
+					);
+			}
+			const value = article!.get(field.name!);
+			if (field.pattern && value) {
+				const re = new RegExp(field.pattern);
+				if (!re.test(article!.get(field.name))) {
+					errors.push(t('__label__ is invalid').replace('__label__', field.label));
+				}
+			}
+			if (field.ignores && value) {
+				if (field.ignores.indexOf(article!.get(field.name)) >= 0) {
+					errors.push(t('__label__ is invalid').replace('__label__', field.label));
+				}
+			}
+			if (field.unique && value) {
+				const query = new Parse.Query('Article');
+				query.equalTo(field.name, value);
+				if (field.groupBy) {
+					field.groupBy.forEach(key => {
+						query.equalTo(key, article!.get(key));
+					});
+				}
+				const res = await query.first();
+				if (res && res.id !== article!.id) {
+					errors.push(t('This slug is already taken'));
+				}
+			}
+		}
+		return errors;
+	}
 
 	const getAcl = () => {
 		const acl = new Parse.ACL();
@@ -47,30 +95,27 @@ export default function ProfileForm() {
 		acl.setPublicWriteAccess(false);
 		acl.setReadAccess(user!, true);
 		acl.setWriteAccess(user!, true);
+		acl.setRoleWriteAccess(`Organizer${window.ENV.YEAR}`, true);
 		acl.setRoleWriteAccess('Admin', true);
-		acl.setRoleReadAccess('Admin', true);
 		return acl;
 	};
 
-	const submit = async (profile: Parse.Object) => {
+	const submit = async (article: Parse.Object) => {
 		setStatus('loading');
-		profile!.set('lang', locale);
-		profile!.set('user', user);
-		if (user?.get('email') !== profile.get('email') && !profile.get('email')) {
-			user?.set('email', profile.get('email'));
-			await user?.save();
-			// profile.unset('email');
-		}
-		if (!profile.id) {
-			const acl = getAcl();
-			profile!.setACL(acl);
+		
+		const errors = await validate(schema, article);
+		if (errors.length > 0) {
+			setStatus('');
+			return showMessage('danger', errors);
 		}
 		try {
-			await profile!.save();
+      const acl = getAcl();
+      article!.setACL(acl);
+			await article!.save();
 			setStatus('');
-			showMessage('primary', [t('Thank you! Your profile has been updated!')]);
+			showMessage('primary', [t('Thank you! Your article has been updated!')]);
 			setTimeout(() => {
-				window.location.href = `/${locale}/profiles`;
+				window.location.href = `/${locale}/admin/articles`;
 			}, 3000);
 		} catch (error) {
 			setStatus('');
@@ -87,7 +132,7 @@ export default function ProfileForm() {
 
 	return (
 		<>
-			{user && profile ? (
+			{user && article ? (
 				<div className="container"
 					style={{
 						paddingTop: '150px',
@@ -98,21 +143,8 @@ export default function ProfileForm() {
 						<div className="row">
 							<div className="col-8 offset-2">
 								<h2>
-									{ profile.id ? t('Edit profile') : t('Create new profile')}
+									{ article.id ? t('Edit article') : t('Create new article')}
 								</h2>
-							</div>
-							<div className="col-8 offset-2">
-								<div className="alert alert-primary" role="alert">
-									{locale === 'ja' ?
-										(<>
-											If you want to create or update a profile in English, <a href={`/en/profiles/${profile.get('slug')}/edit`}>please click here</a>.
-										</>)
-										:
-										<>
-											日本語のプロフィールを作成、更新する場合は<a href={`/ja/profiles/${profile.get('slug')}/edit`}>こちらをクリック</a>してください
-										</>
-									}
-								</div>
 							</div>
 						</div>
 						<div className="row">
@@ -138,9 +170,9 @@ export default function ProfileForm() {
 									</div>
 								)}
 								<Form
-									name="Profile"
+									name="Article"
 									schema={schema}
-									data={profile}
+									data={article}
 									status={status}
 									onSubmit={submit}
 								/>

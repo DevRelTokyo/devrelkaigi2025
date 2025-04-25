@@ -4,7 +4,7 @@ import { ServerRuntimeMetaArgs } from "@remix-run/server-runtime";
 import FooterMain from "~/components/footerMain";
 import FooterSub from "~/components/footerSub";
 import Navi from "~/components/navi";
-import ProfileForm from "~/components/profiles/form";
+import ArticleForm from "~/components/admin/articles/form";
 import { setLang } from "~/utils/i18n";
 
 interface MetaProps {
@@ -33,7 +33,7 @@ export default function ProfileEdit() {
 	return (
 		<>
       <Navi />
-      <ProfileForm />
+      <ArticleForm />
       <FooterMain />
       <FooterSub />
 		</>

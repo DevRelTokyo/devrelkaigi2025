@@ -3,7 +3,6 @@ import { useSchema } from '~/schemas/proposal';
 import { setLang } from '~/utils/i18n';
 import { useParams } from '@remix-run/react';
 import { useContext, useEffect, useState } from 'react';
-import { Schema } from '~/types/schema';
 import { ParseContext } from '~/contexts/parse';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { UserContext } from '~/contexts/user';
@@ -53,16 +52,6 @@ export default function ProposalForm({ cfp }: ProposalFormProps) {
 		}
 	};
 
-	const validate = (schema: Schema[], proposal: Parse.Object) => {
-		const errors: string[] = [];
-		schema.forEach(field => {
-			if (field.required && !proposal.get(field.name)) {
-				errors.push(t('__label__ is required').replace('__label__', field.label));
-			}
-		});
-		return errors;
-	}
-
 	const getAcl = (): Parse.ACL => {
 		const acl = new Parse.ACL();
 		acl.setPublicReadAccess(false);
@@ -77,11 +66,6 @@ export default function ProposalForm({ cfp }: ProposalFormProps) {
 
 	const submit = async (proposal: Parse.Object) => {
 		setStatus('loading');
-		const errors = validate(schema, proposal);
-		if (errors.length > 0) {
-			setStatus('');
-			return showMessage('danger', errors);
-		}
 		if (!proposal.id) {
 			const acl = getAcl();
 			proposal.setACL(acl);
@@ -180,6 +164,7 @@ export default function ProposalForm({ cfp }: ProposalFormProps) {
 									)}
 									{ proposal &&
 										<Form
+											name="Proposal"
 											schema={schema}
 											data={proposal}
 											status={status}

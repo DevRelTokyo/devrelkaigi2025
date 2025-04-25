@@ -3176,3 +3176,8 @@ ul.pagination .active a {
   right: 100%;
   padding-left: 0;
 }
+
+.article-body img {
+  width: 50%;
+  height: auto;
+}

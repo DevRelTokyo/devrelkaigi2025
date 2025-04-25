@@ -20,4 +20,5 @@ export interface Schema {
 	accept?: string;
 	preview?: boolean;
 	schema?: Schema;
+	url?: string;
 }

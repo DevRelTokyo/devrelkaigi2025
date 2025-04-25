@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { setLang } from "../utils/i18n";
-import { useParams } from "@remix-run/react";
+import { Link, useParams } from "@remix-run/react";
 import { Icon } from '@iconify/react';
 import { ParseContext } from "~/contexts/parse";
 import { UserContext } from "~/contexts/user";
@@ -104,7 +104,7 @@ export default function UserMenu() {
 															</a>
 														</li>
 														<li>
-															<a className="dropdown-item" href={`/${locale}/admin/blog`}>{t('CFP')} &raquo; </a>
+															<a className="dropdown-item" href={`/${locale}/admin/cfp`}>{t('CFP')} &raquo; </a>
 															<ul className="dropdown-menu-end dropdown-submenu">
 																<li>
 																	<a className="dropdown-item" href={`/${locale}/admin/fcp`}>{t('Manage CFPs')}</a>
@@ -117,13 +117,13 @@ export default function UserMenu() {
 													</>
 												)}
 												<li>
-													<a className="dropdown-item" href={`/${locale}/admin/blog`}>{t('Blog')} &raquo; </a>
+													<Link className="dropdown-item" to={`/${locale}/admin/articles`}>{t('Blog')} &raquo; </Link>
 													<ul className="dropdown-menu-end dropdown-submenu">
 														<li>
-															<a className="dropdown-item" href={`/${locale}/admin/blog`}>{t('Manage articles')}</a>
+															<Link className="dropdown-item" to={`/${locale}/admin/articles`}>{t('Manage articles')}</Link>
 														</li>
 														<li>
-															<a className="dropdown-item" href={`/${locale}/admin/blog/new`}>{t('New article')}</a>
+															<Link className="dropdown-item" to={`/${locale}/admin/articles/new`}>{t('New article')}</Link>
 														</li>
 													</ul>
 												</li>
