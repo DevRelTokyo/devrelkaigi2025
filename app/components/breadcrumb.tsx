@@ -11,7 +11,7 @@ export default function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
           {items.map((item, index) => (
-            <li className="breadcrumb-item" key={index}>
+            <li className="breadcrumb-item" key={`${item.label}-${index}`}>
               {item.href ? <Link to={item.href}>{item.label}</Link> : item.label}
             </li>
           ))}

@@ -21,13 +21,13 @@ export default function Select({ key, name, options, label, required, placeholde
 				className="form-select"
 				onChange={(e) => onChange(e.target.value)}
 				required={required}
+				value={value}
 			>
 				<option value="">{placeholder}</option>
 				{options.map((option, i) => (
 					<option
 						key={i}
 						value={`${option.value}`}
-						selected={option.value === value}
 					>{option.label}</option>
 				))}
 			</select>

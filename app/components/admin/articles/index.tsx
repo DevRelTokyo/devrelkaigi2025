@@ -22,6 +22,7 @@ export default function AdminArticleIndex() {
 	}, [user]);
 
 	const deleteArticle = async (article: Parse.Object) => {
+		if (!window.confirm(t('Are you sure you want to delete this article?'))) return;
 		try {
 			await article.destroy();
 			setArticles(articles.filter(a => a.id !== article.id));
@@ -84,7 +85,7 @@ export default function AdminArticleIndex() {
 												article.get('title')
 											}
 										</td>
-										<td>{article.get('publishedAt') ? article.get('publishedAt').toLocaleString() : ''}</td>
+										<td>{article.get('publishedAt') ? article.get('publishedAt').toLocaleString(locale) : ''}</td>
 										<td>
 											<Link to={`/${locale}/admin/articles/${article.id}/edit`}>
 												<FontAwesomeIcon icon={faPenToSquare} style={{width: 25, height: 25}} />

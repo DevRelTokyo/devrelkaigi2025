@@ -3178,6 +3178,6 @@ ul.pagination .active a {
 }
 
 .article-body img {
-  width: 50%;
+  max-width: 50%;
   height: auto;
 }

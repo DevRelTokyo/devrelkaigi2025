@@ -34,9 +34,7 @@ export default function TextAreaDrop({ key, name, row, label, required, placehol
   };
 
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
-    console.log({ acceptedFiles });
     const textarea = textareaRef.current;
-    console.log({ textarea });
     if (!textarea) return;
     for (const file of acceptedFiles) {
       const url = await uploadFile(file);

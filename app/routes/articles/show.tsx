@@ -1,6 +1,4 @@
-import { LoaderFunctionArgs } from "@remix-run/cloudflare";
-import { MetaFunction, json, useParams } from "@remix-run/react";
-import { ServerRuntimeMetaArgs } from "@remix-run/server-runtime";
+import { useParams } from "@remix-run/react";
 import { useContext } from "react";
 import FooterMain from "~/components/footerMain";
 import FooterSub from "~/components/footerSub";

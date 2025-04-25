@@ -24,12 +24,12 @@ export async function loader({ params }: LoaderFunctionArgs) {
   const { locale } = params;
   const { t } = setLang(locale!);
   return json({
-    title: t('Edit profile | DevRelKaigi 2025'),
-    description: t("DevRelKaigi is an international conference of developer relations from Tokyo with ❤️."),
+    title: t('Create article | DevRelKaigi 2025'),
+    description: t("Create article for DevRelKaigi 2025"),
   });
 }
 
-export default function ProfileEdit() {
+export default function ArticleNew() {
 	return (
 		<>
       <Navi />
