@@ -3,7 +3,6 @@ import { useSchema } from '~/schemas/article';
 import { setLang } from '~/utils/i18n';
 import { useParams } from '@remix-run/react';
 import { useState, useEffect, useContext } from 'react';
-import { Schema } from '~/types/schema';
 import { ParseContext } from '~/contexts/parse';
 import { UserContext } from '~/contexts/user';
 import { Icon } from '@iconify/react/dist/iconify.js';
@@ -24,7 +23,8 @@ export default function ArticleForm() {
   const [article, setArticle] = useState<Parse.Object | undefined>(undefined);
 	const [message, setMessage] = useState<MessageProps | undefined>(undefined);
 	const [status, setStatus] = useState<string>('');
-
+  const [messageTimerId, setMessageTimerId] = useState<NodeJS.Timeout | null>(null);
+  
 	useEffect(() => {
 		if (typeof window === 'undefined') return;
 		getArticle();
@@ -46,49 +46,6 @@ export default function ArticleForm() {
 		setArticle(article);
 	};
 
-	const validate = async (schema: Schema[], article: Parse.Object) => {
-		const errors: string[] = [];
-		for (const field of schema) {
-			if (field.required && !article!.get(field.name)) {
-				errors.push(t('__label__ is required').replace('__label__', field.label));
-			}
-			if (field.type === 'array') {
-				const values = (article!.get(field.name!) as string[]) || [];
-				values.filter(v => v === '').length > 0 && 
-					errors.push(t('__sub_label__ of __label__ is required')
-						.replace('__label__', field.label)
-						.replace('__sub_label__', field.schema!.label)
-					);
-			}
-			const value = article!.get(field.name!);
-			if (field.pattern && value) {
-				const re = new RegExp(field.pattern);
-				if (!re.test(article!.get(field.name))) {
-					errors.push(t('__label__ is invalid').replace('__label__', field.label));
-				}
-			}
-			if (field.ignores && value) {
-				if (field.ignores.indexOf(article!.get(field.name)) >= 0) {
-					errors.push(t('__label__ is invalid').replace('__label__', field.label));
-				}
-			}
-			if (field.unique && value) {
-				const query = new Parse.Query('Article');
-				query.equalTo(field.name, value);
-				if (field.groupBy) {
-					field.groupBy.forEach(key => {
-						query.equalTo(key, article!.get(key));
-					});
-				}
-				const res = await query.first();
-				if (res && res.id !== article!.id) {
-					errors.push(t('This slug is already taken'));
-				}
-			}
-		}
-		return errors;
-	}
-
 	const getAcl = () => {
 		const acl = new Parse.ACL();
 		acl.setPublicReadAccess(true);
@@ -102,12 +59,7 @@ export default function ArticleForm() {
 
 	const submit = async (article: Parse.Object) => {
 		setStatus('loading');
-		
-		const errors = await validate(schema, article);
-		if (errors.length > 0) {
-			setStatus('');
-			return showMessage('danger', errors);
-		}
+
 		try {
       const acl = getAcl();
       article!.setACL(acl);
@@ -122,12 +74,13 @@ export default function ArticleForm() {
 			showMessage('danger', ['Error', (error as Error).message]);
 		}
 	};
-
+  
 	const showMessage = (type: string, messages: string[]) => {
 		setMessage({type, messages});
-		setInterval(() => {
+    if (messageTimerId) clearTimeout(messageTimerId);
+		setMessageTimerId(setInterval(() => {
 			return setMessage(undefined);
-		}, 3000);
+		}, 3000));
 	};
 
 	return (

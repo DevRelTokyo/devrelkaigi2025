@@ -6,8 +6,8 @@ import Text from "./text";
 import TextArea from "./textarea";
 import TextAreaDrop from "./textareaDrop";
 import File from "./file";
-import Array from "./array"
-;import { ParseContext } from "~/contexts/parse";
+import ArrayField from "./arrayField";
+import { ParseContext } from "~/contexts/parse";
 import { Schema } from "~/types/schema";
 import { FormEvent, useContext, useState } from "react";
 import { setLang } from "~/utils/i18n";
@@ -268,7 +268,7 @@ export default function Form({ schema, name, data, onSubmit, status}: FormParams
 										);
 									case 'array':
 										return (
-											<Array
+											<ArrayField
 												key={field.name}
 												name={field.name}
 												label={field.label}

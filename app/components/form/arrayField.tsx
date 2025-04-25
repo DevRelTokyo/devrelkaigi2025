@@ -15,7 +15,7 @@ interface ArrayProps {
 	onChange: (e: string[]) => void;
 }
 
-export default function Array({ key, name, schema, label, value, help, onChange }: ArrayProps) {
+export default function ArrayField({ key, name, schema, label, value, help, onChange }: ArrayProps) {
 	const [values, setValues] = useState<string[]>(value || []);
 
 	const add = () => {
