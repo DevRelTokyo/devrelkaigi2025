@@ -84,7 +84,10 @@ export default function AdminRolesMembers() {
         type: 'success'
       });
 		} catch (error) {
-			console.error(error);
+			showMessage({
+				type: 'danger',
+				messages: [t('Failed to remove member')]
+			});
 		}
 	};
 

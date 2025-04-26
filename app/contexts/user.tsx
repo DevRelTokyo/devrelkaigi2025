@@ -36,7 +36,7 @@ export function UserProvider(params: UserContextProviderProps) {
     messagingSenderId: params.firebaseMessagingSenderId,
     appId: params.firebaseAppId,
   };
-  
+
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
@@ -62,7 +62,7 @@ export function UserProvider(params: UserContextProviderProps) {
       // console.error('Error logging out', error);
     }
     setUser(undefined);
-		setProfile(undefined);
+    setProfile(undefined);
   };
 
   const login = async (provider: string) => {
@@ -74,17 +74,17 @@ export function UserProvider(params: UserContextProviderProps) {
   }
 
   const loginWithGithub = async () => {
-		const provider = new GithubAuthProvider();
-		const result = await signInWithPopup(auth, provider)
-		const credential = GithubAuthProvider.credentialFromResult(result);
-		const { user } = result;
-		const authData = {
-			id: user.providerData[0].uid,
-			access_token: credential?.accessToken,
-		};
-		await Parse.User.logInWith('github', { authData });
-		updateProfile(result);
-		setUser(Parse.User.current());
+    const provider = new GithubAuthProvider();
+    const result = await signInWithPopup(auth, provider)
+    const credential = GithubAuthProvider.credentialFromResult(result);
+    const { user } = result;
+    const authData = {
+      id: user.providerData[0].uid,
+      access_token: credential?.accessToken,
+    };
+    await Parse.User.logInWith('github', { authData });
+    updateProfile(result);
+    setUser(Parse.User.current());
   };
 
   const loginWithGoogle = async () => {
@@ -102,26 +102,26 @@ export function UserProvider(params: UserContextProviderProps) {
     setUser(Parse.User.current());
   };
 
-	const getProfile = async () => {
-		try {
+  const getProfile = async () => {
+    try {
       const user = Parse.User.current();
       if (!user) {
         setUser(undefined);
         setProfile(undefined);
         return;
       }
-			const query = new Parse.Query('Profile');
-			query.equalTo('user', user);
+      const query = new Parse.Query('Profile');
+      query.equalTo('user', user);
       query.equalTo('lang', 'en');
-			const profile = await query.first();
-			setProfile(profile);
-			return profile;
-		} catch (error) {
+      const profile = await query.first();
+      setProfile(profile);
+      return profile;
+    } catch (error) {
       logout();
     }
-		return undefined;
-	};
-  
+    return undefined;
+  };
+
   const getRoles = async () => {
     const query = new Parse.Query(Parse.Role);
     query.equalTo('users', user);
@@ -131,26 +131,26 @@ export function UserProvider(params: UserContextProviderProps) {
     setRoles(roles);
   }
 
-	const updateProfile = async (result: UserCredential) => {
+  const updateProfile = async (result: UserCredential) => {
     const { user } = result;
-		const currentUser = Parse.User.current();
-		if (!currentUser) return;
-		currentUser.set('email', user.email);
-		await currentUser.save();
-		const profile = await getProfile() || new Parse.Object('Profile');
-		const info = getAdditionalUserInfo(result);
-		profile.set('user', currentUser);
+    const currentUser = Parse.User.current();
+    if (!currentUser) return;
+    currentUser.set('email', user.email);
+    await currentUser.save();
+    const profile = await getProfile() || new Parse.Object('Profile');
+    const info = getAdditionalUserInfo(result);
+    profile.set('user', currentUser);
     profile.set('lang', 'en');
-		profile.set('name', user.displayName);
-		profile.set('image_url', user.photoURL);
+    profile.set('name', user.displayName);
+    profile.set('image_url', user.photoURL);
     profile.set('slug', (info?.username || (info?.profile?.given_name as string))?.toLowerCase());
-		// ACL
-		const acl = new Parse.ACL();
-		acl.setPublicReadAccess(true);
-		acl.setWriteAccess(currentUser, true);
-		profile.setACL(acl);
-		await profile.save();
-	};
+    // ACL
+    const acl = new Parse.ACL();
+    acl.setPublicReadAccess(true);
+    acl.setWriteAccess(currentUser, true);
+    profile.setACL(acl);
+    await profile.save();
+  };
 
   return (
     <UserContext.Provider value={{

@@ -76,7 +76,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             </SSRWait>
           </head>
           <body>
-          <script
+            <script
               dangerouslySetInnerHTML={{
                 __html: `window.ENV = ${JSON.stringify({
                   YEAR: data.ENV.YEAR,

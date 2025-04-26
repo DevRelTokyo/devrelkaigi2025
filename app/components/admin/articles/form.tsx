@@ -73,7 +73,7 @@ export default function ArticleForm() {
 			});
 			setTimeout(() => {
 				window.location.href = `/${locale}/admin/articles`;
-			}, 3000);
+			}, 3000);			
 		} catch (error) {
 			setStatus('');
 			setMessage({

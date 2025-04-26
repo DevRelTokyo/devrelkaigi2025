@@ -4,16 +4,16 @@ import { ParseContext } from '~/contexts/parse';
 
 
 interface TextAreaProps {
-	key: string
-	name: string;
-	label: string;
-	row?: number;
-	placeholder: string;
-	required: boolean;
-	value: string;
-	help?: string;
-	status?: string;
-	onChange: (value: string) => void;
+  key: string
+  name: string;
+  label: string;
+  row?: number;
+  placeholder: string;
+  required: boolean;
+  value: string;
+  help?: string;
+  status?: string;
+  onChange: (value: string) => void;
 }
 
 export default function TextAreaDrop({ key, name, row, label, required, placeholder, value, help, onChange }: TextAreaProps) {
@@ -54,7 +54,7 @@ export default function TextAreaDrop({ key, name, row, label, required, placehol
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop, noClick: true, accept: { 'image/*': ['.png', '.jpg', '.jpeg', '.gif', '.webp'] }, multiple: false });
 
-	return (<>
+  return (<>
     <div {...getRootProps()} style={{ position: 'relative' }}>
       <input {...getInputProps()} />
       <div className="mb-3" key={key}>
@@ -73,5 +73,5 @@ export default function TextAreaDrop({ key, name, row, label, required, placehol
         >{value}</textarea>
       </div>
     </div>
-	</>);
+  </>);
 }

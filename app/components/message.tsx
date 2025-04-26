@@ -1,10 +1,10 @@
 export interface MessageProps {
-	messages: string[];
-	type: string;
+  messages: string[];
+  type: string;
 }
 
 export default function Message({ message }: { message?: MessageProps }) {
-	return (
+  return (
     <div className="row">
       <div className="col-8 offset-2">
         {message && (
@@ -19,7 +19,7 @@ export default function Message({ message }: { message?: MessageProps }) {
             }}
           >
             <ul
-              style={{listStyleType: 'none', padding: 0}}
+              style={{ listStyleType: 'none', padding: 0 }}
             >
               {message.messages.map((msg, i) => (
                 <li key={i}>{msg}</li>
@@ -29,5 +29,5 @@ export default function Message({ message }: { message?: MessageProps }) {
         )}
       </div>
     </div>
-	);
+  );
 }

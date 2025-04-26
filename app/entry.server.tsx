@@ -46,7 +46,7 @@ export default async function handleRequest(
         host: request.headers.get("host"),
       }}
     >
-    <RemixServer context={remixContext} url={request.url} />
+      <RemixServer context={remixContext} url={request.url} />
     </ServerProvider>,
     {
       signal: request.signal,
