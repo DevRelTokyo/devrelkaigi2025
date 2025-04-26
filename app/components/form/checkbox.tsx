@@ -41,12 +41,7 @@ export default function Checkbox({ name, label, options, value, required, onChan
               name={name}
               value={`${option.value}`}
               onChange={(e) => {
-                if (typeof option.value === 'string') {
-                  if (e.target.value === 'true') onChange(true);
-                  if (e.target.value === 'false') onChange(false);
-                } else {
-                  onChange(e.target.value as unknown as boolean)
-                }
+                onChange(e.target.checked);
               }}
               required={required}
               checked={`${option.value}` === `${value}`}
