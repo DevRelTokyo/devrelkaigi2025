@@ -18,9 +18,9 @@ interface ParseProviderProps {
 if (typeof localStorage === 'undefined') {
   global.localStorage = {
     getItem: () => null,
-    setItem: () => {},
-    removeItem: () => {},
-    clear: () => {},
+    setItem: () => { },
+    removeItem: () => { },
+    clear: () => { },
     length: 0,
     key: () => null,
   };

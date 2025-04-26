@@ -3,7 +3,7 @@ import { MetaFunction, json } from "@remix-run/react";
 import FooterMain from "~/components/footerMain";
 import FooterSub from "~/components/footerSub";
 import Navi from "~/components/navi";
-import AdminArticleIndex from "~/components/admin/articles/index";
+import AdminRolesIndex from "~/components/admin/roles/index";
 import { setLang } from "~/utils/i18n";
 import { ServerRuntimeMetaArgs } from "@remix-run/server-runtime";
 
@@ -24,8 +24,8 @@ export async function loader({ params }: LoaderFunctionArgs) {
   const { locale } = params;
   const { t } = setLang(locale!);
   return json({
-    title: t('Blog | Admin | DevRelKaigi 2025'),
-    description: t("Blog index"),
+    title: t('Roles | Admin | DevRelKaigi 2025'),
+    description: t("Roles index"),
   });
 }
 
@@ -33,7 +33,7 @@ export default function Index() {
   return (
     <>
       <Navi />
-      <AdminArticleIndex />
+      <AdminRolesIndex />
       <FooterMain />
       <FooterSub />
     </>

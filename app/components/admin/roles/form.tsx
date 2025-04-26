@@ -1,5 +1,5 @@
 import Form from '~/components/form';
-import { useSchema } from '~/schemas/article';
+import { useSchema } from '~/schemas/role';
 import { setLang } from '~/utils/i18n';
 import { useParams } from '@remix-run/react';
 import { useState, useEffect, useContext } from 'react';
@@ -8,7 +8,7 @@ import { UserContext } from '~/contexts/user';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import Message, { MessageProps } from '~/components/message';
 
-export default function ArticleForm() {
+export default function RoleForm() {
 	const { Parse } = useContext(ParseContext)!;
 	const { user, login } = useContext(UserContext)!;
   const params = useParams();
@@ -16,36 +16,33 @@ export default function ArticleForm() {
   const { t } = setLang(locale!);
 	const schema = useSchema(locale!);
 
-  const [article, setArticle] = useState<Parse.Object | undefined>(undefined);
+  const [role, setRole] = useState<Parse.Object | undefined>(undefined);
 	const [message, setMessage] = useState<MessageProps | undefined>(undefined);
 	const [status, setStatus] = useState<string>('');
   
 	useEffect(() => {
 		if (typeof window === 'undefined') return;
-		getArticle();
+		getRole();
 	}, [user, params.id]);
 
-	const getArticle = async () => {
+	const getRole = async () => {
     if (!user) return;
     if (!params.id) {
-      setArticle(new Parse.Object('Article'));
+      setRole(new Parse.Object('_Role'));
       return;
     }
     try {
-      const query = new Parse.Query('Article');
+      const query = new Parse.Query(Parse.Role);
       query.equalTo('objectId', params.id);
-      const article = await query.first();
-      if (!article) {
-        setArticle(new Parse.Object('Article'));
+      const role = await query.first();
+      if (!role) {
+        setRole(new Parse.Object('_Role'));
         return;
       }
-      setArticle(article);
+      setRole(role);
     } catch (error) {
-      setMessage({
-        type: 'danger',
-        messages: [t('Failed to load article'), (error as Error).message]
-      });
-      setArticle(undefined);
+      showMessage('danger', [t('Failed to load role'), (error as Error).message]);
+      setRole(undefined);
     }
 	};
 
@@ -53,39 +50,37 @@ export default function ArticleForm() {
 		const acl = new Parse.ACL();
 		acl.setPublicReadAccess(true);
 		acl.setPublicWriteAccess(false);
-		acl.setReadAccess(user!, true);
-		acl.setWriteAccess(user!, true);
-		acl.setRoleWriteAccess(`Organizer${window.ENV.YEAR}`, true);
 		acl.setRoleWriteAccess('Admin', true);
 		return acl;
 	};
 
-	const submit = async (article: Parse.Object) => {
+	const submit = async (data: Parse.Object) => {
 		setStatus('loading');
 		try {
       const acl = getAcl();
-      article!.setACL(acl);
-			await article!.save();
+      const role = new Parse.Role(data.get('name'), acl);
+			await role!.save();
 			setStatus('');
-			setMessage({
-				type: 'success',
-				messages: [t('Thank you! Your article has been updated!')]
-			});
+			showMessage('primary', [t('Thank you! Your role has been updated!')]);
 			setTimeout(() => {
-				window.location.href = `/${locale}/admin/articles`;
-			}, 3000);			
+				window.location.href = `/${locale}/admin/roles`;
+			}, 3000);
 		} catch (error) {
 			setStatus('');
-			setMessage({
-				type: 'danger',
-				messages: ['Error', (error as Error).message]
-			});
+			showMessage('danger', ['Error', (error as Error).message]);
 		}
 	};
   
+	const showMessage = (type: string, messages: string[]) => {
+		setMessage({type, messages});
+    setTimeout(() => {
+      setMessage(undefined);
+    }, 3000);
+	};
+
 	return (
 		<>
-			{user && article ? (
+			{user && role ? (
 				<div className="container"
 					style={{
 						paddingTop: '150px',
@@ -96,17 +91,17 @@ export default function ArticleForm() {
 						<div className="row">
 							<div className="col-8 offset-2">
 								<h2>
-									{ article.id ? t('Edit article') : t('Create new article')}
+									{ role.id ? t('Edit role') : t('Create new role')}
 								</h2>
 							</div>
 						</div>
-						<Message message={message} />
 						<div className="row">
 							<div className="col-8 offset-2">
+								<Message message={message} />
 								<Form
-									name="Article"
+									name="Role"
 									schema={schema}
-									data={article}
+									data={role}
 									status={status}
 									onSubmit={submit}
 								/>
@@ -123,7 +118,7 @@ export default function ArticleForm() {
 				>
 					<div className="row">
 						<div className="col-8 offset-2">
-							<h4>{t('Please sign up or sign in to create or edit articles')}</h4>
+							<h4>{t('Please sign up or sign in to create or edit roles')}</h4>
 						</div>
 						<div className="col-8 offset-2 text-center"
 							style={{paddingTop: '2em', paddingBottom: '2em'}}

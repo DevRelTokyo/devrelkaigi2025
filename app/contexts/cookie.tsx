@@ -16,7 +16,7 @@ export function CookieProvider({ children }: { children: ReactNode }) {
       setDarkMode(cookies.darkMode);
     }
   }, []);
-  
+
   const toggleDarkMode = () => {
     if (darkMode) {
       removeCookie('darkMode');
@@ -25,7 +25,7 @@ export function CookieProvider({ children }: { children: ReactNode }) {
     }
     setDarkMode(!darkMode);
   }
-  
+
   return (
     <CookieContext.Provider value={{
       darkMode,

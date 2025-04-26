@@ -99,8 +99,8 @@ export default function UserMenu() {
 												{ role(`Admin`) && (
 													<>
 														<li>
-															<a className="dropdown-item" href={`/${locale}/admin/organizers`}>
-																{t('Manage organizers')}
+															<a className="dropdown-item" href={`/${locale}/admin/roles`}>
+																{t('Manage roles')}
 															</a>
 														</li>
 														<li>

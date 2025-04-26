@@ -13,7 +13,7 @@ interface MetaProps {
 }
 
 export const meta: MetaFunction = ({ data }: ServerRuntimeMetaArgs) => {
-	const { title, description } = data as MetaProps;
+  const { title, description } = data as MetaProps;
   return [
     { title },
     { name: "description", content: description },
@@ -30,12 +30,12 @@ export async function loader({ params }: LoaderFunctionArgs) {
 }
 
 export default function ArticleEdit() {
-	return (
-		<>
+  return (
+    <>
       <Navi />
       <ArticleForm />
       <FooterMain />
       <FooterSub />
-		</>
-	);
+    </>
+  );
 }

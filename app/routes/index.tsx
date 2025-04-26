@@ -5,7 +5,6 @@ import Banner from "~/components/banner";
 import FooterMain from "~/components/footerMain";
 import FooterSub from "~/components/footerSub";
 import Navi from "~/components/navi";
-import News from "~/components/news";
 import Price from "~/components/price";
 import Schedule from "~/components/schedule";
 import Speakers from "~/components/speakers";
@@ -19,7 +18,7 @@ interface MetaProps {
   description: string;
 }
 export const meta: MetaFunction = ({ data }: ServerRuntimeMetaArgs) => {
-	const { title, description } = data as MetaProps;
+  const { title, description } = data as MetaProps;
   return [
     { title },
     { name: "description", content: description },
@@ -39,13 +38,12 @@ export default function Index() {
   return (
     <>
       <Navi />
-      <Banner	/>
+      <Banner />
       <About />
       <Speakers />
-      <Schedule	/>
-      <Price	/>
+      <Schedule />
+      <Price />
       <Sponsors />
-      <News />
       <Subscribe />
       <MapView />
       <FooterMain />

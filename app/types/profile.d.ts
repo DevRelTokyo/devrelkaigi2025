@@ -11,7 +11,7 @@ export interface Profile {
   email?: string
   profile?: string
   lang: string
-	image_url?: string
+  image_url?: string
   user: User
   createdAt: string
   updatedAt: string
@@ -33,8 +33,8 @@ export interface ImageFile {
 }
 
 export interface Acl {
-	[key: string]: {
-		read?: boolean;
-		write?: boolean;
-	}
+  [key: string]: {
+    read?: boolean;
+    write?: boolean;
+  }
 }

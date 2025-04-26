@@ -4,12 +4,12 @@ import Navi from "~/components/navi";
 import ProfileIndex from "~/components/profiles";
 
 export default function Index() {
-	return (
-		<>
+  return (
+    <>
       <Navi />
-			<ProfileIndex />
+      <ProfileIndex />
       <FooterMain />
       <FooterSub />
-		</>
-	);
+    </>
+  );
 }

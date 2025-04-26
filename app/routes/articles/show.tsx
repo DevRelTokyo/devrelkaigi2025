@@ -46,21 +46,21 @@ export default function ArticleEdit() {
     return data.results[0];
   }, { key: JSON.stringify({ locale, slug }) });
   if (!data) return <div>loading...</div>;
-	return (
-		<>
+  return (
+    <>
       <Navi />
       <div className="container"
-					style={{
-						paddingTop: '150px',
-						paddingBottom: '40px',
-					}}
-				>
+        style={{
+          paddingTop: '150px',
+          paddingBottom: '40px',
+        }}
+      >
         <div className="row">
           <div className="col-8 offset-2">
             {isLoading && (
               <div>loading</div>
             )}
-            { data && (
+            {data && (
               <>
                 <RemixHead>
                   <title>{`${data.title} - DevRelKaigi 2025`}</title>
@@ -82,6 +82,6 @@ export default function ArticleEdit() {
       </div>
       <FooterMain />
       <FooterSub />
-		</>
-	);
+    </>
+  );
 }
