@@ -6,11 +6,7 @@ import { useState, useEffect, useContext } from 'react';
 import { ParseContext } from '~/contexts/parse';
 import { UserContext } from '~/contexts/user';
 import { Icon } from '@iconify/react/dist/iconify.js';
-
-interface MessageProps {
-	messages: string[];
-	type: string;
-}
+import Message, { MessageProps } from '~/components/message';
 
 export default function RoleForm() {
 	const { Parse } = useContext(ParseContext)!;
@@ -36,11 +32,11 @@ export default function RoleForm() {
       return;
     }
     try {
-      const query = new Parse.Query('_Role');
+      const query = new Parse.Query(Parse.Role);
       query.equalTo('objectId', params.id);
       const role = await query.first();
       if (!role) {
-        setRole(new Parse.Object('Role'));
+        setRole(new Parse.Object('_Role'));
         return;
       }
       setRole(role);
@@ -101,26 +97,7 @@ export default function RoleForm() {
 						</div>
 						<div className="row">
 							<div className="col-8 offset-2">
-								{message && (
-									<div className={`alert alert-${message.type}`} role="alert"
-										style={{
-											position: "fixed",
-											top: "50px",
-											right: "50px",
-											width: "600px",
-											zIndex: 9999,
-											borderRadius: "0px",
-										}}
-									>
-										<ul
-											style={{listStyleType: 'none', padding: 0}}
-										>
-											{message.messages.map((msg: string, i: number) => (
-												<li key={i}>{msg}</li>
-											))}
-										</ul>
-									</div>
-								)}
+								<Message message={message} />
 								<Form
 									name="Role"
 									schema={schema}
