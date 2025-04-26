@@ -25,7 +25,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
   const { t } = setLang(locale!);
   return json({
     title: t('Roles | Admin | DevRelKaigi 2025'),
-    description: t("Blog index"),
+    description: t("Roles index"),
   });
 }
 

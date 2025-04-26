@@ -4,13 +4,14 @@ import { Link, useParams } from "@remix-run/react";
 import { useContext, useEffect, useState } from "react";
 import { ParseContext } from "~/contexts/parse";
 import { setLang } from "~/utils/i18n";
-
+import Message, { MessageProps } from "~/components/message";
 export default function AdminRolesIndex() {
   const params = useParams();
 	const { Parse } = useContext(ParseContext)!;
   const { locale } = params;
 	const [user, setUser] = useState<Parse.User | undefined>(undefined);
 	const [roles, setRoles] = useState<Parse.Object[]>([]);
+	const [message, setMessage] = useState<MessageProps | undefined>(undefined);
 	// const schema = useSchema(locale!);
 	const { t } = setLang(locale!);
 	useEffect(() => {
@@ -23,9 +24,16 @@ export default function AdminRolesIndex() {
 
 	const getRoles = async () => {
 		if (!user) return;
-		const query = new Parse.Query('_Role');
-		const roles = await query.find() as Parse.Object[];
-		setRoles(roles);
+		try {
+			const query = new Parse.Query(Parse.Role);
+			const roles = await query.find();
+			setRoles(roles);
+		} catch (error) {
+			setMessage({
+				type: 'danger',
+				messages: [t('Failed to load roles')]
+			});
+		}
 	};
 
 	const deleteRole = async (role: Parse.Object) => {
@@ -50,6 +58,7 @@ export default function AdminRolesIndex() {
 			>
 				<div className="row">
 					<div className="col-8 offset-2">
+						<Message message={message} />
 						<div className="row">
 							<div className="col-8">
 								<h2>{t('Roles')}</h2>

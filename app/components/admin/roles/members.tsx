@@ -7,7 +7,7 @@ import Message, { MessageProps } from "~/components/message";
 import { ParseContext } from "~/contexts/parse";
 import { setLang } from "~/utils/i18n";
 
-export default function AdminRolesIndex() {
+export default function AdminRolesMembers() {
   const params = useParams();
 	const { Parse } = useContext(ParseContext)!;
   const { locale } = params;
