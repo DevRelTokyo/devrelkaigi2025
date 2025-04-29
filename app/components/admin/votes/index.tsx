@@ -38,7 +38,6 @@ export default function AdminVoteIndex() {
   }, [user, skip]);
 
   useEffect(() => {
-    console.log(visible, proposals, votes);
     if (visible === 'all') {
       setVisibleProposals(proposals.slice(skip, skip + 10));
     } else {
