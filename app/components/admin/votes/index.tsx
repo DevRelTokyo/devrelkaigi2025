@@ -2,7 +2,7 @@ import { faCheckToSlot, faStar as faStarSolid } from "@fortawesome/free-solid-sv
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 
-import { Link, useParams, useSearchParams } from "@remix-run/react";
+import { useParams, useSearchParams } from "@remix-run/react";
 import { useContext, useEffect, useState } from "react";
 import { ParseContext } from "~/contexts/parse";
 import { setLang } from "~/utils/i18n";
