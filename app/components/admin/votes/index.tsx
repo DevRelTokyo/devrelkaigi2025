@@ -12,18 +12,20 @@ import Message, { MessageProps } from "~/components/message";
 const md = markdownit();
 
 export default function AdminVoteIndex() {
+  const limit = 1000;
   const params = useParams();
   const [searchParams] = useSearchParams();
   const { Parse } = useContext(ParseContext)!;
   const { locale } = params;
   const [user, setUser] = useState<Parse.User | undefined>(undefined);
   const [proposals, setProposals] = useState<Parse.Object[]>([]);
+  const [visibleProposals, setVisibleProposals] = useState<Parse.Object[]>([]);
   const [message, setMessage] = useState<MessageProps | undefined>(undefined);
   const [skip, setSkip] = useState(parseInt(searchParams.get('skip') || '0'));
-  const [limit, setLimit] = useState(parseInt(searchParams.get('limit') || '10'));
   const [selectedProposal, setSelectedProposal] = useState<Parse.Object | undefined>(undefined);
   const [rating, setRating] = useState<number>(0);
   const [comment, setComment] = useState<string>('');
+  const [visible, setVisible] = useState<string>(params.visible || 'all');
   const [votes, setVotes] = useState<Parse.Object[]>([]);
   // const schema = useSchema(locale!);
   const { t } = setLang(locale!);
@@ -33,12 +35,21 @@ export default function AdminVoteIndex() {
   useEffect(() => {
     getProposals();
     getVotes();
-  }, [user, skip, limit]);
+  }, [user, skip]);
+
+  useEffect(() => {
+    if (visible === 'all') {
+      setVisibleProposals(proposals.slice(skip, skip + 10));
+    } else {
+      setVisibleProposals(proposals
+        .filter(proposal => !votes.some(vote => vote.get('proposal').id === proposal.id))
+        .slice(skip, skip + 10));
+    }
+  }, [visible, proposals, votes]);
 
   const getProposals = async () => {
     if (!user) return;
     const query = new Parse.Query('Proposal');
-    setLimit(limit);
     setSkip(skip);
     query.notEqualTo('user', user);
     query.limit(limit);
@@ -76,7 +87,6 @@ export default function AdminVoteIndex() {
     }
     const vote = votes.find(vote => vote.get('proposal').id === proposal.id || vote.get('proposal').objectId === proposal.id);
     if (vote) {
-      console.log(vote);
       setRating(vote.get('rating'));
       setComment(vote.get('comment'));
     }
@@ -86,7 +96,7 @@ export default function AdminVoteIndex() {
     if (!user) return;
     const query = new Parse.Query('Vote');
     query.equalTo('user', user);
-    query.limit(1000);
+    query.limit(limit);
     const votes = await query.find() as Parse.Object[];
     setVotes(votes);
   };
@@ -143,6 +153,7 @@ export default function AdminVoteIndex() {
     vote.set('rating', rating);
     vote.set('comment', comment);
     await vote.save();
+    setVotes([...votes, vote]);
     setMessage({
       type: 'success',
       messages: [t('Vote submitted successfully')],
@@ -151,8 +162,8 @@ export default function AdminVoteIndex() {
       setMessage(undefined);
     }, 3000);
     setRating(0);
-    setComment('');
     setSelectedProposal(undefined);
+    setComment('');
   };
 
   return (
@@ -174,8 +185,8 @@ export default function AdminVoteIndex() {
               </div>
               <div className="row">
                 <div className="col-12 d-flex justify-content-end">
-                  <Link to={`/${locale}/admin/votes/?visible=all`} className="btn btn-primary mx-2">All</Link>
-                  <Link to={`/${locale}/admin/votes/?visible=not_voted`} className="btn btn-primary mx-2">Only not voted</Link>
+                  <button onClick={() => setVisible('all')} className={`btn mx-2 ${visible === 'all' ? 'btn-primary' : ''}`}>All</button>
+                  <button onClick={() => setVisible('not_voted')} className={`btn mx-2 ${visible === 'not_voted' ? 'btn-primary' : ''}`}>Only not voted</button>
                 </div>
               </div>
             </div>
@@ -192,7 +203,7 @@ export default function AdminVoteIndex() {
                   </tr>
                 </thead>
                 <tbody>
-                  {proposals.map((proposal, index) => (
+                  {visibleProposals.map((proposal, index) => (
                     <>
                       <tr key={index}>
                         <td>
