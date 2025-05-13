@@ -42,6 +42,7 @@ export default function Page() {
             <>
               <RemixHead>
                 <title>{`${meta.title} - DevRelKaigi 2025`}</title>
+                <meta name="description" content={meta.description} />
               </RemixHead>
               <Breadcrumb items={[
                 { label: t('Home'), href: `/${locale}` },
