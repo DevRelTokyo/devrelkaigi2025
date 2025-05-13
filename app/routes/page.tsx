@@ -13,16 +13,16 @@ import yaml from "yaml";
 
 interface PageResponse {
   meta: {
-    title: string;
-    date: string;
+    readonly title: string;
+    readonly date: string;
   };
-  body: string;
+  readonly body: string;
 }
 
 export default function Page() {
   const md = markdownIt();
   const { locale, page } = useParams();
-  const { t } = setLang(locale!);
+  const { t } = setLang(locale || 'en');
   const { data, isLoading } = useSSR<PageResponse | undefined>(async () => {
     const filePath = path.join(process.cwd(), 'app', 'pages', `${locale}`, `${page}.md`);
     try {
@@ -50,21 +50,20 @@ export default function Page() {
       >
         <div className="row">
           <div className="col-8 offset-2">
-            {isLoading && (
+            {isLoading ? (
               <div>loading</div>
-            )}
-            {data && (
+            ) : (
               <>
                 <RemixHead>
                   <title>{`${meta.title} - DevRelKaigi 2025`}</title>
                 </RemixHead>
                 <Breadcrumb items={[
                   { label: t('Home'), href: `/${locale}` },
-                  { label: meta.title! }
+                  { label: meta.title || 'Page' }
                 ]} />
                 <div
                   className="article-body"
-                  dangerouslySetInnerHTML={{ __html: md.render(body as string) }}
+                  dangerouslySetInnerHTML={{ __html: md.render(body) }}
                 />
               </>
             )}
