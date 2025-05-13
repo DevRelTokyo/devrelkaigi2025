@@ -40,6 +40,7 @@ export default defineConfig({
           route(":locale/admin/roles/new", "routes/admin/roles/new.tsx");
           route(":locale/admin/roles/:id", "routes/admin/roles/show.tsx");
           route(":locale/contact", "routes/contact.tsx");
+          route(":locale/:page", "routes/page.tsx");
         });
       },
     }),

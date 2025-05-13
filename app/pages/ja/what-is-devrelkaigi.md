@@ -1,0 +1,70 @@
+---
+title: "DevRelKaigi 2025 について"
+description: "DevRelKaigi 2025 について"
+---
+
+# DevRelKaigi 2025 について
+
+DevRelKaigiは、[DevRel/Tokyo](https://devrel.tokyo/)が主催する国際的なDevRelカンファレンスになります。
+
+### 意味
+
+DevRelKaigiは、DevRel + Kaigi（会議）の造語です。DevRelに関する会議を意味しています。
+
+### フォーマット
+
+DevRelKaigiは、日本語および英語のトラックを設けます。複数日（2025年は3日間）で開催されます。
+
+#### 10月2日（木）
+
+ワークショップデー（日本語のみ）@ソニー
+
+#### 10月3日（金）
+
+ビジネス・マーケティングデー（日本語および英語）@市ヶ谷（東京）
+
+**主なトピック**
+
+- DevRelのKPI
+- 経営層から見るDevRelの価値
+- 開発者マーケティング
+- チームマネジメント
+
+#### 10月4日（土）
+
+デベロッパー・コミュニティデー（日本語および英語）@市ヶ谷（東京）
+
+**主なトピック**
+
+- コミュニティ運営
+- 個人のDevRel体験
+- キャリア
+- 開発体験（DevX）
+- ブログ・ドキュメント
+- イベント
+
+### DevRel/Tokyoについて
+
+DevRel/Tokyoは[一般社団法人DevRel](https://devrel.tokyo/about/association/)により運営されているコミュニティになります。2015年9月に開始され、国内外におけるDevRelの発展を目指しています。
+
+### 過去のカンファレンス
+
+DevRelKaigiは2025年から行われています。過去はDevRel/Japan CONFERENCEという名前で、日本語のみで行われていました。
+
+- [DEVREL/JAPAN CONFERENCE 2019](https://devrel.tokyo/japan-2019/)
+- [DEVREL/JAPAN CONFERENCE 2021](https://devrel.tokyo/japan-2021/)
+- [DEVREL/JAPAN CONFERENCE 2022](https://devrel.tokyo/japan-2022/)
+- [DEVREL/JAPAN CONFERENCE 2023](https://devrel.tokyo/japan-2023/)
+- [DEVREL/JAPAN CONFERENCE 2024](https://devrel.tokyo/japan-2024/)
+
+また、MOONGIFT社主催のDevRelCon Tokyo/Yokohamaシリーズの運営も行っています。こちらは英語トラックです。
+
+- [DevRelCon Tokyo 2017](https://developerrelations.com/devrelcon/devrelcon-tokyo-2017/)
+- [DevRelCon Tokyo 2018](https://developerrelations.com/devrelcon/devrelcon-tokyo-2018/)
+- [DevRelCon Tokyo 2019](https://developerrelations.com/devrelcon/devrelcon-tokyo-2019/)
+- [DevRelCon Tokyo 2021](https://developerrelations.com/devrelcon/devrelcon-tokyo-2021/)
+- [DevRelCon Yokohama 2023](https://developerrelations.com/devrelcon/devrelcon-yokohama-2023/)
+
+DevRelCon Yokohama 2023では、初の日英トラックにて実施しており、その経験をDevRelKaigi 2025に活かしています。
+
+![DevRelCon Yokohama 2023](https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/754d2ed77c1b00756b297246bdae73c8_pxoh9haypfq.jpeg)
