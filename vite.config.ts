@@ -4,6 +4,7 @@ import {
 } from "@remix-run/dev";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+import mdx from '@mdx-js/rollup';
 
 declare module "@remix-run/node" {
   interface Future {
@@ -14,6 +15,7 @@ declare module "@remix-run/node" {
 export default defineConfig({
   plugins: [
     remixCloudflareDevProxy(),
+    mdx(),
     remix({
       future: {
         v3_fetcherPersist: true,

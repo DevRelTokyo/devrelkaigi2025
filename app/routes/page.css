@@ -1,0 +1,19 @@
+.page-body h1 {
+  padding-bottom: 1rem;
+}
+
+.page-body h2 {
+  padding-top: 1rem;
+}
+
+.page-body h3 {
+  padding-top: 1rem;
+}
+
+.page-body p {
+  padding-bottom: 1rem;
+}
+
+.page-body img {
+  max-width: 100%;
+}

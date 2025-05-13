@@ -3,42 +3,32 @@ import FooterMain from "~/components/footerMain";
 import FooterSub from "~/components/footerSub";
 import Navi from "~/components/navi";
 import { setLang } from "~/utils/i18n";
-import { useSSR } from "next-ssr";
-import markdownIt from "markdown-it";
 import { RemixHead } from "remix-head";
 import Breadcrumb from "~/components/breadcrumb";
-import fs from "fs";
-import path from "path";
-import yaml from "yaml";
 
-interface PageResponse {
-  meta: {
-    readonly title: string;
-    readonly date: string;
-  };
-  readonly body: string;
-}
+import "./page.css";
+import "~/types/page.d";
+
+import * as WhatIsDevRelKaigiEn from "~/pages/en/what-is-devrelkaigi.mdx";
+import * as WhatIsDevRelKaigiJa from "~/pages/ja/what-is-devrelkaigi.mdx";
+
+const pages = {
+  'what-is-devrelkaigi': {
+    en: WhatIsDevRelKaigiEn,
+    ja: WhatIsDevRelKaigiJa,
+  },
+} as const;
+
+const getPage = (locale: string, page: string) =>
+  pages[page as keyof typeof pages]?.[locale as 'en' | 'ja'];
 
 export default function Page() {
-  const md = markdownIt();
   const { locale, page } = useParams();
   const { t } = setLang(locale || 'en');
-  const { data, isLoading } = useSSR<PageResponse | undefined>(async () => {
-    const filePath = path.join(process.cwd(), 'app', 'pages', `${locale}`, `${page}.md`);
-    try {
-      const file = fs.readFileSync(filePath, 'utf8');
-      const [_, metaData, body] = file.split('---');
-      const meta = yaml.parse(metaData);
-      return {
-        meta,
-        body: body
-      };
-    } catch (error) {
-      return undefined;
-    }
-  }, { key: JSON.stringify({ locale, page }) });
-  if (!data) return <div>loading...</div>;
-  const { meta, body } = data;
+  const pageData = getPage(locale!, page!);
+  if (!pageData) return <div>404</div>;
+  const Component = pageData.default;
+  const meta = pageData.meta;
   return (
     <>
       <Navi />
@@ -50,23 +40,19 @@ export default function Page() {
       >
         <div className="row">
           <div className="col-8 offset-2">
-            {isLoading ? (
-              <div>loading</div>
-            ) : (
-              <>
-                <RemixHead>
-                  <title>{`${meta.title} - DevRelKaigi 2025`}</title>
-                </RemixHead>
-                <Breadcrumb items={[
-                  { label: t('Home'), href: `/${locale}` },
-                  { label: meta.title || 'Page' }
-                ]} />
-                <div
-                  className="article-body"
-                  dangerouslySetInnerHTML={{ __html: md.render(body) }}
-                />
-              </>
-            )}
+            <>
+              <RemixHead>
+                <title>{`${meta.title} - DevRelKaigi 2025`}</title>
+                <meta name="description" content={meta.description} />
+              </RemixHead>
+              <Breadcrumb items={[
+                { label: t('Home'), href: `/${locale}` },
+                { label: meta.title || 'Page' }
+              ]} />
+              <div className="page-body">
+                <Component />
+              </div>
+            </>
           </div>
         </div>
       </div>
