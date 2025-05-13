@@ -12,14 +12,15 @@ import "~/types/page.d";
 import * as WhatIsDevRelKaigiEn from "~/pages/en/what-is-devrelkaigi.mdx";
 import * as WhatIsDevRelKaigiJa from "~/pages/ja/what-is-devrelkaigi.mdx";
 
-const getPage = (locale: string, page: string) => {
-  if (page === 'what-is-devrelkaigi') {
-    return locale === 'en' ?
-      WhatIsDevRelKaigiEn :
-      WhatIsDevRelKaigiJa;
-  }
-  return undefined;
-};
+const pages = {
+  'what-is-devrelkaigi': {
+    en: WhatIsDevRelKaigiEn,
+    ja: WhatIsDevRelKaigiJa,
+  },
+} as const;
+
+const getPage = (locale: string, page: string) =>
+  pages[page as keyof typeof pages]?.[locale as 'en' | 'ja'];
 
 export default function Page() {
   const { locale, page } = useParams();
