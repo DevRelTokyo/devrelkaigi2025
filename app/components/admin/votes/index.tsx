@@ -37,15 +37,25 @@ export default function AdminVoteIndex() {
     getVotes();
   }, [user, skip]);
 
-  useEffect(() => {
+  const updateVisibleProposals = () => {
     if (visible === 'all') {
       setVisibleProposals(proposals.slice(skip, skip + 10));
+      setSelectedProposal(undefined);
     } else {
       setVisibleProposals(proposals
         .filter(proposal => !votes.some(vote => vote.get('proposal').id === proposal.id))
         .slice(skip, skip + 10));
+      setSelectedProposal(undefined);
     }
-  }, [visible, proposals, votes]);
+  }
+
+  useEffect(() => {
+    updateVisibleProposals();
+  }, [visible, proposals, skip]);
+
+  useEffect(() => {
+    updateVisibleProposals();
+  }, [votes]);
 
   const getProposals = async () => {
     if (!user) return;

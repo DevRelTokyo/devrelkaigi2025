@@ -6,8 +6,7 @@ import { setLang } from "~/utils/i18n";
 import { RemixHead } from "remix-head";
 import Breadcrumb from "~/components/breadcrumb";
 
-import "./page.css";
-import "~/types/page.d";
+import "~/styles/page.css";
 
 import * as WhatIsDevRelKaigiEn from "~/pages/en/what-is-devrelkaigi.mdx";
 import * as WhatIsDevRelKaigiJa from "~/pages/ja/what-is-devrelkaigi.mdx";

@@ -35,6 +35,7 @@ export default defineConfig({
           route(":locale/proposals/:id/edit", "routes/proposals/edit.tsx");
           route(":locale/proposals/new", "routes/proposals/new.tsx");
           route(":locale/admin/votes", "routes/admin/votes/index.tsx", { index: true });
+          route(":locale/admin/proposals", "routes/admin/proposals/index.tsx", { index: true });
           route(":locale/admin/articles", "routes/admin/articles/index.tsx", { index: true });
           route(":locale/admin/articles/:id/edit", "routes/admin/articles/edit.tsx");
           route(":locale/admin/articles/new", "routes/admin/articles/new.tsx");
