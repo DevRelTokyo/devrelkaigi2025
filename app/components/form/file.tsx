@@ -46,16 +46,35 @@ export default function File({ key, name, accept, label, value, message, preview
         backgroundColor: '#f0f0f0',
         border: '5px dotted #f00',
       });
-      setInterval(() => {
+      setTimeout(() => {
         setMessageText(message!);
         setStyle(defaultStyle);
       }, 3000);
       return;
     }
-    const newFile = new Parse.File(file?.name, file);
-    await newFile.save();
-    setFile(newFile);
-    onChange(newFile);
+    // random file name
+    const fileName = `${Date.now()}-${Math.random().toString(36).substring(2, 15)}`;
+    const ext = file?.name.split('.').pop();
+    const newFile = new Parse.File(`${fileName}.${ext}`, file);
+    try {
+      await newFile.save();
+      setFile(newFile);
+      onChange(newFile);
+    } catch (error) {
+      setMessageText((error as Parse.Error).message);
+      setStyle({
+        ...style,
+        backgroundColor: '#ffcccc',
+        fontSize: '18px',
+        color: '#000',
+        fontWeight: 'bold',
+        border: '8px dotted #f00',
+      });
+      setTimeout(() => {
+        setMessageText(message!);
+        setStyle(defaultStyle);
+      }, 10000);
+    }
   };
 
   const onDragleave = (e: React.DragEvent<HTMLDivElement>) => {
