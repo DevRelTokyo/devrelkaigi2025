@@ -62,20 +62,22 @@ export default function ProposalForm({ cfp }: ProposalFormProps) {
       proposal.set('lang', locale);
       setProposal(proposal);
     } catch (error) {
-      console.error('提案のコピー中にエラーが発生しました:', error);
       setMessage({
         type: 'error',
         messages: ['提案のコピーに失敗しました。']
       });
+      setTimeout(() => {
+        setMessage(undefined);
+      }, 3000);
     }
   }
 
   const getProposal = async () => {
-    if (!id && !copy) {
-      return setProposal(new Parse.Object('Proposal'));
-    }
     if (copy) {
       return copyProposal(copy);
+    }
+    if (!id) {
+      return setProposal(new Parse.Object('Proposal'));
     }
     const query = new Parse.Query('Proposal');
     query.include('cfp');
