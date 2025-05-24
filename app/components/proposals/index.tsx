@@ -2,15 +2,15 @@ import { setLang } from "~/utils/i18n";
 import { useSchema } from "~/schemas/proposal";
 import { editable } from "./utils";
 import { useState, useEffect, useContext } from "react";
-import { useParams } from "@remix-run/react";
+import { Link, useParams } from "@remix-run/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faCopy, faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { ParseContext } from "~/contexts/parse";
 
 export default function ProposalIndex() {
   const { Parse } = useContext(ParseContext)!;
   const [user, setUser] = useState<Parse.User | undefined>(undefined);
-
+  const [cfp, setCfp] = useState<Parse.Object | undefined>(undefined);
   const [proposals, setProposals] = useState<Parse.Object[]>([]);
   const params = useParams();
   const { locale } = params;
@@ -18,10 +18,19 @@ export default function ProposalIndex() {
   const schema = useSchema(locale!);
   useEffect(() => {
     setUser(Parse.User.current());
+    getCfp();
   }, []);
   useEffect(() => {
     getProposals();
   }, [user]);
+
+  const getCfp = async () => {
+    const query = new Parse.Query('CFP');
+    query.lessThanOrEqualTo('start_at', new Date());
+    query.greaterThanOrEqualTo('end_at', new Date());
+    const cfp = await query.first();
+    setCfp(cfp);
+  };
 
   const getProposals = async () => {
     if (!user) return;
@@ -80,9 +89,11 @@ export default function ProposalIndex() {
                       <h2>{t('My proposals')}</h2>
                     </div>
                     <div className="col-4 text-right">
-                      <a href={`/${locale}/proposals/new`}
-                        className="btn btn-primary"
-                      >{t('Send a proposal')}</a>
+                      {cfp && (
+                        <a href={`/${locale}/proposals/new`}
+                          className="btn btn-primary"
+                        >{t('Send a proposal')}</a>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -127,7 +138,13 @@ export default function ProposalIndex() {
                                 </button>
                               </>
                             ) : (
-                              <FontAwesomeIcon icon={faPenToSquare} style={{ width: 25, height: 25, color: '#ccc' }} />
+                              <>
+                                {cfp && (
+                                  <Link to={`/${locale}/proposals/new?copy=${proposal.id}`} className="btn">
+                                    <FontAwesomeIcon icon={faCopy} style={{ width: 25, height: 25 }} title={t('Copy proposal to next CFP')} />
+                                  </Link>
+                                )}
+                              </>
                             )
                             }
                           </td>

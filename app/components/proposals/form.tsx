@@ -1,7 +1,7 @@
 import Form from '../form/';
 import { useSchema } from '~/schemas/proposal';
 import { setLang } from '~/utils/i18n';
-import { useParams } from '@remix-run/react';
+import { useParams, useSearchParams } from '@remix-run/react';
 import { useContext, useEffect, useState } from 'react';
 import { ParseContext } from '~/contexts/parse';
 import { Icon } from '@iconify/react/dist/iconify.js';
@@ -17,6 +17,8 @@ export default function ProposalForm({ cfp }: ProposalFormProps) {
   const { Parse } = useContext(ParseContext)!;
   const { login, user } = useContext(UserContext)!;
   const params = useParams();
+  const [searchParams] = useSearchParams();
+  const copy = searchParams.get('copy');
   const { locale, id } = params;
   const { t } = setLang(locale!);
   const schema = useSchema(locale!);
@@ -35,9 +37,29 @@ export default function ProposalForm({ cfp }: ProposalFormProps) {
     }
   }, [cfp]);
 
+  const copyProposal = async (id: string) => {
+    const query = new Parse.Query('Proposal');
+    const copy = await query.get(id);
+    const proposal = new Parse.Object('Proposal');
+    if (!copy) return;
+    for (const key in copy.toJSON()) {
+      if (['objectId', 'createdAt', 'updatedAt', 'ACL', 'user', 'cfp', 'deadline', 'is_enabled', 'review', 'key', 'responseStatus', 'rating', 'status'].includes(key)) {
+        continue;
+      }
+      proposal.set(key, copy.get(key));
+    }
+    proposal.set('user', user);
+    proposal.set('cfp', cfp);
+    proposal.set('lang', locale);
+    setProposal(proposal);
+  }
+
   const getProposal = async () => {
-    if (!id) {
+    if (!id && !copy) {
       return setProposal(new Parse.Object('Proposal'));
+    }
+    if (copy) {
+      return copyProposal(copy);
     }
     const query = new Parse.Query('Proposal');
     query.include('cfp');
