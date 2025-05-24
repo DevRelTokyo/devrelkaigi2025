@@ -1,5 +1,3 @@
-import Form from '../form/';
-import { useSchema } from '~/schemas/proposal';
 import { setLang } from '~/utils/i18n';
 import { Link, useParams } from '@remix-run/react';
 import { useContext, useEffect, useState } from 'react';
@@ -15,10 +13,8 @@ export default function ProposalForm() {
   const params = useParams();
   const { locale, id } = params;
   const { t } = setLang(locale!);
-  const schema = useSchema(locale!);
   const [proposal, setProposal] = useState<Parse.Object | undefined>();
   const [message, setMessage] = useState<MessageProps | undefined>(undefined);
-  const [status, setStatus] = useState<string>('');
 
   useEffect(() => {
     getProposal();
