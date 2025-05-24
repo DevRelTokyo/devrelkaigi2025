@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { ParseContext } from "~/contexts/parse";
 import { setLang } from "~/utils/i18n";
 import Message, { MessageProps } from "~/components/message";
-import { faThumbsDown, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faThumbsDown, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function AdminProposalIndex() {
@@ -48,11 +48,10 @@ export default function AdminProposalIndex() {
         profile.set('lang', proposal.get('lang'));
         profile.set('name', proposal.get('user').get('username'));
         proposal.set('profile', profile);
-      } else if (userProfiles.length === 1) {
-        proposal.set('profile', userProfiles[0]);
-      } else {
-        proposal.set('profile', userProfiles.find(p => p.get('lang') === proposal.get('lang')));
+        return;
       }
+      const userProfile = userProfiles.find(p => p.get('lang') === proposal.get('lang')) || userProfiles[0];
+      proposal.set('profile', userProfile);
     });
     setProposals(proposals);
   };
@@ -66,6 +65,16 @@ export default function AdminProposalIndex() {
     setTimeout(() => {
       setMessage(undefined);
     }, 3000);
+    getProposals();
+  }
+
+  const acceptProposal = async (proposal: Parse.Object) => {
+    await Parse.Cloud.run('acceptProposal', { proposalId: proposal.id });
+    getProposals();
+  }
+
+  const rejectProposal = async (proposal: Parse.Object) => {
+    await Parse.Cloud.run('rejectProposal', { proposalId: proposal.id });
     getProposals();
   }
 
@@ -100,6 +109,7 @@ export default function AdminProposalIndex() {
                     <th style={{ whiteSpace: 'nowrap' }}>{t('Category')}</th>
                     <th style={{ whiteSpace: 'nowrap' }}>{t('Session Title')}</th>
                     <th style={{ whiteSpace: 'nowrap' }}>{t('Name')}</th>
+                    <th style={{ whiteSpace: 'nowrap' }}>{t('Email')}</th>
                     <th style={{ whiteSpace: 'nowrap' }}>{t('Rating')}</th>
                     <th style={{ whiteSpace: 'nowrap' }}>{t('Actions')}</th>
                   </tr>
@@ -118,21 +128,43 @@ export default function AdminProposalIndex() {
                           {proposal.get('title')}
                         </td>
                         <td>
-                          {proposal.get('rating').toFixed(2)}
-                        </td>
-                        <td>
                           {proposal.get('profile')?.get('name')}
                         </td>
                         <td>
-                          <button className="btn btn-sm" onClick={() => { }}>
-                            <FontAwesomeIcon icon={faThumbsUp} style={{ width: 25, height: 25, color: 'green' }} />
-                          </button>
-                          {' '}
-                          <button className="btn btn-sm" onClick={() => { }}>
-                            <FontAwesomeIcon icon={faThumbsDown} style={{ width: 25, height: 25, color: 'red' }} />
-                          </button>
+                          {proposal.get('profile')?.get('email') ?
+                            <FontAwesomeIcon icon={faEnvelope} style={{ width: 25, height: 25, color: 'blue' }} />
+                            :
+                            ''
+                          }
                         </td>
-                      </tr>
+                        <td>
+                          {proposal.get('rating').toFixed(2)}
+                        </td>
+                        <td>
+                          {typeof proposal.get('responseStatus') !== 'undefined' ? (
+                            proposal.get('responseStatus') ?
+                              <span className="text-success">{t('Accepted')}</span>
+                              :
+                              <span className="text-danger">{t('Rejected')}</span>
+                          ) : (
+                            proposal.get('review') ?
+                              <span className="text-warning">{t('Done')}</span>
+                              :
+                              <div className="row">
+                                <div className="col-6">
+                                  <button className="btn btn-sm" onClick={() => acceptProposal(proposal)}>
+                                    <FontAwesomeIcon icon={faThumbsUp} style={{ width: 25, height: 25, color: 'green' }} />
+                                  </button>
+                                </div>
+                                <div className="col-6">
+                                  <button className="btn btn-sm" onClick={() => rejectProposal(proposal)}>
+                                    <FontAwesomeIcon icon={faThumbsDown} style={{ width: 25, height: 25, color: 'red' }} />
+                                  </button>
+                                </div>
+                              </div>
+                          )}
+                        </td>
+                      </tr >
                     </>
                   ))}
                 </tbody>
@@ -156,7 +188,7 @@ export default function AdminProposalIndex() {
             </div>
           </div>
 
-        </div>
+        </div >
       </>
       :
       <>{t('Loading...')}</>
