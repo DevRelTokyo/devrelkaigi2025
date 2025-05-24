@@ -38,20 +38,36 @@ export default function ProposalForm({ cfp }: ProposalFormProps) {
   }, [cfp]);
 
   const copyProposal = async (id: string) => {
-    const query = new Parse.Query('Proposal');
-    const copy = await query.get(id);
-    const proposal = new Parse.Object('Proposal');
-    if (!copy) return;
-    for (const key in copy.toJSON()) {
-      if (['objectId', 'createdAt', 'updatedAt', 'ACL', 'user', 'cfp', 'deadline', 'is_enabled', 'review', 'key', 'responseStatus', 'rating', 'status'].includes(key)) {
-        continue;
+    try {
+      const query = new Parse.Query('Proposal');
+      const copy = await query.get(id);
+      const proposal = new Parse.Object('Proposal');
+      if (!copy) return;
+
+      // より包括的な除外フィールドリスト
+      for (const key in copy.toJSON()) {
+        if ([
+          'objectId', 'createdAt', 'updatedAt', 'ACL',
+          'user', 'cfp', 'deadline', 'is_enabled',
+          'review', 'key', 'responseStatus', 'rating',
+          'status', 'sessionId', 'sessionKey'
+        ].includes(key)) {
+          continue;
+        }
+        proposal.set(key, copy.get(key));
       }
-      proposal.set(key, copy.get(key));
+
+      proposal.set('user', user);
+      proposal.set('cfp', cfp);
+      proposal.set('lang', locale);
+      setProposal(proposal);
+    } catch (error) {
+      console.error('提案のコピー中にエラーが発生しました:', error);
+      setMessage({
+        type: 'error',
+        messages: ['提案のコピーに失敗しました。']
+      });
     }
-    proposal.set('user', user);
-    proposal.set('cfp', cfp);
-    proposal.set('lang', locale);
-    setProposal(proposal);
   }
 
   const getProposal = async () => {
