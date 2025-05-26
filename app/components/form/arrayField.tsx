@@ -81,7 +81,7 @@ export default function ArrayField({ key, name, schema, label, value, help, onCh
                         placeholder={schema.placeholder!}
                         required={schema.required!}
                         value={v as string}
-                        onChange={(value: string) => change(i, value)}
+                        onChange={(value: string) => setValues(values.map((v, j) => j === i ? value : v))}
                       />
                     }
                   </div>
