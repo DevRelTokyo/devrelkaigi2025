@@ -62,6 +62,7 @@ export default function AdminVoteIndex() {
     const query = new Parse.Query('Proposal');
     setSkip(skip);
     query.notEqualTo('user', user);
+    query.doesNotExist('review');
     query.limit(limit);
     query.skip(skip);
     // query.include('user');

@@ -22,11 +22,6 @@ export default function ArrayField({ key, name, schema, label, value, help, onCh
     setValues([...values, '']);
   };
 
-  const change = (i: number, value: string) => {
-    values[i] = value;
-    setValues(values);
-  };
-
   const remove = (i: number) => {
     values.splice(i, 1)
     setValues([...values]);

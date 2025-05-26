@@ -43,6 +43,9 @@ export default defineConfig({
           route(":locale/admin/roles", "routes/admin/roles/index.tsx", { index: true });
           route(":locale/admin/roles/new", "routes/admin/roles/new.tsx");
           route(":locale/admin/roles/:id", "routes/admin/roles/show.tsx");
+          route(":locale/admin/templates", "routes/admin/templates/index.tsx", { index: true });
+          route(":locale/admin/templates/:id/edit", "routes/admin/templates/edit.tsx");
+          route(":locale/admin/templates/new", "routes/admin/templates/new.tsx");
           route(":locale/contact", "routes/contact.tsx");
           route(":locale/:page", "routes/page.tsx");
         });
