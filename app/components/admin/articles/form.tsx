@@ -65,6 +65,7 @@ export default function ArticleForm() {
 		try {
       const acl = getAcl();
       article!.setACL(acl);
+      article.set('year', parseInt(import.meta.env.YEAR));
 			await article!.save();
 			setStatus('');
 			setMessage({

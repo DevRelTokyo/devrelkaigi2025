@@ -1,4 +1,4 @@
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useParams } from "@remix-run/react";
 import { useContext, useEffect, useState } from "react";
@@ -16,6 +16,7 @@ export default function ProposalIndex() {
   useEffect(() => {
     setUser(Parse.User.current());
   }, []);
+
   useEffect(() => {
     getProfiles();
   }, [user]);
@@ -34,6 +35,16 @@ export default function ProposalIndex() {
       profiles.push(profile);
     });
     setProfiles(profiles);
+  };
+
+  const deleteProfile = async (profile: Parse.Object) => {
+    if (!window.confirm(t('Are you sure you want to delete this profile?'))) return;
+    try {
+      await profile.destroy();
+      setProfiles(profiles.filter(p => p.id !== profile.id));
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -83,6 +94,11 @@ export default function ProposalIndex() {
                         <a href={`/${profile.get('lang')}/profiles/${profile.get('slug')}/edit`}>
                           <FontAwesomeIcon icon={faPenToSquare} style={{ width: 25, height: 25 }} />
                         </a>
+                        { profile.id && (
+                          <button className="btn" onClick={() => deleteProfile(profile)}>
+                            <FontAwesomeIcon icon={faTrash} style={{ width: 25, height: 25, color: 'red' }} />
+                          </button>
+                        )}
                       </td>
                     </tr>
                   ))}

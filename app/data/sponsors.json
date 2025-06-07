@@ -1,0 +1,28 @@
+[
+  {
+    "name": "MagicPod",
+    "level": "silver",
+    "logo": {
+      "__type": "File",
+      "name": "6df6f7fa513f81ce8433569256913e34_1748758720538-0m59fnpzql2.png",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/6df6f7fa513f81ce8433569256913e34_1748758720538-0m59fnpzql2.png"
+    },
+    "url": "https://magicpod.com/",
+    "createdAt": "2025-06-01T06:18:54.187Z",
+    "updatedAt": "2025-06-07T01:28:19.552Z",
+    "year": 2025,
+    "ACL": {
+      "*": {
+        "read": true
+      },
+      "role:Organizer2025": {
+        "read": true,
+        "write": true
+      },
+      "role:Admin": {
+        "write": true
+      }
+    },
+    "objectId": "Cu3xbo2MmC"
+  }
+]

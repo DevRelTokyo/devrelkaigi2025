@@ -35,6 +35,7 @@ export default defineConfig({
           route(":locale/proposals/:id/edit", "routes/proposals/edit.tsx");
           route(":locale/proposals/:id/response", "routes/proposals/response.tsx");
           route(":locale/proposals/new", "routes/proposals/new.tsx");
+          route(":locale/organizers/:slug", "routes/organizers/show.tsx");
           route(":locale/admin/votes", "routes/admin/votes/index.tsx", { index: true });
           route(":locale/admin/proposals", "routes/admin/proposals/index.tsx", { index: true });
           route(":locale/admin/articles", "routes/admin/articles/index.tsx", { index: true });
@@ -46,6 +47,9 @@ export default defineConfig({
           route(":locale/admin/templates", "routes/admin/templates/index.tsx", { index: true });
           route(":locale/admin/templates/:id/edit", "routes/admin/templates/edit.tsx");
           route(":locale/admin/templates/new", "routes/admin/templates/new.tsx");
+          route(":locale/admin/sponsors", "routes/admin/sponsors/index.tsx", { index: true });
+          route(":locale/admin/sponsors/:id/edit", "routes/admin/sponsors/edit.tsx");
+          route(":locale/admin/sponsors/new", "routes/admin/sponsors/new.tsx");
           route(":locale/contact", "routes/contact.tsx");
           route(":locale/:page", "routes/page.tsx");
         });

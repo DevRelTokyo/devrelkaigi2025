@@ -1,0 +1,235 @@
+[
+  {
+    "socials": [
+      "https://github.com/cafedeaqua"
+    ],
+    "name": "cafedeaqua",
+    "image_url": "https://avatars.githubusercontent.com/u/2134138?v=4",
+    "profile": null,
+    "organization": null,
+    "slug": "cafedeaqua",
+    "lang": "en"
+  },
+  {
+    "lang": "en",
+    "name": "Atsushi",
+    "image_url": "https://avatars.githubusercontent.com/u/5709?v=4",
+    "slug": "goofmint",
+    "socials": [
+      "http://github.com/goofmint",
+      "http://facebook.com/goofmint",
+      "https://www.linkedin.com/in/goofmint/",
+      "https://github.com/goofmint"
+    ],
+    "organization": "MOONGIFT Inc.",
+    "title": "CEO",
+    "profile": "CEO of MOONGIFT. CodeRabbit developer adocate. Worked at several companies as a programmer and engineer, and became independent at the age of 28. In 2004, he set up the ‘MOONGIFT’ technical blog for open source software, which was still lacking in information at the time, and has been sending out information every day. In 2013, he incorporated and started ‘DevRel’ activities, which are evangelist activities that connect business and engineers. His social ID is all goofmint.",
+    "image_file": {
+      "__type": "File",
+      "name": "a13bbe8140f204a4287b39372afd760a_1747919658246-worc85z1tfi.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/a13bbe8140f204a4287b39372afd760a_1747919658246-worc85z1tfi.jpg"
+    }
+  },
+  {
+    "socials": [
+      "https://facebook.com/goofmint",
+      "https://www.linkedin.com/in/goofmint/",
+      "https://x.com/goofmint",
+      "http://github.com/goofmint"
+    ],
+    "slug": "goofmint",
+    "lang": "ja",
+    "profile": "株式会社MOONGIFT代表取締役。CodeRabbitアドボケイト。プログラマ、エンジニアとしていくつかの企業で働き、28歳のときに独立。2004年、まだ情報が少なかったオープンソースソフトの技術ブログ『MOONGIFT』を開設し、毎日情報を発信している。2013年に法人化、ビジネスとエンジニアを結ぶエバンジェリスト業「DevRel」活動をスタートした。ソーシャルIDはすべて goofmint。",
+    "name": "中津川篤司",
+    "organization": "株式会社MOONGIFT",
+    "image_file": {
+      "__type": "File",
+      "name": "96fc9c68be8ac2cfe855aeb839f75c5a_atsushi.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/96fc9c68be8ac2cfe855aeb839f75c5a_atsushi.jpg"
+    },
+    "title": "代表取締役"
+  },
+  {
+    "lang": "en",
+    "name": "odasho",
+    "image_url": "https://avatars.githubusercontent.com/u/45335600?v=4",
+    "slug": "odasho0618",
+    "socials": []
+  },
+  {
+    "lang": "en",
+    "name": "藤谷想楽",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocJNr4xWpwMPDeFc3qrKhmRyAf_jqksbFjDSnyBhHXXrb_ycIAv9=s96-c",
+    "slug": "想楽",
+    "socials": []
+  },
+  {
+    "lang": "en",
+    "name": "Koki Miura",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocLUElqD4CjxmcW1MYu0Lpx8pnu_NSacl5SDRbmggJwdZGRZyrV9=s96-c",
+    "slug": "koki",
+    "socials": []
+  },
+  {
+    "socials": [
+      "https://x.com/k_miura_io"
+    ],
+    "slug": "kmiura",
+    "name": "三浦 耕生",
+    "organization": "Acall(株)",
+    "title": "エンジニア",
+    "profile": "これまでゲーム会社のサーバーエンジニアからキャリアをスタートさせて、その後スタートアップのチームリードを行う。現在はオフィスDXのSaaSのバックエンドエンジニアとして、アプリケーション実装からインフラ構築まで幅広く行う。",
+    "lang": "ja"
+  },
+  {
+    "socials": [],
+    "slug": "odasho",
+    "name": "小田 祥平",
+    "organization": "mabl K.K.",
+    "title": "Quality Advocate",
+    "profile": "国内SIerにてインフラやPaaS App開発まで幅広く経験。その後コミュニティ活動をきっかけにMicrosoftに入社し、EvangelistとしてDeveloper Audience Marketingに従事。2022年10月にmablにJoinし、Software TestingやQAの啓蒙活動に取り組む。現在もDevRel/Tokyoを中心に複数のコミュニティを運営&支援。名城大学情報工学部 非常勤講師。iPhone絶対並んで買うおじさん (2011 - 2024)",
+    "image_file": {
+      "__type": "File",
+      "name": "3c5324a1cb12e4e8d4e62db13bef8c00_NewRelic_square.png",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/3c5324a1cb12e4e8d4e62db13bef8c00_NewRelic_square.png"
+    },
+    "lang": "ja"
+  },
+  {
+    "socials": [],
+    "slug": "odasho",
+    "name": "Shohei Oda",
+    "organization": "mabl K.K.",
+    "title": "Quality Advocate",
+    "image_file": {
+      "__type": "File",
+      "name": "e13186df97bc2f070adea42e34e5ef74_NewRelic_square.png",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/e13186df97bc2f070adea42e34e5ef74_NewRelic_square.png"
+    },
+    "profile": "Shohei Oda has extensive experience in the tech industry, beginning his career at a Japanese systems integrator (SIer) where he worked across infrastructure and PaaS application development. Through his active involvement in developer communities, he later joined Microsoft as an Evangelist in Developer Audience Marketing.\nIn October 2022, Shohei joined mabl where he focuses on advocating for Software Testing and QA best practices. He currently manages and supports multiple tech communities, with a primary focus on DevRel/Tokyo initiatives. Shohei also serves as a part-time lecturer in the Faculty of Information Engineering at Meijo University.\nA tech enthusiast at heart, Shohei has been the first person in line to purchase the new iPhone every year since 2019.",
+    "lang": "en"
+  },
+  {
+    "lang": "en",
+    "name": "Miori Kano",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocKtkUlGOo78rYfD9dvAFDkHzazLSjV_S1NMvLCfOpBgVK82w8s=s96-c",
+    "slug": "miori",
+    "socials": []
+  },
+  {
+    "lang": "en",
+    "name": "Yasunori Kihara",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocISKDJtIaSUqRbpiVU49sRt2EX3x9eijKCQJpseRRIzIxYKA0Cz=s96-c",
+    "slug": "yasunori",
+    "socials": [],
+    "organization": "Insight Technology, Inc.",
+    "title": "Product Marketing Manager",
+    "profile": "Product Marketing Manager for Data Management Software.",
+    "image_file": {
+      "__type": "File",
+      "name": "ba4e35f21ce2789650526162462eecde_kihara-square.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/ba4e35f21ce2789650526162462eecde_kihara-square.jpg"
+    }
+  },
+  {
+    "socials": [],
+    "slug": "yasunori",
+    "name": "木原康智",
+    "organization": "株式会社インサイトテクノロジー",
+    "title": "プロダクトマーケティングマネージャー",
+    "image_file": {
+      "__type": "File",
+      "name": "cb43c91d0db0f10b06999a9dc4444077_kihara-square.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/cb43c91d0db0f10b06999a9dc4444077_kihara-square.jpg"
+    },
+    "profile": "データマネジメント関連製品のプロダクトマーケティングマネージャーです。",
+    "lang": "ja"
+  },
+  {
+    "lang": "en",
+    "name": "canonno",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocIPDsFFz3Qr8VuB6L5RMkzsvYSkmZ4ZQz0Sb2zluH2AzVh-2D4=s96-c",
+    "slug": "canonno",
+    "socials": []
+  },
+  {
+    "lang": "en",
+    "name": "佐藤雅子",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocLErRyorYtDmWAxwtejZGaB3OVc8h9XH4U4jIQfd9_H6dIm3Tmg=s96-c",
+    "slug": "雅子",
+    "socials": []
+  },
+  {
+    "lang": "en",
+    "name": "伊藤隼人",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocKa5kSiVqhzPI8JeQ2ZNaKbtlUbmjRngcN2s6skkttm3lngsUTj0Q=s96-c",
+    "slug": "隼人",
+    "socials": [],
+    "organization": "Deloitte Tohmatsu Consulting LLC.",
+    "title": "Manager",
+    "profile": "To be updated "
+  },
+  {
+    "socials": [],
+    "slug": "msato",
+    "name": "Sato Masako",
+    "organization": "株式会社ヴァル研究所",
+    "profile": "APIサービスのマーケティングなどからDevRelに興味",
+    "lang": "ja"
+  },
+  {
+    "lang": "en",
+    "name": "hirofumi matsumoto",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocJV8zxgSbINgHQbkT0hFyiPW_GFTOF9U0Xw9aG73o3PBpPo4LZr=s96-c",
+    "slug": "hirofumi",
+    "socials": [],
+    "organization": "NTT Communications.",
+    "title": "engineer",
+    "profile": "I develop a DevOps platform for our in-house software development teams.",
+    "image_file": {
+      "__type": "File",
+      "name": "8d49e1854a39a353223b74f5030cd7e1_T0EJ99C22-U06D1KSKMPG-7a70a034383d-512.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/8d49e1854a39a353223b74f5030cd7e1_T0EJ99C22-U06D1KSKMPG-7a70a034383d-512.jpg"
+    }
+  },
+  {
+    "socials": [],
+    "slug": "hirofumimatsu",
+    "name": "Hirofumi MATSUMOTO",
+    "organization": "NTT コミュニケーションズ株式会社",
+    "title": "エンジニア",
+    "profile": "社内のソフトウェア開発チーム向けに、DevOpsプラットフォームを開発しています。",
+    "image_file": {
+      "__type": "File",
+      "name": "1bce1492bf94dbcebc4ec0f81cf26464_T0EJ99C22-U06D1KSKMPG-7a70a034383d-512.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/1bce1492bf94dbcebc4ec0f81cf26464_T0EJ99C22-U06D1KSKMPG-7a70a034383d-512.jpg"
+    },
+    "lang": "ja"
+  },
+  {
+    "socials": [],
+    "slug": "canonno",
+    "name": "賀野壮一朗",
+    "image_file": {
+      "__type": "File",
+      "name": "72e3a0a08f98840b82d42fe25b6c311b_IMG_1277.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/72e3a0a08f98840b82d42fe25b6c311b_IMG_1277.jpg"
+    },
+    "profile": "大手飲料メーカーにてAI・ブロックチェーンなどの先端技術導入に従事。",
+    "lang": "ja"
+  },
+  {
+    "socials": [],
+    "slug": "itoha1028",
+    "name": "伊藤 隼人",
+    "organization": "デロイトトーマツコンサルティング合同会社",
+    "title": "Manager",
+    "profile": "企業のクラウドネイティブを推進したいコンサルタント。\nSIer 2社を経て現職。\n主に自動車業界にて、コネクティッドサービスのバックエンドシステム構築に従事。\nプライベートては0歳児育児に奮闘中。",
+    "lang": "ja",
+    "image_file": {
+      "__type": "File",
+      "name": "8a8d22be56a21eec37cc0a125194c62b_1748048360799-ribknlcpgj.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/8a8d22be56a21eec37cc0a125194c62b_1748048360799-ribknlcpgj.jpg"
+    }
+  }
+]

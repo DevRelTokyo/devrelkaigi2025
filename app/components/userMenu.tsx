@@ -10,7 +10,7 @@ export default function UserMenu() {
   const { login, user, logout, roles } = useContext(UserContext)!;
   const [CFP, setCFP] = useState<Parse.Object | undefined>(undefined);
   const [image, setImage] = useState<string>('/assets/images/icon/user.png');
-  const year = typeof window !== 'undefined' ? window.ENV.YEAR : 0;
+  const year = typeof window !== 'undefined' && window.ENV ? window.ENV.YEAR : 0;
 
   const params = useParams();
   const { locale } = params;
@@ -135,6 +135,9 @@ export default function UserMenu() {
                         </li>
                         <li>
                           <Link className="dropdown-item" to={`/${locale}/admin/templates`}>{t('Manage Email Template')}</Link>
+                        </li>
+                        <li>
+                          <Link className="dropdown-item" to={`/${locale}/admin/sponsors`}>{t('Sponsor management')}</Link>
                         </li>
                       </ul>
                     </li>

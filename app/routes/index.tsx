@@ -10,6 +10,7 @@ import Schedule from "~/components/schedule";
 import Speakers from "~/components/speakers";
 import Sponsors from "~/components/sponsors";
 import Subscribe from "~/components/subscribe";
+import Organizers from "~/components/organizers";
 import MapView from "~/components/mapView";
 import { setLang } from "~/utils/i18n";
 
@@ -46,6 +47,7 @@ export default function Index() {
       <Sponsors />
       <Subscribe />
       <MapView />
+      <Organizers />
       <FooterMain />
       <FooterSub />
     </>

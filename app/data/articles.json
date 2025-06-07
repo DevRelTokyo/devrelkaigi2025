@@ -1,0 +1,60 @@
+[
+  {
+    "publishedAt": {
+      "__type": "Date",
+      "iso": "2025-04-24T03:46:00.000Z"
+    },
+    "slug": "what-is-first-cfp",
+    "body": "DevRelKaigi 2025では、各登壇者についてCFPにて公募します。CFPは、以下のスケジュールに従って、複数回実施します。\n\n- CFP1: 2025年1月1日〜2025年3月31日\n- CFP2: 2025年4月1日〜2025年6月30日\n- CFP3: 2025年7月1日〜2025年7月31日\n\n各CFPは締め切った後、運営メンバーおよび複数の識者により、選考を行います。選考後、一定以上の評価を得られたプロポーザルについて、登壇依頼をします。\n\n登壇可否については、1週間以内に返答をお願いします。期限を過ぎた場合、次の候補者に権利が移行しますのでご注意ください。\n\n",
+    "title": "DevRelKaigi 2025では、複数回のCFPを実施します",
+    "lang": "ja",
+    "createdAt": "2025-04-25T12:46:14.261Z",
+    "updatedAt": "2025-06-07T07:40:52.268Z",
+    "year": 2025,
+    "ACL": {
+      "*": {
+        "read": true
+      },
+      "KE5MznFkl8": {
+        "read": true,
+        "write": true
+      },
+      "role:Organizer2025": {
+        "write": true
+      },
+      "role:Admin": {
+        "write": true
+      }
+    },
+    "objectId": "UR4vhCSVwM"
+  },
+  {
+    "publishedAt": {
+      "__type": "Date",
+      "iso": "2025-04-24T03:48:00.000Z"
+    },
+    "body": "DevRelKaigi 2025 will solicit proposals for speakers through the CFP. CFP will be conducted multiple times according to the following schedule.\n\n- CFP1: 1 January 2025 to 31 March 2025\n- CFP2: 1 April 2025 to 30 June 2025\n- CFP3: 1 July 2025 to 31 July 2025\n\nAfter each CFP closes, the organisers and multiple experts will select the proposals. Proposals that receive a certain level of evaluation will be invited to present.\n\nPlease respond within one week regarding whether you can present. Please note that if you do not respond by the deadline, your rights will be transferred to the next candidate.\n",
+    "title": "DevRelKaigi 2025 will hold multiple CFPs",
+    "slug": "what-is-first-cfp",
+    "lang": "en",
+    "createdAt": "2025-04-25T12:48:54.157Z",
+    "updatedAt": "2025-06-07T07:40:43.477Z",
+    "year": 2025,
+    "ACL": {
+      "*": {
+        "read": true
+      },
+      "KE5MznFkl8": {
+        "read": true,
+        "write": true
+      },
+      "role:Organizer2025": {
+        "write": true
+      },
+      "role:Admin": {
+        "write": true
+      }
+    },
+    "objectId": "p5pkm6aGxE"
+  }
+]

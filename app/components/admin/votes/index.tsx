@@ -1,7 +1,6 @@
 import { faCheckToSlot, faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
-
 import { useParams, useSearchParams } from "@remix-run/react";
 import { useContext, useEffect, useState } from "react";
 import { ParseContext } from "~/contexts/parse";
@@ -25,7 +24,7 @@ export default function AdminVoteIndex() {
   const [selectedProposal, setSelectedProposal] = useState<Parse.Object | undefined>(undefined);
   const [rating, setRating] = useState<number>(0);
   const [comment, setComment] = useState<string>('');
-  const [visible, setVisible] = useState<string>(params.visible || 'all');
+  const [visible, setVisible] = useState<string>(searchParams.get('visible') || 'all');
   const [votes, setVotes] = useState<Parse.Object[]>([]);
   // const schema = useSchema(locale!);
   const { t } = setLang(locale!);
@@ -50,12 +49,9 @@ export default function AdminVoteIndex() {
   }
 
   useEffect(() => {
+    console.log('Proposals updated', proposals.length, skip, votes.length);
     updateVisibleProposals();
-  }, [visible, proposals, skip]);
-
-  useEffect(() => {
-    updateVisibleProposals();
-  }, [votes]);
+  }, [proposals, skip, votes]);
 
   const getProposals = async () => {
     if (!user) return;
@@ -100,6 +96,9 @@ export default function AdminVoteIndex() {
     if (vote) {
       setRating(vote.get('rating'));
       setComment(vote.get('comment'));
+    } else {
+      setRating(0);
+      setComment('');
     }
   }
 
@@ -125,12 +124,9 @@ export default function AdminVoteIndex() {
       return;
     }
     const vote = votes.find(vote => vote.get('proposal').id === selectedProposal.id) || new Parse.Object('Vote');
-    vote.set('proposal', {
-      __type: 'Pointer',
-      className: 'Proposal',
-      objectId: selectedProposal.id,
-    });
     if (!vote.id) {
+      selectedProposal.unset('profile');
+      vote.set('proposal', selectedProposal);
       vote.set('user', user);
       const acl = new Parse.ACL();
       acl.setPublicReadAccess(false);
@@ -164,7 +160,6 @@ export default function AdminVoteIndex() {
     vote.set('rating', rating);
     vote.set('comment', comment);
     await vote.save();
-    setVotes([...votes, vote]);
     setMessage({
       type: 'success',
       messages: [t('Vote submitted successfully')],
@@ -175,161 +170,170 @@ export default function AdminVoteIndex() {
     setRating(0);
     setSelectedProposal(undefined);
     setComment('');
+    setVotes([...votes, vote]);
   };
 
   return (
     user ?
-      <>
-        <div className="container"
-          style={{
-            paddingTop: '150px',
-            paddingBottom: '40px',
-          }}
-        >
-          <Message message={message} />
-          <div className="row">
-            <div className="col-8 offset-2">
-              <div className="row">
-                <div className="col-8">
-                  <h2>{t('Proposals')}</h2>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-12 d-flex justify-content-end">
-                  <button onClick={() => setVisible('all')} className={`btn mx-2 ${visible === 'all' ? 'btn-primary' : ''}`}>All</button>
-                  <button onClick={() => setVisible('not_voted')} className={`btn mx-2 ${visible === 'not_voted' ? 'btn-primary' : ''}`}>Only not voted</button>
-                </div>
+    <>
+      <div className="container"
+           style={{
+             paddingTop: '150px',
+             paddingBottom: '40px',
+           }}
+      >
+        <Message message={message} />
+        <div className="row">
+          <div className="col-8 offset-2">
+            <div className="row">
+              <div className="col-8">
+                <h2>{t('Proposals')}</h2>
               </div>
             </div>
-            <div className="col-10 offset-1">
-              <table className="table table-striped">
-                <thead>
-                  <tr>
-                    <th style={{ whiteSpace: 'nowrap' }}>{t('Language')}</th>
-                    <th style={{ whiteSpace: 'nowrap' }}>{t('Level')}</th>
-                    <th style={{ whiteSpace: 'nowrap' }}>{t('Category')}</th>
-                    <th style={{ whiteSpace: 'nowrap' }}>{t('Session Title')}</th>
-                    <th style={{ whiteSpace: 'nowrap' }}>{t('Name')}</th>
-                    <th style={{ whiteSpace: 'nowrap' }}>{t('Actions')}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {visibleProposals.map((proposal, index) => (
-                    <>
-                      <tr key={index}>
-                        <td>
-                          {t(proposal.get('lang'))}
-                        </td>
-                        <td>
-                          {proposal.get('level')}
-                        </td>
-                        <td>
-                          {proposal.get('category')}
-                        </td>
-                        <td>
-                          {proposal.get('title')}
-                        </td>
-                        <td>
-                          {proposal.get('profile')?.get('name')}
-                        </td>
-                        <td>
-                          <button className="btn" onClick={() => select(proposal)}>
-                            <FontAwesomeIcon icon={faCheckToSlot} style={{ width: 25, height: 25 }} />
-                          </button>
-                        </td>
-                      </tr>
-                      {selectedProposal?.id === proposal.id && (
-                        <>
-                          <tr>
-                            <td colSpan={6}>
-                              <div className="card">
-                                {selectedProposal.get('profile') && (
-                                  <div className="card-header">
-                                    <h5 className="card-title">{t('Profile')}</h5>
-                                    <div className="card-text">
-                                      {selectedProposal.get('profile').get('name')}{' by '}
-                                      {selectedProposal.get('profile').get('organization')}
-                                    </div>
-                                  </div>
-                                )}
-                                <div className="card-body">
-                                  <div className="card-text"
-                                    dangerouslySetInnerHTML={{ __html: md.render(selectedProposal.get('description')) }}
-                                  >
-                                  </div>
-                                </div>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td colSpan={6}>
-                              <div className="card">
-                                <div className="card-body">
-                                  <form>
-                                    <div className="form-group">
-                                      <label htmlFor="vote">{t('Vote')}</label><br />
-                                      {Array.from({ length: 5 }).map((_, index) => (
-                                        <FontAwesomeIcon
-                                          key={index}
-                                          icon={rating >= index + 1 ? faStarSolid : faStar}
-                                          onClick={() => {
-                                            setRating(index + 1);
-                                          }}
-                                          style={{ width: 25, height: 25, color: 'black' }}
-                                        />
-                                      ))}
-                                    </div>
-                                    <div className="form-group">
-                                      <label htmlFor="comment">{t('Comment')}</label>
-                                      <textarea
-                                        className="form-control"
-                                        value={comment}
-                                        onChange={(e) => {
-                                          setComment(e.target.value);
-                                        }}
-                                      ></textarea>
-                                    </div>
-                                    <button
-                                      type="submit"
-                                      className="btn btn-primary"
-                                      onClick={(e) => {
-                                        e.preventDefault();
-                                        submitVote();
-                                      }}
-                                    >{t('Vote')}</button>
-                                  </form>
-                                </div>
-                              </div>
-                            </td>
-                          </tr>
-                        </>
-                      )}
-                    </>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <div className="col-8 offset-2">
-              <div className="row">
-                <div className="col-12 d-flex justify-content-between">
-                  <button className="btn btn-primary" disabled={skip === 0}
-                    onClick={() => setSkip(skip - limit)}
-                  >
-                    {t('Previous')}
-                  </button>
-                  <button className="btn btn-primary" disabled={proposals.length < limit}
-                    onClick={() => setSkip(skip + limit)}
-                  >
-                    {t('Next')}
-                  </button>
-                </div>
+            <div className="row">
+              <div className="col-12 d-flex justify-content-end">
+                <a
+                  href={`/${locale}/admin/votes?skip=${skip}`}
+                  className={`btn mx-2 ${visible === 'all' ? 'btn-primary' : ''}`}>
+                  All
+                </a>
+                <a
+                  href={`/${locale}/admin/votes?skip=${skip}&visible=unreviewed`}
+                  className={`btn mx-2 ${visible === 'unreviewed' ? 'btn-primary' : ''}`}>
+                  Only not voted
+                </a>
               </div>
             </div>
           </div>
-
+          <div className="col-10 offset-1">
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                  <th style={{ whiteSpace: 'nowrap' }}>{t('Language')}</th>
+                  <th style={{ whiteSpace: 'nowrap' }}>{t('Level')}</th>
+                  <th style={{ whiteSpace: 'nowrap' }}>{t('Category')}</th>
+                  <th style={{ whiteSpace: 'nowrap' }}>{t('Session Title')}</th>
+                  <th style={{ whiteSpace: 'nowrap' }}>{t('Name')}</th>
+                  <th style={{ whiteSpace: 'nowrap' }}>{t('Actions')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {visibleProposals.map((proposal, index) => (
+                  <>
+                    <tr key={index}>
+                      <td>
+                        {t(proposal.get('lang'))}
+                      </td>
+                      <td>
+                        {proposal.get('level')}
+                      </td>
+                      <td>
+                        {proposal.get('category')}
+                      </td>
+                      <td>
+                        {proposal.get('title')}
+                      </td>
+                      <td>
+                        {proposal.get('profile')?.get('name')}
+                      </td>
+                      <td>
+                        <button className="btn" onClick={() => select(proposal)}>
+                          <FontAwesomeIcon icon={faCheckToSlot} style={{ width: 25, height: 25 }} />
+                        </button>
+                      </td>
+                    </tr>
+                    {selectedProposal?.id === proposal.id && (
+                      <>
+                        <tr>
+                          <td colSpan={6}>
+                            <div className="card">
+                              {selectedProposal.get('profile') && (
+                                <div className="card-header">
+                                  <h5 className="card-title">{t('Profile')}</h5>
+                                  <div className="card-text">
+                                    {selectedProposal.get('profile').get('name')}{' by '}
+                                    {selectedProposal.get('profile').get('organization')}
+                                  </div>
+                                </div>
+                              )}
+                              <div className="card-body">
+                                <div className="card-text"
+                                     dangerouslySetInnerHTML={{ __html: md.render(selectedProposal.get('description')) }}
+                                >
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colSpan={6}>
+                            <div className="card">
+                              <div className="card-body">
+                                <form>
+                                  <div className="form-group">
+                                    <label htmlFor="vote">{t('Vote')}</label><br />
+                                    {Array.from({ length: 5 }).map((_, index) => (
+                                      <FontAwesomeIcon
+                                        key={index}
+                                        icon={rating >= index + 1 ? faStarSolid : faStar}
+                                        onClick={() => {
+                                          setRating(index + 1);
+                                        }}
+                                        style={{ width: 25, height: 25, color: 'black' }}
+                                      />
+                                    ))}
+                                  </div>
+                                  <div className="form-group">
+                                    <label htmlFor="comment">{t('Comment')}</label>
+                                    <textarea
+                                      className="form-control"
+                                      value={comment}
+                                      onChange={(e) => {
+                                        setComment(e.target.value);
+                                      }}
+                                    ></textarea>
+                                  </div>
+                                  <button
+                                    type="submit"
+                                    className="btn btn-primary"
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      submitVote();
+                                    }}
+                                  >{t('Vote')}</button>
+                                </form>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </>
+                    )}
+                  </>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="col-8 offset-2">
+            <div className="row">
+              <div className="col-12 d-flex justify-content-between">
+                <button className="btn btn-primary" disabled={skip === 0}
+                        onClick={() => setSkip(skip - limit)}
+                >
+                  {t('Previous')}
+                </button>
+                <button className="btn btn-primary" disabled={proposals.length < limit}
+                        onClick={() => setSkip(skip + limit)}
+                >
+                  {t('Next')}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-      </>
-      :
-      <>{t('Loading...')}</>
-  );
-}
+
+      </div>
+    </>
+    :
+    <>{t('Loading...')}</>
+  );}
+
