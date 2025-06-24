@@ -1,10 +1,111 @@
 [
   {
+    "socials": [
+      "https://github.com/odasho0618"
+    ],
+    "name": "odasho",
+    "image_url": "https://avatars.githubusercontent.com/u/45335600?v=4",
+    "profile": "#DevRelCon Tokyo & #DevRel/Asia & /Japan speaker｜#ASCII にて #mabl 入門連載中！｜Quality Advocate🥑 \r\n@mablhq @mabljp｜Lecturer at Meijo Univ.｜ex-@Microsoft",
+    "organization": "mabl Inc.",
+    "slug": "odasho0618",
+    "lang": "en"
+  },
+  {
+    "lang": "en",
+    "name": "Atsushi Nakatsugawa",
+    "slug": "atsushi",
+    "socials": [],
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocJjChJoF51KUDxsFqNJn0_a7OxRuuL6y5Xg7OUZ4l2WCCTX-jUP=s96-c"
+  },
+  {
     "socials": [],
     "lang": "en",
-    "slug": "UncannyBingo",
+    "slug": "uncannybingo",
     "image_url": "https://avatars.githubusercontent.com/u/521866?v=4",
     "name": "Don Goodman",
     "profile": "1x engineer, teacher, philosopher. Time travel paradox resolution consultant. Tech ethics activist. #dropice"
+  },
+  {
+    "lang": "en",
+    "name": "Kohei MATSUSHITA",
+    "image_url": "https://avatars.githubusercontent.com/u/785097?v=4",
+    "slug": "ma2shita",
+    "socials": [
+      "https://x.com/ma2shita",
+      "https://fb.com/ma2shita",
+      "https://linkedin.com/in/ma2shita"
+    ],
+    "organization": "Soracom, Inc.",
+    "title": "Snr. Technology Evangelist",
+    "profile": "He promotes the adoption of IoT through public speaking and writing, showcasing real-world use cases and hands-on demonstrations. After working in IT systems and e-commerce at a Linux server manufacturer, he began leading IoT business development in 2015, contributing to pioneering projects utilizing low-power connectivity and forming partnerships with major cloud providers. Since March 2017, he has held his current role, with over 700 speaking engagements to date. He is also a co-author of publications including “IoTの知識地図 (In Japanese)” (Gijutsu-Hyoron Co., Ltd.)."
+  },
+  {
+    "socials": [
+      "https://x.com/ma2shita",
+      "https://fb.com/ma2shita",
+      "https://linkedin.com/in/ma2shita"
+    ],
+    "slug": "ma2shita",
+    "name": "松下 享平",
+    "organization": "株式会社ソラコム",
+    "title": "テクノロジー・エバンジェリスト",
+    "profile": "エバンジェリストとして、IoTやSORACOMサービスを企業・開発者により理解、活用いただくための講演活動を担当。90年代半ばの地方ISPの立ち上げをキャリアスタートとし、インターネットを軸にしたSIerを経て、2000年よりLinuxハードウェアメーカーにて、ネットワークインフラやEC事業を担当。2015年からはIoTソリューションをリードし、メガクラウドベンダーとの協業や、サブギガ/BLEを用いたIoTシステム構築といった業界の先駆的なIoT導入事例に関わる。",
+    "image_file": {
+      "__type": "File",
+      "name": "565dfa5550ab2411ae89ef1f12c64ddd_1748240682378-vkldmqq2h8r.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/565dfa5550ab2411ae89ef1f12c64ddd_1748240682378-vkldmqq2h8r.jpg"
+    },
+    "lang": "ja"
+  },
+  {
+    "lang": "en",
+    "name": "Aya Tokura",
+    "image_url": "https://avatars.githubusercontent.com/u/12283147?v=4",
+    "slug": "ayatokura",
+    "socials": [
+      "https://x.com/ayatokura",
+      "https://www.facebook.com/aya.tokura21",
+      "https://www.linkedin.com/in/ayatokura/"
+    ],
+    "organization": "IBM Japan",
+    "title": "Program Manager",
+    "image_file": {
+      "__type": "File",
+      "name": "d19a14d514a200c2036a0c83d543cd32_1748261179971-3l6p88k00hi.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/d19a14d514a200c2036a0c83d543cd32_1748261179971-3l6p88k00hi.jpg"
+    },
+    "profile": "With a background as a Technical Evangelist at Microsoft Japan and a former CTO of a startup, transitioned to IBM Japan in 2018 as a Senior Developer Advocate. Currently, leading several initiatives as a Program Manager in Customer Success team. Award: Forbes Japan's \"Women in Tech 30\" in 2024. "
+  },
+  {
+    "socials": [
+      "https://x.com/ayatokura",
+      "https://www.facebook.com/aya.tokura21",
+      "https://www.linkedin.com/in/ayatokura/"
+    ],
+    "name": "戸倉彩",
+    "organization": "日本アイ・ビー・エム株式会社",
+    "title": "プログラムマネージャー",
+    "slug": "ayatokura",
+    "image_file": {
+      "__type": "File",
+      "name": "1ab2566263703dc09da1b6bfb9c6cce4_1748260830901-qx5y2tca9is.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/1ab2566263703dc09da1b6bfb9c6cce4_1748260830901-qx5y2tca9is.jpg"
+    },
+    "profile": "パブリッククラウドや開発ツールを軸に技術活動する日本マイクロソフトのテクニカルエバンジェリストや、スタートアップのCTOの経験を経て、2018年に日本アイ・ビー・エム株式会社のシニアデベロッパーアドボケイトに転身。現在はカスタマーサクセス事業部プログラムマネージャーを務める。Forbes Japan「Women in Tech 30」2024受賞。",
+    "lang": "ja"
+  },
+  {
+    "lang": "en",
+    "name": "Michelle \"MishManners\" Duke",
+    "image_url": "https://avatars.githubusercontent.com/u/36594527?v=4",
+    "slug": "mishmanners",
+    "socials": [],
+    "title": "Developer Evangelist",
+    "image_file": {
+      "__type": "File",
+      "name": "99df7e8428f6e1a377a134fc671b2367_1748595547879-quvbjei7ow.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/99df7e8428f6e1a377a134fc671b2367_1748595547879-quvbjei7ow.jpg"
+    },
+    "profile": "Mish is a multi-talented personality in the tech and gaming communities. Mish has worked in the technology space for the last decade and has a tonne of experience in developer advocacy, community management, marketing, and content creation. Mish has spoken at over 380 events on topics like AI, the future of work, communication, teamwork, and have given technical demos. She's a respected leader in the hackathon community, having won, organised, and mentored over 100 hackathons.\n\nMish is a successful entrepreneur and founder, having co-founded several companies – including an artificial intelligence company, and as a result, sits at the forefront of Melbourne’s science, tech, esports, and startup scenes. In her 'spare' time she’s a streamer, journalist, loves playing sports, and is always working on something exciting."
   }
 ]

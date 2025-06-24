@@ -1,6 +1,18 @@
 [
   {
     "socials": [
+      "https://github.com/Miura55",
+      "https://x.com/k_miura_io"
+    ],
+    "name": "Koki Miura",
+    "image_url": "https://avatars.githubusercontent.com/u/24681988?v=4",
+    "profile": null,
+    "organization": null,
+    "slug": "Miura55",
+    "lang": "en"
+  },
+  {
+    "socials": [
       "https://github.com/cafedeaqua"
     ],
     "name": "cafedeaqua",
@@ -51,13 +63,6 @@
   },
   {
     "lang": "en",
-    "name": "odasho",
-    "image_url": "https://avatars.githubusercontent.com/u/45335600?v=4",
-    "slug": "odasho0618",
-    "socials": []
-  },
-  {
-    "lang": "en",
     "name": "藤谷想楽",
     "image_url": "https://lh3.googleusercontent.com/a/ACg8ocJNr4xWpwMPDeFc3qrKhmRyAf_jqksbFjDSnyBhHXXrb_ycIAv9=s96-c",
     "slug": "想楽",
@@ -68,7 +73,10 @@
     "name": "Koki Miura",
     "image_url": "https://lh3.googleusercontent.com/a/ACg8ocLUElqD4CjxmcW1MYu0Lpx8pnu_NSacl5SDRbmggJwdZGRZyrV9=s96-c",
     "slug": "koki",
-    "socials": []
+    "socials": [],
+    "profile": "After working as a server-side engineer for a gaming app, he is now in charge of SaaS at a startup.",
+    "title": "Engineer",
+    "organization": "Acall Inc."
   },
   {
     "socials": [
@@ -154,25 +162,23 @@
   },
   {
     "lang": "en",
-    "name": "佐藤雅子",
-    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocLErRyorYtDmWAxwtejZGaB3OVc8h9XH4U4jIQfd9_H6dIm3Tmg=s96-c",
-    "slug": "雅子",
-    "socials": []
-  },
-  {
-    "lang": "en",
-    "name": "伊藤隼人",
+    "name": "Hayato Ito",
     "image_url": "https://lh3.googleusercontent.com/a/ACg8ocKa5kSiVqhzPI8JeQ2ZNaKbtlUbmjRngcN2s6skkttm3lngsUTj0Q=s96-c",
-    "slug": "隼人",
+    "slug": "itoha1028",
     "socials": [],
     "organization": "Deloitte Tohmatsu Consulting LLC.",
     "title": "Manager",
-    "profile": "To be updated "
+    "profile": "To be updated ",
+    "image_file": {
+      "__type": "File",
+      "name": "65fb3e8e54e2a3ade9cda43833e60e57_1749381693083-lr89gipzqa.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/65fb3e8e54e2a3ade9cda43833e60e57_1749381693083-lr89gipzqa.jpg"
+    }
   },
   {
     "socials": [],
     "slug": "msato",
-    "name": "Sato Masako",
+    "name": "SATO Masako",
     "organization": "株式会社ヴァル研究所",
     "profile": "APIサービスのマーケティングなどからDevRelに興味",
     "lang": "ja"
@@ -231,5 +237,42 @@
       "name": "8a8d22be56a21eec37cc0a125194c62b_1748048360799-ribknlcpgj.jpg",
       "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/8a8d22be56a21eec37cc0a125194c62b_1748048360799-ribknlcpgj.jpg"
     }
+  },
+  {
+    "lang": "en",
+    "name": "nota",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocLSdmhYqqnKmYGufhNiLUf_s75R3GbPv3yuEIXkMBiV76qbq7px=s96-c",
+    "slug": "nota",
+    "socials": [
+      "https://x.com/notalux134147"
+    ],
+    "image_file": {
+      "__type": "File",
+      "name": "6179d18efc0f1825da5fb2eeb6ab149d_1750590329897-t15eed8hepk.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/6179d18efc0f1825da5fb2eeb6ab149d_1750590329897-t15eed8hepk.jpg"
+    },
+    "profile": "Web engineer."
+  },
+  {
+    "socials": [
+      "https://x.com/notalux134147"
+    ],
+    "slug": "nota",
+    "name": "nota",
+    "title": "",
+    "profile": "WEBエンジニア",
+    "image_file": {
+      "__type": "File",
+      "name": "5aa97fe0164bdeea03093fcdafad5255_1750590535987-xkbnxgnxqt.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/5aa97fe0164bdeea03093fcdafad5255_1750590535987-xkbnxgnxqt.jpg"
+    },
+    "lang": "ja"
+  },
+  {
+    "socials": [],
+    "name": "Masako SATO",
+    "profile": "I'm in sales and marketing for API services.",
+    "slug": "msato",
+    "lang": "en"
   }
 ]
