@@ -1,21 +1,170 @@
 [
   {
     "socials": [
-      "https://github.com/odasho0618"
+      "https://github.com/taijihagino",
+      "https://x.com/taiponrock"
     ],
-    "name": "odasho",
-    "image_url": "https://avatars.githubusercontent.com/u/45335600?v=4",
-    "profile": "#DevRelCon Tokyo & #DevRel/Asia & /Japan speaker｜#ASCII にて #mabl 入門連載中！｜Quality Advocate🥑 \r\n@mablhq @mabljp｜Lecturer at Meijo Univ.｜ex-@Microsoft",
-    "organization": "mabl Inc.",
-    "slug": "odasho0618",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "AYo7zRXA2O"
+    },
+    "name": "Taiji HAGINO",
+    "image_url": "https://avatars.githubusercontent.com/u/12064399?v=4",
+    "profile": "Senior Technical Advocate at Datadog. Specialist for #Cloud, #IoT, #Web, and #Mobile.",
+    "organization": "Datadog",
+    "slug": "taijihagino",
     "lang": "en"
   },
   {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "i6LrfINNUy"
+    },
     "lang": "en",
     "name": "Atsushi Nakatsugawa",
     "slug": "atsushi",
-    "socials": [],
-    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocJjChJoF51KUDxsFqNJn0_a7OxRuuL6y5Xg7OUZ4l2WCCTX-jUP=s96-c"
+    "socials": [
+      "https://x.com/goofmint",
+      "https://github.com/goofmint/",
+      "https://www.linkedin.com/in/goofmint/",
+      "https://facebook.com/goofmint"
+    ],
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocJjChJoF51KUDxsFqNJn0_a7OxRuuL6y5Xg7OUZ4l2WCCTX-jUP=s96-c",
+    "organization": "MOONGIFT Inc.",
+    "title": "CEO",
+    "profile": "CEO of MOONGIFT Co., Ltd. Developer Advocate at CodeRabbit. Worked as a programmer and engineer at several companies before going independent at the age of 28. In 2004, he launched the technical blog “MOONGIFT” to share information about open-source software, which was still relatively unknown at the time, and has been posting daily updates ever since. In 2013, he incorporated the company and began his work as a DevRel (Developer Relations) evangelist, bridging the gap between business and engineering. His social ID is goofmint across all platforms."
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "SQb19MCemo"
+    },
+    "lang": "en",
+    "name": "nrs",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocLPIz2vkAOSbM_GCS_hX7Dsyau7oEKwqmyd0U73CUgq1XQYLQ=s96-c",
+    "slug": "nrslib",
+    "socials": [
+      "https://x.com/nrslibhttps://x.com/nrslib"
+    ],
+    "organization": "CoDMON, Inc.",
+    "title": "CTO",
+    "profile": "Programmer and CTO of CoDMON.\nConducts lectures primarily focused on software development and design. Enjoys supporting universities, students, and elementary schools as a hobby. Author of \"Introduction to Domain-Driven Design: Understanding the Fundamentals of Domain-Driven Design from the Bottom Up\" (Shoeisha).",
+    "image_file": {
+      "__type": "File",
+      "name": "db8c7e79f45764a413c1af16712b9d5e_1748225392844-7ponlin899j.png",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/db8c7e79f45764a413c1af16712b9d5e_1748225392844-7ponlin899j.png"
+    }
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "RrcCRQzGw2"
+    },
+    "lang": "en",
+    "name": "馬一六",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocJS2xOsjoUE9zG-W0SN8Tt1_6IDZm5axZmGMsZTFFu-UWpQ3LYD_g=s96-c",
+    "slug": "一六",
+    "socials": []
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "2Ih59qxbx1"
+    },
+    "lang": "en",
+    "name": "Siddharth Dayalwal",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocJPqoLzcTpgKK4nimA8FrtRKqoXdf4qvmFFIfKBDWUQaumGDCpR8w=s96-c",
+    "slug": "siddharth",
+    "socials": [
+      "https://x.com/siddharth_hacks/",
+      "https://www.linkedin.com/in/siddharthdayalwal",
+      "https://github.com/siddharthdayalwal"
+    ],
+    "organization": "Storyblok",
+    "title": "Developer Community Specialist",
+    "profile": "Siddharth Dayalwal is a Developer Community Specialist at Storyblok, where he leads developer programs and manages a global community within the headless CMS space. With over five years of experience, Siddharth has empowered countless developers to innovate, hackathons to thrive, and communities to grow.\n\nOutside his full-time role, Siddharth spends his time building Hack This Fall, one of India’s most vibrant hacker communities. He has served as a Major League Hacking APAC Hackathon Coach, guiding organizers and participants to create exceptional hackathon experiences, and as a GitHub Field Expert, supporting developer initiatives across India.\n\nAn explorer at heart and an eternal optimist, Siddharth loves to travel, connect with nature, indulge in good food, and immerse himself in music. He is passionate about meaningful conversations and sharing knowledge for communities and hackathons.\n\n",
+    "image_file": {
+      "__type": "File",
+      "name": "9a851adc83a6b4ce611e66a3f202426d_1748715492167-xltaideici.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/9a851adc83a6b4ce611e66a3f202426d_1748715492167-xltaideici.jpg"
+    }
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "LTw6TCG6Fl"
+    },
+    "lang": "en",
+    "name": "Juhi Singh",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocLr2hmiEUG_qBlSVJ2bk2meLT8Hjk4sFuGCr-6XOH93JYPgkyrLBw=s96-c",
+    "slug": "juhi",
+    "socials": []
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "jrGfBpA0qG"
+    },
+    "lang": "en",
+    "name": "Hayato Miyazato",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocKWGdAXSOM93L37Z9SkZOIUTM_i3T59qM5Cs_loMrB0lceA54Ns=s96-c",
+    "slug": "hayato",
+    "socials": []
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "e4pzCffXit"
+    },
+    "lang": "en",
+    "name": "Sumit Saurabh",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocJspiM0sD_VSWZyZKzCTA5IPIOHc8knrqEk5ct4ZejRHs1eB70=s96-c",
+    "slug": "sumitsaurabh927",
+    "socials": [
+      "https://twitter.com/sumitsaurabh927",
+      "https://www.linkedin.com/in/sumitsaurabh927/",
+      "http://github.com/sumitsaurabh927"
+    ],
+    "organization": "Motia",
+    "title": "Developer Advocate",
+    "profile": "I'm a developer advocate keenly interested in the React and AI ecosystems.",
+    "image_file": {
+      "__type": "File",
+      "name": "cb38184ea428283db5a51b665bd27fcf_1748258724447-06b9nctamrl6.jpeg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/cb38184ea428283db5a51b665bd27fcf_1748258724447-06b9nctamrl6.jpeg"
+    }
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "5wc6otH8XJ"
+    },
+    "lang": "en",
+    "name": "Ankita Saloni",
+    "image_url": "https://lh3.googleusercontent.com/a-/ALV-UjXfoc0Ljk0ymfUHlG3_fiq0q0IRMfpzlNdY5xWqjZ5gfh7r834Sl8LuyB7KLNCuwts1p1BbqOfZEl8RuHoYR_iXSPuDgbmImFSbNMlT8wVJNZbNy2mwH9-q91DeY6wRIt1vllX32WYhN9NxzyfX1KHwsDiZ50A3-SSPKJ2tZPX3PQasfmH72j8nz_yhFA-QBFX7ACd_lxpVifwArtMj7kPqy0T2CASmkjB6OikrvwbRbzyo3bLtMLNzXHHOvfVr2e0eC8NAT3_pEUsxz4bmZHDposgua9w4YrwLfRqP8i2K3T6QxdOy8fIbxvEjgeCLDkXJxmH48AF3aLgohwCLTJD1pY1gl22yQ7nCXc_ctDFqnO2jhutv1oVgw2zTfDVCgU_Rqgieq9tjm9Ogj2qcw58Zz0DN6KUzWQ1WK1NLk6cxzJdTsbh7Ec9oxDQWmJ2PmfYgJ9sl3s5zj5pd7CkvWBDZH1gxb0WLdIWbokSf0XtuABwrPSe5CnGtHG3DdFGAOPOGtqx87ubOIMQs0HjhWu0cjRnKsNa0zqW2-mhl_9urvt1i6jJpGgBHmhmubst4V_a6STN18qommzwNED3dnsyYLf88fwb-j3J_AudF61PdEcKgilMcB09EMoInNVeNagiVQSYh0JzZcmjdrgowAVBjgVvrjV6laRIpe79Q8-jOt2_kk9L4V_Tt6-HMKD2fac6qr4xF0WE-PnY6ZuiU-DN0AdUsESZsplKHnoFvnYMY-XPYxm3gM_pkFbLhSZCGzyA78RGxRJJ3f84lQZaYJ95HpPCLhffV7Mhi0n3pPhlDaz-s5OqtscbvLcvVn7ccOJlyDnysqGNwFUQVVlwvxofhRrF1ojZbS-ylnMPgdnBmYJF_lIzs_Xk_lemAQhx-gUh4c9mdi7EYlKzTOexzn7w8Qb2tmYoFZ2_z5WpQyl5jgZ0R5Sp4DJhId-1BR66y9H80MH9me-y4690QsKXbDklGONk=s96-c",
+    "slug": "saloniankita",
+    "socials": [
+      "https://www.linkedin.com/in/saloniankita/",
+      "https://github.com/saloniankita",
+      "https://x.com/saloniankita_"
+    ],
+    "organization": "Chegg",
+    "title": "Project Associate",
+    "profile": "Ankita is a passionate Product Designer, Brand Strategist, and Community builder. She loves mentoring curious minds, building projects, contributing to the DevRel ecosystem, working on product management and brand strategies, meeting new people, and sipping coffee when she has none of the above work to do.\nWith an aim to make technology accessible for everyone, she's working toward building diverse and inclusive communities. ",
+    "image_file": {
+      "__type": "File",
+      "name": "93b34e6784a88e3e2955ef6f6866d516_1750615868113-s2p7v1yajeb.jpeg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/93b34e6784a88e3e2955ef6f6866d516_1750615868113-s2p7v1yajeb.jpeg"
+    }
   },
   {
     "socials": [],
@@ -23,9 +172,186 @@
     "slug": "uncannybingo",
     "image_url": "https://avatars.githubusercontent.com/u/521866?v=4",
     "name": "Don Goodman",
-    "profile": "1x engineer, teacher, philosopher. Time travel paradox resolution consultant. Tech ethics activist. #dropice"
+    "profile": "1x engineer, teacher, philosopher. Time travel paradox resolution consultant. Tech ethics activist. #dropice",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "3MVRfO42CJ"
+    },
+    "image_file": {
+      "__type": "File",
+      "name": "ebb627ab34ed9624d263a2af5d046f0b_1751275409677-yi4jp4kucyo.jpeg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/ebb627ab34ed9624d263a2af5d046f0b_1751275409677-yi4jp4kucyo.jpeg"
+    }
   },
   {
+    "lang": "ja",
+    "name": "Tetsuya Nakamura",
+    "organization": "Toppan",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "U3xB07K3OA"
+    },
+    "slug": "tetsuya",
+    "socials": []
+  },
+  {
+    "socials": [],
+    "slug": "odasho",
+    "name": "小田 祥平",
+    "organization": "mabl K.K.",
+    "title": "Quality Advocate",
+    "profile": "国内SIerにてインフラやPaaS App開発まで幅広く経験。その後コミュニティ活動をきっかけにMicrosoftに入社し、EvangelistとしてDeveloper Audience Marketingに従事。2022年10月にmablにJoinし、Software TestingやQAの啓蒙活動に取り組む。現在もDevRel/Tokyoを中心に複数のコミュニティを運営&支援。名城大学情報工学部 非常勤講師。iPhone絶対並んで買うおじさん (2011 - 2024)",
+    "image_file": {
+      "__type": "File",
+      "name": "3c5324a1cb12e4e8d4e62db13bef8c00_NewRelic_square.png",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/3c5324a1cb12e4e8d4e62db13bef8c00_NewRelic_square.png"
+    },
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "HaxzGHkVJr"
+    }
+  },
+  {
+    "socials": [],
+    "slug": "odasho",
+    "name": "Shohei Oda",
+    "organization": "mabl K.K.",
+    "title": "Quality Advocate",
+    "image_file": {
+      "__type": "File",
+      "name": "e13186df97bc2f070adea42e34e5ef74_NewRelic_square.png",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/e13186df97bc2f070adea42e34e5ef74_NewRelic_square.png"
+    },
+    "profile": "Shohei Oda has extensive experience in the tech industry, beginning his career at a Japanese systems integrator (SIer) where he worked across infrastructure and PaaS application development. Through his active involvement in developer communities, he later joined Microsoft as an Evangelist in Developer Audience Marketing.\nIn October 2022, Shohei joined mabl where he focuses on advocating for Software Testing and QA best practices. He currently manages and supports multiple tech communities, with a primary focus on DevRel/Tokyo initiatives. Shohei also serves as a part-time lecturer in the Faculty of Information Engineering at Meijo University.\nA tech enthusiast at heart, Shohei has been the first person in line to purchase the new iPhone every year since 2019.",
+    "lang": "en",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "HaxzGHkVJr"
+    }
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "imJxVDHEB7"
+    },
+    "lang": "en",
+    "name": "Journeyman",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocKacvluWp3Hs-g5rzLwCtXrRYg33WmwLjNS3Lsq5UACV33Y1TjA=s96-c",
+    "slug": "journeyman",
+    "socials": []
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "LIbhUIhC31"
+    },
+    "name": "Siddhant Agarwal",
+    "lang": "en",
+    "profile": "DevRel APAC @Neo4j | GDE AI/ML| ex-Google, IBM",
+    "image_url": "https://avatars.githubusercontent.com/u/2035658?v=4",
+    "slug": "sidagarwal04",
+    "username": "sidagarwal04",
+    "socials": []
+  },
+  {
+    "slug": "beppu01",
+    "name": "西馬一郎",
+    "organization": "日本経済新聞社",
+    "title": "エンジニア採用担当",
+    "profile": "エンジニア採用担当。採用や社内外での技術広報活動を通じて組織の強化に努めています。ITコミュニティと銭湯サウナが大好き。兵庫県神戸市出身。 DevRel/Japan CONFERENCE 2024(2024年09月14日) に登壇しました",
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "RrcCRQzGw2"
+    },
+    "socials": [],
+    "image_file": {
+      "__type": "File",
+      "name": "57e39862b48f749ef05895c39c74162a_1748220699255-tl9nh8nd2xe.png",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/57e39862b48f749ef05895c39c74162a_1748220699255-tl9nh8nd2xe.png"
+    }
+  },
+  {
+    "socials": [
+      "o"
+    ],
+    "slug": "nrslib",
+    "name": "nrs",
+    "organization": "株式会社コドモン",
+    "title": "執行役員CTO",
+    "profile": "プログラマ。コドモンのCTO。\nソフトウェア開発や設計を主軸として講演活動を行っている。大学や学生の支援、小学校の支援が趣味。 著書『ドメイン駆動設計入門 ボトムアップでわかる！ドメイン駆動設計の基本（翔泳社）』",
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "SQb19MCemo"
+    },
+    "image_file": {
+      "__type": "File",
+      "name": "921dd773682134bafe0e9a7c454cbc1a_1748225411663-k0yx5rxruf8.png",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/921dd773682134bafe0e9a7c454cbc1a_1748225411663-k0yx5rxruf8.png"
+    }
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "nvixjgfZNW"
+    },
+    "lang": "en",
+    "name": "Wassim Samad",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocKpFogONxkd7T_vXe2_NLkrWejWYZuTOM5qmFm4jG2ugrw53qHd=s96-c",
+    "slug": "wassim",
+    "socials": []
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "o0pqZMYSPo"
+    },
+    "lang": "en",
+    "name": "Avie Fukai",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocKZI-Z8Hlq5JuwVs68uW5KP-QIj7ewjQjrL8tx2L4LB-o6bR-hw=s96-c",
+    "slug": "avie",
+    "socials": []
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "mVxEUaSX3W"
+    },
+    "lang": "en",
+    "name": "Taiji Uchida",
+    "image_url": "https://avatars.githubusercontent.com/u/63937957?v=4",
+    "slug": "t-uchida",
+    "socials": [
+      "https://x.com/implem_"
+    ],
+    "profile": "I am the original developer of the open-source software \"Pleasanter.\"\nI originally worked as a system engineer for 19 years at FSAS, a Fujitsu group company. After that, I developed Pleasanter on my own, started my own business, and became the CEO of Implem Inc.\n\nCurrently, I am promoting the adoption of Pleasanter together with its users and 120 partner companies with whom we collaborate in business.",
+    "image_file": {
+      "__type": "File",
+      "name": "9468efa006d88691f30c08e12f6ca46f_1750197583686-92gid46j1z.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/9468efa006d88691f30c08e12f6ca46f_1750197583686-92gid46j1z.jpg"
+    },
+    "organization": "Implem Inc.",
+    "title": "CEO"
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "BP4mppYozn"
+    },
     "lang": "en",
     "name": "Kohei MATSUSHITA",
     "image_url": "https://avatars.githubusercontent.com/u/785097?v=4",
@@ -55,9 +381,19 @@
       "name": "565dfa5550ab2411ae89ef1f12c64ddd_1748240682378-vkldmqq2h8r.jpg",
       "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/565dfa5550ab2411ae89ef1f12c64ddd_1748240682378-vkldmqq2h8r.jpg"
     },
-    "lang": "ja"
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "BP4mppYozn"
+    }
   },
   {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "b4FRxF0z2N"
+    },
     "lang": "en",
     "name": "Aya Tokura",
     "image_url": "https://avatars.githubusercontent.com/u/12283147?v=4",
@@ -92,14 +428,126 @@
       "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/1ab2566263703dc09da1b6bfb9c6cce4_1748260830901-qx5y2tca9is.jpg"
     },
     "profile": "パブリッククラウドや開発ツールを軸に技術活動する日本マイクロソフトのテクニカルエバンジェリストや、スタートアップのCTOの経験を経て、2018年に日本アイ・ビー・エム株式会社のシニアデベロッパーアドボケイトに転身。現在はカスタマーサクセス事業部プログラムマネージャーを務める。Forbes Japan「Women in Tech 30」2024受賞。",
-    "lang": "ja"
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "b4FRxF0z2N"
+    }
   },
   {
+    "socials": [],
+    "slug": "uutan1108",
+    "name": "Yusuke Ohmori",
+    "organization": "YUMEMI Inc.",
+    "profile": "Backend Engineer / Developer Advocate\n\nI am a backend engineer and developer advocate at Yumemi Inc., having joined the company as a new graduate in April 2023.\n\nAt Yumemi, alongside project work, I’m part of a team called YUMEMI.grow, where I’m involved in planning and organizing collaborative study sessions with other companies.\n\nOutside of work, I serve as a core staff member of Gijutsusho Doujinshi Hakurankai, and I organize study groups such as Wakate Funwari Benkyo-bu, a community for young engineers, and Engineerime, a meetup where people in the IT industry gather to discuss and share learnings from anime. I'm also a core staff member for several regional tech conferences.",
+    "title": "Backend Engineer / Developer Advocate",
+    "image_file": {
+      "__type": "File",
+      "name": "7b541516924b1de81c419badc05459dd_1748281478635-u6nl2e33xnc.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/7b541516924b1de81c419badc05459dd_1748281478635-u6nl2e33xnc.jpg"
+    },
+    "lang": "en",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "DGn6Uu62kU"
+    }
+  },
+  {
+    "socials": [
+      "https://x.com/uutan1108"
+    ],
+    "slug": "uutan1108",
+    "name": "大森裕介",
+    "organization": "株式会社ゆめみ",
+    "title": "サーバーサイドエンジニア, 技術広報",
+    "profile": "株式会社ゆめみ サーバーサイドエンジニア兼技術広報。2023年4月新卒入社。\n\nゆめみでは、案件の傍らYUMEMI.growというチームに所属し他社とのコラボイベントの企画・運営などに関わっています。\n\n社外では、技術書同人誌博覧会のコアスタッフや若手ふんわり勉強部という若手エンジニア向け勉強会、エンジニアニメというをIT業界に関わる方が集まってアニメから得た学びについて語り合いながら交流する勉強会を主催。また、地方カンファレンスのコアスタッフもしてます。",
+    "image_file": {
+      "__type": "File",
+      "name": "5f98eb063e9fbdba9fc4efa837cc9c94_1748281913286-cynjapr1ume.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/5f98eb063e9fbdba9fc4efa837cc9c94_1748281913286-cynjapr1ume.jpg"
+    },
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "DGn6Uu62kU"
+    }
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "Hml6XJCdZH"
+    },
+    "lang": "en",
+    "name": "Hrittik Roy",
+    "image_url": "https://avatars.githubusercontent.com/u/67012359?v=4",
+    "slug": "hrittikhere",
+    "socials": []
+  },
+  {
+    "lang": "en",
+    "name": "Nimit Savant",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "2IknnIHoVF"
+    },
+    "slug": "nimitsavant",
+    "socials": [
+      "https://x.com/SavantNimit",
+      "https://github.com/nimit2801",
+      "https://www.linkedin.com/in/nimitsavant/"
+    ],
+    "organization": "DevRev",
+    "title": "Developer Evangelist",
+    "image_file": {
+      "__type": "File",
+      "name": "1662d7cc61b473c4ad063e2e70292e83_1750703583065-hh2einh2np.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/1662d7cc61b473c4ad063e2e70292e83_1750703583065-hh2einh2np.jpg"
+    },
+    "profile": "I’m a seasoned Developer Evangelist at DevRev, based in Bangalore, where I connect and empower developer communities around the globe. With a passion for “AI for Good,” I champion open-source AI agents that drive ethical innovation and deliver real-world impact.  I regularly speak on topics ranging from DevRel best practices and Agentic/Conversation AI.\nI also co-host Bangalore’s popular Tech meetups — bringing hands-on demos, actionable insights, and engaging workshops that inspire developers to build better software, together."
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "DG4aCsSYI2"
+    },
+    "lang": "en",
+    "name": "Animesh Pathak",
+    "image_url": "https://avatars.githubusercontent.com/u/53110238?v=4",
+    "slug": "sonichigo",
+    "socials": [
+      "https://github.com/sonichigo",
+      "https://x.com/sonichigo1219",
+      "https://linkedin.com/in/sonichigo",
+      "https://sonichigo.com"
+    ],
+    "image_file": {
+      "__type": "File",
+      "name": "a678cd520e9979577b7e8588632ddef9_1750150764952-uob2x6162g7.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/a678cd520e9979577b7e8588632ddef9_1750150764952-uob2x6162g7.jpg"
+    },
+    "title": "DevRel Engineer",
+    "organization": "Harness Inc",
+    "profile": "Animesh Pathak is a Developer Relations Engineer with a strong focus on Database DevOps, APIs, testing, and open-source innovation. Currently at Harness, he plays a key role in building and evangelizing scalable DBDevOps workflows, bridging the gap between developers and data teams to accelerate secure, reliable software delivery."
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "EgMNe6RfKC"
+    },
     "lang": "en",
     "name": "Michelle \"MishManners\" Duke",
     "image_url": "https://avatars.githubusercontent.com/u/36594527?v=4",
     "slug": "mishmanners",
-    "socials": [],
+    "socials": [
+      "https://x.com/MishManners"
+    ],
     "title": "Developer Evangelist",
     "image_file": {
       "__type": "File",
@@ -107,5 +555,214 @@
       "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/99df7e8428f6e1a377a134fc671b2367_1748595547879-quvbjei7ow.jpg"
     },
     "profile": "Mish is a multi-talented personality in the tech and gaming communities. Mish has worked in the technology space for the last decade and has a tonne of experience in developer advocacy, community management, marketing, and content creation. Mish has spoken at over 380 events on topics like AI, the future of work, communication, teamwork, and have given technical demos. She's a respected leader in the hackathon community, having won, organised, and mentored over 100 hackathons.\n\nMish is a successful entrepreneur and founder, having co-founded several companies – including an artificial intelligence company, and as a result, sits at the forefront of Melbourne’s science, tech, esports, and startup scenes. In her 'spare' time she’s a streamer, journalist, loves playing sports, and is always working on something exciting."
+  },
+  {
+    "socials": [
+      "https://x.com/beajourneyman",
+      "https://qiita.com/beajourneyman",
+      "https://jawsug-tochigi.connpass.com/"
+    ],
+    "slug": "beajourneyman",
+    "name": "Takeki Oizumi",
+    "organization": "JAWS-UG栃木支部",
+    "title": "発起人",
+    "image_file": {
+      "__type": "File",
+      "name": "f9a43932ecda4d2ffa574094534fdf27_1748654274109-lhx7tbfnbok.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/f9a43932ecda4d2ffa574094534fdf27_1748654274109-lhx7tbfnbok.jpg"
+    },
+    "profile": "業務で Amazon Connect を基盤にしたIVRシステムを担当しています。JAWS-UG栃木支部を立ち上げ地域ITコミュニティを盛り上げたいと思っています。AWS Community Builder 2025 に選出いただきました。",
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "imJxVDHEB7"
+    }
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "yKIQDHxj1L"
+    },
+    "lang": "en",
+    "name": "Shotaro Suzuki",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocK4lZQuYJ6sDfDNU7Z6TZW4-i0V3kbjsC9Vzl9ahZS7WEoJihqMGg=s96-c",
+    "slug": "shotaro",
+    "socials": [
+      "https://x.com/shosuz",
+      "https://www.facebook.com/shosuz",
+      "https://www.linkedin.com/in/shotaro-suzuki-5ab0b719/",
+      "https://bsky.app/profile/shosuz.bsky.social",
+      "https://www.instagram.com/shosuz0212/",
+      "https://www.threads.com/@shosuz0212"
+    ],
+    "organization": "FPT Japan Holdings",
+    "title": "Executive Evangelist",
+    "image_file": {
+      "__type": "File",
+      "name": "498573672ce0a26fdc0bf9463be7edbc_1748657141125-xsysl5khrfj.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/498573672ce0a26fdc0bf9463be7edbc_1748657141125-xsysl5khrfj.jpg"
+    },
+    "profile": "Executive Evangelist at FPT Japan Data & AI Integration. \nDigital Executive Advisor and Chief Information Security Advisor at National Printing Bureau, Japan. Former worked as a Microsoft Technical Evangelist.\n\nAfter working several SIers/ISVs, I had been a Technical Evangelist at Microsoft for 13 years evangelizing .NET, C#, Visual Studio, Windows, iOS, Android, Microsoft Azure, etc. for developers(DevRel). After working for Dell, Accenture, Elastic, VMware, etc., I will continue DevRel activities at my current position from November 1, 2024, including strategic collaboration with NVIDIA on AI GPU cloud services and AI & data related services with various public cloud vendors - AWS/Microsoft/Google Cloud, and so on. I will conduct marketing, pre-sales activities, educational activities, and related new service development for AI and data related services. At completely new organization under the direct control of the President I will be responsible for marketing, pre-sales activities, educational activities, and development of related new services for AI and data related services. \nMy government concurrent work includes: April 2019-August 2021, Executive Advisor to the Government CIO, IT Strategy Office, Cabinet Secretariat (concurrently serving as an Executive Advisor to the CIO, Ministry of Justice); September 2021-March 2024, Solution Architect, Project Manager Unit, Digital Agency (concurrently serving as Digital Executive Advisor, Financial Services Agency). I was appointed to my current position in October 2024."
+  },
+  {
+    "socials": [
+      "https://x.com/shosuz",
+      "https://www.facebook.com/shosuz",
+      "https://www.linkedin.com/in/shotaro-suzuki-5ab0b719/",
+      "https://bsky.app/profile/shosuz.bsky.social",
+      "https://www.instagram.com/shosuz0212/",
+      "https://www.threads.com/@shosuz0212"
+    ],
+    "slug": "shotaroj",
+    "name": "鈴木 章太郎",
+    "organization": "FPTジャパンホールディングス",
+    "title": "エグゼクティブエバンジェリスト",
+    "profile": "FPT Japan データ & AI インテグレーション エグゼクティブエバンジェリスト。独立行政法人 国立印刷局 デジタル統括アドバイザー兼最高情報セキュリティアドバイザー。元 Microsoft テクニカルエバンジェリスト。\n\nSIer/ISV 等を経て2003年より Microsoft で13年間、テクニカルエバンジェリストとして、.NET、C#、Visual Studio、Windows、iOS、Android、Microsoft Azure などの開発者向け技術啓発活動を実施。その後、Dell、Accenture、Elastic、VMware 等での開発者向け技術啓発活動を経て、2024年11月1日より現職。AI GPU クラウドサービスにおける NVIDIA との戦略的協業や、AWS/Microsoft/Google Cloud 等パブリッククラウドベンダーとの AI ＆ データ関連サービス訴求など、技術啓発活動を継続。社長直轄の全く新しい組織で AI ＆ データ関連サービスのマーケティング、プリセールス活動、教育活動、関連する新サービス開発を行う。\n\n政府での仕事は、2019年4月～2021年8月 内閣官房 IT 総合戦略室 政府 CIO 補佐官（法務省 CIO 補佐官併任）を兼務、その後2021年9月～2024年3月 デジタル庁 プロジェクトマネージャーユニット ソリューションアーキテクト（金融庁デジタル統括アドバイザー併任）を兼務。2024年10月より現職。",
+    "image_file": {
+      "__type": "File",
+      "name": "8d25c96edcc5adb9b0349840ec9c004a_1748657677349-1h4t71ka9ob.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/8d25c96edcc5adb9b0349840ec9c004a_1748657677349-1h4t71ka9ob.jpg"
+    },
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "yKIQDHxj1L"
+    }
+  },
+  {
+    "socials": [
+      "https://x.com/implem_"
+    ],
+    "slug": "t-uchida",
+    "name": "内田　太志",
+    "organization": "株式会社インプリム",
+    "title": "代表取締役社長",
+    "profile": "私は、オープンソースソフトウェア「プリザンター」の開発者です。\nもともとは富士通グループのFSASでシステムエンジニアとして19年間勤務しており、その後、プリザンターを個人で開発し、起業して株式会社インプリムの代表取締役となりました。\n\n現在は、プリザンターのユーザや、共にビジネス連携している120社のパートナー企業とともに、普及に取り組んでいます。",
+    "image_file": {
+      "__type": "File",
+      "name": "50c9d42fc600ea5472b3fb6ee20a39a0_1750197809601-wbnuosi3fan.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/50c9d42fc600ea5472b3fb6ee20a39a0_1750197809601-wbnuosi3fan.jpg"
+    },
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "mVxEUaSX3W"
+    }
+  },
+  {
+    "socials": [
+      "https://x.com/SavantNimit",
+      "https://github.com/nimit2801",
+      "https://www.linkedin.com/in/nimitsavant/"
+    ],
+    "slug": "nimitsavant",
+    "name": "Nimit Savant",
+    "organization": "DevRev",
+    "title": "デベロッパーエバンジェリスト",
+    "profile": "私はバンガロールを拠点に活動する DevRev のデベロッパーエバンジェリストです。世界中の開発者コミュニティとつながりを築き、力を引き出すことに注力しています。「AI for Good」に情熱を注ぎ、倫理的なイノベーションを推進し、実社会にインパクトをもたらすオープンソースの AI エージェントを提唱しています。DevRel のベストプラクティスやエージェンティック／会話型 AI について定期的に講演するとともに、バンガロールの人気 Tech ミートアップを共催し、ハンズオンデモや実践的なインサイト、参加型ワークショップで開発者がより良いソフトウェアを共に生み出す場を提供しています。",
+    "image_file": {
+      "__type": "File",
+      "name": "dc685006637210d2575358f4a514af83_1751108438801-3ktx8ucmab.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/dc685006637210d2575358f4a514af83_1751108438801-3ktx8ucmab.jpg"
+    },
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "2IknnIHoVF"
+    }
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "yXBs7D5KQA"
+    },
+    "lang": "en",
+    "name": "Awantika Nigam",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocLQ9NrXqUDhWK45zi4UT9ZUOYKX16ab0VxkmRAKFN1JLLttNsRmXw=s96-c",
+    "slug": "awantika",
+    "socials": []
+  },
+  {
+    "socials": [
+      "https://x.com/goofmint",
+      "https://www.linkedin.com/in/goofmint/",
+      "https://github.com/goofmint/",
+      "https://www.facebook.com/goofmint"
+    ],
+    "lang": "ja",
+    "name": "中津川篤司",
+    "slug": "atsushi",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocJjChJoF51KUDxsFqNJn0_a7OxRuuL6y5Xg7OUZ4l2WCCTX-jUP=s96-c",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "i6LrfINNUy"
+    },
+    "organization": "株式会社MOONGIFT",
+    "title": "代表取締役",
+    "profile": "株式会社MOONGIFT代表取締役。CodeRabbitデベロッパーアドボケイト。プログラマ、エンジニアとしていくつかの企業で働き、28歳のときに独立。2004年、まだ情報が少なかったオープンソースソフトの技術ブログ『MOONGIFT』を開設し、毎日情報を発信している。2013年に法人化、ビジネスとエンジニアを結ぶエバンジェリスト業「DevRel」活動をスタートした。ソーシャルIDはすべて goofmint。"
+  },
+  {
+    "socials": [
+      "https://x.com/MishManners",
+      "https://www.linkedin.com/in/mishmanners/"
+    ],
+    "image_file": {
+      "__type": "File",
+      "name": "99df7e8428f6e1a377a134fc671b2367_1748595547879-quvbjei7ow.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/99df7e8428f6e1a377a134fc671b2367_1748595547879-quvbjei7ow.jpg"
+    },
+    "lang": "ja",
+    "name": "Michelle \"MishManners\" Duke",
+    "image_url": "https://avatars.githubusercontent.com/u/36594527?v=4",
+    "slug": "mishmanners",
+    "title": "Developer Evangelist",
+    "profile": "Mish is a multi-talented personality in the tech and gaming communities. Mish has worked in the technology space for the last decade and has a tonne of experience in developer advocacy, community management, marketing, and content creation. Mish has spoken at over 380 events on topics like AI, the future of work, communication, teamwork, and have given technical demos. She's a respected leader in the hackathon community, having won, organised, and mentored over 100 hackathons.\n\nMish is a successful entrepreneur and founder, having co-founded several companies – including an artificial intelligence company, and as a result, sits at the forefront of Melbourne’s science, tech, esports, and startup scenes. In her 'spare' time she’s a streamer, journalist, loves playing sports, and is always working on something exciting.",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "EgMNe6RfKC"
+    }
+  },
+  {
+    "socials": [],
+    "image_file": {
+      "__type": "File",
+      "name": "ebb627ab34ed9624d263a2af5d046f0b_1751275409677-yi4jp4kucyo.jpeg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/ebb627ab34ed9624d263a2af5d046f0b_1751275409677-yi4jp4kucyo.jpeg"
+    },
+    "lang": "ja",
+    "slug": "uncannybingo",
+    "image_url": "https://avatars.githubusercontent.com/u/521866?v=4",
+    "name": "Don Goodman",
+    "profile": "1x engineer, teacher, philosopher. Time travel paradox resolution consultant. Tech ethics activist. #dropice",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "3MVRfO42CJ"
+    }
+  },
+  {
+    "socials": [
+      "https://github.com/taijihagino",
+      "https://x.com/taiponrock"
+    ],
+    "name": "Taiji HAGINO",
+    "image_url": "https://avatars.githubusercontent.com/u/12064399?v=4",
+    "profile": "Senior Technical Advocate at Datadog. Specialist for #Cloud, #IoT, #Web, and #Mobile.",
+    "organization": "Datadog",
+    "slug": "taijihagino",
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "AYo7zRXA2O"
+    }
   }
 ]

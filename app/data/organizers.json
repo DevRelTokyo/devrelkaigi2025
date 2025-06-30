@@ -4,6 +4,11 @@
       "https://github.com/Miura55",
       "https://x.com/k_miura_io"
     ],
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "k8ZrdNLTOa"
+    },
     "name": "Koki Miura",
     "image_url": "https://avatars.githubusercontent.com/u/24681988?v=4",
     "profile": null,
@@ -15,6 +20,11 @@
     "socials": [
       "https://github.com/cafedeaqua"
     ],
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "CnAMLbl4oq"
+    },
     "name": "cafedeaqua",
     "image_url": "https://avatars.githubusercontent.com/u/2134138?v=4",
     "profile": null,
@@ -23,6 +33,11 @@
     "lang": "en"
   },
   {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "KE5MznFkl8"
+    },
     "lang": "en",
     "name": "Atsushi",
     "image_url": "https://avatars.githubusercontent.com/u/5709?v=4",
@@ -51,6 +66,11 @@
     ],
     "slug": "goofmint",
     "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "KE5MznFkl8"
+    },
     "profile": "株式会社MOONGIFT代表取締役。CodeRabbitアドボケイト。プログラマ、エンジニアとしていくつかの企業で働き、28歳のときに独立。2004年、まだ情報が少なかったオープンソースソフトの技術ブログ『MOONGIFT』を開設し、毎日情報を発信している。2013年に法人化、ビジネスとエンジニアを結ぶエバンジェリスト業「DevRel」活動をスタートした。ソーシャルIDはすべて goofmint。",
     "name": "中津川篤司",
     "organization": "株式会社MOONGIFT",
@@ -62,6 +82,11 @@
     "title": "代表取締役"
   },
   {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "os59JBipWg"
+    },
     "lang": "en",
     "name": "藤谷想楽",
     "image_url": "https://lh3.googleusercontent.com/a/ACg8ocJNr4xWpwMPDeFc3qrKhmRyAf_jqksbFjDSnyBhHXXrb_ycIAv9=s96-c",
@@ -69,6 +94,11 @@
     "socials": []
   },
   {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "0TRaAQmTmg"
+    },
     "lang": "en",
     "name": "Koki Miura",
     "image_url": "https://lh3.googleusercontent.com/a/ACg8ocLUElqD4CjxmcW1MYu0Lpx8pnu_NSacl5SDRbmggJwdZGRZyrV9=s96-c",
@@ -87,7 +117,12 @@
     "organization": "Acall(株)",
     "title": "エンジニア",
     "profile": "これまでゲーム会社のサーバーエンジニアからキャリアをスタートさせて、その後スタートアップのチームリードを行う。現在はオフィスDXのSaaSのバックエンドエンジニアとして、アプリケーション実装からインフラ構築まで幅広く行う。",
-    "lang": "ja"
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "0TRaAQmTmg"
+    }
   },
   {
     "socials": [],
@@ -101,7 +136,12 @@
       "name": "3c5324a1cb12e4e8d4e62db13bef8c00_NewRelic_square.png",
       "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/3c5324a1cb12e4e8d4e62db13bef8c00_NewRelic_square.png"
     },
-    "lang": "ja"
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "HaxzGHkVJr"
+    }
   },
   {
     "socials": [],
@@ -115,9 +155,19 @@
       "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/e13186df97bc2f070adea42e34e5ef74_NewRelic_square.png"
     },
     "profile": "Shohei Oda has extensive experience in the tech industry, beginning his career at a Japanese systems integrator (SIer) where he worked across infrastructure and PaaS application development. Through his active involvement in developer communities, he later joined Microsoft as an Evangelist in Developer Audience Marketing.\nIn October 2022, Shohei joined mabl where he focuses on advocating for Software Testing and QA best practices. He currently manages and supports multiple tech communities, with a primary focus on DevRel/Tokyo initiatives. Shohei also serves as a part-time lecturer in the Faculty of Information Engineering at Meijo University.\nA tech enthusiast at heart, Shohei has been the first person in line to purchase the new iPhone every year since 2019.",
-    "lang": "en"
+    "lang": "en",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "HaxzGHkVJr"
+    }
   },
   {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "Hzy8A8wQQk"
+    },
     "lang": "en",
     "name": "Miori Kano",
     "image_url": "https://lh3.googleusercontent.com/a/ACg8ocKtkUlGOo78rYfD9dvAFDkHzazLSjV_S1NMvLCfOpBgVK82w8s=s96-c",
@@ -125,6 +175,11 @@
     "socials": []
   },
   {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "ma1iiihgYb"
+    },
     "lang": "en",
     "name": "Yasunori Kihara",
     "image_url": "https://lh3.googleusercontent.com/a/ACg8ocISKDJtIaSUqRbpiVU49sRt2EX3x9eijKCQJpseRRIzIxYKA0Cz=s96-c",
@@ -151,9 +206,19 @@
       "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/cb43c91d0db0f10b06999a9dc4444077_kihara-square.jpg"
     },
     "profile": "データマネジメント関連製品のプロダクトマーケティングマネージャーです。",
-    "lang": "ja"
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "ma1iiihgYb"
+    }
   },
   {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "ZZex3XFjoF"
+    },
     "lang": "en",
     "name": "canonno",
     "image_url": "https://lh3.googleusercontent.com/a/ACg8ocIPDsFFz3Qr8VuB6L5RMkzsvYSkmZ4ZQz0Sb2zluH2AzVh-2D4=s96-c",
@@ -161,6 +226,11 @@
     "socials": []
   },
   {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "1ewcgPkzby"
+    },
     "lang": "en",
     "name": "Hayato Ito",
     "image_url": "https://lh3.googleusercontent.com/a/ACg8ocKa5kSiVqhzPI8JeQ2ZNaKbtlUbmjRngcN2s6skkttm3lngsUTj0Q=s96-c",
@@ -181,9 +251,19 @@
     "name": "SATO Masako",
     "organization": "株式会社ヴァル研究所",
     "profile": "APIサービスのマーケティングなどからDevRelに興味",
-    "lang": "ja"
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "1sgI8q2Puk"
+    }
   },
   {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "9R5BxEHPhE"
+    },
     "lang": "en",
     "name": "hirofumi matsumoto",
     "image_url": "https://lh3.googleusercontent.com/a/ACg8ocJV8zxgSbINgHQbkT0hFyiPW_GFTOF9U0Xw9aG73o3PBpPo4LZr=s96-c",
@@ -210,7 +290,12 @@
       "name": "1bce1492bf94dbcebc4ec0f81cf26464_T0EJ99C22-U06D1KSKMPG-7a70a034383d-512.jpg",
       "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/1bce1492bf94dbcebc4ec0f81cf26464_T0EJ99C22-U06D1KSKMPG-7a70a034383d-512.jpg"
     },
-    "lang": "ja"
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "9R5BxEHPhE"
+    }
   },
   {
     "socials": [],
@@ -222,7 +307,12 @@
       "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/72e3a0a08f98840b82d42fe25b6c311b_IMG_1277.jpg"
     },
     "profile": "大手飲料メーカーにてAI・ブロックチェーンなどの先端技術導入に従事。",
-    "lang": "ja"
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "ZZex3XFjoF"
+    }
   },
   {
     "socials": [],
@@ -232,6 +322,11 @@
     "title": "Manager",
     "profile": "企業のクラウドネイティブを推進したいコンサルタント。\nSIer 2社を経て現職。\n主に自動車業界にて、コネクティッドサービスのバックエンドシステム構築に従事。\nプライベートては0歳児育児に奮闘中。",
     "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "1ewcgPkzby"
+    },
     "image_file": {
       "__type": "File",
       "name": "8a8d22be56a21eec37cc0a125194c62b_1748048360799-ribknlcpgj.jpg",
@@ -239,6 +334,11 @@
     }
   },
   {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "ArC6kSuSKa"
+    },
     "lang": "en",
     "name": "nota",
     "image_url": "https://lh3.googleusercontent.com/a/ACg8ocLSdmhYqqnKmYGufhNiLUf_s75R3GbPv3yuEIXkMBiV76qbq7px=s96-c",
@@ -266,13 +366,23 @@
       "name": "5aa97fe0164bdeea03093fcdafad5255_1750590535987-xkbnxgnxqt.jpg",
       "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/5aa97fe0164bdeea03093fcdafad5255_1750590535987-xkbnxgnxqt.jpg"
     },
-    "lang": "ja"
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "ArC6kSuSKa"
+    }
   },
   {
     "socials": [],
     "name": "Masako SATO",
     "profile": "I'm in sales and marketing for API services.",
     "slug": "msato",
-    "lang": "en"
+    "lang": "en",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "1sgI8q2Puk"
+    }
   }
 ]
