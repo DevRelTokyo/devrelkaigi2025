@@ -84,6 +84,10 @@ export default defineConfig({
           route(":locale/admin/speakers", "routes/admin/speakers/index.tsx", {
             index: true,
           });
+          route(
+            ":locale/admin/profiles/:id/edit",
+            "routes/admin/profiles/edit.tsx"
+          );
           route(":locale/contact", "routes/contact.tsx");
           route(":locale/:page", "routes/page.tsx");
         });

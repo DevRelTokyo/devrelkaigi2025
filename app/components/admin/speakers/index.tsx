@@ -135,7 +135,7 @@ export default function AdminSpeakersIndex() {
     acl.setPublicReadAccess(true);
     acl.setPublicWriteAccess(false);
     acl.setWriteAccess(user, true);
-    acl.setWriteAccess(`Organizer${import.meta.env.VITE_YEAR}`, true);
+    acl.setRoleWriteAccess(`Organizer${window.ENV.YEAR}`, true);
     newProfile.setACL(acl);
     newProfile.set("user", user);
     newProfile.set("lang", params.lang === "ja" ? "en" : "ja");
@@ -226,7 +226,7 @@ export default function AdminSpeakersIndex() {
                             {profiles["ja"] ? (
                               <Link
                                 className="btn"
-                                to={`/${locale}/profiles/${profiles["ja"].id}/edit`}
+                                to={`/${locale}/admin/profiles/${profiles["ja"].id}/edit`}
                                 style={{
                                   textDecoration: "none",
                                 }}
@@ -246,7 +246,7 @@ export default function AdminSpeakersIndex() {
                             {profiles["en"] ? (
                               <Link
                                 className="btn"
-                                to={`/${locale}/profiles/${profiles["en"].id}/edit`}
+                                to={`/${locale}/admin/profiles/${profiles["en"].id}/edit`}
                                 style={{
                                   textDecoration: "none",
                                 }}
