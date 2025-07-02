@@ -10,11 +10,23 @@ import "~/styles/page.css";
 
 import * as WhatIsDevRelKaigiEn from "~/pages/en/what-is-devrelkaigi.mdx";
 import * as WhatIsDevRelKaigiJa from "~/pages/ja/what-is-devrelkaigi.mdx";
+import * as CoCEn from "~/pages/en/coc.mdx";
+import * as CoCJa from "~/pages/ja/coc.mdx";
+import * as PrivacyPolicyEn from "~/pages/en/privacy-policy.mdx";
+import * as PrivacyPolicyJa from "~/pages/ja/privacy-policy.mdx";
 
 const pages = {
   'what-is-devrelkaigi': {
     en: WhatIsDevRelKaigiEn,
     ja: WhatIsDevRelKaigiJa,
+  },
+  'coc': {
+    en: CoCEn,
+    ja: CoCJa,
+  },
+  'privacy-policy': {
+    en: PrivacyPolicyEn,
+    ja: PrivacyPolicyJa,
   },
 } as const;
 
