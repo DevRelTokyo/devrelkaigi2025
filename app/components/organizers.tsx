@@ -8,7 +8,7 @@ export default function Speakers() {
   const { t } = setLang(locale!);
   return (
     <section className="section speakers bg-speaker">
-      <div id="organizer" name="organizer"></div>
+      <div id="organizer"></div>
       <div className="container">
         <div className="row">
           <div className="col-12">

@@ -241,5 +241,7 @@
   "Drag & Drop your community logo image file here": "コミュニティロゴ画像ファイルをここにドラッグ&ドロップ",
   "Select your community logo image file, if you want to replace image. (Max 1MB, only square image)": "コミュニティロゴ画像ファイルを選択してください（最大1MB、正方形の画像のみ）",
   "Person in charge": "担当者",
-  "Your community name": "コミュニティ名"
+  "Your community name": "コミュニティ名",
+  "Code of Conduct": "行動規範",
+  "Privacy Policy": "プライバシーポリシー"
 }

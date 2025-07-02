@@ -1,6 +1,5 @@
-import { useParams } from "@remix-run/react";
+import { useParams, Link } from "@remix-run/react";
 import { setLang } from "../utils/i18n";
-import { Link } from "@remix-run/react";
 
 export default function PriceTable() {
   const params = useParams();
@@ -8,7 +7,7 @@ export default function PriceTable() {
   const { t } = setLang(locale!);
   const col = locale === "ja" ? 4 : 4;
   return (
-    <section className="section pricing">
+    <section className="section pricing" id="tickets">
       <div className="container">
         <div className="row">
           <div className="col-12">
@@ -69,7 +68,7 @@ export default function PriceTable() {
                     <a
                       href="https://ti.to/devrelkaigi/2025/with/japanese"
                       target="_blank"
-                      className="btn btn-transparent-md"
+                      className="btn btn-transparent-md" rel="noreferrer"
                     >
                       {t("Buy a ticket")}
                     </a>
@@ -118,7 +117,7 @@ export default function PriceTable() {
                 <a
                   href="https://ti.to/devrelkaigi/2025/with/only-sessions-3-4"
                   className="btn btn-transparent-md"
-                  target="_blank"
+                  target="_blank" rel="noreferrer"
                 >
                   {t("Buy a ticket")}
                 </a>
@@ -166,7 +165,7 @@ export default function PriceTable() {
                 <a
                   href="https://ti.to/devrelkaigi/2025/with/session-lunch"
                   className="btn btn-transparent-md"
-                  target="_blank"
+                  target="_blank" rel="noreferrer"
                 >
                   {t("Buy a ticket")}
                 </a>
@@ -219,7 +218,7 @@ export default function PriceTable() {
                 <a
                   href="https://ti.to/devrelkaigi/2025/with/xcvl1zeba8m"
                   className="btn btn-transparent-md"
-                  target="_blank"
+                  target="_blank" rel="noreferrer"
                 >
                   {t("Buy a ticket")}
                 </a>
@@ -273,7 +272,7 @@ export default function PriceTable() {
                 <a
                   href="https://ti.to/devrelkaigi/2025/with/full-combo"
                   className="btn btn-transparent-md"
-                  target="_blank"
+                  target="_blank" rel="noreferrer"
                 >
                   {t("Buy a ticket")}
                 </a>
@@ -326,7 +325,7 @@ export default function PriceTable() {
                 <a
                   href="https://ti.to/devrelkaigi/2025/with/personal-sponsor"
                   className="btn btn-main-md"
-                  target="_blank"
+                  target="_blank" rel="noreferrer"
                 >
                   {t("Buy a ticket")}
                 </a>

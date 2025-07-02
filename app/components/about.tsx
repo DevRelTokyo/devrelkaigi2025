@@ -36,7 +36,7 @@ export default function About() {
               </div>
               <ul className="list-inline">
                 <li className="list-inline-item">
-                  <a href={`/${locale}/proposals/new`} className="btn btn-main-md">{t('Send proposal')}</a>
+                  <a href="/#tickets" className="btn btn-main-md">{t('Buy a ticket')}</a>
                 </li>
                 <li className="list-inline-item">
                   <a href={`/${locale}/what-is-devrelkaigi`} className="btn btn-transparent-md">{t('Read more')}</a>
