@@ -91,6 +91,7 @@ export default defineConfig({
             "routes/admin/profiles/edit.tsx"
           );
           route(":locale/contact", "routes/contact.tsx");
+          route(":locale/supporter", "routes/supporter.tsx");
           route(":locale/:page", "routes/page.tsx");
         });
       },

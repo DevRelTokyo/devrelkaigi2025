@@ -9,7 +9,7 @@ import File from "./file";
 import ArrayField from "./arrayField";
 import { ParseContext } from "~/contexts/parse";
 import { Schema } from "~/types/schema";
-import { FormEvent, useContext, useState } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 import { setLang } from "~/utils/i18n";
 import { useParams } from "@remix-run/react";
 import Message, { MessageProps } from "../message";
@@ -40,6 +40,9 @@ export default function Form({
   const [obj, setObj] = useState<{ [key: string]: FieldValue }>(
     data?.toJSON() || {}
   );
+  useEffect(() => {
+    setObj(data?.toJSON() || {});
+  }, [data]);
   const [message, setMessage] = useState<MessageProps | undefined>(undefined);
   const params = useParams();
   const { locale } = params;

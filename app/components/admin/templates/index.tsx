@@ -13,11 +13,11 @@ export default function AdminTemplateIndex() {
   const [user, setUser] = useState<Parse.User | undefined>(undefined);
   const [templates, setTemplates] = useState<Parse.Object[]>([]);
   const { t } = setLang(locale!);
-  
+
   useEffect(() => {
     setUser(Parse.User.current());
   }, []);
-  
+
   useEffect(() => {
     getTemplates();
   }, [user]);
@@ -35,7 +35,7 @@ export default function AdminTemplateIndex() {
   const getTemplates = async () => {
     if (!user) return;
     const query = new Parse.Query('EmailTemplate');
-    query.limit(parseInt(searchParams.get('limit') || '10'));
+    query.limit(parseInt(searchParams.get('limit') || '100'));
     query.skip(parseInt(searchParams.get('skip') || '0'));
     const templates = await query.find() as Parse.Object[];
     setTemplates(templates);
