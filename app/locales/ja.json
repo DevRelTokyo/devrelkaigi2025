@@ -196,7 +196,6 @@
   "Create new sponsor": "新しいスポンサーを作成",
   "Please sign up or sign in to create or edit sponsors": "スポンサーを作成・編集するにはサインアップまたはサインインしてください",
   "Logo": "ロゴ",
-  "Description": "説明",
   "Save sponsor": "スポンサーを保存",
   "Failed to load sponsor": "スポンサーの読み込みに失敗しました",
   "Thank you! Your sponsor has been saved!": "ありがとうございます！スポンサーが保存されました！",
@@ -232,5 +231,15 @@
   "<span>$</span>150.00": "<span>$</span>150.00",
   "Including full combo ticket": "フルコンボチケット込み",
   "Speaker dinner on 2nd Oct": "10月2日 スピーカーディナー",
-  "List your name on the website": "ウェブサイトにお名前を掲載"
+  "List your name on the website": "ウェブサイトにお名前を掲載",
+  "Apply community supporter": "コミュニティサポーターに応募",
+  "Thank you! We will contact you soon.": "ありがとうございます！近日中にご連絡いたします。",
+  "Please sign up or sign in to apply community supporter": "コミュニティサポーターに応募するにはサインアップまたはサインインしてください",
+  "Community URL": "コミュニティURL",
+  "https://example.connpass.com": "https://example.connpass.com",
+  "Logo image file": "ロゴ画像ファイル",
+  "Drag & Drop your community logo image file here": "コミュニティロゴ画像ファイルをここにドラッグ&ドロップ",
+  "Select your community logo image file, if you want to replace image. (Max 1MB, only square image)": "コミュニティロゴ画像ファイルを選択してください（最大1MB、正方形の画像のみ）",
+  "Person in charge": "担当者",
+  "Your community name": "コミュニティ名"
 }
