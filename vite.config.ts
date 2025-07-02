@@ -28,6 +28,7 @@ export default defineConfig({
         return defineRoutes((route) => {
           route(":locale/", "routes/index.tsx", { index: true });
           route(":locale/profiles/:slug/edit", "routes/profiles/edit.tsx");
+          route(":locale/proposals/:id", "routes/proposals/show.tsx");
           route(":locale/members/:slug", "routes/profiles/show.tsx");
           route(":locale/articles/:slug", "routes/articles/show.tsx");
           route(":locale/profiles", "routes/profiles/index.tsx", {
