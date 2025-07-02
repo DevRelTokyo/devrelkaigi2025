@@ -131,6 +131,9 @@ export default function UserMenu() {
                           <a className="dropdown-item" href={`/${locale}/admin/speakers`}>{t('Speakers')}</a>
                         </li>
                         <li>
+                          <a className="dropdown-item" href={`/${locale}/admin/emails`}>{t('Emails')}</a>
+                        </li>
+                        <li>
                           <a className="dropdown-item" href={`/${locale}/admin/sessions`}>{t('Sessions')}</a>
                         </li>
                         <li>
