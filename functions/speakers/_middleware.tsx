@@ -8,7 +8,8 @@ interface Props {
 export const onRequest = vercelOGPagesPlugin<Props>({
   imagePathSuffix: "/ogp.jpg",
   component: ({ ogTitle, pathname }) => {
-    return <div style={ { display: "flex" } }> { ogTitle } </div>;
+    return (<div style={{ display: "flex" }
+    }> {ogTitle} </div>);
   },
   extractors: {
     on: {
