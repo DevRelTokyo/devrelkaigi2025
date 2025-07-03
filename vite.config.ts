@@ -45,6 +45,7 @@ export default defineConfig({
           route(":locale/proposals/new", "routes/proposals/new.tsx");
           route(":locale/organizers/:slug", "routes/organizers/show.tsx");
           route(":locale/speakers/:slug", "routes/speakers/show.tsx");
+          route(":locale/ogp/:slug", "routes/ogp/show.tsx");
           route(":locale/admin/votes", "routes/admin/votes/index.tsx", {
             index: true,
           });

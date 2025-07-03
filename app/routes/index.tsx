@@ -21,20 +21,42 @@ import { setLang } from "~/utils/i18n";
 interface MetaProps {
   title: string;
   description: string;
+  ogImageUrl: string;
+  currentUrl: string;
 }
 export const meta: MetaFunction = ({ data }: ServerRuntimeMetaArgs) => {
-  const { title, description } = data as MetaProps;
-  return [{ title }, { name: "description", content: description }];
+  const { title, description, ogImageUrl, currentUrl } = data as MetaProps;
+
+  return [
+    { title },
+    { name: "description", content: description },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:image", content: ogImageUrl },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: currentUrl },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: ogImageUrl },
+  ];
 };
 
-export async function loader({ params }: LoaderFunctionArgs) {
+export async function loader({ params, request }: LoaderFunctionArgs) {
   const { locale } = params;
   const { t } = setLang(locale!);
+  const url = new URL(request.url);
+  const ogImageUrl = `${url.origin}/assets/images/ogp.jpg`;
+  
   return json({
     title: t("DevRelKaigi 2025"),
     description: t(
       "DevRelKaigi is an international conference of developer relations from Tokyo with ❤️."
     ),
+    ogImageUrl,
+    currentUrl: request.url,
   });
 }
 

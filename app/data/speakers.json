@@ -3,26 +3,6 @@
     "user": {
       "__type": "Pointer",
       "className": "_User",
-      "objectId": "i6LrfINNUy"
-    },
-    "lang": "en",
-    "name": "Atsushi Nakatsugawa",
-    "slug": "atsushi",
-    "socials": [
-      "https://x.com/goofmint",
-      "https://github.com/goofmint/",
-      "https://www.linkedin.com/in/goofmint/",
-      "https://facebook.com/goofmint"
-    ],
-    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocJjChJoF51KUDxsFqNJn0_a7OxRuuL6y5Xg7OUZ4l2WCCTX-jUP=s96-c",
-    "organization": "MOONGIFT Inc.",
-    "title": "CEO",
-    "profile": "CEO of MOONGIFT Co., Ltd. Developer Advocate at CodeRabbit. Worked as a programmer and engineer at several companies before going independent at the age of 28. In 2004, he launched the technical blog “MOONGIFT” to share information about open-source software, which was still relatively unknown at the time, and has been posting daily updates ever since. In 2013, he incorporated the company and began his work as a DevRel (Developer Relations) evangelist, bridging the gap between business and engineering. His social ID is goofmint across all platforms."
-  },
-  {
-    "user": {
-      "__type": "Pointer",
-      "className": "_User",
       "objectId": "SQb19MCemo"
     },
     "lang": "en",
@@ -52,6 +32,31 @@
     "image_url": "https://lh3.googleusercontent.com/a/ACg8ocJS2xOsjoUE9zG-W0SN8Tt1_6IDZm5axZmGMsZTFFu-UWpQ3LYD_g=s96-c",
     "slug": "一六",
     "socials": []
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "KE5MznFkl8"
+    },
+    "lang": "en",
+    "name": "Atsushi",
+    "image_url": "https://avatars.githubusercontent.com/u/5709?v=4",
+    "slug": "goofmint",
+    "socials": [
+      "http://github.com/goofmint",
+      "http://facebook.com/goofmint",
+      "https://www.linkedin.com/in/goofmint/",
+      "https://github.com/goofmint"
+    ],
+    "organization": "MOONGIFT Inc.",
+    "title": "CEO",
+    "profile": "CEO of MOONGIFT. CodeRabbit developer adocate. Worked at several companies as a programmer and engineer, and became independent at the age of 28. In 2004, he set up the ‘MOONGIFT’ technical blog for open source software, which was still lacking in information at the time, and has been sending out information every day. In 2013, he incorporated and started ‘DevRel’ activities, which are evangelist activities that connect business and engineers. His social ID is all goofmint.",
+    "image_file": {
+      "__type": "File",
+      "name": "a13bbe8140f204a4287b39372afd760a_1747919658246-worc85z1tfi.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/a13bbe8140f204a4287b39372afd760a_1747919658246-worc85z1tfi.jpg"
+    }
   },
   {
     "user": {
@@ -174,6 +179,30 @@
       "name": "1cbea4551cab080be838ec9b68eb2be5_1748361032573-gvu68veiwgv.jpg",
       "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/1cbea4551cab080be838ec9b68eb2be5_1748361032573-gvu68veiwgv.jpg"
     }
+  },
+  {
+    "socials": [
+      "https://facebook.com/goofmint",
+      "https://www.linkedin.com/in/goofmint/",
+      "https://x.com/goofmint",
+      "http://github.com/goofmint"
+    ],
+    "slug": "goofmint",
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "KE5MznFkl8"
+    },
+    "profile": "株式会社MOONGIFT代表取締役。CodeRabbitアドボケイト。プログラマ、エンジニアとしていくつかの企業で働き、28歳のときに独立。2004年、まだ情報が少なかったオープンソースソフトの技術ブログ『MOONGIFT』を開設し、毎日情報を発信している。2013年に法人化、ビジネスとエンジニアを結ぶエバンジェリスト業「DevRel」活動をスタートした。ソーシャルIDはすべて goofmint。",
+    "name": "中津川篤司",
+    "organization": "株式会社MOONGIFT",
+    "image_file": {
+      "__type": "File",
+      "name": "96fc9c68be8ac2cfe855aeb839f75c5a_atsushi.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/96fc9c68be8ac2cfe855aeb839f75c5a_atsushi.jpg"
+    },
+    "title": "代表取締役"
   },
   {
     "socials": [],
@@ -721,26 +750,6 @@
     "image_url": "https://lh3.googleusercontent.com/a/ACg8ocLQ9NrXqUDhWK45zi4UT9ZUOYKX16ab0VxkmRAKFN1JLLttNsRmXw=s96-c",
     "slug": "awantika",
     "socials": []
-  },
-  {
-    "socials": [
-      "https://x.com/goofmint",
-      "https://www.linkedin.com/in/goofmint/",
-      "https://github.com/goofmint/",
-      "https://www.facebook.com/goofmint"
-    ],
-    "lang": "ja",
-    "name": "中津川篤司",
-    "slug": "atsushi",
-    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocJjChJoF51KUDxsFqNJn0_a7OxRuuL6y5Xg7OUZ4l2WCCTX-jUP=s96-c",
-    "user": {
-      "__type": "Pointer",
-      "className": "_User",
-      "objectId": "i6LrfINNUy"
-    },
-    "organization": "株式会社MOONGIFT",
-    "title": "代表取締役",
-    "profile": "株式会社MOONGIFT代表取締役。CodeRabbitデベロッパーアドボケイト。プログラマ、エンジニアとしていくつかの企業で働き、28歳のときに独立。2004年、まだ情報が少なかったオープンソースソフトの技術ブログ『MOONGIFT』を開設し、毎日情報を発信している。2013年に法人化、ビジネスとエンジニアを結ぶエバンジェリスト業「DevRel」活動をスタートした。ソーシャルIDはすべて goofmint。"
   },
   {
     "socials": [

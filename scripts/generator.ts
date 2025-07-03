@@ -27,6 +27,17 @@ export const getData = async (className: string): Promise<string | null> => {
   }
 };
 
+export const getSessionData = async (): Promise<string | null> => {
+  const query = new Parse.Query("Proposal");
+  query.equalTo("responseStatus", true);
+  const objects = await query.find();
+  return JSON.stringify(
+    objects.map((object: Parse.Object) => object.toJSON()),
+    null,
+    2
+  );
+};
+
 export const getRoleData = async (roleName: string): Promise<string | null> => {
   const query = new Parse.Query(Parse.Role);
   query.equalTo("name", roleName);
@@ -74,6 +85,11 @@ const createClassData = async (className: string, fileName?: string) => {
   saveDataToFile(data, fileName);
 };
 
+const createSessionData = async () => {
+  const data = await getSessionData();
+  saveDataToFile(data, "sessions");
+};
+
 const saveDataToFile = async (data: string | null, fileName: string) => {
   if (!data) {
     console.error("No data to save");
@@ -109,6 +125,7 @@ const saveRoleDataToFile = async (roleName: string, fileName: string) => {
       createClassData(className, `${className.toLowerCase()}s`)
     )
   );
+  await createSessionData();
   await Promise.all(
     ["Organizer", "Speaker"].map((roleName) =>
       saveRoleDataToFile(roleName, `${roleName.toLowerCase()}s`)

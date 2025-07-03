@@ -58,7 +58,7 @@ export default function ArticleEdit() {
                   <meta property="og:title" content={`${speaker.name} - DevRelKaigi 2025`} />
                   <meta property="og:description" content={`${speaker.name} - DevRelKaigi 2025`} />
                   <meta property="og:url" content={`https://devrelkaigi.org/${locale}/speakers/${speaker.slug}`} />
-                  <meta property="og:image" content={`/${locale}/speakers/${speaker.slug}/ogp.jpg`} />
+                  <meta property="og:image" content={`https://ogp.devrel.tokyo/?url=https://devrelkaigi.org/${locale}/speakers/${speaker.slug}&width=1200&height=630`} />
                   <meta property="og:type" content="article" />
                   <meta property="og:site_name" content="DevRelKaigi 2025" />
                 </RemixHead>
