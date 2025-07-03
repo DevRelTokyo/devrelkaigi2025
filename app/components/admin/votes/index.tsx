@@ -113,227 +113,235 @@ export default function AdminVoteIndex() {
 
   const submitVote = async () => {
     if (!user) return;
-    if (!selectedProposal) {
-      setMessage({
-        type: 'danger',
-        messages: [t('Please select a proposal')],
-      });
-      setTimeout(() => {
-        setMessage(undefined);
-      }, 3000);
-      return;
-    }
-    const vote = votes.find(vote => vote.get('proposal').id === selectedProposal.id) || new Parse.Object('Vote');
-    if (!vote.id) {
+    try {
+      if (!selectedProposal) {
+        setMessage({
+          type: 'danger',
+          messages: [t('Please select a proposal')],
+        });
+        setTimeout(() => {
+          setMessage(undefined);
+        }, 3000);
+        return;
+      }
+      if (!rating) {
+        setMessage({
+          type: 'danger',
+          messages: [t('Please select a rating')],
+        });
+        setTimeout(() => {
+          setMessage(undefined);
+        }, 3000);
+        return;
+      }
+      if (!comment) {
+        setMessage({
+          type: 'danger',
+          messages: [t('Please enter a comment')],
+        });
+        setTimeout(() => {
+          setMessage(undefined);
+        }, 3000);
+        return;
+      }
+      const vote = votes.find(vote => vote.get('proposal').id === selectedProposal.id) || new Parse.Object('Vote');
       selectedProposal.unset('profile');
-      vote.set('proposal', selectedProposal);
-      vote.set('user', user);
-      const acl = new Parse.ACL();
-      acl.setPublicReadAccess(false);
-      acl.setPublicWriteAccess(false);
-      acl.setRoleReadAccess('admin', true);
-      acl.setRoleWriteAccess('admin', true);
-      acl.setReadAccess(user, true);
-      acl.setWriteAccess(user, true);
-      vote.setACL(acl);
-    }
-    if (!rating) {
+      if (!vote.id) {
+        vote.set('proposal', selectedProposal);
+        vote.set('user', user);
+        const acl = new Parse.ACL();
+        acl.setPublicReadAccess(false);
+        acl.setPublicWriteAccess(false);
+        acl.setRoleReadAccess('admin', true);
+        acl.setRoleWriteAccess('admin', true);
+        acl.setReadAccess(user, true);
+        acl.setWriteAccess(user, true);
+        vote.setACL(acl);
+      }
+      vote.set('rating', rating);
+      vote.set('comment', comment);
+      await vote.save();
+      setMessage({
+        type: 'success',
+        messages: [t('Vote submitted successfully')],
+      });
+      setVotes([...votes, vote]);
+      setRating(0);
+      setSelectedProposal(undefined);
+      setComment('');
+    } catch (error) {
       setMessage({
         type: 'danger',
-        messages: [t('Please select a rating')],
+        messages: [t('Error submitting vote'), (error as Error).message],
       });
-      setTimeout(() => {
-        setMessage(undefined);
-      }, 3000);
-      return;
     }
-    if (!comment) {
-      setMessage({
-        type: 'danger',
-        messages: [t('Please enter a comment')],
-      });
-      setTimeout(() => {
-        setMessage(undefined);
-      }, 3000);
-      return;
-    }
-    vote.set('rating', rating);
-    vote.set('comment', comment);
-    await vote.save();
-    setMessage({
-      type: 'success',
-      messages: [t('Vote submitted successfully')],
-    });
     setTimeout(() => {
       setMessage(undefined);
     }, 3000);
-    setRating(0);
-    setSelectedProposal(undefined);
-    setComment('');
-    setVotes([...votes, vote]);
   };
 
   return (
     user ?
-    <>
-      <div className="container"
-           style={{
-             paddingTop: '150px',
-             paddingBottom: '40px',
-           }}
-      >
-        <Message message={message} />
-        <div className="row">
-          <div className="col-8 offset-2">
-            <div className="row">
-              <div className="col-8">
-                <h2>{t('Proposals')}</h2>
+      <>
+        <div className="container"
+          style={{
+            paddingTop: '150px',
+            paddingBottom: '40px',
+          }}
+        >
+          <Message message={message} />
+          <div className="row">
+            <div className="col-8 offset-2">
+              <div className="row">
+                <div className="col-8">
+                  <h2>{t('Proposals')}</h2>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-12 d-flex justify-content-end">
+                  <a
+                    href={`/${locale}/admin/votes?skip=${skip}`}
+                    className={`btn mx-2 ${visible === 'all' ? 'btn-primary' : ''}`}>
+                    All
+                  </a>
+                  <a
+                    href={`/${locale}/admin/votes?skip=${skip}&visible=unreviewed`}
+                    className={`btn mx-2 ${visible === 'unreviewed' ? 'btn-primary' : ''}`}>
+                    Only not voted
+                  </a>
+                </div>
               </div>
             </div>
-            <div className="row">
-              <div className="col-12 d-flex justify-content-end">
-                <a
-                  href={`/${locale}/admin/votes?skip=${skip}`}
-                  className={`btn mx-2 ${visible === 'all' ? 'btn-primary' : ''}`}>
-                  All
-                </a>
-                <a
-                  href={`/${locale}/admin/votes?skip=${skip}&visible=unreviewed`}
-                  className={`btn mx-2 ${visible === 'unreviewed' ? 'btn-primary' : ''}`}>
-                  Only not voted
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="col-10 offset-1">
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th style={{ whiteSpace: 'nowrap' }}>{t('Language')}</th>
-                  <th style={{ whiteSpace: 'nowrap' }}>{t('Level')}</th>
-                  <th style={{ whiteSpace: 'nowrap' }}>{t('Category')}</th>
-                  <th style={{ whiteSpace: 'nowrap' }}>{t('Session Title')}</th>
-                  <th style={{ whiteSpace: 'nowrap' }}>{t('Name')}</th>
-                  <th style={{ whiteSpace: 'nowrap' }}>{t('Actions')}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {visibleProposals.map((proposal, index) => (
-                  <>
-                    <tr key={index}>
-                      <td>
-                        {t(proposal.get('lang'))}
-                      </td>
-                      <td>
-                        {proposal.get('level')}
-                      </td>
-                      <td>
-                        {proposal.get('category')}
-                      </td>
-                      <td>
-                        {proposal.get('title')}
-                      </td>
-                      <td>
-                        {proposal.get('profile')?.get('name')}
-                      </td>
-                      <td>
-                        <button className="btn" onClick={() => select(proposal)}>
-                          <FontAwesomeIcon icon={faCheckToSlot} style={{ width: 25, height: 25 }} />
-                        </button>
-                      </td>
-                    </tr>
-                    {selectedProposal?.id === proposal.id && (
-                      <>
-                        <tr>
-                          <td colSpan={6}>
-                            <div className="card">
-                              {selectedProposal.get('profile') && (
-                                <div className="card-header">
-                                  <h5 className="card-title">{t('Profile')}</h5>
-                                  <div className="card-text">
-                                    {selectedProposal.get('profile').get('name')}{' by '}
-                                    {selectedProposal.get('profile').get('organization')}
+            <div className="col-10 offset-1">
+              <table className="table table-striped">
+                <thead>
+                  <tr>
+                    <th style={{ whiteSpace: 'nowrap' }}>{t('Language')}</th>
+                    <th style={{ whiteSpace: 'nowrap' }}>{t('Level')}</th>
+                    <th style={{ whiteSpace: 'nowrap' }}>{t('Category')}</th>
+                    <th style={{ whiteSpace: 'nowrap' }}>{t('Session Title')}</th>
+                    <th style={{ whiteSpace: 'nowrap' }}>{t('Name')}</th>
+                    <th style={{ whiteSpace: 'nowrap' }}>{t('Actions')}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {visibleProposals.map((proposal, index) => (
+                    <>
+                      <tr key={index}>
+                        <td>
+                          {t(proposal.get('lang'))}
+                        </td>
+                        <td>
+                          {proposal.get('level')}
+                        </td>
+                        <td>
+                          {proposal.get('category')}
+                        </td>
+                        <td>
+                          {proposal.get('title')}
+                        </td>
+                        <td>
+                          {proposal.get('profile')?.get('name')}
+                        </td>
+                        <td>
+                          <button className="btn" onClick={() => select(proposal)}>
+                            <FontAwesomeIcon icon={faCheckToSlot} style={{ width: 25, height: 25 }} />
+                          </button>
+                        </td>
+                      </tr>
+                      {selectedProposal?.id === proposal.id && (
+                        <>
+                          <tr>
+                            <td colSpan={6}>
+                              <div className="card">
+                                {selectedProposal.get('profile') && (
+                                  <div className="card-header">
+                                    <h5 className="card-title">{t('Profile')}</h5>
+                                    <div className="card-text">
+                                      {selectedProposal.get('profile').get('name')}{' by '}
+                                      {selectedProposal.get('profile').get('organization')}
+                                    </div>
+                                  </div>
+                                )}
+                                <div className="card-body">
+                                  <div className="card-text"
+                                    dangerouslySetInnerHTML={{ __html: md.render(selectedProposal.get('description')) }}
+                                  >
                                   </div>
                                 </div>
-                              )}
-                              <div className="card-body">
-                                <div className="card-text"
-                                     dangerouslySetInnerHTML={{ __html: md.render(selectedProposal.get('description')) }}
-                                >
-                                </div>
                               </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td colSpan={6}>
-                            <div className="card">
-                              <div className="card-body">
-                                <form>
-                                  <div className="form-group">
-                                    <label htmlFor="vote">{t('Vote')}</label><br />
-                                    {Array.from({ length: 5 }).map((_, index) => (
-                                      <FontAwesomeIcon
-                                        key={index}
-                                        icon={rating >= index + 1 ? faStarSolid : faStar}
-                                        onClick={() => {
-                                          setRating(index + 1);
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colSpan={6}>
+                              <div className="card">
+                                <div className="card-body">
+                                  <form>
+                                    <div className="form-group">
+                                      <label htmlFor="vote">{t('Vote')}</label><br />
+                                      {Array.from({ length: 5 }).map((_, index) => (
+                                        <FontAwesomeIcon
+                                          key={index}
+                                          icon={rating >= index + 1 ? faStarSolid : faStar}
+                                          onClick={() => {
+                                            setRating(index + 1);
+                                          }}
+                                          style={{ width: 25, height: 25, color: 'black' }}
+                                        />
+                                      ))}
+                                    </div>
+                                    <div className="form-group">
+                                      <label htmlFor="comment">{t('Comment')}</label>
+                                      <textarea
+                                        className="form-control"
+                                        value={comment}
+                                        onChange={(e) => {
+                                          setComment(e.target.value);
                                         }}
-                                        style={{ width: 25, height: 25, color: 'black' }}
-                                      />
-                                    ))}
-                                  </div>
-                                  <div className="form-group">
-                                    <label htmlFor="comment">{t('Comment')}</label>
-                                    <textarea
-                                      className="form-control"
-                                      value={comment}
-                                      onChange={(e) => {
-                                        setComment(e.target.value);
+                                      ></textarea>
+                                    </div>
+                                    <button
+                                      type="submit"
+                                      className="btn btn-primary"
+                                      onClick={(e) => {
+                                        e.preventDefault();
+                                        submitVote();
                                       }}
-                                    ></textarea>
-                                  </div>
-                                  <button
-                                    type="submit"
-                                    className="btn btn-primary"
-                                    onClick={(e) => {
-                                      e.preventDefault();
-                                      submitVote();
-                                    }}
-                                  >{t('Vote')}</button>
-                                </form>
+                                    >{t('Vote')}</button>
+                                  </form>
+                                </div>
                               </div>
-                            </div>
-                          </td>
-                        </tr>
-                      </>
-                    )}
-                  </>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="col-8 offset-2">
-            <div className="row">
-              <div className="col-12 d-flex justify-content-between">
-                <button className="btn btn-primary" disabled={skip === 0}
-                        onClick={() => setSkip(skip - limit)}
-                >
-                  {t('Previous')}
-                </button>
-                <button className="btn btn-primary" disabled={proposals.length < limit}
-                        onClick={() => setSkip(skip + limit)}
-                >
-                  {t('Next')}
-                </button>
+                            </td>
+                          </tr>
+                        </>
+                      )}
+                    </>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="col-8 offset-2">
+              <div className="row">
+                <div className="col-12 d-flex justify-content-between">
+                  <button className="btn btn-primary" disabled={skip === 0}
+                    onClick={() => setSkip(skip - limit)}
+                  >
+                    {t('Previous')}
+                  </button>
+                  <button className="btn btn-primary" disabled={proposals.length < limit}
+                    onClick={() => setSkip(skip + limit)}
+                  >
+                    {t('Next')}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-      </div>
-    </>
-    :
-    <>{t('Loading...')}</>
-  );}
+        </div>
+      </>
+      :
+      <>{t('Loading...')}</>
+  );
+}
 

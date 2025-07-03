@@ -1,4 +1,4 @@
-import { faEye, faReply, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faReply, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useParams, useSearchParams } from "@remix-run/react";
 import { useContext, useEffect, useState } from "react";
@@ -16,6 +16,7 @@ export default function AdminEmailIndex() {
   const [selectedEmail, setSelectedEmail] = useState<Parse.Object | undefined>(undefined);
   const [subject, setSubject] = useState<string | undefined>(undefined);
   const [body, setBody] = useState<string | undefined>(undefined);
+  const [message, setMessage] = useState<{ type: string, messages: string[] } | undefined>(undefined);
   // const schema = useSchema(locale!);
   const { t } = setLang(locale!);
   useEffect(() => {
@@ -41,6 +42,7 @@ export default function AdminEmailIndex() {
     const query = new Parse.Query('Contact');
     query.descending('createdAt');
     query.notEqualTo('deleted', true);
+    query.doesNotExist('contact');
     query.limit(parseInt(searchParams.get('limit') || '10'));
     query.skip(parseInt(searchParams.get('skip') || '0'));
     const emails = await query.find() as Parse.Object[];
@@ -56,17 +58,32 @@ export default function AdminEmailIndex() {
   };
 
   const sendEmail = async (email: Parse.Object) => {
-    const subject = toSubject(replyEmail!.get('body')!);
-    const body = toQuote(replyEmail!.get('body')!);
-    const attachments = replyEmail!.get('attachments')!;
-    const to = email.get('email');
-    const from = 'noreply@example.com';
-    const message = new Parse.Object('Message');
-    message.set('subject', subject);
-    message.set('body', body);
-    message.set('attachments', attachments);
-    message.set('to', to);
-    message.set('from', from);
+    const contact = new Parse.Object('Contact');
+    contact.set('email', email.get('email'));
+    contact.set('name', 'From email');
+    contact.set('lang', email.get('lang') || 'en');
+    contact.set('category', 'reply');
+    contact.set('contact', email);
+    contact.set('reply', true);
+    contact.set('subject', subject);
+    contact.set('body', body);
+    const acl = new Parse.ACL();
+    acl.setPublicReadAccess(false);
+    acl.setPublicWriteAccess(false);
+    acl.setRoleWriteAccess(`Organizer${window.ENV.YEAR}`, true);
+    acl.setRoleReadAccess(`Organizer${window.ENV.YEAR}`, true);
+    acl.setRoleReadAccess('Admin', true);
+    acl.setRoleReadAccess('Admin', true);
+    contact.setACL(acl);
+    await contact.save();
+    setMessage({ type: 'success', messages: [t('Email sent successfully')] });
+    setTimeout(() => {
+      setMessage(undefined);
+    }, 3000);
+    setReplyEmail(undefined);
+    setSubject(undefined);
+    setBody(undefined);
+    getEmails();
   };
 
   return (
@@ -79,13 +96,30 @@ export default function AdminEmailIndex() {
           }}
         >
           <div className="row">
+            {message && (
+              <div className={`alert alert-${message.type}`} role="alert"
+                style={{
+                  position: "fixed",
+                  top: "50px",
+                  right: "50px",
+                  width: "600px",
+                  zIndex: 9999,
+                  borderRadius: "0px",
+                }}
+              >
+                <ul
+                  style={{ listStyleType: 'none', padding: 0 }}
+                >
+                  {message.messages.map((msg: string, i: number) => (
+                    <li key={i}>{msg}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
             <div className="col-8 offset-2">
               <div className="row">
                 <div className="col-8">
-                  <h2>{t('Articles')}</h2>
-                </div>
-                <div className="col-4">
-                  <Link to={`/${locale}/admin/articles/new`} className="btn btn-primary">{t('New article')}</Link>
+                  <h2>{t('Emails')}</h2>
                 </div>
               </div>
             </div>
@@ -160,7 +194,7 @@ export default function AdminEmailIndex() {
                       {selectedEmail && selectedEmail.id === email.id && (
                         <>
                           <tr>
-                            <td colSpan={4}
+                            <td colSpan={5}
                               style={{
                                 backgroundColor: '#ccc',
                                 padding: '10px',
@@ -171,7 +205,7 @@ export default function AdminEmailIndex() {
                           </tr>
                           {email.get('attachments') && email.get('attachments').length > 0 && (
                             <tr>
-                              <td colSpan={4}>
+                              <td colSpan={5}>
                                 <div>
                                   {email.get('attachments').map((attachment: string, i: number) => (
                                     attachment.endsWith('.png') || attachment.endsWith('.jpg') || attachment.endsWith('.jpeg') || attachment.endsWith('.gif') || attachment.endsWith('.webp') ? (
@@ -191,7 +225,7 @@ export default function AdminEmailIndex() {
                       {replyEmail && replyEmail.id === email.id && (
                         <>
                           <tr>
-                            <td colSpan={4}>
+                            <td colSpan={5}>
                               <div>
                                 <label>{t('To')}</label>
                                 <input type="text" className="form-control" value={email.get('email')} disabled />
@@ -199,7 +233,7 @@ export default function AdminEmailIndex() {
                             </td>
                           </tr>
                           <tr>
-                            <td colSpan={4}>
+                            <td colSpan={5}>
                               <div>
                                 <label>{t('Subject')}</label>
                                 <input type="text" className="form-control" value={subject} onChange={(e) => setSubject(e.target.value)} />
@@ -207,7 +241,7 @@ export default function AdminEmailIndex() {
                             </td>
                           </tr>
                           <tr>
-                            <td colSpan={4}>
+                            <td colSpan={5}>
                               <div>
                                 <label>{t('Body')}</label>
                                 <textarea

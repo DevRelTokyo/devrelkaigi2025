@@ -13,6 +13,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@cloudflare/pages-plugin-vercel-og": "^0.1.2",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/free-regular-svg-icons": "^6.7.2",
@@ -26,6 +27,7 @@
     "@remix-run/cloudflare-pages": "^2.13.1",
     "@remix-run/react": "^2.13.1",
     "bootstrap": "^5.3.3",
+    "canvas": "^3.1.2",
     "firebase": "^11.1.0",
     "i18next": "^23.16.1",
     "isbot": "^4.1.0",

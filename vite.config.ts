@@ -45,6 +45,7 @@ export default defineConfig({
           route(":locale/proposals/new", "routes/proposals/new.tsx");
           route(":locale/organizers/:slug", "routes/organizers/show.tsx");
           route(":locale/speakers/:slug", "routes/speakers/show.tsx");
+          route(":locale/speakers/:slug/ogp.jpg", "routes/speakers/ogp.tsx");
           route(":locale/admin/votes", "routes/admin/votes/index.tsx", {
             index: true,
           });
@@ -84,9 +85,6 @@ export default defineConfig({
           );
           route(":locale/admin/sponsors/new", "routes/admin/sponsors/new.tsx");
           route(":locale/admin/speakers", "routes/admin/speakers/index.tsx", {
-            index: true,
-          });
-          route(":locale/admin/emails", "routes/admin/emails/index.tsx", {
             index: true,
           });
           route(
