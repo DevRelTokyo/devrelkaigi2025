@@ -55,6 +55,12 @@ export default function ArticleEdit() {
               <>
                 <RemixHead>
                   <title>{`${speaker.name} - DevRelKaigi 2025`}</title>
+                  <meta property="og:title" content={`${speaker.name} - DevRelKaigi 2025`} />
+                  <meta property="og:description" content={`${speaker.name} - DevRelKaigi 2025`} />
+                  <meta property="og:url" content={`https://devrelkaigi.org/${locale}/speakers/${speaker.slug}`} />
+                  <meta property="og:image" content={`/${locale}/speakers/${speaker.slug}/ogp.jpg`} />
+                  <meta property="og:type" content="article" />
+                  <meta property="og:site_name" content="DevRelKaigi 2025" />
                 </RemixHead>
                 <Breadcrumb
                   items={[
