@@ -103,12 +103,18 @@ export default function AdminEmailsNew() {
       .equalTo('user', profile.get('user'))
       .equalTo('responseStatus', true)
       .first();
-    const object: { [key: string]: any } = {};
-    for (const key in proposal!.toJSON()) {
-      object[`proposal.${key}`] = proposal!.get(key);
+    if (!proposal) {
+      return showMessage({
+        type: 'danger',
+        messages: [t('Failed to get proposal. Please try again.')]
+      });
     }
-    for (const key in profile!.toJSON()) {
-      object[`profile.${key}`] = profile!.get(key);
+    const object: { [key: string]: any } = {};
+    for (const key in proposal.toJSON()) {
+      object[`proposal.${key}`] = proposal.get(key);
+    }
+    for (const key in profile.toJSON()) {
+      object[`profile.${key}`] = profile.get(key);
     }
     console.log(object);
     setPreviewEmail(replaceMessage(emailData.get('body'), object));
