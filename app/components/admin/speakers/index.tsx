@@ -210,7 +210,7 @@ export default function AdminSpeakersIndex() {
                 <tbody>
                   {Object.keys(speakers).length === 0 ? (
                     <tr>
-                      <td colSpan={5} className="text-center">
+                      <td colSpan={6} className="text-center">
                         {t("No speakers found")}
                       </td>
                     </tr>

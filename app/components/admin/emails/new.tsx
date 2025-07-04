@@ -27,10 +27,22 @@ export default function AdminEmailsNew() {
   }, [searchParams]);
 
   const getSpeakers = async (speakerIds: string[]) => {
-    const query = new Parse.Query('Profile');
-    query.containedIn('objectId', speakerIds);
-    const speakers = await query.find();
-    setSelectedSpeakers(speakers);
+    try {
+      const query = new Parse.Query('Profile');
+      query.containedIn('objectId', speakerIds);
+      const speakers = await query.find();
+      setSelectedSpeakers(speakers);
+    } catch (error) {
+      console.error("Error getting speakers:", error);
+      setMessage({
+        type: 'danger',
+        messages: [t('Failed to get speakers. Please try again.')]
+      });
+      setTimeout(() => {
+        setStatus('');
+        setMessage(undefined);
+      }, 3000);
+    }
   };
 
   const handleEmailSubmit = async (emailObj: Parse.Object) => {
@@ -44,31 +56,49 @@ export default function AdminEmailsNew() {
       acl.setPublicWriteAccess(false);
       emailObj.setACL(acl);
       await emailObj.save();
-      setStatus('');
-      setMessage({
+      showMessage({
         type: 'success',
         messages: [t('Email sent successfully!')]
       });
-      setTimeout(() => {
-        setStatus('');
-        setMessage(undefined);
-      }, 3000);
       // Reset form
       setEmailData(new Parse.Object('Email'));
     } catch (error) {
       console.error("Error sending email:", error);
-      setStatus('');
-      setMessage({
+      showMessage({
         type: 'danger',
         messages: [t('Failed to send email. Please try again.')]
       });
     }
   };
 
+  const showMessage = (message: MessageProps) => {
+    setMessage(message);
+    setTimeout(() => {
+      setStatus('');
+      setMessage(undefined);
+    }, 3000);
+  };
+
   const handlePreviewEmail = async () => {
+    if (selectedSpeakers.length === 0) {
+      return showMessage({
+        type: 'danger',
+        messages: [t('No speakers selected')]
+      });
+    }
     const profile = await new Parse.Query('Profile').get(selectedSpeakers[0].id);
-    console.log(profile.toJSON());
-    console.log(profile.get('user'));
+    if (!profile) {
+      return showMessage({
+        type: 'danger',
+        messages: [t('Failed to get profile. Please try again.')]
+      });
+    }
+    if (!profile.get('user')) {
+      return showMessage({
+        type: 'danger',
+        messages: [t('Failed to get user. Please try again.')]
+      });
+    }
     const proposal = await new Parse.Query('Proposal')
       .equalTo('user', profile.get('user'))
       .equalTo('responseStatus', true)
@@ -94,12 +124,11 @@ export default function AdminEmailsNew() {
     <div className="container-fluid">
       <div className="row">
         <div className="col-12">
-          <h1 className="h3 mb-4">メール送信</h1>
-
-
+          <h1 className="h3 mb-4">{t('Send Email')}</h1>
+          <Message message={message} />
           <div className="card mb-4">
             <div className="card-header">
-              <h5 className="card-title mb-0">送信対象スピーカー ({selectedSpeakers.length}名)</h5>
+              <h5 className="card-title mb-0">{t('Target Speakers')} ({selectedSpeakers.length}{t('people')})</h5>
             </div>
             <div className="card-body">
               {selectedSpeakers.length > 0 ? (
@@ -115,19 +144,18 @@ export default function AdminEmailsNew() {
                   ))}
                 </div>
               ) : (
-                <p className="text-muted mb-0">選択されたスピーカーはありません</p>
+                <p className="text-muted mb-0">{t('No speakers selected')}</p>
               )}
             </div>
           </div>
 
           <div className="card">
             <div className="card-header">
-              <h5 className="card-title mb-0">メール作成</h5>
+              <h5 className="card-title mb-0">{t('Create Email')}</h5>
             </div>
             <div className="card-body">
               {emailData && (
                 <>
-                  <Message message={message} />
                   <Form
                     name="Email"
                     schema={schema}

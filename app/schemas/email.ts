@@ -30,13 +30,11 @@ const useSchema = (lang: string): Schema[] => {
 export interface EmailFormData {
   subject: string;
   body: string;
-  speakerIds: string[];
 }
 
 export const emailFormDefaults: Partial<EmailFormData> = {
   subject: "",
   body: "",
-  speakerIds: [],
 };
 
 export { useSchema };
