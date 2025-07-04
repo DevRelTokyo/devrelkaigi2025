@@ -112,12 +112,12 @@ export default function AdminSpeakersIndex() {
     key: string
   ) => {
     const profile1 = profiles[locale!];
-    if (profile1 && key === 'id') return profile1.id;
+    if (profile1 && key === 'id') return profile1?.id;
     if (profile1 && profile1.get(key)) {
       return profile1.get(key);
     }
     const profile2 = profiles[locale === "ja" ? "en" : "ja"];
-    if (profile2 && key === 'id') return profile2.id;
+    if (profile2 && key === 'id') return profile2?.id;
     if (profile2 && profile2.get(key)) {
       return profile2.get(key);
     }

@@ -155,15 +155,13 @@ export default function AdminEmailsNew() {
             </div>
             <div className="card-body">
               {emailData && (
-                <>
-                  <Form
-                    name="Email"
-                    schema={schema}
-                    data={emailData}
-                    status={status}
-                    onSubmit={handleEmailSubmit}
-                  />
-                </>
+                <Form
+                  name="Email"
+                  schema={schema}
+                  data={emailData}
+                  status={status}
+                  onSubmit={handleEmailSubmit}
+                />
               )}
             </div>
             <div className="card-footer">
