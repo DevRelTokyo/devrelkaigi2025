@@ -20,6 +20,7 @@ export default function AdminSpeakersIndex() {
   const [speakers, setSpeakers] = useState<SpeakerData>({});
   const [message, setMessage] = useState<MessageProps | undefined>(undefined);
   const [loading, setLoading] = useState(true);
+  const [selectedSpeakers, setSelectedSpeakers] = useState<string[]>([]);
   const { t } = setLang(locale!);
 
   useEffect(() => {
@@ -111,10 +112,12 @@ export default function AdminSpeakersIndex() {
     key: string
   ) => {
     const profile1 = profiles[locale!];
+    if (profile1 && key === 'id') return profile1?.id;
     if (profile1 && profile1.get(key)) {
       return profile1.get(key);
     }
     const profile2 = profiles[locale === "ja" ? "en" : "ja"];
+    if (profile2 && key === 'id') return profile2?.id;
     if (profile2 && profile2.get(key)) {
       return profile2.get(key);
     }
@@ -181,94 +184,117 @@ export default function AdminSpeakersIndex() {
           {loading ? (
             <div>{t("Loading...")}</div>
           ) : (
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th>{t("Name")}</th>
-                  <th>{t("Organization")}</th>
-                  <th>{t("Title")}</th>
-                  <th>{t("Email")}</th>
-                  <th>{t("Actions")}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {Object.keys(speakers).length === 0 ? (
+            <>
+              <div className="row">
+                <div className="col-12 text-end">
+                  <button className="btn btn-primary" onClick={() => {
+                    window.location.href = `/${locale}/admin/emails/new?speakers=${selectedSpeakers.join(',')}`;
+                  }}
+                    disabled={selectedSpeakers.length === 0}
+                  >
+                    {t('Compose Email')}
+                  </button>
+                </div>
+              </div>
+              <table className="table table-striped">
+                <thead>
                   <tr>
-                    <td colSpan={5} className="text-center">
-                      {t("No speakers found")}
-                    </td>
+                    <th></th>
+                    <th>{t("Name")}</th>
+                    <th>{t("Organization")}</th>
+                    <th>{t("Title")}</th>
+                    <th>{t("Email")}</th>
+                    <th>{t("Actions")}</th>
                   </tr>
-                ) : (
-                  Object.values(speakers).map((profiles, index) => (
-                    <tr key={index}>
-                      <td>
-                        <Link
-                          to={`/${locale}/speakers/${getProfile(
-                            profiles,
-                            "slug"
-                          )}`}
-                        >
-                          {getProfile(profiles, "name")}
-                        </Link>
-                      </td>
-                      <td>{getProfile(profiles, "organization")}</td>
-                      <td>{getProfile(profiles, "title")}</td>
-                      <td>
-                        {getProfile(profiles, "email") !== "" && (
-                          <a href={`mailto:${getProfile(profiles, "email")}`}>
-                            ✉️
-                          </a>
-                        )}
-                      </td>
-                      <td>
-                        <div className="row">
-                          <div className="col-6">
-                            {profiles["ja"] ? (
-                              <Link
-                                className="btn"
-                                to={`/${locale}/admin/profiles/${profiles["ja"].id}/edit`}
-                                style={{
-                                  textDecoration: "none",
-                                }}
-                              >
-                                🇯🇵
-                              </Link>
-                            ) : (
-                              <button
-                                className="btn"
-                                onClick={() => copyProfile(profiles["en"])}
-                              >
-                                <span style={{ opacity: 0.5 }}>🇯🇵</span>
-                              </button>
-                            )}
-                          </div>
-                          <div className="col-6">
-                            {profiles["en"] ? (
-                              <Link
-                                className="btn"
-                                to={`/${locale}/admin/profiles/${profiles["en"].id}/edit`}
-                                style={{
-                                  textDecoration: "none",
-                                }}
-                              >
-                                🇺🇸
-                              </Link>
-                            ) : (
-                              <button
-                                className="btn"
-                                onClick={() => copyProfile(profiles["ja"])}
-                              >
-                                <span style={{ opacity: 0.5 }}>🇬🇧</span>
-                              </button>
-                            )}
-                          </div>
-                        </div>
+                </thead>
+                <tbody>
+                  {Object.keys(speakers).length === 0 ? (
+                    <tr>
+                      <td colSpan={6} className="text-center">
+                        {t("No speakers found")}
                       </td>
                     </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
+                  ) : (
+                    Object.values(speakers).map((profiles, index) => (
+                      <tr key={index}>
+                        <td>
+                          <input type="checkbox" name="speakers" value={getProfile(profiles, "id")} onChange={(e) => {
+                            if (e.target.checked) {
+                              setSelectedSpeakers([...selectedSpeakers, getProfile(profiles, "id")]);
+                            } else {
+                              setSelectedSpeakers(selectedSpeakers.filter((id) => id !== getProfile(profiles, "id")));
+                            }
+                          }} />
+                        </td>
+                        <td>
+                          <Link
+                            to={`/${locale}/speakers/${getProfile(
+                              profiles,
+                              "slug"
+                            )}`}
+                          >
+                            {getProfile(profiles, "name")}
+                          </Link>
+                        </td>
+                        <td>{getProfile(profiles, "organization")}</td>
+                        <td>{getProfile(profiles, "title")}</td>
+                        <td>
+                          {getProfile(profiles, "email") !== "" && (
+                            <a href={`mailto:${getProfile(profiles, "email")}`}>
+                              ✉️
+                            </a>
+                          )}
+                        </td>
+                        <td>
+                          <div className="row">
+                            <div className="col-6">
+                              {profiles["ja"] ? (
+                                <Link
+                                  className="btn"
+                                  to={`/${locale}/admin/profiles/${profiles["ja"].id}/edit`}
+                                  style={{
+                                    textDecoration: "none",
+                                  }}
+                                >
+                                  🇯🇵
+                                </Link>
+                              ) : (
+                                <button
+                                  className="btn"
+                                  onClick={() => copyProfile(profiles["en"])}
+                                >
+                                  <span style={{ opacity: 0.5 }}>🇯🇵</span>
+                                </button>
+                              )}
+                            </div>
+                            <div className="col-6">
+                              {profiles["en"] ? (
+                                <Link
+                                  className="btn"
+                                  to={`/${locale}/admin/profiles/${profiles["en"].id}/edit`}
+                                  style={{
+                                    textDecoration: "none",
+                                  }}
+                                >
+                                  🇺🇸
+                                </Link>
+                              ) : (
+                                <button
+                                  className="btn"
+                                  onClick={() => copyProfile(profiles["ja"])}
+                                >
+                                  <span style={{ opacity: 0.5 }}>🇬🇧</span>
+                                </button>
+                              )}
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </>
           )}
         </div>
       </div>
