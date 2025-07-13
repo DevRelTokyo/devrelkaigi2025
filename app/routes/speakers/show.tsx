@@ -7,6 +7,7 @@ import markdownIt from "markdown-it";
 import { RemixHead } from "remix-head";
 import Breadcrumb from "~/components/breadcrumb";
 import speakers from "~/data/speakers.json";
+import sessions from "~/data/sessions.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
@@ -25,7 +26,9 @@ export default function ArticleEdit() {
   const { locale, slug } = useParams();
   const { t } = setLang(locale!);
   const speaker = speakers.find((o) => o.slug === slug && o.lang === locale);
-
+  const speakerSessions = sessions.filter((o) => o.user.objectId === speaker?.user.objectId);
+  const session = speakerSessions.length == 1 ? speakerSessions[0] : speakerSessions.find((s) => s.lang === locale);
+  
   const icon = (social: string) => {
     if (social.includes("github.com")) return faGithub;
     if (social.includes("facebook.com")) return faFacebook;
@@ -138,6 +141,26 @@ export default function ArticleEdit() {
                     )}
                   </div>
                 </div>
+              </>
+            )}
+          </div>
+          <div className="col-8 offset-2"
+            style={{ paddingTop: "2em", paddingBottom: "2em" }}
+          >
+            {session && (
+              <>
+                <h3>{t("Session")}</h3>
+                <h4>{session.title}</h4>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: md.render(session.description || ""),
+                  }}
+                />
+                <p
+                  style={{ paddingTop: "1em" }}
+                >
+                  {t("Language")}: {t(session.lang)}
+                </p>
               </>
             )}
           </div>
