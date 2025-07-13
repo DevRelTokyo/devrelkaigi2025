@@ -26,6 +26,8 @@ export default function AdminVoteIndex() {
   const [comment, setComment] = useState<string>('');
   const [visible, setVisible] = useState<string>(searchParams.get('visible') || 'all');
   const [votes, setVotes] = useState<Parse.Object[]>([]);
+  const [profiles, setProfiles] = useState<Parse.Object[]>([]);
+
   // const schema = useSchema(locale!);
   const { t } = setLang(locale!);
   useEffect(() => {
@@ -53,6 +55,20 @@ export default function AdminVoteIndex() {
     updateVisibleProposals();
   }, [proposals, skip, votes]);
 
+  const getProfile = (proposal: Parse.Object): Parse.Object => {
+    const userProfiles = profiles.filter(p => p.get('user').id === proposal.get('user').id);
+    if (userProfiles.length === 1) {
+      return userProfiles[0];
+    } else if (userProfiles.length === 2) {
+      return userProfiles.find(p => p.get('lang') === proposal.get('lang'))!;
+    }
+    const profile = new Parse.Object('Profile');
+    profile.set('user', proposal.get('user'));
+    profile.set('lang', proposal.get('lang'));
+    profile.set('name', proposal.get('user').get('username'));
+    return profile;
+  }
+
   const getProposals = async () => {
     if (!user) return;
     const query = new Parse.Query('Proposal');
@@ -69,20 +85,7 @@ export default function AdminVoteIndex() {
     profileQuery.containedIn('user', userIds);
     profileQuery.limit(limit * 2);
     const profiles = await profileQuery.find() as Parse.Object[];
-    proposals.forEach(proposal => {
-      const userProfiles = profiles.filter(p => p.get('user').id === proposal.get('user').id);
-      if (userProfiles.length === 0) {
-        const profile = new Parse.Object('Profile');
-        profile.set('user', proposal.get('user'));
-        profile.set('lang', proposal.get('lang'));
-        profile.set('name', proposal.get('user').get('username'));
-        proposal.set('profile', profile);
-      } else if (userProfiles.length === 1) {
-        proposal.set('profile', userProfiles[0]);
-      } else {
-        proposal.set('profile', userProfiles.find(p => p.get('lang') === proposal.get('lang')));
-      }
-    });
+    setProfiles(profiles);
     setProposals(proposals);
   };
 
@@ -145,7 +148,6 @@ export default function AdminVoteIndex() {
         return;
       }
       const vote = votes.find(vote => vote.get('proposal').id === selectedProposal.id) || new Parse.Object('Vote');
-      selectedProposal.unset('profile');
       if (!vote.id) {
         vote.set('proposal', selectedProposal);
         vote.set('user', user);
@@ -241,7 +243,7 @@ export default function AdminVoteIndex() {
                           {proposal.get('title')}
                         </td>
                         <td>
-                          {proposal.get('profile')?.get('name')}
+                          {getProfile(proposal)?.get('name')}
                         </td>
                         <td>
                           <button className="btn" onClick={() => select(proposal)}>
@@ -254,12 +256,12 @@ export default function AdminVoteIndex() {
                           <tr>
                             <td colSpan={6}>
                               <div className="card">
-                                {selectedProposal.get('profile') && (
+                                {getProfile(proposal) && (
                                   <div className="card-header">
                                     <h5 className="card-title">{t('Profile')}</h5>
                                     <div className="card-text">
-                                      {selectedProposal.get('profile').get('name')}{' by '}
-                                      {selectedProposal.get('profile').get('organization')}
+                                      {getProfile(proposal).get('name')}{' by '}
+                                      {getProfile(proposal).get('organization')}
                                     </div>
                                   </div>
                                 )}

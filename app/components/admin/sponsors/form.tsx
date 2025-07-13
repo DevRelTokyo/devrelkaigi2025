@@ -55,12 +55,13 @@ export default function SponsorForm() {
     setStatus('submitting');
     try {
       if (!sponsor.id) {
-        sponsor.set('year', parseInt(import.meta.env.YEAR));
+        const year = parseInt(`${window.ENV.YEAR}`);
+        sponsor.set('year', year);
         const acl = new Parse.ACL();
         acl.setPublicReadAccess(true);
         acl.setPublicWriteAccess(false);
         acl.setRoleWriteAccess('Admin', true);
-        acl.setRoleWriteAccess(`Organizer${import.meta.env.YEAR}`, true);
+        acl.setRoleWriteAccess(`Organizer${year}`, true);
         sponsor.setACL(acl);
       }
       await sponsor.save();
