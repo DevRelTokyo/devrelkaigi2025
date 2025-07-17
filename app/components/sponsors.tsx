@@ -36,7 +36,7 @@ export default function Sponsors() {
         <div className="row">
           <div className="col-12">
             <div className="sponsor-btn text-center">
-              <a href={`${locale}/contact`} className="btn btn-main-md">{t('Request sponsor brochure')}</a>
+              <a href={`/${locale}/contact`} className="btn btn-main-md">{t('Request sponsor brochure')}</a>
             </div>
           </div>
         </div>
