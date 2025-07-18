@@ -25,6 +25,29 @@
     "user": {
       "__type": "Pointer",
       "className": "_User",
+      "objectId": "X2mAwBcx8H"
+    },
+    "lang": "en",
+    "name": "Awantika Nigam",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocKhnoDhZi9t9lxhpFkO7GeRli9kg87HXWPIUpbtoC-8vCV8MMM=s96-c",
+    "slug": "awantika",
+    "socials": [
+      "https://www.linkedin.com/in/awantika-nigam/",
+      "https://x.com/NigamAwantika"
+    ],
+    "organization": "Refact.ai",
+    "title": "Community Manager @ Refact.ai",
+    "profile": "I’m a Community Manager with 4+ years of experience focused on community management and advocacy, especially in EdTech and AI. I’m passionate about building and scaling great communities where members feel valued, engaged, and empowered. I love creating programs and spaces that connect people, encourage collaboration, and support growth. Whether it’s managing day-to-day community activities or scaling up for larger audiences, I’m all about helping communities thrive and grow sustainably.",
+    "image_file": {
+      "__type": "File",
+      "name": "811f06da83b0a350de389da08e33da24_1749193671828-29wjr1woubo.png",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/811f06da83b0a350de389da08e33da24_1749193671828-29wjr1woubo.png"
+    }
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
       "objectId": "RrcCRQzGw2"
     },
     "lang": "en",
@@ -205,12 +228,40 @@
     "title": "代表取締役"
   },
   {
-    "socials": [],
+    "socials": [
+      "https://x.com/wawasensei",
+      "https://www.youtube.com/@elestio",
+      "http://github.com/wass08",
+      "https://youtube.com/@wawasensei"
+    ],
+    "lang": "en",
+    "name": "Wassim SAMAD",
+    "profile": "Developer Advocate at Elestio where I help developers deploy and manage open-source software. I create weekly YouTube videos and grew our channel to over 20,000 subscribers by sharing practical content around DevOps and open-source tools.",
+    "image_url": "https://avatars.githubusercontent.com/u/6551176?v=4",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "a0dkE7vaBu"
+    },
+    "slug": "wawa-sensei",
+    "organization": "Elestio",
+    "title": "Developer Advocate",
+    "image_file": {
+      "__type": "File",
+      "name": "594981c9757a7284ffe57f4cabc59d09_1748244876085-r6we8wio11.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/594981c9757a7284ffe57f4cabc59d09_1748244876085-r6we8wio11.jpg"
+    }
+  },
+  {
+    "socials": [
+      "https://www.instagram.com/don_in_lisboa",
+      "https://bsky.app/profile/uncanny.bingo"
+    ],
     "lang": "en",
     "slug": "uncannybingo",
     "image_url": "https://avatars.githubusercontent.com/u/521866?v=4",
     "name": "Don Goodman",
-    "profile": "1x engineer, teacher, philosopher. Time travel paradox resolution consultant. Tech ethics activist. #dropice",
+    "profile": "Trying desperately not to isolate myself from the rest of humanity in the Portuguese mountains until I die alone my corpse undiscovered for a decade. I also enjoy photography.",
     "user": {
       "__type": "Pointer",
       "className": "_User",
@@ -220,7 +271,9 @@
       "__type": "File",
       "name": "ebb627ab34ed9624d263a2af5d046f0b_1751275409677-yi4jp4kucyo.jpeg",
       "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/ebb627ab34ed9624d263a2af5d046f0b_1751275409677-yi4jp4kucyo.jpeg"
-    }
+    },
+    "organization": "Formance",
+    "title": "Head of Marketing"
   },
   {
     "lang": "ja",
@@ -337,18 +390,6 @@
       "name": "921dd773682134bafe0e9a7c454cbc1a_1748225411663-k0yx5rxruf8.png",
       "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/921dd773682134bafe0e9a7c454cbc1a_1748225411663-k0yx5rxruf8.png"
     }
-  },
-  {
-    "user": {
-      "__type": "Pointer",
-      "className": "_User",
-      "objectId": "nvixjgfZNW"
-    },
-    "lang": "en",
-    "name": "Wassim Samad",
-    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocKpFogONxkd7T_vXe2_NLkrWejWYZuTOM5qmFm4jG2ugrw53qHd=s96-c",
-    "slug": "wassim",
-    "socials": []
   },
   {
     "user": {
@@ -671,6 +712,40 @@
     }
   },
   {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "SCL6YoPqvX"
+    },
+    "lang": "en",
+    "name": "Kitagawa Masashi",
+    "image_url": "https://avatars.githubusercontent.com/u/68406374?v=4",
+    "slug": "masashible",
+    "socials": []
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "mtAxEaTpkP"
+    },
+    "lang": "en",
+    "name": "Eeshaan Sawant",
+    "image_url": "https://avatars.githubusercontent.com/u/100678386?v=4",
+    "slug": "sawanteeshaan",
+    "socials": [
+      "https://www.linkedin.com/in/sawanteeshaan/"
+    ],
+    "organization": "ONLYOFFICE",
+    "title": "Technical Writer, Developer Advocate",
+    "profile": "Meet Eeshaan Sawant, a Computer Science Graduate from Pune, India. Eeshaan's primary interests lie in Developer Relations and Technical Writing. Currently, he works as a Technical Writer and a Developer Advocate at ONLYOFFICE.\n\nEeshaan also possesses a keen interest in Cloud-Native Technologies, and he has been a hands-on contributor and maintainer of various CNCF projects. He has also been an integral part of various Open-Source Programs like Open Source Promotion Plan (OSPP) and Outreachy, and is a recipient of the Dahn Kohn Scholarship.\n\nWhen away from his beloved laptop, Eeshaan enjoys lifting weights and brewing a cup of good coffee.\n",
+    "image_file": {
+      "__type": "File",
+      "name": "fbd4f59b9ef2944d6ad4623252e94484_1751462803310-l1ey8ig9i2f.jpeg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/fbd4f59b9ef2944d6ad4623252e94484_1751462803310-l1ey8ig9i2f.jpeg"
+    }
+  },
+  {
     "socials": [
       "https://www.facebook.com/taiponrock",
       "https://www.linkedin.com/in/taiponrock/",
@@ -694,6 +769,18 @@
       "className": "_User",
       "objectId": "LkpahEPGU7"
     }
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "NyiE99KvnI"
+    },
+    "lang": "en",
+    "name": "Pratham Kumar",
+    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocKdY-fpmpEJQYPx9UE51Xh4Y9_9RofFgszUpDzJ2Kc66UGPkCk=s96-c",
+    "slug": "pratham",
+    "socials": []
   },
   {
     "socials": [
@@ -740,18 +827,6 @@
     }
   },
   {
-    "user": {
-      "__type": "Pointer",
-      "className": "_User",
-      "objectId": "yXBs7D5KQA"
-    },
-    "lang": "en",
-    "name": "Awantika Nigam",
-    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocLQ9NrXqUDhWK45zi4UT9ZUOYKX16ab0VxkmRAKFN1JLLttNsRmXw=s96-c",
-    "slug": "awantika",
-    "socials": []
-  },
-  {
     "socials": [
       "https://x.com/MishManners",
       "https://www.linkedin.com/in/mishmanners/"
@@ -774,7 +849,10 @@
     }
   },
   {
-    "socials": [],
+    "socials": [
+      "https://www.instagram.com/don_in_lisboa",
+      "https://bsky.app/profile/uncanny.bingo"
+    ],
     "image_file": {
       "__type": "File",
       "name": "ebb627ab34ed9624d263a2af5d046f0b_1751275409677-yi4jp4kucyo.jpeg",
@@ -784,11 +862,35 @@
     "slug": "uncannybingo",
     "image_url": "https://avatars.githubusercontent.com/u/521866?v=4",
     "name": "Don Goodman",
-    "profile": "1x engineer, teacher, philosopher. Time travel paradox resolution consultant. Tech ethics activist. #dropice",
+    "profile": "Trying desperately not to isolate myself from the rest of humanity in the Portuguese mountains until I die alone my corpse undiscovered for a decade. I also enjoy photography.",
     "user": {
       "__type": "Pointer",
       "className": "_User",
       "objectId": "3MVRfO42CJ"
+    },
+    "organization": "Formance",
+    "title": "Head of Marketing"
+  },
+  {
+    "socials": [
+      "https://x.com/OnigiriMa_shi",
+      "https://www.linkedin.com/in/masashi-kitagawa-1838a11b6/"
+    ],
+    "name": "北川雅士",
+    "organization": "ファインディ株式会社",
+    "title": "Developer Relations室 室長",
+    "image_file": {
+      "__type": "File",
+      "name": "a459cb7c337c7baa945832a7d6c28208_1752482528091-ho6jfyuzdn7.png",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/a459cb7c337c7baa945832a7d6c28208_1752482528091-ho6jfyuzdn7.png"
+    },
+    "profile": "Developer Relations室 室長\n大手証券系シンクタンクにて金融系SIerとして6年半、リース会社基幹系システム、地銀向け投資信託のシステム開発に従事。その後、人事部にて新人研修なども経験し、ファインディ株式会社へ入社。 \nエンジニア向けキャリア面談を行うユーザーサクセスチームに約2年、昨年よりDevRelチームの立ち上げ、リーダーとしてイベントの開催や自社メディア「Findy Engineer Lab」の運営を行う。",
+    "slug": "m-kitagawa",
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "SCL6YoPqvX"
     }
   }
 ]

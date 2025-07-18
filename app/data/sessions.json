@@ -922,6 +922,58 @@
     "objectId": "B5BFGjBT5n"
   },
   {
+    "title": "チームで行うDevRel活動 - 事業貢献をしながらユーザーに価値を届けるために",
+    "summary": "DevRel活動は、イベント、メディア、コミュニティ活動、ワークショップと多岐にわたります。\nそれらを一人でまかない切るのではなく、プロフェッショナルとして個人の力を活かした方が、より大きな効果が期待できます。\nそして、それは事業やプロダクトの思想や目標、数字と紐づいてなければなりません。\n本セッションでは、ファインディが立ち上げから20名規模の組織になり、事業価値とユーザーへの価値を両立している考え方や取り組みを紹介します",
+    "description": "1.FindyのDevRelの取り組み \n- 組織規模 \n- 立ち上げの苦悩と課題\n- ミッション\n2.DevRelとMKの棲み分けと考え方\n-  海外と日本のDevRelの違いを、DevRelConferene NY参加から考える\n-  MKとの共同の仕方、CSやSalesとのつなぎ込み\n3. 個々人の特性を考えて組織マネジメントする\n- DevRelは総合力が求められる\n- プロフェッショナルな力を活かすことと、それをマネジメントすること\n- 開発組織の考え方と同じ組織づくり（チームトポロジーから考える）\n4. Findyのイベントやカンファレンスの取り組み\n5.まとめ",
+    "type": "talk",
+    "level": "Intermediate",
+    "category": "business",
+    "reason": "ファインディ株式会社で、DevRelの立ち上げから20名まで組織を拡大し、事業にとってなくてはならない存在にしたため",
+    "first_event": "なし",
+    "co_speaker": false,
+    "coc": true,
+    "record": true,
+    "no_support": true,
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "SCL6YoPqvX"
+    },
+    "lang": "ja",
+    "status": "Sent",
+    "cfp": {
+      "__type": "Pointer",
+      "className": "CFP",
+      "objectId": "OuZHfyGpJQ"
+    },
+    "rating": 3.6666666666666665,
+    "is_enabled": true,
+    "createdAt": "2025-05-31T07:48:02.840Z",
+    "updatedAt": "2025-07-14T08:39:38.266Z",
+    "deadline": {
+      "__type": "Date",
+      "iso": "2025-07-20T01:50:12.988Z"
+    },
+    "key": null,
+    "review": true,
+    "responseStatus": true,
+    "ACL": {
+      "*": {
+        "read": true
+      },
+      "role:Organizer2025": {
+        "write": true
+      },
+      "role:Admin": {
+        "write": true
+      },
+      "role:Speaker2025": {
+        "write": true
+      }
+    },
+    "objectId": "V0WoratQQL"
+  },
+  {
     "type": "talk",
     "level": "All",
     "category": "devrel",
@@ -1069,5 +1121,105 @@
       }
     },
     "objectId": "nCUVs27nsb"
+  },
+  {
+    "title": "Building API Experiences Your Developers Love",
+    "description": "I have been in the API Developer Relations space since 2021. It's one of the most toughest Developer Relations field to manage. If you are a new React framework company, your DevRel efforts might be minial as everyone in the tech is general excited about the new frameworks or front-end technology. But API Developer Relations is hard to manage as API is the most boring technology. In this session, I want to present what are the some offerings along with the documentation that can help providing a standout API DX. This includes sandboxing, SDKs, Playground, clearer error messages, and beyond.\n\nI test a lot of API products so I want to show different API companies and how they are excelling in API DX space. Trust me, I am not going to be focused on my company for free promotion. I want this talk to be 100% organic and open.",
+    "summary": "Developer Relations field is not like a software engineering where everything is pretty standard and consistent. DevRel has to be tailored for each type of technology. My session will focus on API Developer Relations and how to do it well. ",
+    "type": "talk",
+    "level": "Intermediate",
+    "category": "devrel",
+    "reason": "Because ever since I started working professionally, I have been around APIs. ",
+    "coc": true,
+    "record": true,
+    "no_support": true,
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "NyiE99KvnI"
+    },
+    "lang": "en",
+    "status": "Sent",
+    "cfp": {
+      "__type": "Pointer",
+      "className": "CFP",
+      "objectId": "FVkLmDT7az"
+    },
+    "rating": 4.166666666666667,
+    "is_enabled": true,
+    "createdAt": "2025-06-17T13:56:46.976Z",
+    "updatedAt": "2025-07-14T11:26:49.113Z",
+    "deadline": {
+      "__type": "Date",
+      "iso": "2025-07-21T01:42:14.373Z"
+    },
+    "key": null,
+    "review": true,
+    "responseStatus": true,
+    "ACL": {
+      "*": {
+        "read": true
+      },
+      "role:Organizer2025": {
+        "write": true
+      },
+      "role:Admin": {
+        "write": true
+      },
+      "role:Speaker2025": {
+        "write": true
+      }
+    },
+    "objectId": "jsraBiDheG"
+  },
+  {
+    "title": "What if Your DevRel Could Also Write? PS: The Secret Weapon in DevRel",
+    "summary": "DevRel teams love their demos, talks, and Twitter threads, but often overlook the most clicked, most trusted, and most silently powerful piece of the puzzle: The Docs.\n\nBehind every great developer experience is a great document, but we rarely talk about WHO wrote it. \nIn this talk, I’ll explore how combining writing skills with DevRel responsibilities supercharges everything from onboarding and API adoption to community trust and content strategy. I’ll share the lessons I have learned from my own journey of growing into a Developer Advocate, working across open-source ecosystems and developer tools, and outline how DevRel teams can better recognize, collaborate with, and grow from technical writing. If you're still treating writing as “support work,” you're leaving developer success behind. Let’s rethink DevRel, not just as a speaker’s role, but as a writer’s platform too.\n",
+    "description": "**What if your DevRel Engineer wasn’t just a speaker, demo builder, or community face, but also your strongest communicator on paper? **\n\nFor many developers, documentation is their first, and sometimes the only touchpoint with your product. It conveys your tone, your values, and your attention to detail. If your docs aren’t clear, accessible, and globally relevant, your community won’t be either. And yet, the people who craft this experience—the technical writers, are rarely acknowledged as part of the DevRel equation. \n\nThis talk shines a light on the overlooked role of technical writers in Developer Success. From first-touch onboarding to long-tail adoption, I’ll show how good docs are doing DevRel’s most critical work, quietly and at scale. I will also share how my experience as a technical writer organically led me to take on DevRel responsibilities, and why this hybrid model is more powerful (and sustainable) than most teams realise. \n\nThrough out this talk, we will dig into:\n* How technical writing impacts onboarding, adoption, and community health\n* Where and How DevRel teams are losing efficiency by not investing in writing\n* How to elevate technical writers as contributors in DevRel strategy, within the existing workflows, without changing your org chart.\n",
+    "coc": true,
+    "record": true,
+    "no_support": true,
+    "category": "devrel",
+    "level": "Intermediate",
+    "type": "talk",
+    "reason": "I’ve been a technical writer at ONLYOFFICE for the past two years, but in reality, I’ve also been quietly doing the work of a DevRel all along. From speaking at conferences to helping community developers troubleshoot integrations and improve onboarding flows, I’ve been sitting at the intersection of writing, developer support, and community engagement.\n\nThis undercover, hybrid DevRel X Technical Writer role has worked us wonders and this approach has allowed us to scale support, reduce onboarding friction, and build a global community of contributors without relying heavily on traditional evangelism.\n\nAs the first technical writer on our team to step into the shoes of a DevRel Engineer, I’m in a unique position to share not just the “why,” but also the “how” with practical examples, workflows, and lessons from a team that’s been doing DevRel through technical writing for long.",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "mtAxEaTpkP"
+    },
+    "lang": "en",
+    "status": "Sent",
+    "cfp": {
+      "__type": "Pointer",
+      "className": "CFP",
+      "objectId": "FVkLmDT7az"
+    },
+    "rating": 4.666666666666667,
+    "is_enabled": true,
+    "createdAt": "2025-07-02T13:14:00.113Z",
+    "updatedAt": "2025-07-13T05:08:39.144Z",
+    "deadline": {
+      "__type": "Date",
+      "iso": "2025-07-20T01:43:02.677Z"
+    },
+    "key": null,
+    "review": true,
+    "responseStatus": true,
+    "ACL": {
+      "*": {
+        "read": true
+      },
+      "role:Organizer2025": {
+        "write": true
+      },
+      "role:Admin": {
+        "write": true
+      },
+      "role:Speaker2025": {
+        "write": true
+      }
+    },
+    "objectId": "RApcsqldBo"
   }
 ]

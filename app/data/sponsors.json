@@ -24,5 +24,30 @@
       }
     },
     "objectId": "Cu3xbo2MmC"
+  },
+  {
+    "name": "ピープルソフトウェア",
+    "level": "bronze",
+    "logo": {
+      "__type": "File",
+      "name": "c8ab812db38209a38297a8687fcc3911_1752377840993-60kiqpa7rjq.png",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/c8ab812db38209a38297a8687fcc3911_1752377840993-60kiqpa7rjq.png"
+    },
+    "url": "https://pscsrv.co.jp/",
+    "year": 2025,
+    "createdAt": "2025-07-13T03:37:31.430Z",
+    "updatedAt": "2025-07-13T03:37:31.430Z",
+    "ACL": {
+      "*": {
+        "read": true
+      },
+      "role:Admin": {
+        "write": true
+      },
+      "role:Organizer2025": {
+        "write": true
+      }
+    },
+    "objectId": "FhVjo7Ok7t"
   }
 ]

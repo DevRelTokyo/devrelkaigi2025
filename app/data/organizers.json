@@ -236,9 +236,9 @@
     "image_url": "https://lh3.googleusercontent.com/a/ACg8ocKa5kSiVqhzPI8JeQ2ZNaKbtlUbmjRngcN2s6skkttm3lngsUTj0Q=s96-c",
     "slug": "itoha1028",
     "socials": [],
-    "organization": "Deloitte Tohmatsu Consulting LLC.",
+    "organization": "Global consulting firm",
     "title": "Manager",
-    "profile": "To be updated ",
+    "profile": "I'm a consultant who helps companies embrace cloud-native technologies. Before my current role, I worked at two system integrators. I've been building the backend for connected car services in the auto industry.",
     "image_file": {
       "__type": "File",
       "name": "65fb3e8e54e2a3ade9cda43833e60e57_1749381693083-lr89gipzqa.jpg",
@@ -256,6 +256,11 @@
       "__type": "Pointer",
       "className": "_User",
       "objectId": "1sgI8q2Puk"
+    },
+    "image_file": {
+      "__type": "File",
+      "name": "64bd3bc7dac196fbb4cd2889a9a064f2_1751799647231-u8kimp8e4i.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/64bd3bc7dac196fbb4cd2889a9a064f2_1751799647231-u8kimp8e4i.jpg"
     }
   },
   {
@@ -318,9 +323,9 @@
     "socials": [],
     "slug": "itoha1028",
     "name": "伊藤 隼人",
-    "organization": "デロイトトーマツコンサルティング合同会社",
+    "organization": "総合コンサルティングファーム",
     "title": "Manager",
-    "profile": "企業のクラウドネイティブを推進したいコンサルタント。\nSIer 2社を経て現職。\n主に自動車業界にて、コネクティッドサービスのバックエンドシステム構築に従事。\nプライベートては0歳児育児に奮闘中。",
+    "profile": "企業のクラウドネイティブ活用を推進したいコンサルタント。\nSIer 2社を経て現職。\n主に自動車業界にて、コネクティッドサービスのバックエンドシステム構築に従事。\nプライベートては0歳児育児に奮闘中。",
     "lang": "ja",
     "user": {
       "__type": "Pointer",
@@ -383,6 +388,11 @@
       "__type": "Pointer",
       "className": "_User",
       "objectId": "1sgI8q2Puk"
+    },
+    "image_file": {
+      "__type": "File",
+      "name": "e1a9240058da515c3ba709d6d00d9e5f_1751799671322-ggfcwoqjcik.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/e1a9240058da515c3ba709d6d00d9e5f_1751799671322-ggfcwoqjcik.jpg"
     }
   }
 ]
