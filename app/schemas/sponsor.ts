@@ -33,6 +33,10 @@ const useSchema = (lang: string): Schema[] => {
           value: 'bronze',
         },
         {
+          label: 'Media',
+          value: 'media',
+        },
+        {
           label: 'Community',
           value: 'community',
         },

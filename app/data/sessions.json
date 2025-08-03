@@ -485,53 +485,6 @@
     "objectId": "FOsAEMOcCa"
   },
   {
-    "title": "Community Guide 2.0 - How communities are redefining DevRel and beyond.",
-    "summary": "This talk explores the 'why' and 'how' of developer communities and why they are crucial for DevRel success. From dealing with the challenges that comes with managing the communities to bridging the gap between companies and developers through DevRel, a community builder often has to wear multiple hats, juggling between planning, execution and management in-between.\n\nWe will talk about the micro-details that culminate to form a bigger picture of community and some actionable strategies to cultivate inclusive, engaged, and diverse communities. By the end, the attendees will get key takeaways, along with the tools and confidence to build, or rebuild a community that thrives—not just survives. ",
-    "description": "Written from the lens of a community builder who has build and scaled some of the India's top tech communities, I've been a part of many coveted Tech programs that deal with student communities through DevRel with companies like The Hack Club, GitHub, Google and Microsoft. \n\nThis is a beginner friendly talk that will cover -\n\n• Why communities play an integral role in DevRel?\n\n• How to build a Inclusive and Diverse community.\n\n• Building a community from scratch and leading it.\n\n• Impact of communities on DevRel and Business success.\n\n• Accessibility and why it isn't just a buzzword.\n\n• The roadmap to become a community manager in DevRel \n\nKey takeaways from this talk -\n\n• How to build a community from scratch and scaling it further.\n\n• The shared interests and pain points of a community that defines its goals.\n\n• Challenges that arise while managing a community and how to deal with it\n\n• How to find resources to help your community.\n\n• How you define your community is how it defines you.\n\n• How to build trust and reliability in the community.\n\n• How to make your community a safe space for everyone.\n\n• Code of conduct and why it's necessary.\n\n• Are you a community Ninja? - Career options as a DevRel advocate and Community Manager.\n\n• Testimonials of some community builders and how communities shaped their life and careers.\n\nSo, whether you're a seasoned community builder or just starting out, this talk will give you a perspective of redefining communities through DevRel and some actionable tips to turn your community into a inclusive space for harbouring growth, creativity and innovation.",
-    "type": "talk",
-    "level": "All",
-    "category": "community",
-    "coc": true,
-    "record": true,
-    "no_support": true,
-    "reason": "I'm a community builder with 4+ years of experience in community management and I've build and scaled some of the India's top tech communities, I've been a part of many coveted Tech programs that deal with student communities through DevRel with companies like The Hack Club, GitHub, Google and Microsoft. I aim to make technology more accessible for under-represented communities and working towards building diverse and inclusive communities.",
-    "user": {
-      "__type": "Pointer",
-      "className": "_User",
-      "objectId": "5wc6otH8XJ"
-    },
-    "lang": "en",
-    "status": "Sent",
-    "cfp": {
-      "__type": "Pointer",
-      "className": "CFP",
-      "objectId": "ELGzJm5Ha5"
-    },
-    "createdAt": "2025-03-31T20:30:55.997Z",
-    "updatedAt": "2025-05-24T08:08:48.923Z",
-    "is_enabled": true,
-    "rating": 3.8,
-    "deadline": {
-      "__type": "Date",
-      "iso": "2025-05-31T07:46:48.121Z"
-    },
-    "key": null,
-    "review": true,
-    "responseStatus": true,
-    "ACL": {
-      "*": {
-        "read": true
-      },
-      "role:Organizer2025": {
-        "write": true
-      },
-      "role:Admin": {
-        "write": true
-      }
-    },
-    "objectId": "OiYUoXsOc9"
-  },
-  {
     "type": "talk",
     "level": "beginner",
     "category": "devrel",

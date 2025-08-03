@@ -10,7 +10,7 @@
     "image_url": "https://lh3.googleusercontent.com/a/ACg8ocLPIz2vkAOSbM_GCS_hX7Dsyau7oEKwqmyd0U73CUgq1XQYLQ=s96-c",
     "slug": "nrslib",
     "socials": [
-      "https://x.com/nrslibhttps://x.com/nrslib"
+      "https://x.com/nrslib"
     ],
     "organization": "CoDMON, Inc.",
     "title": "CTO",
@@ -36,7 +36,7 @@
       "https://x.com/NigamAwantika"
     ],
     "organization": "Refact.ai",
-    "title": "Community Manager @ Refact.ai",
+    "title": "Community Manager",
     "profile": "I’m a Community Manager with 4+ years of experience focused on community management and advocacy, especially in EdTech and AI. I’m passionate about building and scaling great communities where members feel valued, engaged, and empowered. I love creating programs and spaces that connect people, encourage collaboration, and support growth. Whether it’s managing day-to-day community activities or scaling up for larger audiences, I’m all about helping communities thrive and grow sustainably.",
     "image_file": {
       "__type": "File",
@@ -70,7 +70,7 @@
       "http://github.com/goofmint",
       "http://facebook.com/goofmint",
       "https://www.linkedin.com/in/goofmint/",
-      "https://github.com/goofmint"
+      "https://x.com/goofmint"
     ],
     "organization": "MOONGIFT Inc.",
     "title": "CEO",
@@ -128,30 +128,6 @@
     "image_url": "https://lh3.googleusercontent.com/a/ACg8ocKWGdAXSOM93L37Z9SkZOIUTM_i3T59qM5Cs_loMrB0lceA54Ns=s96-c",
     "slug": "hayato",
     "socials": []
-  },
-  {
-    "user": {
-      "__type": "Pointer",
-      "className": "_User",
-      "objectId": "e4pzCffXit"
-    },
-    "lang": "en",
-    "name": "Sumit Saurabh",
-    "image_url": "https://lh3.googleusercontent.com/a/ACg8ocJspiM0sD_VSWZyZKzCTA5IPIOHc8knrqEk5ct4ZejRHs1eB70=s96-c",
-    "slug": "sumitsaurabh927",
-    "socials": [
-      "https://twitter.com/sumitsaurabh927",
-      "https://www.linkedin.com/in/sumitsaurabh927/",
-      "http://github.com/sumitsaurabh927"
-    ],
-    "organization": "Motia",
-    "title": "Developer Advocate",
-    "profile": "I'm a developer advocate keenly interested in the React and AI ecosystems.",
-    "image_file": {
-      "__type": "File",
-      "name": "cb38184ea428283db5a51b665bd27fcf_1748258724447-06b9nctamrl6.jpeg",
-      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/cb38184ea428283db5a51b665bd27fcf_1748258724447-06b9nctamrl6.jpeg"
-    }
   },
   {
     "user": {
@@ -891,6 +867,29 @@
       "__type": "Pointer",
       "className": "_User",
       "objectId": "SCL6YoPqvX"
+    }
+  },
+  {
+    "socials": [
+      "https://twitter.com/sumitsaurabh927",
+      "https://www.linkedin.com/in/sumitsaurabh927/",
+      "http://github.com/sumitsaurabh927"
+    ],
+    "slug": "sumitsaurabh927",
+    "name": "Sumit Saurabh",
+    "organization": "Lingo.dev",
+    "title": "Senior Developer Advocate",
+    "profile": "I'm a React developer, keenly interested in the intersection of React and AI ecosystems. I love building and scaling communities and the associated challenges.",
+    "image_file": {
+      "__type": "File",
+      "name": "051572fe2d9272e45de4ad9dffbe9956_1754200648409-ooum64nro3h.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/051572fe2d9272e45de4ad9dffbe9956_1754200648409-ooum64nro3h.jpg"
+    },
+    "lang": "en",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "e4pzCffXit"
     }
   }
 ]

@@ -49,5 +49,80 @@
       }
     },
     "objectId": "FhVjo7Ok7t"
+  },
+  {
+    "name": "ヴァル研究所",
+    "level": "bronze",
+    "logo": {
+      "__type": "File",
+      "name": "a197397939b2a26589555b494f4d8aa1_1754054942017-det0hi5upwu.png",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/a197397939b2a26589555b494f4d8aa1_1754054942017-det0hi5upwu.png"
+    },
+    "url": "https://api-info.ekispert.com/",
+    "year": 2025,
+    "createdAt": "2025-08-01T13:29:14.604Z",
+    "updatedAt": "2025-08-01T13:29:14.604Z",
+    "ACL": {
+      "*": {
+        "read": true
+      },
+      "role:Admin": {
+        "write": true
+      },
+      "role:Organizer2025": {
+        "write": true
+      }
+    },
+    "objectId": "PXHyefLBnh"
+  },
+  {
+    "level": "community",
+    "name": "Swift愛好会",
+    "url": "https://love-swift.connpass.com",
+    "logo": {
+      "__type": "File",
+      "name": "616420d12f834eb7ff3f2ff8656dd7cb_1754217424891-kdhlzae1ot8.png",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/616420d12f834eb7ff3f2ff8656dd7cb_1754217424891-kdhlzae1ot8.png"
+    },
+    "year": 2025,
+    "createdAt": "2025-08-03T10:37:16.849Z",
+    "updatedAt": "2025-08-03T10:37:16.849Z",
+    "ACL": {
+      "*": {
+        "read": true
+      },
+      "role:Admin": {
+        "write": true
+      },
+      "role:Organizer2025": {
+        "write": true
+      }
+    },
+    "objectId": "8HY6uVdRgR"
+  },
+  {
+    "name": "Kotlin愛好会",
+    "level": "community",
+    "logo": {
+      "__type": "File",
+      "name": "6317a53380681dc0f2c3d3ae10f0ff21_1754217459463-c6ru5tsu0kb.png",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/6317a53380681dc0f2c3d3ae10f0ff21_1754217459463-c6ru5tsu0kb.png"
+    },
+    "url": "https://love-kotlin.connpass.com",
+    "year": 2025,
+    "createdAt": "2025-08-03T10:37:57.530Z",
+    "updatedAt": "2025-08-03T10:37:57.530Z",
+    "ACL": {
+      "*": {
+        "read": true
+      },
+      "role:Admin": {
+        "write": true
+      },
+      "role:Organizer2025": {
+        "write": true
+      }
+    },
+    "objectId": "GqqcHUIw74"
   }
 ]
