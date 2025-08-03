@@ -43,7 +43,8 @@ export default function Sponsors() {
         <SponsorList level="Platinum" columnCount={6} />
         <SponsorList level="Gold" columnCount={4} />
         <SponsorList level="Silver" columnCount={3} />
-        <SponsorList level="Media" columnCount={3} />
+        <SponsorList level="Bronze" columnCount={2} />
+        <SponsorList level="Media" columnCount={2} />
         <div className="row">
           <div className="col-12">
             <div className="sponsor-btn text-center">
