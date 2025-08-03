@@ -45,12 +45,10 @@ export default function Sponsors() {
         <SponsorList level="Silver" columnCount={3} />
         <SponsorList level="Bronze" columnCount={2} />
         <SponsorList level="Media" columnCount={2} />
+        <SponsorList level="Community" columnCount={3} />
         <div className="row">
           <div className="col-12">
             <div className="sponsor-btn text-center">
-              <h2
-                style={{ color: 'white', marginTop: '40px' }}
-              >{t('Community Supporters')}</h2>
               <div className="sponsor-btn text-center">
                 <a href={`https://docs.google.com/document/d/1Vei8Z1wAgKZbpINErTKrJL3NOaOXWC1nZ9p_Cl7dAOU/edit?tab=t.0#heading=h.3zdk7hfmuxsn`} target="_blank" className="btn btn-main-md" rel="noreferrer">
                   {t('Read the Community Supporter Proposal')}
@@ -58,7 +56,6 @@ export default function Sponsors() {
               </div>
             </div>
           </div>
-          <SponsorList level="Community" columnCount={3} />
         </div>
       </div>
     </section>
