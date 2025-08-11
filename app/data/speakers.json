@@ -8,7 +8,7 @@
     "lang": "en",
     "name": "nrs",
     "image_url": "https://lh3.googleusercontent.com/a/ACg8ocLPIz2vkAOSbM_GCS_hX7Dsyau7oEKwqmyd0U73CUgq1XQYLQ=s96-c",
-    "slug": "nrslib",
+    "slug": "msnb",
     "socials": [
       "https://x.com/nrslib"
     ],
@@ -90,7 +90,7 @@
     "lang": "en",
     "name": "Siddharth Dayalwal",
     "image_url": "https://lh3.googleusercontent.com/a/ACg8ocJPqoLzcTpgKK4nimA8FrtRKqoXdf4qvmFFIfKBDWUQaumGDCpR8w=s96-c",
-    "slug": "siddharth",
+    "slug": "siddharth-dayalwal",
     "socials": [
       "https://x.com/siddharth_hacks/",
       "https://www.linkedin.com/in/siddharthdayalwal",
@@ -254,17 +254,30 @@
   {
     "lang": "ja",
     "name": "Tetsuya Nakamura",
-    "organization": "Toppan",
+    "organization": "Toppanデジタル株式会社",
     "user": {
       "__type": "Pointer",
       "className": "_User",
       "objectId": "U3xB07K3OA"
     },
     "slug": "tetsuya",
-    "socials": []
+    "socials": [
+      "https://x.com/S_O_F_Science"
+    ],
+    "profile": "花屋、家具屋を経て、IT知識ゼロからIT企業に就職。コールセンター、インフラエンジニア、サービス企画を経て自社クラウドサービスのマーケティングを従事。その後、SIerに転職し広報・マーケティング室長として業務を実施。\n前職では、AWS専業のSIerにてトレーニング部門の拡大とトレーナーとして活動。\n現職TOPPANデジタルでは、AIを活用した事業開発とTOPPAN全社のAI CoEとして社内のAI活用推進を行っております。",
+    "image_file": {
+      "__type": "File",
+      "name": "91cbc1448f3dee52fa252bc8e001fe23_1754266094966-lum13s3grkb.png",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/91cbc1448f3dee52fa252bc8e001fe23_1754266094966-lum13s3grkb.png"
+    }
   },
   {
-    "socials": [],
+    "socials": [
+      "https://x.com/odashoDotCom",
+      "https://www.facebook.com/odasho0618",
+      "https://www.linkedin.com/in/odasho/",
+      "https://github.com/odasho0618"
+    ],
     "slug": "odasho",
     "name": "小田 祥平",
     "organization": "mabl K.K.",
@@ -283,7 +296,12 @@
     }
   },
   {
-    "socials": [],
+    "socials": [
+      "https://x.com/odashoDotCom",
+      "https://www.facebook.com/odasho0618",
+      "https://www.linkedin.com/in/odasho/",
+      "https://github.com/odasho0618"
+    ],
     "slug": "odasho",
     "name": "Shohei Oda",
     "organization": "mabl K.K.",
@@ -348,12 +366,12 @@
   },
   {
     "socials": [
-      "o"
+      "https://x.com/nrslib"
     ],
     "slug": "nrslib",
     "name": "nrs",
     "organization": "株式会社コドモン",
-    "title": "執行役員CTO",
+    "title": "CTO",
     "profile": "プログラマ。コドモンのCTO。\nソフトウェア開発や設計を主軸として講演活動を行っている。大学や学生の支援、小学校の支援が趣味。 著書『ドメイン駆動設計入門 ボトムアップでわかる！ドメイン駆動設計の基本（翔泳社）』",
     "lang": "ja",
     "user": {
@@ -659,7 +677,7 @@
       "name": "498573672ce0a26fdc0bf9463be7edbc_1748657141125-xsysl5khrfj.jpg",
       "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/498573672ce0a26fdc0bf9463be7edbc_1748657141125-xsysl5khrfj.jpg"
     },
-    "profile": "Executive Evangelist at FPT Japan Data & AI Integration. \nDigital Executive Advisor and Chief Information Security Advisor at National Printing Bureau, Japan. Former worked as a Microsoft Technical Evangelist.\n\nAfter working several SIers/ISVs, I had been a Technical Evangelist at Microsoft for 13 years evangelizing .NET, C#, Visual Studio, Windows, iOS, Android, Microsoft Azure, etc. for developers(DevRel). After working for Dell, Accenture, Elastic, VMware, etc., I will continue DevRel activities at my current position from November 1, 2024, including strategic collaboration with NVIDIA on AI GPU cloud services and AI & data related services with various public cloud vendors - AWS/Microsoft/Google Cloud, and so on. I will conduct marketing, pre-sales activities, educational activities, and related new service development for AI and data related services. At completely new organization under the direct control of the President I will be responsible for marketing, pre-sales activities, educational activities, and development of related new services for AI and data related services. \nMy government concurrent work includes: April 2019-August 2021, Executive Advisor to the Government CIO, IT Strategy Office, Cabinet Secretariat (concurrently serving as an Executive Advisor to the CIO, Ministry of Justice); September 2021-March 2024, Solution Architect, Project Manager Unit, Digital Agency (concurrently serving as Digital Executive Advisor, Financial Services Agency). I was appointed to my current position in October 2024."
+    "profile": "Executive Evangelist at FPT Japan Holdings \nDigital General Advisor and Chief Information Security Advisor at National Printing Bureau \nRegional Developer Advocate at Locofy.ai\n\nI’d been worked for Microsoft Japan as a Technical Evangelist for 13 years and evangelized mainly C#, .NET, Visual Studio, Windows, iOS, Android, Microsoft Azure. After that, I’d worked as a similar role for Dell, Accenture, Elastic, VMware, etc., and have continued to do the same role in my current position.  In my current position, I am responsible for NVIDIA AI GPU cloud services, AI-related collaboration with various public clouds, technology marketing, and evangelism.\nMy concurrent jobs at Japanese Government include Assistant to the Government CIO, Cabinet Secretariat, and Project Manager the Digital Agency, before assuming my current position.\nAlso the organizer of the AI Driven Development Study Group."
   },
   {
     "socials": [
@@ -674,7 +692,7 @@
     "name": "鈴木 章太郎",
     "organization": "FPTジャパンホールディングス",
     "title": "エグゼクティブエバンジェリスト",
-    "profile": "FPT Japan データ & AI インテグレーション エグゼクティブエバンジェリスト。独立行政法人 国立印刷局 デジタル統括アドバイザー兼最高情報セキュリティアドバイザー。元 Microsoft テクニカルエバンジェリスト。\n\nSIer/ISV 等を経て2003年より Microsoft で13年間、テクニカルエバンジェリストとして、.NET、C#、Visual Studio、Windows、iOS、Android、Microsoft Azure などの開発者向け技術啓発活動を実施。その後、Dell、Accenture、Elastic、VMware 等での開発者向け技術啓発活動を経て、2024年11月1日より現職。AI GPU クラウドサービスにおける NVIDIA との戦略的協業や、AWS/Microsoft/Google Cloud 等パブリッククラウドベンダーとの AI ＆ データ関連サービス訴求など、技術啓発活動を継続。社長直轄の全く新しい組織で AI ＆ データ関連サービスのマーケティング、プリセールス活動、教育活動、関連する新サービス開発を行う。\n\n政府での仕事は、2019年4月～2021年8月 内閣官房 IT 総合戦略室 政府 CIO 補佐官（法務省 CIO 補佐官併任）を兼務、その後2021年9月～2024年3月 デジタル庁 プロジェクトマネージャーユニット ソリューションアーキテクト（金融庁デジタル統括アドバイザー併任）を兼務。2024年10月より現職。",
+    "profile": "FPT ジャパン　エグゼクティブエバンジェリスト\n独立行政法人　国立印刷局 デジタル統括アドバイザー兼最高情報セキュリティアドバイザー\nLocofy.ai　Regional Developer Advocate \n\nMicrosoft で C#、.NET、Visual Studio、Windows、iOS、Android、Microsoft Azure 等の開発者向け技術啓発活動を担当後、Dell、Accenture、Elastic、VMware を経て現職まで一貫して同様の活動を継続。現職では NVIDIA AI GPU クラウドサービス、各パブリッククラウドとの AI 関連での協業、マーケティングを担当。政府の仕事は、内閣官房 政府 CIO 補佐官、 デジタル庁 PM を経て、現職を兼務。AI 駆動開発勉強会主催。",
     "image_file": {
       "__type": "File",
       "name": "8d25c96edcc5adb9b0349840ec9c004a_1748657677349-1h4t71ka9ob.jpg",
@@ -756,7 +774,14 @@
     "name": "Pratham Kumar",
     "image_url": "https://lh3.googleusercontent.com/a/ACg8ocKdY-fpmpEJQYPx9UE51Xh4Y9_9RofFgszUpDzJ2Kc66UGPkCk=s96-c",
     "slug": "pratham",
-    "socials": []
+    "socials": [
+      "https://x.com/prathkum",
+      "https://linkedin.com/in/prathkum",
+      "https://prathamkumar.com"
+    ],
+    "organization": "APILayer",
+    "title": "Developer Relations Manager",
+    "profile": "Pratham is a Developer Relations and Product specialist with a strong background in API platforms. Currently leading DevRel at APILayer, he has previously worked with RapidAPI and Hyperspace, helping bridge the gap between complex developer tools and real-world adoption.\n\nKnown for his unique ability to simplify technical concepts and tell compelling stories, Pratham has built a thriving online community of 435,000+ developers on X, where he shares insights on APIs, web development, and the business of building in public.\n\nHe has helped multiple tech companies craft developer-first narratives, grow through social media, and turn content into a customer acquisition engine. From writing viral API cheat sheets to launching fast, scrappy side projects, his approach blends deep technical understanding with sharp marketing instinct.\n\nWhen he's not building or writing, Pratham helps startups find their first users through TrioTech, his studio that combines developer advocacy, technical content, and audience building."
   },
   {
     "socials": [
@@ -860,7 +885,7 @@
       "name": "a459cb7c337c7baa945832a7d6c28208_1752482528091-ho6jfyuzdn7.png",
       "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/a459cb7c337c7baa945832a7d6c28208_1752482528091-ho6jfyuzdn7.png"
     },
-    "profile": "Developer Relations室 室長\n大手証券系シンクタンクにて金融系SIerとして6年半、リース会社基幹系システム、地銀向け投資信託のシステム開発に従事。その後、人事部にて新人研修なども経験し、ファインディ株式会社へ入社。 \nエンジニア向けキャリア面談を行うユーザーサクセスチームに約2年、昨年よりDevRelチームの立ち上げ、リーダーとしてイベントの開催や自社メディア「Findy Engineer Lab」の運営を行う。",
+    "profile": "Developer Relations室 室長\n大手証券系シンクタンクにて金融系SIerとして6年半、リース会社基幹系システム、地銀向け投資信託のシステム開発に従事。その後、人事部にて新人研修なども経験し、ファインディ株式会社へ入社。 \nエンジニア向けキャリア面談を行うユーザーサクセスチームに約2年、2022年よりDevRelチームの立ち上げ、リーダーとしてイベントの開催や自社メディア「Findy Engineer Lab」の運営を行う。",
     "slug": "m-kitagawa",
     "lang": "ja",
     "user": {

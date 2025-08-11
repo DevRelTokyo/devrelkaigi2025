@@ -125,7 +125,12 @@
     }
   },
   {
-    "socials": [],
+    "socials": [
+      "https://x.com/odashoDotCom",
+      "https://www.facebook.com/odasho0618",
+      "https://www.linkedin.com/in/odasho/",
+      "https://github.com/odasho0618"
+    ],
     "slug": "odasho",
     "name": "小田 祥平",
     "organization": "mabl K.K.",
@@ -144,7 +149,12 @@
     }
   },
   {
-    "socials": [],
+    "socials": [
+      "https://x.com/odashoDotCom",
+      "https://www.facebook.com/odasho0618",
+      "https://www.linkedin.com/in/odasho/",
+      "https://github.com/odasho0618"
+    ],
     "slug": "odasho",
     "name": "Shohei Oda",
     "organization": "mabl K.K.",
