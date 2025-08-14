@@ -60,6 +60,9 @@ export default defineConfig({
             "routes/admin/articles/edit.tsx"
           );
           route(":locale/admin/articles/new", "routes/admin/articles/new.tsx");
+          route(":locale/admin/emails", "routes/admin/emails/index.tsx", {
+            index: true,
+          });
           route(":locale/admin/emails/new", "routes/admin/emails/new.tsx");
           route(":locale/admin/roles", "routes/admin/roles/index.tsx", {
             index: true,
