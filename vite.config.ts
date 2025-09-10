@@ -31,6 +31,7 @@ export default defineConfig({
           route(":locale/proposals/:id", "routes/proposals/show.tsx");
           route(":locale/members/:slug", "routes/profiles/show.tsx");
           route(":locale/articles/:slug", "routes/articles/show.tsx");
+          route(":locale/workshops/:slug", "routes/workshops/show.tsx");
           route(":locale/profiles", "routes/profiles/index.tsx", {
             index: true,
           });

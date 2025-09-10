@@ -1,7 +1,9 @@
 import { json, type LoaderFunctionArgs } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
-import speakersData from "~/data/speakers.json";
-import sessionsData from "~/data/sessions.json";
+import speakersData from "~/data/profiles.json";
+import sessionsData from "~/data/proposals.json";
+import { setLang } from "~/utils/i18n";
+import { useParams } from "@remix-run/react";
 
 interface Speaker {
   name: string;
@@ -9,21 +11,15 @@ interface Speaker {
   organization?: string;
   title?: string;
   image_url?: string;
-  image_file?: {
-    url: string;
-  };
+  image_file?: string;
   lang: string;
-  user?: {
-    objectId: string;
-  };
+  user?: string;
 }
 
 interface Session {
   title: string;
   lang: string;
-  user?: {
-    objectId: string;
-  };
+  user?: string;
 }
 
 export async function loader({ params }: LoaderFunctionArgs) {
@@ -32,25 +28,19 @@ export async function loader({ params }: LoaderFunctionArgs) {
   if (!slug) {
     throw new Response("Speaker slug is required", { status: 400 });
   }
-
+  
   // Find speaker by slug with locale preference
-  const speakersWithSlug = (speakersData as Speaker[]).filter(s => s.slug === slug);
-  let speaker = speakersWithSlug.find(s => s.lang === locale);
-
-  // If no speaker found for the locale, try the other locale
-  if (!speaker) {
-    speaker = speakersWithSlug[0];
-  }
-
+  const speaker = speakersData.find(s => s.slug === slug && s.slug === locale) ||
+    speakersData.find(s => s.slug === slug);
   if (!speaker) {
     throw new Response("Speaker not found", { status: 404 });
   }
 
   // Find session by matching user.objectId with locale preference
   let speakerSession = null;
-  if (speaker.user?.objectId) {
+  if (speaker.user) {
     const sessionsWithUser = (sessionsData as Session[]).filter(
-      session => session.user?.objectId === speaker.user?.objectId
+      session => session.user === speaker.user
     );
 
     // Try to find session in current locale first
@@ -61,15 +51,17 @@ export async function loader({ params }: LoaderFunctionArgs) {
       speakerSession = sessionsWithUser[0];
     }
   }
-
+  
   return json({ speaker, session: speakerSession });
 }
 
 export default function SpeakerOGP() {
   const { speaker, session } = useLoaderData<typeof loader>();
+  const { locale, slug } = useParams();
+  const { t } = setLang(locale!);
 
   // Get speaker image URL
-  const imageUrl = speaker.image_file?.url || speaker.image_url || "";
+  const imageUrl = speaker.image_file ? JSON.parse(speaker.image_file).url : speaker.image_url
 
   return (
     <html>

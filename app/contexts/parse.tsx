@@ -27,9 +27,9 @@ if (typeof localStorage === 'undefined') {
 }
 
 export function ParseProvider({ children, appId, jsKey, serverUrl }: ParseProviderProps) {
-  BrowserParse.initialize(appId, jsKey);
+  if (appId) BrowserParse.initialize(appId, jsKey);
   BrowserParse.serverURL = serverUrl;
-  NodeParse.initialize(appId, jsKey);
+  if (appId) NodeParse.initialize(appId, jsKey);
   NodeParse.serverURL = serverUrl;
   return (
     <ParseContext.Provider value={{

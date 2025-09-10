@@ -36,13 +36,11 @@ export function UserProvider(params: UserContextProviderProps) {
     messagingSenderId: params.firebaseMessagingSenderId,
     appId: params.firebaseAppId,
   };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-
+  
+  const app = params.firebaseApiKey ? initializeApp(firebaseConfig) : null;
+  const auth = app ? getAuth(app) : null;
   const { Parse } = useContext(ParseContext)!;
-  const [user, setUser] = useState<Parse.User | undefined>(Parse.User.current());
+  const [user, setUser] = useState<Parse.User | undefined>(Parse.applicationId ? Parse.User.current() : undefined);
   const [profile, setProfile] = useState<Parse.Object | undefined>(undefined);
   const [roles, setRoles] = useState<Parse.Role[]>([]);
 
@@ -75,7 +73,7 @@ export function UserProvider(params: UserContextProviderProps) {
 
   const loginWithGithub = async () => {
     const provider = new GithubAuthProvider();
-    const result = await signInWithPopup(auth, provider)
+    const result = await signInWithPopup(auth!, provider)
     const credential = GithubAuthProvider.credentialFromResult(result);
     const { user } = result;
     const authData = {
@@ -89,7 +87,7 @@ export function UserProvider(params: UserContextProviderProps) {
 
   const loginWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
-    const result = await signInWithPopup(auth, provider);
+    const result = await signInWithPopup(auth!, provider);
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const { user } = result;
     const authData = {

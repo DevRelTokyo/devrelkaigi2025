@@ -48,7 +48,7 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
   const { locale } = params;
   const { t } = setLang(locale!);
   const url = new URL(request.url);
-  const ogImageUrl = `${url.origin}/assets/images/ogp.jpg`;
+  const ogImageUrl = `${url.origin}/assets/images/ogp-${locale}.jpg`;
   
   return json({
     title: t("DevRelKaigi 2025"),

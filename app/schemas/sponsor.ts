@@ -40,6 +40,10 @@ const useSchema = (lang: string): Schema[] => {
           label: 'Community',
           value: 'community',
         },
+        {
+          label: 'Personal',
+          value: 'personal',
+        }
       ],
       required: true,
     },

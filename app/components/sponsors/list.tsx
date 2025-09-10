@@ -14,9 +14,11 @@ export default function SponsorList({ level, columnCount }: SponsorListProps) {
   return (
     <>
       { sponsors.find(s => s.level === level.toLocaleLowerCase()) && (
-        <div className="row">
+        <div className="row"
+          style={{ backgroundColor: 'white', paddingTop: '2em', paddingBottom: '1em' }}
+        >
           <div className="col-12">
-            <h4 className="text-center" style={{ color: 'white' }}>
+            <h4 className="text-center" style={{ color: 'black' }}>
               {t(`${level} Sponsors`)}
             </h4>
           </div>
@@ -29,19 +31,31 @@ export default function SponsorList({ level, columnCount }: SponsorListProps) {
                     color: 'black',
                   }}
                 >
-                  <a
-                    href={sponsor.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src={sponsor.logo.url} alt={sponsor.name}
-                      style={{ width: '100%', height: 'auto', padding: '1em' }}
-                    />
-                    <strong>
-                      {sponsor.name}
-                    </strong>
-                  </a>
+                  { sponsor.url === 'https://devrelkaigi.org/' ? (
+                    <>
+                      <img
+                        src={sponsor.logo.url} alt={sponsor.name}
+                        style={{ width: '100%', height: 'auto', padding: '1em' }}
+                      />
+                      <strong>
+                        {sponsor.name}
+                      </strong>
+                    </>
+                  ): (
+                    <a
+                      href={sponsor.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src={sponsor.logo.url} alt={sponsor.name}
+                        style={{ width: '100%', height: 'auto', padding: '1em' }}
+                      />
+                      <strong>
+                        {sponsor.name}
+                      </strong>
+                    </a>
+                  )}
                 </div>
               ))}
             </div>

@@ -6,8 +6,8 @@ import { setLang } from "~/utils/i18n";
 import markdownIt from "markdown-it";
 import { RemixHead } from "remix-head";
 import Breadcrumb from "~/components/breadcrumb";
-import speakers from "~/data/speakers.json";
-import sessions from "~/data/sessions.json";
+import profileJson from "~/data/profiles.json";
+import proposalJson from "../../data/proposals.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
@@ -25,8 +25,8 @@ export default function ArticleEdit() {
   const md = markdownIt();
   const { locale, slug } = useParams();
   const { t } = setLang(locale!);
-  const speaker = speakers.find((o) => o.slug === slug && o.lang === locale);
-  const speakerSessions = sessions.filter((o) => o.user.objectId === speaker?.user.objectId);
+  const speaker = profileJson.find((o) => o.slug === slug && o.lang === locale) || profileJson.find((o) => o.slug === slug);
+  const speakerSessions = proposalJson.filter((o) => o.user === speaker?.user && o.responseStatus);
   const session = speakerSessions.length == 1 ? speakerSessions[0] : speakerSessions.find((s) => s.lang === locale);
   
   const icon = (social: string) => {
@@ -40,6 +40,13 @@ export default function ArticleEdit() {
     if (social.includes("x.com") || social.includes("twitter.com"))
       return faXTwitter;
     return faGlobe;
+  };
+
+  const getImageUrl = (speaker) => {
+    if (speaker.image_file) {
+      return JSON.parse(speaker.image_file).url;
+    }
+    return speaker.image_url;
   };
 
   return (
@@ -103,7 +110,7 @@ export default function ArticleEdit() {
                           display: "flex",
                         }}
                       >
-                        {speaker.socials.map((social, index) => (
+                        {JSON.parse(speaker.socials || []).map((social, index) => (
                           <li
                             key={index}
                             style={{
@@ -130,7 +137,7 @@ export default function ArticleEdit() {
                   <div className="col-4">
                     {(speaker.image_file || speaker.image_url) && (
                       <img
-                        src={speaker.image_url || speaker.image_file!.url}
+                        src={getImageUrl(speaker)}
                         alt={speaker.name}
                         style={{
                           width: "100%",

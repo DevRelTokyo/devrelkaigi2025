@@ -127,7 +127,7 @@ const saveRoleDataToFile = async (roleName: string, fileName: string) => {
   );
   await createSessionData();
   await Promise.all(
-    ["Organizer", "Speaker"].map((roleName) =>
+    ["Organizer", "Speaker", "Keynote"].map((roleName) =>
       saveRoleDataToFile(roleName, `${roleName.toLowerCase()}s`)
     )
   );

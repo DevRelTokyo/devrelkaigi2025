@@ -1,0 +1,137 @@
+[
+  {
+    "socials": [
+      "https://www.instagram.com/don_in_lisboa",
+      "https://bsky.app/profile/uncanny.bingo"
+    ],
+    "lang": "en",
+    "slug": "uncannybingo",
+    "image_url": "https://avatars.githubusercontent.com/u/521866?v=4",
+    "name": "Don Goodman",
+    "profile": "Trying desperately not to isolate myself from the rest of humanity in the Portuguese mountains until I die alone my corpse undiscovered for a decade. I also enjoy photography.",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "3MVRfO42CJ"
+    },
+    "image_file": {
+      "__type": "File",
+      "name": "ebb627ab34ed9624d263a2af5d046f0b_1751275409677-yi4jp4kucyo.jpeg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/ebb627ab34ed9624d263a2af5d046f0b_1751275409677-yi4jp4kucyo.jpeg"
+    },
+    "organization": "Formance",
+    "title": "Head of Marketing"
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "BP4mppYozn"
+    },
+    "lang": "en",
+    "name": "Kohei MATSUSHITA",
+    "image_url": "https://avatars.githubusercontent.com/u/785097?v=4",
+    "slug": "ma2shita",
+    "socials": [
+      "https://x.com/ma2shita",
+      "https://fb.com/ma2shita",
+      "https://linkedin.com/in/ma2shita"
+    ],
+    "organization": "Soracom, Inc.",
+    "title": "Snr. Technology Evangelist",
+    "profile": "He promotes the adoption of IoT through public speaking and writing, showcasing real-world use cases and hands-on demonstrations. After working in IT systems and e-commerce at a Linux server manufacturer, he began leading IoT business development in 2015, contributing to pioneering projects utilizing low-power connectivity and forming partnerships with major cloud providers. Since March 2017, he has held his current role, with over 700 speaking engagements to date. He is also a co-author of publications including “IoTの知識地図 (In Japanese)” (Gijutsu-Hyoron Co., Ltd.)."
+  },
+  {
+    "socials": [
+      "https://x.com/ma2shita",
+      "https://fb.com/ma2shita",
+      "https://linkedin.com/in/ma2shita"
+    ],
+    "slug": "ma2shita",
+    "name": "松下 享平",
+    "organization": "株式会社ソラコム",
+    "title": "テクノロジー・エバンジェリスト",
+    "profile": "エバンジェリストとして、IoTやSORACOMサービスを企業・開発者により理解、活用いただくための講演活動を担当。90年代半ばの地方ISPの立ち上げをキャリアスタートとし、インターネットを軸にしたSIerを経て、2000年よりLinuxハードウェアメーカーにて、ネットワークインフラやEC事業を担当。2015年からはIoTソリューションをリードし、メガクラウドベンダーとの協業や、サブギガ/BLEを用いたIoTシステム構築といった業界の先駆的なIoT導入事例に関わる。",
+    "image_file": {
+      "__type": "File",
+      "name": "565dfa5550ab2411ae89ef1f12c64ddd_1748240682378-vkldmqq2h8r.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/565dfa5550ab2411ae89ef1f12c64ddd_1748240682378-vkldmqq2h8r.jpg"
+    },
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "BP4mppYozn"
+    }
+  },
+  {
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "b4FRxF0z2N"
+    },
+    "lang": "en",
+    "name": "Aya Tokura",
+    "image_url": "https://avatars.githubusercontent.com/u/12283147?v=4",
+    "slug": "ayatokura",
+    "socials": [
+      "https://x.com/ayatokura",
+      "https://www.facebook.com/aya.tokura21",
+      "https://www.linkedin.com/in/ayatokura/"
+    ],
+    "organization": "IBM Japan",
+    "title": "Program Manager",
+    "image_file": {
+      "__type": "File",
+      "name": "d19a14d514a200c2036a0c83d543cd32_1748261179971-3l6p88k00hi.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/d19a14d514a200c2036a0c83d543cd32_1748261179971-3l6p88k00hi.jpg"
+    },
+    "profile": "With a background as a Technical Evangelist at Microsoft Japan and a former CTO of a startup, transitioned to IBM Japan in 2018 as a Senior Developer Advocate. Currently, leading several initiatives as a Program Manager in Customer Success team. Award: Forbes Japan's \"Women in Tech 30\" in 2024. "
+  },
+  {
+    "socials": [
+      "https://x.com/ayatokura",
+      "https://www.facebook.com/aya.tokura21",
+      "https://www.linkedin.com/in/ayatokura/"
+    ],
+    "name": "戸倉彩",
+    "organization": "日本アイ・ビー・エム株式会社",
+    "title": "プログラムマネージャー",
+    "slug": "ayatokura",
+    "image_file": {
+      "__type": "File",
+      "name": "1ab2566263703dc09da1b6bfb9c6cce4_1748260830901-qx5y2tca9is.jpg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/1ab2566263703dc09da1b6bfb9c6cce4_1748260830901-qx5y2tca9is.jpg"
+    },
+    "profile": "パブリッククラウドや開発ツールを軸に技術活動する日本マイクロソフトのテクニカルエバンジェリストや、スタートアップのCTOの経験を経て、2018年に日本アイ・ビー・エム株式会社のシニアデベロッパーアドボケイトに転身。現在はカスタマーサクセス事業部プログラムマネージャーを務める。Forbes Japan「Women in Tech 30」2024受賞。",
+    "lang": "ja",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "b4FRxF0z2N"
+    }
+  },
+  {
+    "socials": [
+      "https://www.instagram.com/don_in_lisboa",
+      "https://bsky.app/profile/uncanny.bingo"
+    ],
+    "image_file": {
+      "__type": "File",
+      "name": "ebb627ab34ed9624d263a2af5d046f0b_1751275409677-yi4jp4kucyo.jpeg",
+      "url": "https://parsefiles.back4app.com/M1fqUXYXuxJc4KgPCc5aM0s33fWpiHSCq3ND94fZ/ebb627ab34ed9624d263a2af5d046f0b_1751275409677-yi4jp4kucyo.jpeg"
+    },
+    "lang": "ja",
+    "slug": "uncannybingo",
+    "image_url": "https://avatars.githubusercontent.com/u/521866?v=4",
+    "name": "Don Goodman",
+    "profile": "Trying desperately not to isolate myself from the rest of humanity in the Portuguese mountains until I die alone my corpse undiscovered for a decade. I also enjoy photography.",
+    "user": {
+      "__type": "Pointer",
+      "className": "_User",
+      "objectId": "3MVRfO42CJ"
+    },
+    "organization": "Formance",
+    "title": "Head of Marketing"
+  }
+]

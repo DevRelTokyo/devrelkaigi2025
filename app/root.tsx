@@ -79,25 +79,25 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <script
               dangerouslySetInnerHTML={{
                 __html: `window.ENV = ${JSON.stringify({
-                  YEAR: data.ENV.YEAR,
+                  YEAR: data?.ENV.YEAR,
                 })}`,
               }}
             />
             <CookiesProvider>
               <CookieProvider>
                 <ParseProvider
-                  appId={data.ENV.PARSE_APP_ID}
-                  jsKey={data.ENV.PARSE_JS_KEY}
-                  serverUrl={data.ENV.PARSE_SERVER_URL}
+                  appId={data?.ENV.PARSE_APP_ID}
+                  jsKey={data?.ENV.PARSE_JS_KEY}
+                  serverUrl={data?.ENV.PARSE_SERVER_URL}
                 >
                   <UserProvider
-                    firebaseApiKey={data.ENV.FIREBASE_API_KEY}
-                    firebaseAuthDomain={data.ENV.FIREBASE_AUTH_DOMAIN}
-                    firebaseProjectId={data.ENV.FIREBASE_PROJECT_ID}
-                    firebaseStorageBucket={data.ENV.FIREBASE_STORAGE_BUCKET}
-                    firebaseMessagingSenderId={data.ENV.FIREBASE_MESSAGING_SENDER_ID}
-                    firebaseAppId={data.ENV.FIREBASE_APP_ID}
-                    firebaseMeasurementId={data.ENV.FIREBASE_MEASUREMENT_ID}
+                    firebaseApiKey={data?.ENV.FIREBASE_API_KEY}
+                    firebaseAuthDomain={data?.ENV.FIREBASE_AUTH_DOMAIN}
+                    firebaseProjectId={data?.ENV.FIREBASE_PROJECT_ID}
+                    firebaseStorageBucket={data?.ENV.FIREBASE_STORAGE_BUCKET}
+                    firebaseMessagingSenderId={data?.ENV.FIREBASE_MESSAGING_SENDER_ID}
+                    firebaseAppId={data?.ENV.FIREBASE_APP_ID}
+                    firebaseMeasurementId={data?.ENV.FIREBASE_MEASUREMENT_ID}
                   >
                     {children}
                     <SSRBodyRoot />

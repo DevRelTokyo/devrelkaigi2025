@@ -45,6 +45,7 @@ export default function Sponsors() {
         <SponsorList level="Silver" columnCount={3} />
         <SponsorList level="Bronze" columnCount={2} />
         <SponsorList level="Media" columnCount={2} />
+        <SponsorList level="Personal" columnCount={2} />
         <SponsorList level="Community" columnCount={3} />
         <div className="row">
           <div className="col-12">
