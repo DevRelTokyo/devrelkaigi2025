@@ -44,4 +44,4 @@ else
   done
 fi
 
-npx ts-node scripts/schedule.ts
+npx tsx scripts/schedule.ts
