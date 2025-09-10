@@ -7,4 +7,4 @@ node_modules
 .dev.vars
 cloud
 .claude
-app/data/articles.json app/data/keynotes.json app/data/organizers.json app/data/profiles.json app/data/proposals.json app/data/schedule.json app/data/sessions.json app/data/speakers.json app/data/sponsors.json app/data/timeschedule.json app/data/workshops.json
+app/data/*.json
