@@ -12,8 +12,12 @@ type ScheduleItem = {
   profile_id: string;
   session_title: string;
   session_description: string;
+  co_speaker1_id: string;
+  co_speaker2_id: string;
+  co_speaker3_id: string;
   organization: string;
   profile?: Profile;
+  coSpeakers?: Profile[];
 }
 
 type ScheduleProps = {
@@ -27,9 +31,6 @@ export default function ScheduleDay({schedule}: {schedule: ScheduleProps}) {
   const getProfile = (speakerId: string) => {
     if (!speakerId) return undefined;
     const profiles = profileJson.filter((profile) => profile.user === speakerId);
-    if (speakerId === 'e4pzCffXit') {
-      console.log(profiles);
-    }
     if (profiles.length === 2) {
       const profile = profiles.find((p) => p.lang === locale);
       if (profile) return profile;
@@ -41,18 +42,27 @@ export default function ScheduleDay({schedule}: {schedule: ScheduleProps}) {
     Object.entries(schedules).forEach(([time, scheduleItem]) => {
       scheduleItem.forEach((scheduleItem) => {
         scheduleItem.profile = getProfile(scheduleItem.speaker_id);
-        if (scheduleItem.speaker_id === 'e4pzCffXit') {
-          console.log(scheduleItem.profile);
+        if (scheduleItem.co_speaker1_id) {
+          console.log(scheduleItem);
+          scheduleItem.coSpeakers = [];
+          scheduleItem.coSpeakers.push(scheduleItem.profile!);
+          scheduleItem.coSpeakers.push(getProfile(scheduleItem.co_speaker1_id)!);
+        }
+        if (scheduleItem.co_speaker2_id) {
+          if (!scheduleItem.coSpeakers) scheduleItem.coSpeakers = [];
+          scheduleItem.coSpeakers.push(getProfile(scheduleItem.co_speaker2_id)!);
+        }
+        if (scheduleItem.co_speaker3_id) {
+          if (!scheduleItem.coSpeakers) scheduleItem.coSpeakers = [];
+          scheduleItem.coSpeakers.push(getProfile(scheduleItem.co_speaker3_id)!);
         }
       });
     });
   });
 
   const getImage = (profile?: Profile) => {
+    console.log(profile);
     if (!profile) return '';
-    if (profile.objectId === 'e4pzCffXit') {
-      console.log(profile);
-    }
     if (!profile.image_file) return profile.image_url;
     try {
       const object = JSON.parse(profile.image_file as any);
@@ -76,7 +86,34 @@ export default function ScheduleDay({schedule}: {schedule: ScheduleProps}) {
                 { ary[0].track === 'C' ?
                   <>
                     <div className="col-md-10">
-                      { t(ary[0].title)}
+                      
+                      { ary[0].speaker ? (
+                        <>
+                          {/** panel discussion */}
+                          { ary[0].session_title }
+                          <div className="row">
+                            { ary[0].coSpeakers?.map((coSpeaker) => (
+                              <div className="col-md-2" key={coSpeaker.user}>
+                                <div className="row">
+                                  { getImage(coSpeaker) !== '' &&
+                                    <img
+                                      src={getImage(coSpeaker)} alt={coSpeaker.name} style={{
+                                      width: '100%', aspectRatio: 1 / 1, objectFit: 'cover', padding: '1em',
+                                    }} />
+                                  }
+                                </div>
+                                <div className="row"
+                                  style={{ display: 'flex', alignItems: 'center' }}
+                                >
+                                  {coSpeaker.name}{ coSpeaker.organization ? `, ${coSpeaker.organization}` : '' }
+                                </div>
+                              </div>
+                            )) }
+                          </div>
+                        </>
+                      ): (
+                        <>{ t(ary[0].title)}</>
+                      )}
                     </div>
                   </> :
                   <>

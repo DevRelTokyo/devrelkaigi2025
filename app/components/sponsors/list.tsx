@@ -34,7 +34,7 @@ export default function SponsorList({ level, columnCount }: SponsorListProps) {
                   { sponsor.url === 'https://devrelkaigi.org/' ? (
                     <>
                       <img
-                        src={JSON.parse(sponsor.logo!).url} alt={sponsor.name}
+                        src={sponsor.logo.url} alt={sponsor.name}
                         style={{ width: '100%', height: 'auto', padding: '1em' }}
                       />
                       <strong>
@@ -48,7 +48,7 @@ export default function SponsorList({ level, columnCount }: SponsorListProps) {
                       rel="noopener noreferrer"
                     >
                       <img
-                        src={JSON.parse(sponsor.logo!).url} alt={sponsor.name}
+                        src={sponsor.logo.url} alt={sponsor.name}
                         style={{ width: '100%', height: 'auto', padding: '1em' }}
                       />
                       <strong>
